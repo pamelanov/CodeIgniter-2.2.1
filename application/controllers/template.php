@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Template extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -21,7 +21,6 @@ class Welcome extends CI_Controller {
 		$data['judul'] = "Halaman Depan";
 		$data['main'] = "home/home";
 		$data['aktif'] = 'class="active"';
-	
 		$this->load->view('home/template', $data);
 	}
 	
@@ -31,9 +30,8 @@ class Welcome extends CI_Controller {
 		$this->load->model('', '', '', 'madmins', true);
 	}
 	
-	
 	public function contact() {
-		$data['judul'] = "Contac Us";
+		$data['judul'] = "Contact Us";
 		$data['main'] = "home/contact";
 		$data['aktif'] = 'class="active"';
 	
@@ -56,12 +54,13 @@ class Welcome extends CI_Controller {
 		$this->load->view('home/template', $data);
 	}
 	
-	/*
+	
 	function ceklogin()
     {
+    	
         // Create user object
         $u = new Account();
-
+        
         // Put user supplied data into user object
         // (no need to validate the post variables in the controller,
         // if you've set your DataMapper models up with validation rules)
@@ -72,7 +71,7 @@ class Welcome extends CI_Controller {
         // You might want to have a quick look at that login function up the top of this page to see how it authenticates the user
         if ($u->login())
         {
-            echo '<p>Welcome ' . $u->username . '!</p>';
+            echo '<p>Welcome ' . $u->id . '!</p>';
             echo '<p>You have successfully logged in so now we know that your email is ' . $u->email . '.</p>';
         }
         else
@@ -80,8 +79,8 @@ class Welcome extends CI_Controller {
             // Show the custom login error message
             echo '<p>' . $u->error->login . '</p>';
         }
-    }*/
-	}
+    }
+	
 	
 	function logout() {
 		$sesi_items = array('user' => '');
@@ -89,15 +88,10 @@ class Welcome extends CI_Controller {
 		$this->session->set_flashdata('result', 'Anda wes logout');
 		header('location:' . base_url() . 'index.php/template/login');
 	}
-	
-	
-	
-	
-	
-	
-	
-	?>
-}
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+	
+	
+	
+	
+}
+?>

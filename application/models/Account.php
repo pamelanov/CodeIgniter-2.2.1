@@ -67,7 +67,7 @@ class Account extends DataMapper {
 		$u = new Account();
 	
 		// Get this users stored record via their username
-		$u->where('username', $this->username)->get();
+		$u->where('id', $this->id)->get();
 	
 		// Give this user their stored salt
 		$this->salt = $u->salt;

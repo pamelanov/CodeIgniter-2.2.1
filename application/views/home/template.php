@@ -5,7 +5,8 @@
         <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <div id="utama">
+     
+      <div id="utama">
             <div id="header">SISTEM INFORMASI CUSTOMER TRACKING</div>
             <div id="menu">
                 <ul>
@@ -39,5 +40,6 @@
                         <b>ruangguru.com</a> </b>  
                 </center></div>
         </div>
+       
     </body>
 </html>
