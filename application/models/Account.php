@@ -61,6 +61,38 @@ class Account extends DataMapper {
 			)
 	);
 	
+	function ceklogin()
+	{
+		// Create a temporary user object
+		$u = new Account();
+	
+		// Get this users stored record via their username
+		$u->where('username', $this->username)->get();
+	
+		// Give this user their stored salt
+		$this->salt = $u->salt;
+	
+		// Validate and get this user by their property values,
+		// this will see the 'encrypt' validation run, encrypting the password with the salt
+		$this->validate()->get();
+	
+		// If the username and encrypted password matched a record in the database,
+		// this user object would be fully populated, complete with their ID.
+	
+		// If there was no matching record, this user would be completely cleared so their id would be empty.
+		if (empty($this->id))
+		{
+			// Login failed, so set a custom error message
+			$this->error_message('login', 'Username or password invalid');
+	
+			return FALSE;
+		}
+		else
+		{
+			// Login succeeded
+			return TRUE;
+		}
+	}
 	
 	// Optionally, don't include a constructor if you don't need one.
 	function __construct($id = NULL)

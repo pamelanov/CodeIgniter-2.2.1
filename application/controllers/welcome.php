@@ -56,25 +56,31 @@ class Welcome extends CI_Controller {
 		$this->load->view('home/template', $data);
 	}
 	
-	function ceklogin() {
-		$this->load->library('encrypt');
-		if ($this->input->post('username')) {
-			$u = $this->input->post('username');
-			$pw = $this->input->post('password');
-			$row = $this->madmins->verifyUser($u, $pw);
-			if (count($row)) {
-				$_SESSION['userid'] = $row['id'];
-				$_SESSION['role'] = 1;
-	
-				redirect('admin/dashboard', 'refresh');
-			} else {
-				$this->session->set_flashdata('result', 'maap username atau password Anda salah!');
-				redirect('template/login', 'refresh');
-			}
-		} else {
-			$this->session->set_flashdata('result', 'Isi Username dan password dulu!');
-			redirect('template/login', 'refresh');
-		}
+	/*
+	function ceklogin()
+    {
+        // Create user object
+        $u = new Account();
+
+        // Put user supplied data into user object
+        // (no need to validate the post variables in the controller,
+        // if you've set your DataMapper models up with validation rules)
+        $u->id = $this->input->post('id');
+        $u->password = $this->input->post('password');
+
+        // Attempt to log user in with the data they supplied, using the login function setup in the User model
+        // You might want to have a quick look at that login function up the top of this page to see how it authenticates the user
+        if ($u->login())
+        {
+            echo '<p>Welcome ' . $u->username . '!</p>';
+            echo '<p>You have successfully logged in so now we know that your email is ' . $u->email . '.</p>';
+        }
+        else
+        {
+            // Show the custom login error message
+            echo '<p>' . $u->error->login . '</p>';
+        }
+    }*/
 	}
 	
 	function logout() {
@@ -88,7 +94,7 @@ class Welcome extends CI_Controller {
 	
 	
 	
-	}
+	
 	
 	?>
 }
