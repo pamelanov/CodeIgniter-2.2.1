@@ -61,7 +61,7 @@ class Account extends DataMapper {
 			)
 	);
 	
-	function ceklogin()
+	function login()
 	{
 		// Create a temporary user object
 		$u = new Account();
