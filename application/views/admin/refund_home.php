@@ -8,15 +8,15 @@ if ($this->session->flashdata('message')) {
 if (count($refund)) {
     echo "<table id='table'>\n";
     echo "<tr valign='top'>\n";
-    echo "<th>Jam Hilang</th><th>ID Guru</th><th>ID Murid</th><th>ID Sales</th><th>Alasan</th><th>Action</th>\n";
+    echo "<th>Tanggal Refund</th><th>ID Murid</th><th>Jumlah Jam Hilang</th><th>Harga Per Jam</th><th>Sebab Jam Hilang</th><th>Action</th>\n";
     echo "</tr>\n";
     foreach ($refund as $list) {
         echo "<tr valign='top'>\n";
-        echo "<td align='center'>" . $list['jam_hilang'] . "</td>\n";
-        echo "<td align='center'>" . $list['id_guru'] . "</td>\n";
-        echo "<td align='center'>" . $list['id_murid'] . "</td>\n";
-        echo "<td align='center'>" . $list['id_sales'] . "</td>\n";
-        echo "<td align='center'>" . $list['alasan'] . "</td>\n";
+        echo "<td align='center'>" . $list['tanggalRefund'] . "</td>\n";
+        echo "<td align='center'>" . $list['Id_murid'] . "</td>\n";
+        echo "<td align='center'>" . $list['Jam_hilang'] . "</td>\n";
+        echo "<td align='center'>" . $list['hargaPerJam'] . "</td>\n";
+        echo "<td align='center'>" . $list['Alasan'] . "</td>\n";
         
         echo "<td align='center'>";
         echo anchor('admin/refund/edit/' . $list['id'], 'edit');

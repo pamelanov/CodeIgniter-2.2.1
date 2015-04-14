@@ -6,17 +6,17 @@ class Refund extends Ci_Controller {
 		parent::__construct();
    // session_start();
     
-	if ($_SESSION['userid'] < 1){
-    	redirect('template/login','refresh');
-    }
+	
   }
   
-  function index(){
-	$data['judul'] = "Refund Summary";
-	$data['main'] = 'admin/refund_home';
-	$data['refund'] = $this->mrefund->getAllRefunds();
-	$this->load->vars($data);
-	$this->load->view('admin/dashboard');  
+  function refund_sum(){
+	 $r = new Refund();
+        
+        $data['judul'] = "Refund Summary";
+        $data['main'] = 'admin/refund_sum';
+        $data['admins'] = $r->getAllRefunds();
+        $this->load->vars($data);
+        $this->load->view('admin/dashboard'); 
   }
   
 
