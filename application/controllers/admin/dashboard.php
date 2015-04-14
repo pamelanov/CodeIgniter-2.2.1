@@ -22,12 +22,12 @@ class Dashboard extends Ci_Controller {
         $this->load->view('admin/dashboard');
     }
 
-    function allRefund(){
+    function refund(){
         $r = new Refund();
         
         $data['judul'] = "Refund Summary";
-        $data['main'] = 'admin/refund_sum';
-        $data['admins'] = $r->getAllRefunds();
+        $data['main'] = 'admin/refund_home';
+        $data['refund'] = $r->getAllRefunds();
         $this->load->vars($data);
         $this->load->view('admin/dashboard');
     }
