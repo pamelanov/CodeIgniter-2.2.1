@@ -1,7 +1,8 @@
 <?php
 
 class Dashboard extends Ci_Controller {
-
+        
+        
     function __construct() {
         parent::__construct();
 
@@ -22,19 +23,15 @@ class Dashboard extends Ci_Controller {
     }
 
     function users() {
+        $o = new Account();
+        
         $data['judul'] = "Manage Users";
         $data['main'] = 'admin/user_home';
-        $data['admins'] = $this->getAllUsers();
+        $data['admins'] = $o->getAllAccounts();
         $this->load->vars($data);
         $this->load->view('admin/dashboard');
     }
-    
-    function getAllUsers() {
-        $o = new Account();
-        
-        $o->getAllAccounts();
-        return $o;
-    }
+
     function summary() {
         $data['judul'] = "Summary List";
         $data['main'] = 'admin/summary';

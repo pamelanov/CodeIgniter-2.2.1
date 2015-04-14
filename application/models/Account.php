@@ -95,8 +95,6 @@ class Account extends DataMapper {
 	$o->get();
 	$this->salt = $o->salt;
         
-
-        
         return $o;
     }
 
