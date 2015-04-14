@@ -86,6 +86,7 @@
                                         <a href="<?php echo base_url(); ?>index.php/admin/dashboard/createData" > &raquo; Create</a>
                                         <a href="<?php echo base_url(); ?>index.php/admin/dashboard/summary" > &raquo; Summary</a>
                                         <a href="<?php echo base_url(); ?>index.php/admin/dashboard/allRefund" > &raquo; Refund</a>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/dashboard/allFeedback" > &raquo; Feedback</a>
                                     <?php } ?>
 
                                     <?php if ($this->session->userdata('role') == 2) { ?>

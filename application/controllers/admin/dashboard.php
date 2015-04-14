@@ -32,6 +32,16 @@ class Dashboard extends Ci_Controller {
         $this->load->view('admin/dashboard');
     }
     
+    function allFeedback(){
+    	$r = new Feedback();
+    
+    	$data['judul'] = "Feedback Summary";
+    	$data['main'] = 'admin/feedback_home';
+    	$data['feedback'] = $r->getAllFeedbacks();
+    	$this->load->vars($data);
+    	$this->load->view('admin/dashboard');
+    }
+    
     function users() {
         $o = new Account();
         
