@@ -6,9 +6,7 @@ class Student extends Ci_Controller {
 		parent::__construct();
    // session_start();
     
-	if ($_SESSION['userid'] < 1){
-    	redirect('template/login','refresh');
-    }
+                
   }
   
   function index(){
@@ -37,7 +35,7 @@ class Student extends Ci_Controller {
   
   function edit($id=0){
   	$this->load->library('encrypt');
-  	if ($this->input->post('id_murid')){
+  	if ($this->input->post('Id_murid')){
   		$this->mstudent->updateStudent();
   		$this->session->set_flashdata('message','Student updated');
   		redirect('admin/student/index','refresh');
