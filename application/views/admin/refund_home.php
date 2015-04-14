@@ -5,12 +5,12 @@ if ($this->session->flashdata('message')) {
     echo "<div class='message'>" . $this->session->flashdata('message') . "</div>";
 }
 
-if (count($refund)) {
+if (count($admins)) {
     echo "<table id='table'>\n";
     echo "<tr valign='top'>\n";
     echo "<th>Tanggal Refund</th><th>ID Murid</th><th>Jumlah Jam Hilang</th><th>Harga Per Jam</th><th>Sebab Jam Hilang</th><th>Action</th>\n";
     echo "</tr>\n";
-    foreach ($refund as $list) {
+    foreach ($admins as $list) {
         echo "<tr valign='top'>\n";
         echo "<td align='center'>" . $list['tanggalRefund'] . "</td>\n";
         echo "<td align='center'>" . $list['Id_murid'] . "</td>\n";
