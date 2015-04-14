@@ -25,10 +25,7 @@ class Summary extends Ci_Controller {
             $data['student'] = $u->hasilSearch();
             $this->load->vars($data);
             $this->load->view('admin/dashboard');
-            
         
-            
-            
         }
         
         else {

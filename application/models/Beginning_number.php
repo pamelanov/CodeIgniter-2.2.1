@@ -31,7 +31,6 @@ class Beginning_number extends DataMapper {
         $m = new Student();
 	$m->where('id_Murid', $this->Id_murid)->get();
 	$s->where('id_Murid', $m)->get();
-	echo $s->Id_murid;
 
 	return $s;
 
