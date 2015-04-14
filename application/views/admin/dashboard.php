@@ -85,6 +85,11 @@
                                           <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Home</a>
                                         <a href="<?php echo base_url(); ?>index.php/admin/dashboard/createData" > &raquo; Create</a>
                                         <a href="<?php echo base_url(); ?>index.php/admin/dashboard/summary" > &raquo; Summary</a>
+<<<<<<< HEAD
+                                        <a href="<?php echo base_url(); ?>index.php/admin/dashboard/allRefund" > &raquo; Refund</a>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/dashboard/allFeedback" > &raquo; Feedback</a>
+=======
+>>>>>>> origin/master
                                     <?php } ?>
 
                                     <?php if ($this->session->userdata('role') == 2) { ?>

@@ -26,6 +26,16 @@ class Feedback extends DataMapper {
 	function post_model_init($from_cache = FALSE)
 	{
 	}
+	
+	function getAllFeedbacks() {
+	
+		$f = new Feedback();
+		$f->get();
+		$this->salt = $f->salt;
+	
+		return $f;
+	}
+	
 }
 
 /* End of file name.php */
