@@ -34,7 +34,8 @@ if ($this->session->flashdata('message')){
     
 	echo "</table>";
 ?>	<br/>
-	<button type="button" onclick='<?php echo base_url();?>index.php/admin/riwayat_status'>Lihat Riwayat Status</button>
+<a href="<?php echo base_url(); ?>index.php/admin/summary/riwayatStatus" > Lihat</a>
+	
 	
 
 	

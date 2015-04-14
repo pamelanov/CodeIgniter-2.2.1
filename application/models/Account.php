@@ -17,8 +17,8 @@ class Account extends DataMapper {
             'class' => 'end_status',
             'other_field' => 'manager'
         ),
-        'managed_beginning_status' => array(
-            'class' => 'beginning_status',
+        'managed_beginning_number' => array(
+            'class' => 'beginning_number',
             'other_field' => 'manager'
         ),
         'handled_student' => array(

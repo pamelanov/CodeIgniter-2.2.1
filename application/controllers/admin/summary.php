@@ -39,4 +39,17 @@ class Summary extends Ci_Controller {
             $this->load->view('admin/dashboard', $data);
         }
     }
+    
+    function riwayatStatus(){
+        $u = new Student();
+        $s = new Beginning_number();
+        $u->Id_murid = $this->input->post('idMurid');
+        
+            $data['judul'] = "Riwayat Status";
+            $data['main'] = 'admin/riwayat_status';
+            $data['status'] = $s->ambilStatus();
+            $this->load->vars($data);
+            $this->load->view('admin/dashboard');
+        
+    }
 }

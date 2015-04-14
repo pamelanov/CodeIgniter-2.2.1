@@ -5,14 +5,6 @@ class Dashboard extends Ci_Controller {
         
     function __construct() {
         parent::__construct();
-
-       
-
-        /* Jika session bukan 1
-          if($_SESSION['role'] != 1) {
-          redirect('template/login', 'refresh');
-          }
-         */
     }
 
     function index() {

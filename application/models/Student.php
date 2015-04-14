@@ -17,8 +17,8 @@ class Student extends DataMapper {
 					'class' => 'feedback',
 					'other_field' => 'giver'
 			),
-			'assigned_beginning_status' => array(
-					'class' => 'beginning_status',
+			'assigned_beginning_number' => array(
+					'class' => 'beginning_number',
 					'other_field' => 'assigner'
 			)
 	);
