@@ -94,7 +94,6 @@
                                 
 
                                     <?php if ($this->session->userdata('role') == 3) { ?>
-                                          <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Home</a>
                                         <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Performance</a>
                                         <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Overall Summary</a>
                                        
