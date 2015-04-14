@@ -67,7 +67,7 @@ class Template extends CI_Controller {
 
         // Attempt to log user in with the data they supplied, using the login function setup in the User model
         // You might want to have a quick look at that login function up the top of this page to see how it authenticates the user
-        echo "lala";
+    
         if ($u->login()) {
              
           redirect('admin/dashboard', 'refresh');
