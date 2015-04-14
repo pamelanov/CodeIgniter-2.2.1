@@ -1,61 +1,55 @@
 <?php
 
 class Student extends Ci_Controller {
-  function __construct()
-	{
-		parent::__construct();
-   // session_start();
+        
+        
+    function __construct() {
+        parent::__construct();
+    }
+
+    function index() {
+        $data['judul'] = "Summary List";
+        $data['main'] = 'admin/student_summary';
+        $this->load->vars($data);
+        $this->load->view('admin/dashboard');
+    }
     
-                
-  }
-  
-  function index(){
-	$data['judul'] = "Student Summary";
-	$data['main'] = 'admin/student_home';
-	$data['student'] = $this->mstudent->getAllStudents();
-	$this->load->vars($data);
-	$this->load->view('admin/dashboard');  
-  }
-  
+    function searchStudent() {
+        $u = new Student();
+        $u->Id_murid = $this->input->post('idMurid');
+        
+        if ($u->findStudent()) {
 
-  
-  function create(){
-  	$this->load->library('encrypt');
-   	if ($this->input->post('id_murid')){
-  		$this->mstudent->addStudent();
-  		$this->session->set_flashdata('message','Student created');
-  		redirect('admin/student/index','refresh');
-  	}else{
-		$data['judul'] = "Create Student";
-		$data['main'] = 'admin/student_create';
-		$this->load->vars($data);
-		$this->load->view('admin/dashboard');    
-	} 
-  }
-  
-  function edit($id=0){
-  	$this->load->library('encrypt');
-  	if ($this->input->post('Id_murid')){
-  		$this->mstudent->updateStudent();
-  		$this->session->set_flashdata('message','Student updated');
-  		redirect('admin/student/index','refresh');
-  	}else{
-		//$id = $this->uri->segment(4);
-		$data['judul'] = "Edit Student";
-		$data['main'] = 'admin/student_edit';
-		$data['student'] = $this->mstudent->getStudent($id);
-		$this->load->vars($data);
-		$this->load->view('admin/dashboard');    
-	}
-  }
-  
-  function delete($id){
-	$this->mstudent->deleteStudent($id);
-	$this->session->set_flashdata('message','User deleted');
-	redirect('admin/student/index','refresh');
-  }
-  
+            $data['judul'] = "Hasil Pencarian";
+            $data['main'] = 'admin/hasil_search';
+            $data['student'] = $u->hasilSearch();
+            $this->load->vars($data);
+            $this->load->view('admin/dashboard');
+            
+        
+            
+            
+        }
+        
+        else {
+            $data['judul'] = "Summary list";
+            $data['main'] = "admin/error_search_student";
+            $data['aktif'] = 'class="active"';
+
+            $this->load->view('admin/dashboard', $data);
+        }
+    }
+    
+    function riwayatStatus(){
+        $u = new Student();
+        $s = new Beginning_number();
+        $u->Id_murid = $this->input->post('idMurid');
+        
+            $data['judul'] = "Riwayat Status";
+            $data['main'] = 'admin/riwayat_status';
+            $data['status'] = $s->ambilStatus();
+            $this->load->vars($data);
+            $this->load->view('admin/dashboard');
+        
+    }
 }
-
-
-?>
