@@ -24,13 +24,17 @@ class Dashboard extends Ci_Controller {
     function users() {
         $data['judul'] = "Manage Users";
         $data['main'] = 'admin/user_home';
-        $data['admins'] = $this->madmins->getAllUsers();
+        $data['admins'] = $this->getAllUsers();
         $this->load->vars($data);
         $this->load->view('admin/dashboard');
     }
-
     
-    
+    function getAllUsers() {
+        $o = new Account();
+        
+        $o->getAllAccounts();
+        return $o;
+    }
     function summary() {
         $data['judul'] = "Summary List";
         $data['main'] = 'admin/summary';

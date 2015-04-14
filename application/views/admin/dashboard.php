@@ -81,6 +81,7 @@
                             <div id="sidebaradmin">
                                 <div id="bg_menukiri"><center>Dashboard</center></div>
                                 <div id="isi_menu_kiri">
+                                    <a href="<?php echo base_url(); ?>index.php/admin/dashboard/createData" > &raquo; Create</a>
                                     <a href="<?php echo base_url(); ?>index.php/admin/dashboard/summary" > &raquo; Summary</a>
                                     <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Overall Summary</a>
                                     <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Performance</a>

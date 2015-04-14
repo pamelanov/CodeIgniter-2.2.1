@@ -53,6 +53,8 @@ class Template extends CI_Controller {
 
         $this->load->view('home/template', $data);
     }
+    
+ 
 
     function ceklogin() {
 
@@ -67,13 +69,20 @@ class Template extends CI_Controller {
 
         // Attempt to log user in with the data they supplied, using the login function setup in the User model
         // You might want to have a quick look at that login function up the top of this page to see how it authenticates the user
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
         if ($u->login()) {
              
           redirect('admin/dashboard', 'refresh');
         } else {
-            // Show the custom login error message
-            echo '<p>' . $u->error->login . '</p>';
+            $data['judul'] = "Halaman Login";
+            $data['main'] = "home/error_login";
+            $data['aktif'] = 'class="active"';
+
+            $this->load->view('home/template', $data);
+            
         }
     }
 

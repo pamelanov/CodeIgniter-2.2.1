@@ -12,7 +12,8 @@ if (count($admins)){
 	echo "</tr>\n";
 	foreach ($admins as $list){
 		echo "<tr valign='top'>\n";
-		echo "<td>".$list['username']."</td>\n";
+		echo "<td>".$list['Id']."</td>\n";
+		/*
                 echo "<td align='center'>".$list['status']."</td>\n";
                 echo "<td>".$list['telp']."</td>\n";
                 echo "<td>".$list['alamat']."</td>\n";
@@ -21,6 +22,7 @@ if (count($admins)){
 		echo anchor('admin/dashboard/edit/'.$list['id'],'edit');
 		echo " | ";
 		echo anchor('admin/dashboard/delete/'.$list['id'],'delete');
+		*/
 		echo "</td>\n";
 		echo "</tr>\n";
 	}

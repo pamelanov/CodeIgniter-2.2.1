@@ -88,6 +88,17 @@ class Account extends DataMapper {
             return TRUE;
         }
     }
+    
+    function getAllAccounts() {
+        
+        $o = new Account();
+	$o->get();
+	$this->salt = $o->salt;
+        
+
+        
+        return $o;
+    }
 
     // Optionally, don't include a constructor if you don't need one.
     function __construct($id = NULL) {
