@@ -22,7 +22,7 @@ class Dashboard extends Ci_Controller {
         $this->load->view('admin/dashboard');
     }
 
-    function refund(){
+    function refunds(){
         $r = new Refund();
         
         $data['judul'] = "Refund Summary";
@@ -32,7 +32,7 @@ class Dashboard extends Ci_Controller {
         $this->load->view('admin/dashboard');
     }
     
-    function allFeedback(){
+    function feedbacks(){
     	$r = new Feedback();
     
     	$data['judul'] = "Feedback Summary";
