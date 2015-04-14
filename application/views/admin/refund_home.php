@@ -19,9 +19,9 @@ if (count($admins)) {
         echo "<td align='center'>" . $list->Alasan . "</td>\n";
         
         echo "<td align='center'>";
-        echo anchor('admin/refund/edit/' . $list['id'], 'edit');
+        echo anchor('admin/refund/edit/' . $list->id, 'edit');
         echo " | ";
-        echo anchor('admin/refund/delete/' . $list['id'], 'delete');
+        echo anchor('admin/refund/delete/' . $list->id, 'delete');
         echo "</td>\n";
         echo "</tr>\n";
     }
