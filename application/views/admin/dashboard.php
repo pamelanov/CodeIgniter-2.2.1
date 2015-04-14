@@ -81,11 +81,29 @@
                             <div id="sidebaradmin">
                                 <div id="bg_menukiri"><center>Dashboard</center></div>
                                 <div id="isi_menu_kiri">
-                                    <a href="<?php echo base_url(); ?>index.php/admin/dashboard/createData" > &raquo; Create</a>
-                                    <a href="<?php echo base_url(); ?>index.php/admin/dashboard/summary" > &raquo; Summary</a>
-                                    <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Overall Summary</a>
-                                    <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Performance</a>
-                                    <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; User</a>               
+                                    <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>
+                                          <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Today's Summary</a>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/dashboard/createData" > &raquo; Create</a>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/dashboard/summary" > &raquo; Summary</a>
+                                    <?php } ?>
+
+                                    <?php if ($this->session->userdata('role') == 2) { ?>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Performance</a>
+                                    <?php } ?>
+                                        
+                                
+
+                                    <?php if ($this->session->userdata('role') == 3) { ?>
+                                          <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Today's Summary</a>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Performance</a>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Overall Summary</a>
+                                       
+                                    <?php } ?>
+
+                                    <?php if ($this->session->userdata('role') == 1) { ?>
+                                          <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Today's Summary</a>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; User</a>
+                                    <?php } ?>              
                                 </div>
                             </div>
                             <div id="konten">

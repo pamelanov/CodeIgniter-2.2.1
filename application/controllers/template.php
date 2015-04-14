@@ -53,8 +53,6 @@ class Template extends CI_Controller {
 
         $this->load->view('home/template', $data);
     }
-    
- 
 
     function ceklogin() {
 
@@ -70,15 +68,18 @@ class Template extends CI_Controller {
         // Attempt to log user in with the data they supplied, using the login function setup in the User model
         // You might want to have a quick look at that login function up the top of this page to see how it authenticates the user
         if ($u->login()) {
-             
-          redirect('admin/dashboard', 'refresh');
+            $u->get_by_id($this->input->post('id'));
+            $data['role'] = $u->Role;
+            $data['id'] = $u->Id;
+            $data['email'] = $u->Email;
+            $this->session->set_userdata($data);
+            redirect('admin/dashboard', 'refresh');
         } else {
             $data['judul'] = "Halaman Login";
             $data['main'] = "home/error_login";
             $data['aktif'] = 'class="active"';
 
             $this->load->view('home/template', $data);
-            
         }
     }
 
