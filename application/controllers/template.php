@@ -84,7 +84,7 @@ class Template extends CI_Controller {
     }
 
     function logout() {
-        $sesi_items = array('user' => '');
+        $sesi_items = array('role' => '');
         $this->session->unset_userdata($sesi_items);
         $this->session->set_flashdata('result', 'Anda wes logout');
         header('location:' . base_url() . 'index.php/template/login');
