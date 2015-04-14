@@ -30,10 +30,36 @@ class Student extends DataMapper {
 	}
 	
 	
-
+	
 	// Optionally, you can add post model initialisation code
 	function post_model_init($from_cache = FALSE)
 	{
+	}
+	
+	function findStudent(){
+		$u = new Student();
+		$u->where('id_Murid', $this->Id_murid)->get();
+		$this->salt = $u->salt;
+		$this->validate()->get();
+		
+		if (empty($this->Id_murid)) {
+		// Login failed, so set a custom error message
+		$this->error_message('searchStudent', 'Murid tidak ada.');
+
+		return FALSE;
+        } else {
+		// Login succeeded
+		return TRUE;
+		}	
+	}
+	
+	function hasilSearch(){
+		$o = new Student();
+		$o->where('id_Murid', $this->Id_murid)->get();
+		$this->salt = $o->salt;
+		$this->validate()->get();
+		
+		return $o;
 	}
 }
 

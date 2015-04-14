@@ -22,6 +22,15 @@ class Refund extends DataMapper {
 	function post_model_init($from_cache = FALSE)
 	{
 	}
+	
+	function getAllRefunds() {
+        
+        $r = new Refund();
+	$r->get();
+	$this->salt = $r->salt;
+        
+        return $r;
+    }
 }
 
 /* End of file name.php */

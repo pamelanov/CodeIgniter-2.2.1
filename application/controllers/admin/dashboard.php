@@ -22,6 +22,16 @@ class Dashboard extends Ci_Controller {
         $this->load->view('admin/dashboard');
     }
 
+    function allRefund(){
+        $r = new Refund();
+        
+        $data['judul'] = "Refund Summary";
+        $data['main'] = 'admin/refund_sum';
+        $data['admins'] = $r->getAllRefunds();
+        $this->load->vars($data);
+        $this->load->view('admin/dashboard');
+    }
+    
     function users() {
         $o = new Account();
         
