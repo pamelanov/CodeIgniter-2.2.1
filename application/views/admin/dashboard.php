@@ -125,7 +125,7 @@
       </button>
       
       <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>      
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/home">Home</a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard">Home</a>
         <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/createData">Create</a>
         <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/summary">Summary</a>
       <?php } ?>
@@ -141,7 +141,7 @@
     <?php } ?>
     
     <?php if ($this->session->userdata('role') == 1) { ?>
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > Home</a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard" > Home</a>
         <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > User</a>
      <?php } ?>              
     </div>
