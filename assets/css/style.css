@@ -19,9 +19,6 @@ h1 {
 font-size:40px; line-height:24px; color:#660029; font-weight: normal;  
 }
 
-th{
-    text-align:center;
-}
 
 #konten{
     text-align: justify;
@@ -35,22 +32,39 @@ th{
 }
 
 #login{
-        text-align: center;
-    
+    text-align: center;
+    -webkit-animation-name: login; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 1s; /* Chrome, Safari, Opera */
+    animation-name: login;
+    animation-duration: 1s;
     background-color:white;
     width: 25%;
-    margin-top: 25px;
     margin-left: 35%;
     margin-right: 50%;
     margin-bottom: 10px;
     padding: 10px 10px 10px 10px;
-
+    margin-top: 60px;
     border-radius: 25px;
 }
 #footer{
     font-size:16px;
     color:white;
 }
+
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes login {
+    from {margin-top:0px;}
+    to {margin-top: 60px;}
+}
+
+/* Standard syntax */
+@keyframes login {
+    from {margin-top:0px;}
+    to {margin-top:60px;}
+}
+
+
 /*
 #headeradmin{
     font-family:Orbitron;
@@ -169,11 +183,7 @@ padding-bottom:10px;
 color:#000000
 }
 
-#sidebar{
-    width:220px;
-    float:left;
-    margin:8px;
-}
+
 #sidebaradmin{
     width:220px;
     float:left;

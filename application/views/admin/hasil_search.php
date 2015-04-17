@@ -5,28 +5,28 @@ if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
 }
                 
-	echo "<table id='table'>\n";
+	echo "<table class='table table-bordered'>\n";
 	echo "<tr valign='top'>\n";
-	echo "<th>ID Murid</th>
-        <th>Nama</th>
-        <th>ID Sales</th>
-        <th>Gender</th>
-        <th>No Tlp</th>
-        <th>Domisili</th>
-        <th>Email</th>\n";
+	echo "<th><center>ID Murid</center></th>
+        <th><center>Nama</center></th>
+        <th><center>ID Sales</center></th>
+        <th><center>Gender</center></th>
+        <th><center>No Tlp</center></th>
+        <th><center>Domisili</center></th>
+        <th><center>Email</center></th>\n";
         
 	echo "</tr>\n";
 	
 
 		echo "<tr valign='top'>\n";
-		echo "<td>".$student->Id_murid."</td>\n";
+		echo "<td align='center'>".$student->Id_murid."</td>\n";
 		
                 echo "<td align='center'>".$student->Nama."</td>\n";
-                echo "<td>".$student->Id_sales."</td>\n";
-                echo "<td>".$student->Gender."</td>\n";
-                echo "<td>".$student->No_telepon."</td>\n";
-                echo "<td>".$student->Domisili."</td>\n";
-                echo "<td>".$student->Email."</td>\n";
+                echo "<td align='center'>".$student->Id_sales."</td>\n";
+                echo "<td align='center'>".$student->Gender."</td>\n";
+                echo "<td align='center'>".$student->No_telepon."</td>\n";
+                echo "<td align='center'>".$student->Domisil."</td>\n";
+                echo "<td align='center'>".$student->Email."</td>\n";
         
 		
 		echo "</td>\n";
