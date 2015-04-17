@@ -12,36 +12,41 @@ class Dashboard extends Ci_Controller {
 
     function index() {
         $data['judul'] = "Dashboard Home";
-        $data['main'] = 'home';
+        $data['main'] = 'admin/home';
         $this->load->vars($data);
-        $this->load->view('dashboard');
+        $this->load->view('admin/dashboard');
     }
 
-    function createData(){
-	$data['judul'] = "Create";
-        $data['main'] = 'create';
+    function buat(){
+        $data['judul'] = "Halaman Create";
+        $data['main'] = 'admin/create';
         $this->load->vars($data);
-        $this->load->view('dashboard');
+        $this->load->view('admin/dashboard');
     }
-    
+    function createStatus(){
+        $data['judul'] = "Create";
+        $data['main'] = 'admin/create';
+        $this->load->vars($data);
+        $this->load->view('admin/dashboard');
+    }
     function refunds(){
         $r = new Refund();
         
         $data['judul'] = "Refund Summary";
-        $data['main'] = 'ops/refund_home';
+        $data['main'] = 'admin/refund_home';
         $data['admins'] = $r->getAllRefunds();
         $this->load->vars($data);
-        $this->load->view('dashboard');
+        $this->load->view('admin/dashboard');
     }
     
     function feedbacks(){
     	$r = new Feedback();
     
     	$data['judul'] = "Feedback Summary";
-    	$data['main'] = 'ops/feedback_home';
+    	$data['main'] = 'admin/feedback_home';
     	$data['feedback'] = $r->getAllFeedbacks();
     	$this->load->vars($data);
-    	$this->load->view('dashboard');
+    	$this->load->view('admin/dashboard');
     }
     
     function users() {
@@ -51,14 +56,14 @@ class Dashboard extends Ci_Controller {
         $data['main'] = 'admin/user_home';
         $data['admins'] = $o->getAllAccounts();
         $this->load->vars($data);
-        $this->load->view('dashboard');
+        $this->load->view('admin/dashboard');
     }
 
     function summary() {
         $data['judul'] = "Summary List";
-        $data['main'] = 'summary';
+        $data['main'] = 'admin/summary';
         $this->load->vars($data);
-        $this->load->view('dashboard');
+        $this->load->view('admin/dashboard');
     }
 
     function create() {
@@ -66,12 +71,12 @@ class Dashboard extends Ci_Controller {
         if ($this->input->post('username')) {
             $this->madmins->addUser();
             $this->session->set_flashdata('message', 'User created');
-            redirect('dashboard/users', 'refresh');
+            redirect('admin/dashboard/users', 'refresh');
         } else {
             $data['judul'] = "Create User";
             $data['main'] = 'admin/user_create';
             $this->load->vars($data);
-            $this->load->view('dashboard');
+            $this->load->view('admin/dashboard');
         }
     }
 
@@ -80,21 +85,21 @@ class Dashboard extends Ci_Controller {
         if ($this->input->post('username')) {
             $this->madmins->updateUser();
             $this->session->set_flashdata('message', 'User updated');
-            redirect('dashboard/users', 'refresh');
+            redirect('admin/dashboard/users', 'refresh');
         } else {
             //$id = $this->uri->segment(4);
             $data['judul'] = "Edit User";
             $data['main'] = 'admin/user_edit';
             $data['admin'] = $this->madmins->getUser($id);
             $this->load->vars($data);
-            $this->load->view('dashboard');
+            $this->load->view('admin/dashboard');
         }
     }
 
     function delete($id) {
         $this->madmins->deleteUser($id);
         $this->session->set_flashdata('message', 'User deleted');
-        redirect('dashboard/users', 'refresh');
+        redirect('admin/dashboard/users', 'refresh');
     }
 
     function logout() {

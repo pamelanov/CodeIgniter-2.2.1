@@ -34,8 +34,17 @@ class Student extends Ci_Controller {
     }
 
     function createStatus() {
+        $n = Beginning_number();
+        
+        $n->Id = $this->input->post('idMurid');
+        $n->Password = $this->input->post('jam');
+        $n->Password = $this->input->post('tanggal');
+        $n->Password = $this->input->post('idSales');
+        $n->Password = $this->input->post('status');
+        
         $data['judul'] = "Create Status";
         $data['main'] = 'ops/update_status';
+        $data['update'] = $n->updateStatus();
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
