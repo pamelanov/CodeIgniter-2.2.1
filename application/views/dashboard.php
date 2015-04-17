@@ -125,15 +125,13 @@
       </button>
       
       <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>      
-<<<<<<< Updated upstream:application/views/dashboard.php
+
         <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard">Home</a>
         <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/createData">Create</a>
         <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/summary">Summary</a>
-=======
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard">Home</a>
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/buat">Create</a>
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/summary">Summary</a>
->>>>>>> Stashed changes:application/views/admin/dashboard.php
+
+     
+
       <?php } ?>
       
       <?php if ($this->session->userdata('role') == 2) { ?>
