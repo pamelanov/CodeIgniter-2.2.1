@@ -122,6 +122,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
+                        
                     </button>
 
                     <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>      
