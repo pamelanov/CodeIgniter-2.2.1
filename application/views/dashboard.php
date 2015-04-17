@@ -66,7 +66,7 @@
         <!-- /TinyMCE -->
     </head>
     <body>
-        
+
         <!--
         <div id="utama">
 
@@ -85,98 +85,96 @@
                             <div id="sidebaradmin">
                                 <div id="bg_menukiri"><center>Dashboard</center></div>
                                 <div id="isi_menu_kiri">
-                                    <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>
-                                          <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Home</a>
-                                        <a href="<?php echo base_url(); ?>index.php/admin/dashboard/createData" > &raquo; Create</a>
-                                        <a href="<?php echo base_url(); ?>index.php/admin/dashboard/summary" > &raquo; Summary</a>
+        <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>
+                                              <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Home</a>
+                                            <a href="<?php echo base_url(); ?>index.php/admin/dashboard/createData" > &raquo; Create</a>
+                                            <a href="<?php echo base_url(); ?>index.php/dashboard/summary" > &raquo; Summary</a>
 
 
-                                    <?php } ?>
+        <?php } ?>
 
-                                    <?php if ($this->session->userdata('role') == 2) { ?>
-                                        <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Performance</a>
-                                    <?php } ?>
+        <?php if ($this->session->userdata('role') == 2) { ?>
+                                            <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Performance</a>
+        <?php } ?>
                                         
                                 
 
-                                    <?php if ($this->session->userdata('role') == 3) { ?>
-                                        <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Performance</a>
-                                        <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Overall Summary</a>
-                                       
-                                    <?php } ?>
+        <?php if ($this->session->userdata('role') == 3) { ?>
+                                            <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Performance</a>
+                                            <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Overall Summary</a>
+                                           
+        <?php } ?>
 
-                                    <?php if ($this->session->userdata('role') == 1) { ?>
-                                          <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Home</a>
-                                        <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; User</a>
-                                    <?php } ?>              
+        <?php if ($this->session->userdata('role') == 1) { ?>
+                                              <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Home</a>
+                                            <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; User</a>
+        <?php } ?>              
                                 </div>
                             </div>
-                            -->
-                            
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-      <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>      
+        -->
 
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard">Home</a>
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/createData">Create</a>
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/summary">Summary</a>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-     
+                    <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>      
+                 
+                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard">Home</a>
+                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/createData">Create</a>
+                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/summary">Summary</a>
+                        
+                    <?php } ?>
 
-      <?php } ?>
-      
-      <?php if ($this->session->userdata('role') == 2) { ?>
-        <a class = "navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" >Performance</a>
-    <?php } ?>
-    
-    <?php if ($this->session->userdata('role') == 3) { ?>
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" >Performance</a>
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" >Overall Summary</a>
-                                       
-    <?php } ?>
-    
-    <?php if ($this->session->userdata('role') == 1) { ?>
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard" > Home</a>
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" > User</a>
-     <?php } ?>              
-    </div>
+                    <?php if ($this->session->userdata('role') == 2) { ?>
+                        <a class = "navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" >Performance</a>
+                    <?php } ?>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        
-       <li><a class="navbar-brand" href="<?php echo base_url(); ?>index.php/template/logout" > Logout</a>
-       </li>
-       </ul>
-    
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-                            
-                            
-    <div id="konten">
-        <?php $this->load->view($main); ?>
-    </div>
-                            
-                            <nav class="navbar navbar-inverse navbar-fixed-bottom">
-                                <div class="container">
-                            <div class="clear"></div> <center>
-                                <div id="footer">
-                                    KELOMPOK B01
-                                    <br>
-                                        <a href="http://ruangguru.com">ruangguru.com</a></b>        
-                                    </center></div>
-                                </div>
-                                </div>
-                            </nav>
-                                </body>
-                                </html>
+                    <?php if ($this->session->userdata('role') == 3) { ?>
+                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" >Performance</a>
+                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" >Overall Summary</a>
+
+                    <?php } ?>
+
+                    <?php if ($this->session->userdata('role') == 1) { ?>
+                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard" > Home</a>
+                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" > User</a>
+                    <?php } ?>              
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a class="navbar-brand" href="<?php echo base_url(); ?>index.php/template/logout" > Logout</a>
+                        </li>
+                    </ul>
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+
+        <div id="konten">
+            <?php $this->load->view($main); ?>
+        </div>
+
+        <nav class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container">
+                <div class="clear"></div> <center>
+                    <div id="footer">
+                        KELOMPOK B01
+                        <br>
+                            <a href="http://ruangguru.com">ruangguru.com</a></b>        
+                        </center></div>
+            </div>
+            </div>
+        </nav>
+    </body>
+</html>

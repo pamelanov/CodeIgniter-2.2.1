@@ -26,6 +26,19 @@ class Beginning_number extends DataMapper {
 	{
 	}
 	
+	function updateStatus($n){
+		
+		/*
+	$n->save(array('assigner' => '33333',
+		 'editor' => 'YS',
+		'No' => '4'));
+	
+	*/
+	return true;
+
+	
+	}
+	
 	function ambilStatus(){
 	$s = new Beginning_number();	    
         $m = new Student();

@@ -6,6 +6,7 @@ body {
 	font-size:12px;
 	line-height:14px;
 	color:#5e5e5e;
+        width: 100%;
 }
 
 #header{  
@@ -23,10 +24,9 @@ font-size:40px; line-height:24px; color:#660029; font-weight: normal;
 #konten{
     text-align: justify;
     margin-top: 30px;
-    width: 100%;
+    width: 50%;
     margin-bottom: 30px;
     padding: 10px 10px 10px 10px;
-
     border-radius: 25px;
     
 }

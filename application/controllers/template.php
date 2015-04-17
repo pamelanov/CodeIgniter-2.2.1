@@ -82,6 +82,8 @@ class Template extends CI_Controller {
             $this->load->view('home/template', $data);
         }
     }
+    
+
 
     function logout() {
         $sesi_items = array('role' => '');

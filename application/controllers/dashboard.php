@@ -16,6 +16,8 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
+    
+          
 
     function createData(){
 	$data['judul'] = "Create";

@@ -1,40 +1,51 @@
-<html>
-<h1><?php echo $judul;?></h1>
+<! DOCTYPE html>
+	<html>
+
+<h2 align="left">Status Summary</h2>					
+		<form class="form-inline" align="left" action='<?php echo base_url();?>index.php/ops/summary/searchStudent' method='post'>
+  <div class="form-group">
+    <label for="exampleInputName2">Enter Student ID</label>
+    <input type="text" class="form-control" name="idMurid" placeholder="Jane Doe">
+  </div>
+  <button type="submit" class="btn btn-default">Search</button>
+  
+</form>
+
 <?php
 if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
 }
                 
-	echo "<table class='table table-bordered'>\n";
+	echo "<div id='konten'><table class='table table-bordered' >\n";
 	echo "<tr valign='top'>\n";
-	echo "<th><center>ID Murid</center></th>
-        <th><center>Nama</center></th>
-        <th><center>ID Sales</center></th>
-        <th><center>Gender</center></th>
-        <th><center>No Tlp</center></th>
-        <th><center>Domisili</center></th>
-        <th><center>Email</center></th>\n";
+	echo "<th>ID Murid</th>
+        <th>Nama</th>
+        <th>ID Sales</th>
+        <th>Gender</th>
+        <th>No Tlp</th>
+        <th>Domisili</th>
+        <th>Email</th>\n";
         
 	echo "</tr>\n";
 	
 
 		echo "<tr valign='top'>\n";
-		echo "<td align='center'>".$student->Id_murid."</td>\n";
+		echo "<td>".$student->Id_murid."</td>\n";
 		
                 echo "<td align='center'>".$student->Nama."</td>\n";
-                echo "<td align='center'>".$student->Id_sales."</td>\n";
-                echo "<td align='center'>".$student->Gender."</td>\n";
-                echo "<td align='center'>".$student->No_telepon."</td>\n";
-                echo "<td align='center'>".$student->Domisil."</td>\n";
-                echo "<td align='center'>".$student->Email."</td>\n";
+                echo "<td>".$student->Id_sales."</td>\n";
+                echo "<td>".$student->Gender."</td>\n";
+                echo "<td>".$student->No_telepon."</td>\n";
+                echo "<td>".$student->Domisil."</td>\n";
+                echo "<td>".$student->Email."</td>\n";
         
 		
 		echo "</td>\n";
 		echo "</tr>\n";
     
-	echo "</table>";
+	echo "</table></div>	";
 ?>	<br/>
-<a href="<?php echo base_url(); ?>index.php/admin/summary/riwayatStatus" > Lihat</a>
+<a href="<?php echo base_url(); ?>index.php/ops/summary/riwayatStatus" > Lihat</a>
 	
 	
 

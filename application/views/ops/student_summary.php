@@ -1,6 +1,9 @@
-<h2 align="center">Status Summary</h2>					
-	<form name='searchStudent' action='<?php echo base_url();?>index.php/ops/summary/searchStudent' method='post' >
-		<table align="center">
-			<tr><td>Enter Student ID</td><td><input type='text' name='idMurid'>
-		 	<tr><td></td><td><input type='submit' value='search'></td></tr>
-		</table>
+<h2 align="left">Status Summary</h2>					
+		<form class="form-inline" align="left" action='<?php echo base_url();?>index.php/ops/summary/searchStudent' method='post'>
+  <div class="form-group">
+    <label for="exampleInputName2">Enter Student ID</label>
+    <input type="text" class="form-control" name="idMurid" placeholder="Jane Doe">
+  </div>
+  <button type="submit" class="btn btn-default">Search</button>
+  
+</form>
