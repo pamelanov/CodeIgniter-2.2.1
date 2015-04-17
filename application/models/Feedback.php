@@ -36,6 +36,20 @@ class Feedback extends DataMapper {
 		return $f;
 	}
 	
+	function addFeedbacks(){
+		$f = new Feedback();
+		
+		// Enter values into required fields
+		$f->where('id_Guru', $this->Id_guru);
+		$f->where('id_Murid', $this->Id_murid);
+		$f->get();
+		$this->salt = $u->salt;
+		$this->validate()->get();
+		
+		// Save new user
+		$f->save();
+	}
+	
 }
 
 /* End of file name.php */

@@ -21,8 +21,16 @@ class Feedback extends Ci_Controller {
   
 
   
-  function create(){
-   	if ($this->input->post('id')){
+  function addFeedbacksCtrl(){
+  	$f = new Feedback();
+  	$f->Id_murid = $this->input->post('idMurid');
+  	$f->Id_guru = $this->input->post('idGuru');
+  	$f->Tanggal = $this->input->post('tanggal');
+  	$f->Rating = $this->input->post('rating');
+  	$f->Isi = $this->input->post('isi');
+  	
+  	
+   	/*if ($this->input->post('id')){
   		$this->mfeedback->addFeedback();
   		$this->session->set_flashdata('message','Feedback created');
   		redirect('admin/refund/index','refresh');
@@ -31,7 +39,7 @@ class Feedback extends Ci_Controller {
 		$data['main'] = 'admin/feedback_create';
 		$this->load->vars($data);
 		$this->load->view('admin/dashboard');    
-	} 
+	} */
   }
   
   function edit($id=0){
