@@ -125,24 +125,24 @@
       </button>
       
       <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>      
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard">Home</a>
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/createData">Create</a>
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/summary">Summary</a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard">Home</a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/createData">Create</a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/summary">Summary</a>
       <?php } ?>
       
       <?php if ($this->session->userdata('role') == 2) { ?>
-        <a class = "navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/users" >Performance</a>
+        <a class = "navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" >Performance</a>
     <?php } ?>
     
     <?php if ($this->session->userdata('role') == 3) { ?>
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/users" >Performance</a>
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/users" >Overall Summary</a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" >Performance</a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" >Overall Summary</a>
                                        
     <?php } ?>
     
     <?php if ($this->session->userdata('role') == 1) { ?>
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard" > Home</a>
-        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > User</a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard" > Home</a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" > User</a>
      <?php } ?>              
     </div>
 

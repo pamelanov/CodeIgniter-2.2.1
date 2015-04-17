@@ -9,8 +9,8 @@ class Dashboard extends Ci_Controller {
 
     function index() {
         $data['judul'] = "Riwayat Status";
-        $data['main'] = 'admin/home';
+        $data['main'] = 'ops/home';
         $this->load->vars($data);
-        $this->load->view('admin/dashboard');
+        $this->load->view('dashboard');
     }
 }
