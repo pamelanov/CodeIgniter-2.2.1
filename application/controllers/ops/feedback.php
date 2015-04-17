@@ -29,6 +29,22 @@ class Feedback extends Ci_Controller {
   	$f->Rating = $this->input->post('rating');
   	$f->Isi = $this->input->post('isi');
   	
+  	if ($f -> addFeedbacks()) {
+  		$f->get_by_Id_murid($this->input->post('idMurid'));
+  		$f->get_by_Id_guru($this->input->post('idGuru'));
+  		$data['role'] = $u->Role;
+  		$data['id'] = $u->Id;
+  		$data['email'] = $u->Email;
+  		$this->session->set_userdata($data);
+  		redirect('dashboard', 'refresh');
+  	} else {
+  		$data['judul'] = "Add Feedback";
+  		$data['main'] = "home/error_login";
+  		$data['aktif'] = 'class="active"';
+  	
+  		$this->load->view('home/template', $data);
+  	}
+  	
   	
    	/*if ($this->input->post('id')){
   		$this->mfeedback->addFeedback();
