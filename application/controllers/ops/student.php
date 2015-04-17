@@ -14,6 +14,7 @@ class Student extends Ci_Controller {
         $this->load->view('dashboard');
     }
     
+<<<<<<< Updated upstream:application/controllers/ops/student.php
     function searchStudent() {
         $u = new Student();
         $u->Id_murid = $this->input->post('idMurid');
@@ -38,7 +39,16 @@ class Student extends Ci_Controller {
 
             $this->load->view('dashboard', $data);
         }
+=======
+    function createStatus(){
+	$data['judul'] = "Create Status";
+        $data['main'] = 'admin/update_status';
+        $this->load->vars($data);
+        $this->load->view('admin/dashboard');
+>>>>>>> Stashed changes:application/controllers/admin/student.php
     }
+    
+  
     
     function riwayatStatus(){
         $u = new Student();

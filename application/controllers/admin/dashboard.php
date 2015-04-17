@@ -17,7 +17,13 @@ class Dashboard extends Ci_Controller {
         $this->load->view('admin/dashboard');
     }
 
-    function createData(){
+    function buat(){
+        $data['judul'] = "Halaman Create";
+        $data['main'] = 'admin/create';
+        $this->load->vars($data);
+        $this->load->view('admin/dashboard');
+    }
+    function createStatus(){
         $data['judul'] = "Create";
         $data['main'] = 'admin/create';
         $this->load->vars($data);

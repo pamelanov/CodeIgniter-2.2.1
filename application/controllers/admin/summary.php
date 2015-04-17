@@ -9,9 +9,9 @@ class Summary extends Ci_Controller {
 
     function index() {
         $data['judul'] = "Summary List";
-        $data['main'] = 'ops/searchStudent';
+        $data['main'] = 'admin/searchStudent';
         $this->load->vars($data);
-        $this->load->view('dashboard');
+        $this->load->view('admin/dashboard');
     }
     
     function searchStudent() {
@@ -21,19 +21,19 @@ class Summary extends Ci_Controller {
         if ($u->findStudent()) {
 
             $data['judul'] = "Hasil Pencarian";
-            $data['main'] = 'ops/hasil_search';
+            $data['main'] = 'admin/hasil_search';
             $data['student'] = $u->hasilSearch();
             $this->load->vars($data);
-            $this->load->view('dashboard');
+            $this->load->view('admin/dashboard');
         
         }
         
         else {
             $data['judul'] = "Summary list";
-            $data['main'] = "ops/error_search_student";
+            $data['main'] = "admin/error_search_student";
             $data['aktif'] = 'class="active"';
 
-            $this->load->view('dashboard', $data);
+            $this->load->view('admin/dashboard', $data);
         }
     }
     
@@ -67,10 +67,10 @@ class Summary extends Ci_Controller {
         $u->Id_murid = $this->input->post('idMurid');
         
             $data['judul'] = "Riwayat Status";
-            $data['main'] = 'ops/riwayat_status';
+            $data['main'] = 'admin/riwayat_status';
             $data['status'] = $s->ambilStatus();
             $this->load->vars($data);
-            $this->load->view('dashboard');
+            $this->load->view('admin/dashboard');
         
     }
 }
