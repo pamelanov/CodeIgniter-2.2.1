@@ -2,9 +2,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title><?php echo $judul; ?></title>
+        <link href="<?php echo base_url(); ?>assets/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css" />
         <!-- TinyMCE -->
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/TINYMCE/JSCRIPTS/TINY_MCE/tiny_mce_src.js"></script>
+        <link href="<?php echo base_url(); ?>assets/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript">
             tinyMCE.init({
                 // General options
@@ -64,16 +66,18 @@
         <!-- /TinyMCE -->
     </head>
     <body>
+        
+        <!--
         <div id="utama">
-            <div id="header">SISTEM INFORMASI CUSTOMER TRACKING</div>
-
 
             <div id="menu">		
                 <ul>
                     <text id="menulogin">
-                        <?php
-                        echo "<a href='" . base_url() . "index.php/template/logout'>Logout</a>";
-                        ?>
+                        
+                        
+                        
+                        
+                        
                         <text>
                             </ul>
                             </div>
@@ -107,16 +111,68 @@
                                     <?php } ?>              
                                 </div>
                             </div>
-                            <div id="konten">
-                                <?php $this->load->view($main); ?>
-                            </div>
+                            -->
+                            
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>      
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/home">Home</a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/createData">Create</a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/summary">Summary</a>
+      <?php } ?>
+      
+      <?php if ($this->session->userdata('role') == 2) { ?>
+        <a class = "navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/users" >Performance</a>
+    <?php } ?>
+    
+    <?php if ($this->session->userdata('role') == 3) { ?>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/users" >Performance</a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/users" >Overall Summary</a>
+                                       
+    <?php } ?>
+    
+    <?php if ($this->session->userdata('role') == 1) { ?>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > Home</a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > User</a>
+     <?php } ?>              
+    </div>
 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        
+       <li><a class="navbar-brand" href="<?php echo base_url(); ?>index.php/template/logout" > Logout</a>
+       </li>
+       </ul>
+    
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+                            
+                            
+    <div id="konten">
+        <?php $this->load->view($main); ?>
+    </div>
+                            
+                            <nav class="navbar navbar-inverse navbar-fixed-bottom">
+                                <div class="container">
                             <div class="clear"></div> <center>
                                 <div id="footer">
-                                    <b> KELOMPOK B01</a> </b>
+                                    KELOMPOK B01
                                     <br>
-                                        <b>ruangguru.com</a> </b>        
+                                        <a href="http://ruangguru.com">ruangguru.com</a></b>        
                                     </center></div>
                                 </div>
+                                </div>
+                            </nav>
                                 </body>
                                 </html>

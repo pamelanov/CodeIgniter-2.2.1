@@ -26,7 +26,7 @@ class Template extends CI_Controller {
 
     public function index() {
         $data['judul'] = "Halaman Depan";
-        $data['main'] = "home/home";
+        $data['main'] = "home/login";
         $data['aktif'] = 'class="active"';
         $this->load->view('home/template', $data);
     }
