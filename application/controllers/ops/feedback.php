@@ -6,9 +6,7 @@ class Feedback extends Ci_Controller {
 		parent::__construct();
   //session_start();
     
-	if ($_SESSION['userid'] < 1){
-    	redirect('template/login','refresh');
-    }
+	
   }
   
   function index(){

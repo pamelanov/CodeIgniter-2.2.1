@@ -1,41 +1,40 @@
 <!DOCTYPE html>
-    <html lang="en"></html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title><?php echo $judul; ?></title>
-    </head>
-    <body></body>
-    <h2 align="center">Search Student</h2>					
-	<form name='searchStudent' action='<?php echo base_url();?>index.php/admin/summary/searchStatusStudent' method='post' >
-		<table align="center">
-			<tr><td>Enter Student ID</td><td>
-                        <input type='text' name='idMurid'>
-                            
-		 	<tr><td></td><td><input type='submit' value='search'></td></tr>
-		</table>
-<!-- <form>
+<html lang="en"></html>
+<h1><?php echo $judul; ?></h1>
+<ul class="nav nav-tabs">
+    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createData" > Home</a></li>
+    <li role="presentation"class="active" ><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
+    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
+    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbacks" > Feedback</a></li>
+</ul>
+<form name='update_status' action='<?php echo base_url(); ?>index.php/ops/student/createStatus' method='post' >
     <div id ="konten">
+
         <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+            <label for="idMurid">ID Murid</label>
+            <input type="text" class="form-control" id="idMurid" placeholder="Masukkan ID Murid">
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <label for="jam">Jam</label>
+            <input type="text" class="form-control" id="jam" placeholder="Jam">
         </div>
         <div class="form-group">
-            <label for="exampleInputFile">File input</label>
-            <input type="file" id="exampleInputFile">
-            <p class="help-block">Example block-level help text here.</p>
+            <label for="tanggal">Tanggal</label>
+            <input type="text" class="form-control" id="tanggal" placeholder="Tanggal">
         </div>
-        <div class="checkbox">
-            <label>
-            <input type="checkbox"> Check me out
-        </label>
+        <div class="form-group">
+            <label for="idSales">ID Sales</label>
+            <input type="text" class="form-control" id="idSales" placeholder="ID Sales">
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <input type="text" class="form-control" id="status" placeholder="Status">
+        </div>
+
     </div>
-    <button type="submit" class="btn btn-default">Update Status</button>
+    <button type="submit" class="btn btn-danger">Update Status</button>
 </form>
 </div>
-                -->
+
 </body>
 </html>

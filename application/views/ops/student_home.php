@@ -1,4 +1,12 @@
 <h1><?php echo $judul; ?></h1>
+<br>
+<ul class="nav nav-tabs">
+    <li role="presentation" ><a href="<?php echo base_url(); ?>index.php/dashboard/summary" > Home</a></li>
+    <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
+    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
+    <li role="presentation"><a href="<?php echo base_url(); ?>" > Feedback</a></li>
+</ul>
+
 <p><?php echo anchor("ops/student/create", "Create new student"); ?></p>
 <?php
 if ($this->session->flashdata('message')) {

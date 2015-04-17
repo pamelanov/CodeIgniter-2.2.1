@@ -26,6 +26,13 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
     
+    function createStatus(){
+	$data['judul'] = "Create Status";
+        $data['main'] = 'ops/createStatus';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+    
     function refunds(){
         $r = new Refund();
         
