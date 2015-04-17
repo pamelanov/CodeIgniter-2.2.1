@@ -46,7 +46,7 @@ INSERT INTO `accounts` (`Id`, `Password`, `Email`, `Nama`, `No_telp`, `Role`) VA
 ('DY', 'derien', 'derien@yauma.com', 'derien', '56789087', 1),
 ('PA', 'haha', 'haha@haha.com', 'haha', '567890', 2),
 ('PT', 'pinky', 'pinky@tiffany.com', 'pinkyvi', '67890479739', 3),
-('YS', '12345', 'yodi@ui.ac.id', 'yodi', '081208120812', 3);
+('YS', '12345', 'yodi@ui.ac.id', 'yodi', '081208120812', 1);
 
 -- --------------------------------------------------------
 
