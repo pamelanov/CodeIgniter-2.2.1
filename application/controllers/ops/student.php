@@ -9,12 +9,12 @@ class Student extends Ci_Controller {
 
     function index() {
         $data['judul'] = "Summary List";
-        $data['main'] = 'admin/student_summary';
+        $data['main'] = 'ops/student_summary';
         $this->load->vars($data);
-        $this->load->view('admin/dashboard');
+        $this->load->view('dashboard');
     }
     
-<<<<<<< HEAD
+<<<<<<< Updated upstream:application/controllers/ops/student.php
     function searchStudent() {
         $u = new Student();
         $u->Id_murid = $this->input->post('idMurid');
@@ -22,19 +22,22 @@ class Student extends Ci_Controller {
         if ($u->findStudent()) {
 
             $data['judul'] = "Hasil Pencarian";
-            $data['main'] = 'admin/hasil_search';
+            $data['main'] = 'ops/hasil_search';
             $data['student'] = $u->hasilSearch();
             $this->load->vars($data);
-            $this->load->view('admin/dashboard');
-                      
+            $this->load->view('dashboard');
+            
+        
+            
+            
         }
         
         else {
             $data['judul'] = "Summary list";
-            $data['main'] = "admin/error_search_student";
+            $data['main'] = "ops/error_search_student";
             $data['aktif'] = 'class="active"';
 
-            $this->load->view('admin/dashboard', $data);
+            $this->load->view('dashboard', $data);
         }
 =======
     function createStatus(){
@@ -42,7 +45,7 @@ class Student extends Ci_Controller {
         $data['main'] = 'admin/update_status';
         $this->load->vars($data);
         $this->load->view('admin/dashboard');
->>>>>>> origin/master
+>>>>>>> Stashed changes:application/controllers/admin/student.php
     }
     
   
@@ -53,10 +56,10 @@ class Student extends Ci_Controller {
         $u->Id_murid = $this->input->post('idMurid');
         
             $data['judul'] = "Riwayat Status";
-            $data['main'] = 'admin/riwayat_status';
+            $data['main'] = 'ops/riwayat_status';
             $data['status'] = $s->ambilStatus();
             $this->load->vars($data);
-            $this->load->view('admin/dashboard');
+            $this->load->view('dashboard');
         
     }
 }

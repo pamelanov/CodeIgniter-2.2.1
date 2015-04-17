@@ -1,12 +1,12 @@
 <h1><?php echo $judul; ?></h1>
-<p><?php echo anchor("admin/student/create", "Create new student"); ?></p>
+<p><?php echo anchor("ops/student/create", "Create new student"); ?></p>
 <?php
 if ($this->session->flashdata('message')) {
     echo "<div class='message'>" . $this->session->flashdata('message') . "</div>";
 }
 
 if (count($student)) {
-    echo "<table id='table'>\n";
+    echo "<table class='table table-bordered'>\n";
     echo "<tr valign='top'>\n";
     echo "<th>ID Murid</th>\n<th>Nama</th><th>ID Sales</th><th>Status</th><th>Actions</th>\n";
     echo "</tr>\n";

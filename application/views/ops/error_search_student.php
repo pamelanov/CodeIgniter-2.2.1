@@ -1,5 +1,6 @@
 
-<div id="text">		
+<div id="text">	
+    <br>
     <p>Tidak ada murid terdaftar.</p>
 
 

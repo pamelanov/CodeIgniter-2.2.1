@@ -43,7 +43,7 @@ class Student extends DataMapper {
 		$this->validate()->get();
 		
 		if (empty($this->Id_murid)) {
-		// Login failed, so set a custom error message
+		// o set a custom error message
 		$this->error_message('searchStudent', 'Murid tidak ada.');
 
 		return FALSE;

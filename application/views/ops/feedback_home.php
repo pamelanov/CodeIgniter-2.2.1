@@ -6,7 +6,7 @@ if ($this->session->flashdata('message')) {
 }
 
 if (count($feedback)) {
-    echo "<table id='table'>\n";
+  echo "<table class='table table-bordered'>\n";
     echo "<tr valign='top'>\n";
     echo "<th>ID Murid</th><th>ID Guru</th><th>ID Sales</th><th>Tanggal</th><th>Rating</th><th>Isi</th><th>Total Skor</th><th>Status</th>\n";
     echo "</tr>\n";

@@ -73,7 +73,7 @@ class Template extends CI_Controller {
             $data['id'] = $u->Id;
             $data['email'] = $u->Email;
             $this->session->set_userdata($data);
-            redirect('admin/dashboard', 'refresh');
+            redirect('dashboard', 'refresh');
         } else {
             $data['judul'] = "Halaman Login";
             $data['main'] = "home/error_login";
