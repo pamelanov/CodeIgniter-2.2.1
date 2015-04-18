@@ -4,8 +4,7 @@ class Account extends DataMapper {
 
     // Establish the relationship between entities
 
-    var $has_many = array(
-        'created_target' => array(
+    var $has_many = array('created_target' => array(
             'class' => 'target',
             'other_field' => 'creator'
         ),
@@ -67,7 +66,7 @@ class Account extends DataMapper {
         $u = new Account();
 
         // Get this users stored record via their username
-        $u->where('id', $this->Id)->get();
+        $u->where('id_acc', $this->id_acc)->get();
         // Give this user their stored salt
         $this->salt = $u->salt;
 
@@ -78,10 +77,7 @@ class Account extends DataMapper {
         // If the username and encrypted password matched a record in the database,
         // this user object would be fully populated, complete with their ID.
         // If there was no matching record, this user would be completely cleared so their id would be empty.
-        if (empty($this->Id)) {
-            // Login failed, so set a custom error message
-            $this->error_message('login', 'Username or password invalid');
-
+        if (empty($this->id_acc)) {
             return FALSE;
         } else {
             // Login succeeded

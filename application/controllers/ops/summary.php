@@ -13,31 +13,34 @@ class Summary extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    
-    function searchStudent() {
+        function searchStudent() {
         $u = new Student();
-        $u->Id_murid = $this->input->post('idMurid');
+        $u->id_murid = $this->input->post('idMurid');
+        
+       // $n = new Beginning_number();
+       // $n->Id_murid = $this->input->post('idMurid');
         
         if ($u->findStudent()) {
 
             $data['judul'] = "Hasil Pencarian";
             $data['main'] = 'ops/hasil_search';
             $data['student'] = $u->hasilSearch();
+            //$data['riwayat'] = $n->ambilStatus();
             $this->load->vars($data);
             $this->load->view('dashboard');
-        
         }
-        
-        else {
-            $data['judul'] = "Summary list";
-            $data['main'] = "ops/error_search_student";
+         else {
+            $data['judul'] = "Hasil Pencarian";
+            $data['main'] = "ops/hasil_search";
             $data['aktif'] = 'class="active"';
 
             $this->load->view('dashboard', $data);
         }
+        
     }
     
-        function searchStatusStudent() {
+    
+    function searchStatusStudent() {
       $u = new Student();
         $u->Id_murid = $this->input->post('idMurid');
         
@@ -62,15 +65,15 @@ class Summary extends Ci_Controller {
     }
     
     function riwayatStatus(){
-        $u = new Student();
-        $s = new Beginning_number();
+        $u = new Beginning_number();
         $u->Id_murid = $this->input->post('idMurid');
         
+            
             $data['judul'] = "Riwayat Status";
             $data['main'] = 'ops/riwayat_status';
-            $data['status'] = $s->ambilStatus();
+            $data['status'] = $u->ambilStatus();
             $this->load->vars($data);
             $this->load->view('dashboard');
-        
     }
+    
 }

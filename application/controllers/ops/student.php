@@ -20,21 +20,9 @@ class Student extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    function searchStudent() {
-        $u = new Student();
-        $u->Id_murid = $this->input->post('idMurid');
-        
-        if ($u->findStudent()) {
 
-            $data['judul'] = "Hasil Pencarian";
-            $data['main'] = 'ops/hasil_search';
-            $data['student'] = $u->hasilSearch();
-            $this->load->vars($data);
-            $this->load->view('dashboard');
-        }
-    }
         
-      function createStatus() {
+      function createstatus() {
         $n = new Beginning_number();
         
         $n->Id_murid = $this->input->post('idMurid');
@@ -42,9 +30,15 @@ class Student extends Ci_Controller {
         $n->Tanggal = $this->input->post('tanggal');
         $n->Id_sales = $this->input->post('idSales');
         $n->No = $this->input->post('status');
-        var_dump($this->input->post('idMurid'));
-	exit;
-        if ($n->updateStatus($n)) {
+        
+        /*
+        $data['judul'] = "Keluarin isian";
+            $data['main'] = "create";
+            $data['students'] = $n;
+
+            $this->load->view('dashboard', $data);
+    
+        if ($n->updateStatus() {
             echo $n->No;
             
         }
@@ -57,17 +51,16 @@ class Student extends Ci_Controller {
 
             $this->load->view('dashboard', $data);
         }
-        
+        */
     }
 
 
     
     function riwayatStatus(){
-        $u = new Student();
         $s = new Beginning_number();
-        $u->Id_murid = $this->input->post('idMurid');
+        $s->Id_murid = $this->input->post('idMurid');
         
-            $data['judul'] = "Riwayat Status";
+            $data['judul'] = "Tes haha";
             $data['main'] = 'ops/riwayat_status';
             $data['status'] = $s->ambilStatus();
             $this->load->vars($data);

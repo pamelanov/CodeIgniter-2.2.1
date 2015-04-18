@@ -66,53 +66,6 @@
         <!-- /TinyMCE -->
     </head>
     <body>
-
-        <!--
-        <div id="utama">
-
-            <div id="menu">		
-                <ul>
-                    <text id="menulogin">
-                        
-                        
-                        
-                        
-                        
-                        <text>
-                            </ul>
-                            </div>
-
-                            <div id="sidebaradmin">
-                                <div id="bg_menukiri"><center>Dashboard</center></div>
-                                <div id="isi_menu_kiri">
-        <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>
-                                              <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Home</a>
-                                            <a href="<?php echo base_url(); ?>index.php/admin/dashboard/createData" > &raquo; Create</a>
-                                            <a href="<?php echo base_url(); ?>index.php/dashboard/summary" > &raquo; Summary</a>
-
-
-        <?php } ?>
-
-        <?php if ($this->session->userdata('role') == 2) { ?>
-                                            <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Performance</a>
-        <?php } ?>
-                                        
-                                
-
-        <?php if ($this->session->userdata('role') == 3) { ?>
-                                            <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Performance</a>
-                                            <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Overall Summary</a>
-                                           
-        <?php } ?>
-
-        <?php if ($this->session->userdata('role') == 1) { ?>
-                                              <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; Home</a>
-                                            <a href="<?php echo base_url(); ?>index.php/admin/dashboard/users" > &raquo; User</a>
-        <?php } ?>              
-                                </div>
-                            </div>
-        -->
-
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -134,11 +87,11 @@
                     <?php } ?>
 
                     <?php if ($this->session->userdata('role') == 2) { ?>
-                        <a class = "navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" >Performance</a>
+                        <a class = "navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/performance/" >Performance</a>
                     <?php } ?>
 
                     <?php if ($this->session->userdata('role') == 3) { ?>
-                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" >Performance</a>
+                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/supervisor/c_performance_sv" >Performance</a>
                         <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" >Overall Summary</a>
 
                     <?php } ?>
@@ -163,6 +116,7 @@
 
 
         <div id="konten">
+            
             <?php $this->load->view($main); ?>
         </div>
 

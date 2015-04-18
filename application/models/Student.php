@@ -38,26 +38,25 @@ class Student extends DataMapper {
 	
 	function findStudent(){
 		$u = new Student();
-		$u->where('id_Murid', $this->Id_murid)->get();
+		$u->where('id_murid', $this->id_murid)->get();
 		$this->salt = $u->salt;
-		$this->validate()->get();
-		
-		if (empty($this->Id_murid)) {
-		// o set a custom error message
-		$this->error_message('searchStudent', 'Murid tidak ada.');
+
+        // Validate and get this user by their property values,
+        // this will see the 'encrypt' validation run, encrypting the password with the salt
+        $this->validate()->get();
+		if (empty($this->id_murid)) {
 
 		return FALSE;
         } else {
-		// Login succeeded
+		// found something
 		return TRUE;
 		}	
 	}
 	
 	function hasilSearch(){
 		$o = new Student();
-		$o->where('id_Murid', $this->Id_murid)->get();
+		$o->where('id_murid', $this->id_murid)->get();
 		$this->salt = $o->salt;
-		$this->validate()->get();
 		
 		return $o;
 	}

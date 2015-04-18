@@ -1,22 +1,27 @@
 <! DOCTYPE html>
-	<html>
+<html>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
+  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
+  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbacks" > Feedback</a></li>
+</ul>
 
-<h2 align="left">Status Summary</h2>					
-		<form class="form-inline" align="left" action='<?php echo base_url();?>index.php/ops/summary/searchStudent' method='post'>
+<br/>
+
+<form class="form-inline" align="left" action='<?php echo base_url();?>index.php/ops/summary/searchStudent' method='post'>
   <div class="form-group">
     <label for="exampleInputName2">Enter Student ID</label>
-    <input type="text" class="form-control" name="idMurid" placeholder="Jane Doe">
+    <input type="text" class="form-control" name="idMurid" placeholder="ID Murid">
   </div>
   <button type="submit" class="btn btn-default">Search</button>
-  
-</form>
 
 <?php
 if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
 }
-                
-	echo "<div id='konten'><table class='table table-bordered' >\n";
+echo "<div id='konten'>";
+if (!empty($student)){
+	echo "<table class='table table-bordered'>\n";
 	echo "<tr valign='top'>\n";
 	echo "<th>ID Murid</th>
         <th>Nama</th>
@@ -30,22 +35,33 @@ if ($this->session->flashdata('message')){
 	
 
 		echo "<tr valign='top'>\n";
-		echo "<td>".$student->Id_murid."</td>\n";
+		echo "<td>".$student->id_murid."</td>\n";
 		
-                echo "<td align='center'>".$student->Nama."</td>\n";
-                echo "<td>".$student->Id_sales."</td>\n";
-                echo "<td>".$student->Gender."</td>\n";
-                echo "<td>".$student->No_telepon."</td>\n";
-                echo "<td>".$student->Domisil."</td>\n";
-                echo "<td>".$student->Email."</td>\n";
+                echo "<td align='center'>".$student->nama."</td>\n";
+                echo "<td>".$student->id_sales."</td>\n";
+                echo "<td>".$student->gender."</td>\n";
+                echo "<td>".$student->no_telepon."</td>\n";
+                echo "<td>".$student->domisili."</td>\n";
+                echo "<td>".$student->email."</td>\n";
         
 		
 		echo "</td>\n";
 		echo "</tr>\n";
     
-	echo "</table></div>	";
-?>	<br/>
-<a href="<?php echo base_url(); ?>index.php/ops/summary/riwayatStatus" > Lihat</a>
+	echo "</table>	";
+	echo "<br/></div>"; 
+}
+
+
+else { echo "<em><b>Error!</b></em> Maaf, ID murid yang Anda masukkan tidak terdapat di dalam sistem. Pastikan
+		Anda memasukkan ID murid dengan benar. </div>";}
+
+
+
+
+	
+?>	
+
 	
 	
 

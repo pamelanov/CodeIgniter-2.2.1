@@ -26,9 +26,13 @@ class Beginning_number extends DataMapper {
 	{
 	}
 	
-	function updateStatus($n){
+	function updateStatus(){
+	$n = new Beginning_number();
+	$n->where('Id_murid', $this->Id_murid)->get();
+	
+		/*
 	var_dump($n);
-	exit;
+	exit;*/
 		
 	$n->save(array('assigner' => $n->Id_murid,
 		 'editor' => $n->Id_sales,
@@ -41,13 +45,10 @@ class Beginning_number extends DataMapper {
 	}
 	
 	function ambilStatus(){
-	$s = new Beginning_number();	    
-        $m = new Student();
-	$m->where('id_Murid', $this->Id_murid)->get();
-	$s->where('id_Murid', $m)->get();
-
-	return $s;
-
+	$n = new Beginning_number();
+	$n->get();
+	$this->salt = $n->salt;
+	return $n;
 	}
 }
 

@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+    
 <div id="text">
 	<h2>Please sign-in.</h2>
 	<form name='login' action='<?php echo base_url();?>index.php/template/ceklogin' method='post' >
@@ -14,3 +17,5 @@
 		</button>
 	</form>
 </div>
+
+</html>

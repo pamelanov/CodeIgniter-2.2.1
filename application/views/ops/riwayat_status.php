@@ -1,11 +1,12 @@
 <h1><?php echo $judul;?></h1>
-<p><?php echo anchor("dashboard/create", "Create new user");?></p>
 <?php
 if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
 }
 
 if (count($status)){
+	echo "haha";
+	echo $status->Id_murid;
 	
 	foreach ($status as $list){
 		echo "<tr valign='top'>\n";
@@ -14,7 +15,7 @@ if (count($status)){
 		echo "</td>\n";
 		echo "</tr>\n";
 	}
-	echo "</table>";
+	
 	
 }
 ?>

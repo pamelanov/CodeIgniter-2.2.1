@@ -21,6 +21,16 @@ class Target extends DataMapper {
 	function post_model_init($from_cache = FALSE)
 	{
 	}
+	
+	
+	function rank(){
+		$t = new Target();
+		$t->get();
+		$t->order_by("actual", "desc");
+		
+		return $t;
+		
+	}
 }
 
 /* End of file name.php */

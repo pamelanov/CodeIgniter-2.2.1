@@ -62,16 +62,16 @@ class Template extends CI_Controller {
         // Put user supplied data into user object
         // (no need to validate the post variables in the controller,
         // if you've set your DataMapper models up with validation rules)
-        $u->Id = $this->input->post('id');
-        $u->Password = $this->input->post('password');
+        $u->id_acc = $this->input->post('id');
+        $u->password = $this->input->post('password');
 
         // Attempt to log user in with the data they supplied, using the login function setup in the User model
         // You might want to have a quick look at that login function up the top of this page to see how it authenticates the user
         if ($u->login()) {
-            $u->get_by_id($this->input->post('id'));
-            $data['role'] = $u->Role;
-            $data['id'] = $u->Id;
-            $data['email'] = $u->Email;
+            $u->get_by_id_acc($this->input->post('id'));
+            $data['role'] = $u->role;
+            $data['id'] = $u->id_acc;
+            $data['email'] = $u->email;
             $this->session->set_userdata($data);
             redirect('dashboard', 'refresh');
         } else {
