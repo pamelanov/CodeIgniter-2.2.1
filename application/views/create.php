@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     
-<h1><?php echo $judul;?></h1>
+
 
 <body>
 <ul class="nav nav-tabs">

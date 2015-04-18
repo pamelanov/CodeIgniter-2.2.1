@@ -27,13 +27,14 @@ class Beginning_number extends DataMapper {
 	}
 	
 	function updateStatus($n){
+	var_dump($n);
+	exit;
 		
-		/*
-	$n->save(array('assigner' => '33333',
-		 'editor' => 'YS',
-		'No' => '4'));
+	$n->save(array('assigner' => $n->Id_murid,
+		 'editor' => $n->Id_sales,
+		'No' => $n->No));
 	
-	*/
+	
 	return true;
 
 	

@@ -1,12 +1,13 @@
 /* CSS Document */
 body {
-    
+        padding-top: 40px;
 	background:black;
 	font-family: Ubuntu;
 	font-size:12px;
 	line-height:14px;
 	color:#5e5e5e;
         width: 100%;
+        
 }
 
 #header{  

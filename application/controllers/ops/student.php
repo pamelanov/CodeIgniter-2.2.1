@@ -42,8 +42,8 @@ class Student extends Ci_Controller {
         $n->Tanggal = $this->input->post('tanggal');
         $n->Id_sales = $this->input->post('idSales');
         $n->No = $this->input->post('status');
-        
-        
+        var_dump($this->input->post('idMurid'));
+	exit;
         if ($n->updateStatus($n)) {
             echo $n->No;
             
