@@ -1,7 +1,7 @@
 <?php
 class Beginning_number extends DataMapper {
 	
-	
+	 var $default_order_by = array('id' => 'desc');
 
 	var $has_one = array(
 			'assigner' => array(
@@ -27,21 +27,35 @@ class Beginning_number extends DataMapper {
 	}
 	
 	function updateStatus(){
+	$inc_id = new Beginning_number();
+	$inc_id->select_max('id');
+	$id_terakhir = $inc_id->id;
+	
 	$n = new Beginning_number();
-	$n->where('Id_murid', $this->Id_murid)->get();
+	/*
+	$n->id_murid = "33333";
+	$n->id_sales = "DY";
+	$n->no = "6";
+	$n->jam= "2330";
+	$n->tanggal = "2009-09-08";
+	$n->id = $id_terakhir++;
 	
-		/*
-	var_dump($n);
-	exit;*/
+	$n->save();
+	*/
 		
-	$n->save(array('assigner' => $n->Id_murid,
-		 'editor' => $n->Id_sales,
-		'No' => $n->No));
-	
-	
+	$n->save(array('assigner' => "33333",
+		       //$this->id_murid,
+		 'manager' => "DY",
+		 //$this->id_sales,
+		'no' => "6",
+		// $this->no,
+		'jam' => "2330",
+		// $this->jam,
+		'tanggal' => "2012-09-08",
+		//$this->tanggal,
+		'id' => $id_terakhir++
+		));
 	return true;
-
-	
 	}
 	
 	function ambilStatus(){

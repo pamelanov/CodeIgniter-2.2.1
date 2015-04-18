@@ -7,11 +7,9 @@ class Performance extends Ci_Controller {
   }
   
   function index(){
-        $t = new Target();
         
 	$data['judul'] = "Performance";
-	$data['main'] = 'ops/performance_ops';
-        $data['target'] = $t->rank();
+	$data['main'] = 'supervisor/performance';
 	$this->load->vars($data);
 	$this->load->view('admin/dashboard');  
   }

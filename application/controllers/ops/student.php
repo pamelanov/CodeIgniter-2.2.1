@@ -22,14 +22,20 @@ class Student extends Ci_Controller {
     }
 
         
-      function createstatus() {
+      function createStatus() {
         $n = new Beginning_number();
+        /*
+        $n->id_murid = $this->input->post('id_murid');
+        $n->jam = $this->input->post('jam');
+        $n->tanggal = $this->input->post('tanggal');
+        $n->id_sales = $this->input->post('id_sales');
+        $n->no = $this->input->post('status');
+        */
+        if ($n->updateStatus()){
+            
+            echo "berhasil";
+            }
         
-        $n->Id_murid = $this->input->post('idMurid');
-        $n->Jam = $this->input->post('jam');
-        $n->Tanggal = $this->input->post('tanggal');
-        $n->Id_sales = $this->input->post('idSales');
-        $n->No = $this->input->post('status');
         
         /*
         $data['judul'] = "Keluarin isian";

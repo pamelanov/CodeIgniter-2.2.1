@@ -1,4 +1,5 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang ="en" xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title><?php echo $judul; ?></title>
@@ -79,7 +80,6 @@
                     </button>
 
                     <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>      
-                 
                         <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard">Home</a>
                         <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/createData">Create</a>
                         <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/summary">Summary</a>
@@ -91,7 +91,7 @@
                     <?php } ?>
 
                     <?php if ($this->session->userdata('role') == 3) { ?>
-                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/supervisor/c_performance_sv" >Performance</a>
+                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/supervisor/performance" >Performance</a>
                         <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" >Overall Summary</a>
 
                     <?php } ?>
