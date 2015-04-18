@@ -21,7 +21,13 @@ h1 {
 font-size:40px; line-height:24px; color:#660029; font-weight: normal;  
 }
 
+tr{
+    text-align: center;
+}
 
+table{
+    text-align: center;
+}
 #konten{
     text-align: justify;
     margin-top: 30px;
@@ -31,6 +37,14 @@ font-size:40px; line-height:24px; color:#660029; font-weight: normal;
     border-radius: 25px;
     
 }
+
+#tabelP{    
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 10%;
+    padding: 10px 10px 10px 10px;
+}
+
 
 #login{
     text-align: center;
