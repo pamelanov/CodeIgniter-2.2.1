@@ -123,13 +123,13 @@ class Dashboard extends Ci_Controller {
         }
         $u = new Account();
         $this->load->library('encrypt');
-        $u->Id = $this->input->post('Id');
-        $u->Password = $this->input->post('Password');
+        $u->Id = $this->input->post('id_acc');
+        $u->Password = $this->input->post('password');
 
-        $u->Email = $this->input->post('Email');
-        $u->Nama = $this->input->post('Nama');
-        $u->No_telp = $this->input->post('No_telp');
-        $u->Role = $this->input->post('Role');
+        $u->Email = $this->input->post('email');
+        $u->Nama = $this->input->post('nama');
+        $u->No_telp = $this->input->post('no_telp');
+        $u->Role = $this->input->post('role');
         if ($u->addAccount()) {
 
             $this->session->set_flashdata('message', 'User created');

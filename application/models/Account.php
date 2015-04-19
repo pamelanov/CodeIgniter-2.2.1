@@ -106,6 +106,11 @@ class Account extends DataMapper {
     function post_model_init($from_cache = FALSE) {
         
     }
+    function addAccount(){
+    $u = new Account();
+
+	$u->save_as_new();
+        return $u;
 
     // Validation prepping function to encrypt passwords
     function _encrypt($field) { // optional second parameter is not used
