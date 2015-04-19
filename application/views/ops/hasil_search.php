@@ -22,7 +22,7 @@ if ($this->session->flashdata('message')){
 }
 echo "<div id='konten'>";
 if (!empty($student)){
-	echo "<table class='table table-bordered'>\n";
+	echo "<table id='table'>\n";
 	echo "<tr valign='top'>\n";
 	echo "<th>ID Murid</th>
         <th>Nama</th>
