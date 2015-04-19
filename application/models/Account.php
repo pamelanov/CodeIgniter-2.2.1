@@ -108,9 +108,15 @@ class Account extends DataMapper {
     }
     function addAccount(){
     $u = new Account();
+        $u->id = $this->id;
+	$u->password = $this->password;
+	$u->email = $this->email;
+	$u->nama= $this->nama;
+	$u->role = $this->role;
 
 	$u->save_as_new();
         return $u;
+    }
 
     // Validation prepping function to encrypt passwords
     function _encrypt($field) { // optional second parameter is not used
