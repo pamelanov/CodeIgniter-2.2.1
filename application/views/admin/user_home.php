@@ -1,5 +1,5 @@
 <h1><?php echo $judul;?></h1>
-<p><?php echo anchor("admin/dashboard/create", "Create new user");?></p>
+<p><?php echo anchor("dashboard/createUser", "Create new user");?></p>
 <?php
 if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
@@ -10,7 +10,7 @@ if (count($admins)){
 	
 	 echo "<table id='table'>\n";
 	echo "<tr valign='top'>\n";
-	echo "<th><center>Nama</center></th>
+	echo "<th><center>ID</center></th>
 	<th><center>Email</center></th>
 	<th><center>Nama</center></th>
 	<th><center>No Tlp</center></th>

@@ -18,19 +18,19 @@
         </div>
         <div class="form-group">
             <label for="jam">ID Murid</label>
-            <input type="text" class="form-control" id="jam" placeholder="Jam">
+            <input type="text" class="form-control" id="jam" placeholder="Masukkan Jam">
         </div>
         <div class="form-group">
             <label for="tanggal">Jumlah Jam Hilang</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Tanggal">
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Jam Hilang">
         </div>
         <div class="form-group">
             <label for="tanggal">Harga Per Jam</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Tanggal">
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Harga Per Jam">
         </div>
         <div class="form-group">
             <label for="tanggal">Sebab Jam Hilang</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Tanggal">
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Sebab Jam Hilang">
         </div>
        
        

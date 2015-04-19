@@ -18,33 +18,33 @@
         </div>
         <div class="form-group">
             <label for="jam">ID Guru</label>
-            <input type="text" class="form-control" id="jam" placeholder="Jam">
+            <input type="text" class="form-control" id="jam" placeholder="Masukkan ID Guru">
         </div>
         <div class="form-group">
             <label for="tanggal">ID Sales</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Tanggal">
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan ID Sales">
         </div>
         <div class="form-group">
             <label for="tanggal">Tanggal</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Tanggal">
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Tanggal">
         </div>
         <div class="form-group">
             <label for="tanggal">Rating</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Tanggal">
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Rating">
         </div>
 
         <div class="form-group">
             <label for="tanggal">Isi</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Tanggal">
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Isi">
         </div>
 
         <div class="form-group">
             <label for="tanggal">Total Skor</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Tanggal">
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Total Skor">
         </div>
         <div class="form-group">
             <label for="tanggal">Status</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Tanggal">
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Status">
         </div>
 
 

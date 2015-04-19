@@ -102,6 +102,16 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
+    
+    function createUser() {
+          if ($this->session->userdata('role') != 1) {
+            redirect('dashboard', 'refresh');
+        }
+        $data['judul'] = "Create User";
+        $data['main'] = 'admin/user_create';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
 
     function create() {
         $this->load->library('encrypt');

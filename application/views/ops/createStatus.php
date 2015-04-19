@@ -16,19 +16,19 @@
         </div>
         <div class="form-group">
             <label for="jam">Jam</label>
-            <input type="text" class="form-control" id="jam" placeholder="Jam">
+            <input type="text" class="form-control" id="jam" placeholder="Masukkan Jam">
         </div>
         <div class="form-group">
             <label for="tanggal">Tanggal</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Tanggal">
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Tanggal">
         </div>
         <div class="form-group">
             <label for="idSales">ID Sales</label>
-            <input type="text" class="form-control" id="idSales" placeholder="ID Sales">
+            <input type="text" class="form-control" id="idSales" placeholder="Masukkan ID Sales">
         </div>
         <div class="form-group">
             <label for="status">Status</label>
-            <input type="text" class="form-control" id="status" placeholder="Status">
+            <input type="text" class="form-control" id="status" placeholder="Masukkan Status">
         </div>
 
     </div>
