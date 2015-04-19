@@ -17,6 +17,10 @@ class Dashboard extends Ci_Controller {
     }
 
     function createData() {
+
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $data['judul'] = "Create";
         $data['main'] = 'create';
         $this->load->vars($data);
@@ -24,6 +28,9 @@ class Dashboard extends Ci_Controller {
     }
 
     function refunds() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $r = new Refund();
 
         $data['judul'] = "Refund Summary";
@@ -34,6 +41,9 @@ class Dashboard extends Ci_Controller {
     }
 
     function feedbacks() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $r = new Feedback();
 
         $data['judul'] = "Feedback Summary";
@@ -44,6 +54,9 @@ class Dashboard extends Ci_Controller {
     }
 
     function users() {
+        if ($this->session->userdata('role') != 1) {
+            redirect('dashboard', 'refresh');
+        }
         $o = new Account();
 
         $data['judul'] = "Manage Users";
@@ -54,6 +67,10 @@ class Dashboard extends Ci_Controller {
     }
 
     function summary() {
+       if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        
         $data['judul'] = "Summary List";
         $data['main'] = 'summary';
         $this->load->vars($data);
@@ -103,6 +120,9 @@ class Dashboard extends Ci_Controller {
     }
 
     function performance() {
+        if ($this->session->userdata('role') != 2) {
+            redirect('dashboard', 'refresh');
+        }
         $t = new Target();
 
         $data['judul'] = "Performance";
