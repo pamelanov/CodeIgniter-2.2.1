@@ -16,7 +16,9 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
-    function createData() {
+    function createData() {  if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $data['judul'] = "Create";
         $data['main'] = 'create';
         $this->load->vars($data);
@@ -24,6 +26,9 @@ class Dashboard extends Ci_Controller {
     }
 
     function createStatus() {
+          if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $data['judul'] = "Create Status";
         $data['main'] = 'ops/createStatus';
         $this->load->vars($data);
@@ -31,6 +36,9 @@ class Dashboard extends Ci_Controller {
     }
     
       function createRefund() {
+            if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $data['judul'] = "Create Refund";
         $data['main'] = 'ops/refund_create';
         $this->load->vars($data);
@@ -38,6 +46,9 @@ class Dashboard extends Ci_Controller {
     }
     
        function createFeedback() {
+             if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $data['judul'] = "Create Feedback";
         $data['main'] = 'ops/feedback_create';
         $this->load->vars($data);
@@ -83,7 +94,9 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
-    function summary() {
+    function summary() {  if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $data['judul'] = "Summary";
         $data['main'] = 'summary';
         $this->load->vars($data);
