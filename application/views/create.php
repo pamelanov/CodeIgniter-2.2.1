@@ -5,7 +5,7 @@
 
 <body>
 <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/student" > Student</a></li>
+  <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/createData" > Student</a></li>
   <li role="presentation"><a href="<?php echo base_url(); ?>index.php/admin/refund" > Refund</a></li>
   <li role="presentation"><a href="<?php echo base_url(); ?>index.php/admin/feedback" > Feedback</a></li>
 </ul>

@@ -14,7 +14,9 @@
 	
          <form name='login' class="navbar-form navbar-right" role="search"
 	       action='<?php echo base_url();?>index.php/template/ceklogin' method='post'>
-        <div class="form-group">
+        <div id="label-login">
+	<div class="form-group">
+	
 			<label for="exampleInputEmail1">ID</label><br/>	
 			<input type='text' class="form-control" name='id' placeholder="Enter ID">
 			</div>
@@ -25,7 +27,7 @@
 	
         <button type="submit" class="btn btn-warning">
 			<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>  Log in
-	</button>
+	</button></div>
 	
       </form>
       </ul>
