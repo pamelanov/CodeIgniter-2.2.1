@@ -9,7 +9,7 @@
 </ul>
     <body>
     <h2>Search Student</h2>					
-	<form name='searchStudent' action='<?php echo base_url();?>index.php/ops/summary/searchStatusStudent' method='post' >
+	<form name='searchStudent' action='<?php echo base_url();?>index.php/ops/summary/searchStudentStatus' method='post' >
 		<p>
 			Enter Student ID
                         <input type='text' name='idMurid'>
