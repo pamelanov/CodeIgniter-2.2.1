@@ -1,12 +1,11 @@
 <?php
 
 class Dashboard extends Ci_Controller {
-        
-        
+
     function __construct() {
         parent::__construct();
-        if($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
-           redirect('template/login', 'refresh');
+        if ($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('template/login', 'refresh');
         }
     }
 
@@ -16,39 +15,37 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    
-          
 
-    function createData(){
-	$data['judul'] = "Create";
+    function createData() {
+        $data['judul'] = "Create";
         $data['main'] = 'create';
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    
-    function refunds(){
+
+    function refunds() {
         $r = new Refund();
-        
+
         $data['judul'] = "Refund Summary";
         $data['main'] = 'ops/refund_home';
         $data['admins'] = $r->getAllRefunds();
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    
-    function feedbacks(){
-    	$r = new Feedback();
-    
-    	$data['judul'] = "Feedback Summary";
-    	$data['main'] = 'ops/feedback_home';
-    	$data['feedback'] = $r->getAllFeedbacks();
-    	$this->load->vars($data);
-    	$this->load->view('dashboard');
+
+    function feedbacks() {
+        $r = new Feedback();
+
+        $data['judul'] = "Feedback Summary";
+        $data['main'] = 'ops/feedback_home';
+        $data['feedback'] = $r->getAllFeedbacks();
+        $this->load->vars($data);
+        $this->load->view('dashboard');
     }
-    
+
     function users() {
         $o = new Account();
-        
+
         $data['judul'] = "Manage Users";
         $data['main'] = 'admin/user_home';
         $data['admins'] = $o->getAllAccounts();
@@ -104,16 +101,16 @@ class Dashboard extends Ci_Controller {
         $this->session->set_flashdata('error', "You've been logged out!");
         redirect('template/login', 'refresh');
     }
-    
-    function performance(){
+
+    function performance() {
         $t = new Target();
-        
-	$data['judul'] = "Performance";
-	$data['main'] = 'ops/performance_ops';
+
+        $data['judul'] = "Performance";
+        $data['main'] = 'ops/performance_ops';
         $data['target'] = $t->rank();
-	$this->load->vars($data);
-	$this->load->view('dashboard');  
-  }
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
 
 }
 
