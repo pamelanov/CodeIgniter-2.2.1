@@ -1,6 +1,7 @@
- <ul class="nav nav-tabs">
+<h1><?php echo $judul; ?></h1>
+<ul class="nav nav-tabs">
   <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/student" > Create</a></li>
-  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/ops/student" > Overall Performance</a></li>
+  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/overallPerformance" > Overall Performance</a></li>
  </ul>
  <form name='update_status' action='<?php echo base_url();?>index.php/ops/student/createStatus' method='post' >
     <div id ="konten">

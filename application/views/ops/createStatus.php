@@ -31,19 +31,23 @@ if (!empty($student)){
             echo "<label for='id_murid'>Nama : $student->nama</label><br/>";
             echo "<label for='id_murid'>Gender: $student->gender</label><br/>";
             echo "<label for='id_murid'>Domisili : $student->domisili</label><br/>";
-        echo "<br>";
+        echo "Rubah Status";
+        echo '<br>';
         echo "<div class='form-group'>";
             echo "<label for='jam'>Jam</label>";
             echo "<input type='text' class='form-control' name='jam' placeholder='Jam'>";
         echo "</div>";
+        echo '<br>';
         echo "<div class='form-group'>";
             echo "<label for='tanggal'>Tanggal</label>";
             echo "<input type='date' class='form-control' name='tanggal'>";
         echo "</div>";
+        echo '<br>';
         echo "<div class='form-group'>";
             echo "<label for='id_sales'>ID Sales</label>";
             echo "<input type='text'class='form-control' name='id_sales' placeholder='ID Sales'>";
         echo "</div>";
+        echo '<br>';
         echo "<div class='form-group'>";
                   echo "<label for='status'>Status</label>";
                     echo "<select class='form-control' name='status'>";
@@ -57,6 +61,7 @@ if (!empty($student)){
                         echo "<option>8</option>";
                     echo "</select>";
         echo "</div>";
+        echo '<br>';
         echo "<button type='submit' class='btn btn-danger'>Update Status</button>";
 
     echo"</div>";
