@@ -5,14 +5,14 @@
     <li role="presentation"class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
     <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbacks" > Feedback</a></li>
 </ul>
-<p><?php echo anchor("ops/refund/create", "Create new refund"); ?></p>
+<p></p>
 <?php
 if ($this->session->flashdata('message')) {
     echo "<div class='message'>" . $this->session->flashdata('message') . "</div>";
 }
 
 if (count($admins)) {
-    echo "<table class='table table-bordered'>\n";
+    echo "<table id='table'>\n";
     echo "<tr valign='top'>\n";
     echo "<th>Tanggal Refund</th><th>ID Murid</th><th>Jumlah Jam Hilang</th><th>Harga Per Jam</th><th>Sebab Jam Hilang</th><th>Action</th>\n";
     echo "</tr>\n";

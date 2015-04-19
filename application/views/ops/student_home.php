@@ -6,15 +6,14 @@
     <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
     <li role="presentation"><a href="<?php echo base_url(); ?>" > Feedback</a></li>
 </ul>
-
-<p><?php echo anchor("ops/student/create", "Create new student"); ?></p>
+<p></p>
 <?php
 if ($this->session->flashdata('message')) {
     echo "<div class='message'>" . $this->session->flashdata('message') . "</div>";
 }
 
 if (count($student)) {
-    echo "<table class='table table-bordered'>\n";
+   echo "<table id='table'>\n";
     echo "<tr valign='top'>\n";
     echo "<th>ID Murid</th>\n<th>Nama</th><th>ID Sales</th><th>Status</th><th>Actions</th>\n";
     echo "</tr>\n";

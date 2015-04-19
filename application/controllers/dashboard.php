@@ -29,6 +29,20 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
+    
+      function createRefund() {
+        $data['judul'] = "Create Refund";
+        $data['main'] = 'ops/refund_create';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+    
+       function createFeedback() {
+        $data['judul'] = "Create Feedback";
+        $data['main'] = 'ops/feedback_create';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
 
     function refunds() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
@@ -70,7 +84,7 @@ class Dashboard extends Ci_Controller {
     }
 
     function summary() {
-        $data['judul'] = "Summary List";
+        $data['judul'] = "Summary";
         $data['main'] = 'summary';
         $this->load->vars($data);
         $this->load->view('dashboard');

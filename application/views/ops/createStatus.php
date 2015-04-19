@@ -4,8 +4,8 @@
 <ul class="nav nav-tabs">
     <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createData" > Home</a></li>
     <li role="presentation"class="active" ><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
-    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
-    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbacks" > Feedback</a></li>
+    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createRefund" > Refund</a></li>
+    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createFeedback" > Feedback</a></li>
 </ul>
 <form name='update_status' action='<?php echo base_url(); ?>index.php/ops/student/createStatus' method='post' >
     <div id ="konten">
