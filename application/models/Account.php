@@ -84,13 +84,13 @@ class Account extends DataMapper {
             return TRUE;
         }
     }
-    
+
     function getAllAccounts() {
-        
+
         $o = new Account();
-	$o->get();
-	$this->salt = $o->salt;
-        
+        $o->get();
+        $this->salt = $o->salt;
+
         return $o;
     }
 
@@ -106,15 +106,17 @@ class Account extends DataMapper {
     function post_model_init($from_cache = FALSE) {
         
     }
-    function addAccount(){
-    $u = new Account();
-        $u->id = $this->id;
-	$u->password = $this->password;
-	$u->email = $this->email;
-	$u->nama= $this->nama;
-	$u->role = $this->role;
 
-	$u->save_as_new();
+    function addAccount() {
+        $u = new Account();
+   
+        $u->id_acc = $this->id_acc;
+        $u->password = $this->password;
+        $u->email = $this->email;
+        $u->nama = $this->nama;
+        $u->role = $this->role;
+
+        $u->save();
         return $u;
     }
 

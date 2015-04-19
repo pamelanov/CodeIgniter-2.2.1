@@ -111,10 +111,10 @@ class Dashboard extends Ci_Controller {
         if ($this->session->userdata('role') != 1) {
             redirect('dashboard', 'refresh');
         }
-        $data['judul'] = "Create User";
-        $data['main'] = 'admin/user_create';
-        $this->load->vars($data);
-        $this->load->view('dashboard');
+       $data['judul'] = "Create User";
+            $data['main'] = 'admin/user_create';
+            $this->load->vars($data);
+            $this->load->view('dashboard');
     }
 
     function createAccount() {
@@ -122,14 +122,13 @@ class Dashboard extends Ci_Controller {
             redirect('dashboard', 'refresh');
         }
         $u = new Account();
-        $this->load->library('encrypt');
-        $u->Id = $this->input->post('id_acc');
-        $u->Password = $this->input->post('password');
+        $u->id_acc = $this->input->post('id_acc');
+        $u->password = $this->input->post('password');
 
-        $u->Email = $this->input->post('email');
-        $u->Nama = $this->input->post('nama');
-        $u->No_telp = $this->input->post('no_telp');
-        $u->Role = $this->input->post('role');
+        $u->email = $this->input->post('email');
+        $u->nama = $this->input->post('nama');
+        $u->no_telp = $this->input->post('no_telp');
+        $u->role = $this->input->post('role');
         if ($u->addAccount()) {
 
             $this->session->set_flashdata('message', 'User created');
