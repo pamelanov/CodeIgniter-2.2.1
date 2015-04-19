@@ -36,7 +36,7 @@
        
 
     </div>
-    <button type="submit" class="btn btn-danger">Update Status</button>
+    <button type="submit" class="btn btn-danger">Create Refund</button>
 </form>
 </div>
 

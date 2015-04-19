@@ -6,7 +6,7 @@
     <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
     <li role="presentation"><a href="<?php echo base_url(); ?>" > Feedback</a></li>
 </ul>
-<p></p>
+<p><?php echo anchor("admin/refund/create", "Download"); ?></p>
 <?php
 if ($this->session->flashdata('message')) {
     echo "<div class='message'>" . $this->session->flashdata('message') . "</div>";
