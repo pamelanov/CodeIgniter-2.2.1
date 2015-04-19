@@ -49,7 +49,7 @@ class Summary extends Ci_Controller {
         if ($u->findStudent()) {
 
             $data['judul'] = "Hasil Pencarian";
-            $data['main'] = 'create';
+            $data['main'] = 'ops/createStatus';
             $data['student'] = $u->hasilSearch();
             //$data['riwayat'] = $n->ambilStatus();
             $this->load->vars($data);
