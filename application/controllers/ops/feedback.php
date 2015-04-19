@@ -19,7 +19,12 @@ class Feedback extends Ci_Controller {
 	$this->load->view('admin/dashboard');  
   }
   
-
+  function searchFeedback() {
+  	$data['judul'] = "Search Feedback";
+  	$data['main'] = 'ops/feedback_summary';
+  	$this->load->vars($data);
+  	$this->load->view('dashboard');
+  }
   
   function addFeedbacksCtrl(){
   	$f = new Feedback();
