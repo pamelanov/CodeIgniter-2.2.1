@@ -119,6 +119,17 @@ class Account extends DataMapper {
         $u->save();
         return $u;
     }
+    
+    function updateAccount(){
+         $u = new Account();
+   
+        $u->id_acc = $this->id_acc;
+        $u->password = $this->password;
+        $u->email = $this->email;
+        $u->nama = $this->nama;
+        $u->role = $this->role;
+
+    }
 
     // Validation prepping function to encrypt passwords
     function _encrypt($field) { // optional second parameter is not used

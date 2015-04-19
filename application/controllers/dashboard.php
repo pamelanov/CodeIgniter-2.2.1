@@ -111,10 +111,10 @@ class Dashboard extends Ci_Controller {
         if ($this->session->userdata('role') != 1) {
             redirect('dashboard', 'refresh');
         }
-       $data['judul'] = "Create User";
-            $data['main'] = 'admin/user_create';
-            $this->load->vars($data);
-            $this->load->view('dashboard');
+        $data['judul'] = "Create User";
+        $data['main'] = 'admin/user_create';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
     }
 
     function createAccount() {
@@ -122,6 +122,7 @@ class Dashboard extends Ci_Controller {
             redirect('dashboard', 'refresh');
         }
         $u = new Account();
+
         $u->id_acc = $this->input->post('id_acc');
         $u->password = $this->input->post('password');
 
@@ -142,16 +143,81 @@ class Dashboard extends Ci_Controller {
     }
 
     function edit($id = 0) {
+         if ($this->session->userdata('role') != 1) {
+            redirect('dashboard', 'refresh');
+        }
         $this->load->library('encrypt');
-        if ($this->input->post('username')) {
-            $this->madmins->updateUser();
+        $u = new Account();
+        $u->id_acc = $this->input->post('id_acc');
+        $u->password = $this->input->post('password');
+
+        $u->email = $this->input->post('email');
+        $u->nama = $this->input->post('nama');
+        $u->no_telp = $this->input->post('no_telp');
+        $u->role = $this->input->post('role');
+        if ($u->updateAccount()) {
+
             $this->session->set_flashdata('message', 'User updated');
             redirect('dashboard/users', 'refresh');
         } else {
             //$id = $this->uri->segment(4);
             $data['judul'] = "Edit User";
             $data['main'] = 'admin/user_edit';
-            $data['admin'] = $this->madmins->getUser($id);
+            $data['admin'] = $u->get();
+            $this->load->vars($data);
+            $this->load->view('dashboard');
+        }
+    }
+
+    function editRefund($id = 0) {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $this->load->library('encrypt');
+        $r = new Refund();
+        $r->id_acc = $this->input->post('id_acc');
+        $r->password = $this->input->post('password');
+
+        $r->email = $this->input->post('email');
+        $r->nama = $this->input->post('nama');
+        $r->no_telp = $this->input->post('no_telp');
+        $r->role = $this->input->post('role');
+        if ($r->updateRefund()) {
+
+            $this->session->set_flashdata('message', 'User updated');
+            redirect('dashboard/refunds', 'refresh');
+        } else {
+            //$id = $this->uri->segment(4);
+            $data['judul'] = "Edit Refund";
+            $data['main'] = 'ops/refund_edit';
+            $data['refund'] = $r->get($id);
+            $this->load->vars($data);
+            $this->load->view('dashboard');
+        }
+    }
+
+    function editFeedback($id = 0) {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $this->load->library('encrypt');
+        $f = new Feedback();
+        $f->id_acc = $this->input->post('id_acc');
+        $f->password = $this->input->post('password');
+
+        $f->email = $this->input->post('email');
+        $f->nama = $this->input->post('nama');
+        $f->no_telp = $this->input->post('no_telp');
+        $f->role = $this->input->post('role');
+        if ($f->updateFeedback()) {
+
+            $this->session->set_flashdata('message', 'User updated');
+            redirect('dashboard/feedbacks', 'refresh');
+        } else {
+            //$id = $this->uri->segment(4);
+            $data['judul'] = "Edit Refund";
+            $data['main'] = 'ops/feedback_edit';
+            $data['feedback'] = $f->get($id);
             $this->load->vars($data);
             $this->load->view('dashboard');
         }
@@ -168,10 +234,6 @@ class Dashboard extends Ci_Controller {
         $this->session->set_flashdata('error', "You've been logged out!");
         redirect('template/login', 'refresh');
     }
-
-
-
-
 
     function performance() {
         if ($this->session->userdata('role') != 2) {

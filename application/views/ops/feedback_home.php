@@ -11,7 +11,8 @@ if ($this->session->flashdata('message')) {
     echo "<div class='message'>" . $this->session->flashdata('message') . "</div>";
 }
 
-if (count($feedback)) {  echo "<table id='table'>\n";
+if (count($feedback)) {
+    echo "<table id='table'>\n";
     echo "<tr valign='top'>\n";
     echo "<th>ID Murid</th><th>ID Guru</th><th>ID Sales</th><th>Tanggal</th><th>Rating</th><th>Isi</th><th>Total Skor</th><th>Status</th><th>Action</th>\n";
     echo "</tr>\n";
@@ -26,10 +27,10 @@ if (count($feedback)) {  echo "<table id='table'>\n";
         echo "<td align='center'>" . $list->isi . "</td>\n";
         echo "<td align='center'>" . $list->total_skor . "</td>\n";
         echo "<td align='center'>" . $list->status . "</td>\n";
-        echo "</td>\n";
     
-          echo "<td align='center'>";
-        echo anchor('admin/refund/edit/' . $list->id, 'edit');
+
+        echo "<td align='center'>";
+        echo anchor('dashboard/editFeedback/' . $list->id, 'edit');
         echo " | ";
         echo anchor('admin/refund/delete/' . $list->id, 'delete');
         echo "</td>\n";

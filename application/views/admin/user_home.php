@@ -27,10 +27,10 @@ if (count($admins)) {
 
         echo "<td align='center'>";
 
-        echo anchor('admin/dashboard/edit/' . $list->id, 'edit ');
+        echo anchor('dashboard/edit/' . $list->id, 'edit ');
         echo "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>";
         echo " | ";
-        echo anchor('admin/dashboard/delete/' . $list->id, 'delete ');
+        echo anchor('dashboard/delete/' . $list->id, 'delete ');
         echo "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span>";
 
         echo "</td>\n";
