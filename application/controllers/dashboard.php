@@ -10,13 +10,16 @@ class Dashboard extends Ci_Controller {
     }
 
     function index() {
-        $data['judul'] = "Dashboard Home";
+        $r = new Refund();
+        $data['judul'] = "Today's Summary";
         $data['main'] = 'home';
+        $data['admins'] = $r->getAllRefunds();
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
 
-    function createData() {  if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+    function createData() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
         $data['judul'] = "Create";
@@ -26,7 +29,7 @@ class Dashboard extends Ci_Controller {
     }
 
     function createStatus() {
-          if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
         $data['judul'] = "Create Status";
@@ -34,9 +37,9 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    
-      function createRefund() {
-            if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+
+    function createRefund() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
         $data['judul'] = "Create Refund";
@@ -44,9 +47,9 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    
-       function createFeedback() {
-             if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+
+    function createFeedback() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
         $data['judul'] = "Create Feedback";
@@ -71,7 +74,7 @@ class Dashboard extends Ci_Controller {
     function feedbacks() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
-        } 
+        }
         $r = new Feedback();
 
         $data['judul'] = "Feedback Summary";
@@ -94,7 +97,8 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
-    function summary() {  if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+    function summary() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
         $data['judul'] = "Summary";
@@ -102,9 +106,9 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    
+
     function createUser() {
-          if ($this->session->userdata('role') != 1) {
+        if ($this->session->userdata('role') != 1) {
             redirect('dashboard', 'refresh');
         }
         $data['judul'] = "Create User";
