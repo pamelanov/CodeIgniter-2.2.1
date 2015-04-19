@@ -1,18 +1,21 @@
 <!DOCTYPE html>
     <html lang="en"></html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title><?php echo $judul; ?></title>
-    </head>
-    <body></body>
-    <h2 align="center">Search Student</h2>					
-	<form name='searchStudent' action='<?php echo base_url();?>index.php/admin/summary/searchStatusStudent' method='post' >
-		<table align="center">
-			<tr><td>Enter Student ID</td><td>
+    <h1><?php echo $judul; ?></h1>
+<ul class="nav nav-tabs">
+    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createData" > Home</a></li>
+    <li role="presentation"class="active" ><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
+    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createRefund" > Refund</a></li>
+    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createFeedback" > Feedback</a></li>
+</ul>
+    <body>
+    <h2>Search Student</h2>					
+	<form name='searchStudent' action='<?php echo base_url();?>index.php/ops/summary/searchStatusStudent' method='post' >
+		<p>
+			Enter Student ID
                         <input type='text' name='idMurid'>
-                            
-		 	<tr><td></td><td><input type='submit' value='search'></td></tr>
-		</table>
+                         
+		 	<input type='submit' value='search'>
+		</p>
 <!-- <form>
     <div id ="konten">
         <div class="form-group">
