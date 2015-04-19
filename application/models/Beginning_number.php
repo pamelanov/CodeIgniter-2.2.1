@@ -28,24 +28,28 @@ class Beginning_number extends DataMapper {
 	
 	function updateStatus(){
 	$inc_id = new Beginning_number();
-	$inc_id->select_max('id');
-	$id_terakhir = $inc_id->id;
+	$id_terakhir = new Beginning_number();
+	$inc_id->get();
+	$id_terakhir = $inc_id->select_max('id');
+	$angka = $inc_id->id + 1;
 	
 	$n = new Beginning_number();
-	/*
-	$n->id_murid = "33333";
-	$n->id_sales = "DY";
-	$n->no = "6";
-	$n->jam= "2330";
-	$n->tanggal = "2009-09-08";
-	$n->id = $id_terakhir++;
 	
-	$n->save();
-	*/
-		
-	$n->save(array('assigner' => "33333",
+	$n->id_murid = $this->id_murid;
+	$n->id_sales = $this->id_sales;
+	$n->status = $this->status;
+	$n->jam= $this->jam;
+	$n->tanggal = $this->tanggal;
+	$n->id = $angka;
+	
+	$n->save_as_new();
+	
+	return $n;
+
+	/*	
+	$n->save(array('id_murid' => "13579",
 		       //$this->id_murid,
-		 'manager' => "DY",
+		 'id_sales' => "DY",
 		 //$this->id_sales,
 		'no' => "6",
 		// $this->no,
@@ -54,8 +58,8 @@ class Beginning_number extends DataMapper {
 		'tanggal' => "2012-09-08",
 		//$this->tanggal,
 		'id' => $id_terakhir++
-		));
-	return true;
+		));*/
+	
 	}
 	
 	function ambilStatus(){

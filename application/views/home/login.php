@@ -6,10 +6,7 @@
     
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	<!-- penempatan logo sicut
-	<ul class="nav navbar-nav navbar-left">
-	<img src="../../../assets/images/logosicut.png" width="100" height="20">
-	-->
+	
     </div>
       </ul>
      
