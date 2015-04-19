@@ -124,6 +124,8 @@
             <div class="container">
                 <div class="clear"></div> <center>
                     <div id="footer">
+                        Sistem Informasi Customer Tracking (SICuT) Ruangguru
+                        <br>
                         KELOMPOK B01
                         <br>
                             <a href="http://ruangguru.com">ruangguru.com</a></b>        
