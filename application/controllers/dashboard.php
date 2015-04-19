@@ -10,19 +10,50 @@ class Dashboard extends Ci_Controller {
     }
 
     function index() {
-        $data['judul'] = "Dashboard Home";
+        $r = new Refund();
+        $data['judul'] = "Today's Summary";
         $data['main'] = 'home';
+        $data['admins'] = $r->getAllRefunds();
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
 
     function createData() {
-
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
         $data['judul'] = "Create";
         $data['main'] = 'create';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    function createStatus() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $data['judul'] = "Create Status";
+        $data['main'] = 'ops/createStatus';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    function createRefund() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $data['judul'] = "Create Refund";
+        $data['main'] = 'ops/refund_create';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    function createFeedback() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $data['judul'] = "Create Feedback";
+        $data['main'] = 'ops/feedback_create';
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
@@ -67,20 +98,40 @@ class Dashboard extends Ci_Controller {
     }
 
     function summary() {
-       if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
-        
-        $data['judul'] = "Summary List";
+        $data['judul'] = "Summary";
         $data['main'] = 'summary';
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
 
-    function create() {
+    function createUser() {
+        if ($this->session->userdata('role') != 1) {
+            redirect('dashboard', 'refresh');
+        }
+        $data['judul'] = "Create User";
+        $data['main'] = 'admin/user_create';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    function createAccount() {
+        if ($this->session->userdata('role') != 1) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Account();
         $this->load->library('encrypt');
-        if ($this->input->post('username')) {
-            $this->madmins->addUser();
+        $u->Id = $this->input->post('Id');
+        $u->Password = $this->input->post('Password');
+
+        $u->Email = $this->input->post('Email');
+        $u->Nama = $this->input->post('Nama');
+        $u->No_telp = $this->input->post('No_telp');
+        $u->Role = $this->input->post('Role');
+        if ($u->addAccount()) {
+
             $this->session->set_flashdata('message', 'User created');
             redirect('dashboard/users', 'refresh');
         } else {
@@ -118,6 +169,10 @@ class Dashboard extends Ci_Controller {
         $this->session->set_flashdata('error', "You've been logged out!");
         redirect('template/login', 'refresh');
     }
+
+
+
+
 
     function performance() {
         if ($this->session->userdata('role') != 2) {
