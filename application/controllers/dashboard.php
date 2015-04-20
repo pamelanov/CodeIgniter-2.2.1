@@ -109,7 +109,10 @@ class Dashboard extends Ci_Controller {
     
     
        function performance_sup(){
-        $t = new Target();
+        if ($this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+           $t = new Target();
         
 	$data['judul'] = "Performance";
 	$data['main'] = 'supervisor/overall_performance';
