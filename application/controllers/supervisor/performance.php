@@ -32,6 +32,13 @@ class Performance extends Ci_Controller {
     
     }
     
+    function showEdit() {
+        $data['judul'] = "Edit Sales Target";
+	$data['main'] = 'supervisor/edit_performance';
+        $this->load->vars($data);
+	$this->load->view('dashboard');  
+    }
+    
     function overall(){
         $t = new Target();
         
