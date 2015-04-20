@@ -10,6 +10,11 @@
             <label for="idMurid">ID</label>
             <input type="text" class="form-control" id="id_acc" placeholder="Masukkan ID">
         </div>
+        
+        <div class="form-group">
+            <label for="idMurid">Password</label>
+            <input type="text" class="form-control" id="id_acc" placeholder="Masukkan Password">
+        </div>
         <div class="form-group">
             <label for="jam">Email</label>
             <input type="text" class="form-control" id="email" placeholder="Masukkan Email">
