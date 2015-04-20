@@ -42,23 +42,10 @@ class Beginning_number extends DataMapper {
 	$n->tanggal = $this->tanggal;
 	$n->id = $angka;
 	
+	
 	$n->save_as_new();
 	
 	return $n;
-
-	/*	
-	$n->save(array('id_murid' => "13579",
-		       //$this->id_murid,
-		 'id_sales' => "DY",
-		 //$this->id_sales,
-		'no' => "6",
-		// $this->no,
-		'jam' => "2330",
-		// $this->jam,
-		'tanggal' => "2012-09-08",
-		//$this->tanggal,
-		'id' => $id_terakhir++
-		));*/
 	
 	}
 	

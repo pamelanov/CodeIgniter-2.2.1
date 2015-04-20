@@ -18,21 +18,26 @@
   </div>
   <button type="submit" class="btn btn-default">Search</button>
   <br/><br/>
-
+</form>
   <?php
 if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
 }
 
 if (!empty($student)){
-        
-        echo "<form name='update_status' action='<?php echo base_url();?>index.php/ops/student/createStatus' method='post'>";
+        ?>
+        <form name='update_status' action='<?php echo base_url();?>index.php/ops/student/createStatus' method='post'>
+        <?php
         echo "<div class='form-group'>";
             echo "<label for='id_murid'>ID Murid : $student->id_murid</label><br/>";
             echo "<label for='id_murid'>Nama : $student->nama</label><br/>";
             echo "<label for='id_murid'>Gender: $student->gender</label><br/>";
             echo "<label for='id_murid'>Domisili : $student->domisili</label><br/>";
         echo "<br>";
+         echo "<div class='form-group'>";
+            echo "<label for='id_murid'>ID Murid</label>";
+            echo "<input type='text' class='form-control' name='id_murid' placeholder='ID Murid'>";
+        echo "</div>";
         echo "<div class='form-group'>";
             echo "<label for='jam'>Jam</label>";
             echo "<input type='text' class='form-control' name='jam' placeholder='Jam'>";

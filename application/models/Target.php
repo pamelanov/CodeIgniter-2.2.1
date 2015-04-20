@@ -31,6 +31,33 @@ class Target extends DataMapper {
 		return $t;
 		
 	}
+	
+	function createTarget(){
+	$inc_id = new Target();
+	$id_terakhir = new Target();
+	$inc_id->get();
+	$id_terakhir = $inc_id->select_max('id');
+	$angka = $inc_id->id;
+	
+	$n = new Target();
+	$n->id_sales = $this->id_sales;
+        $n->periode = $this->periode;
+        $n->id_supervisor = $this->id_supervisor;
+        $n->target = $this->target;
+	
+	if ($angka == 0) {
+		$n->id = 1;
+	}
+	
+	else {
+		$n->id = $angka+1;
+	}	
+	
+	$n->save_as_new();
+	
+	return $n;
+	
+	}
 }
 
 /* End of file name.php */

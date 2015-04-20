@@ -35,30 +35,7 @@ class Student extends Ci_Controller {
         $a = $n->updateStatus();
         echo $a->id_murid;
         echo $a->id_sales;
-       
-        
-        
-        /*
-        $data['judul'] = "Keluarin isian";
-            $data['main'] = "create";
-            $data['students'] = $n;
-
-            $this->load->view('dashboard', $data);
     
-        if ($n->updateStatus() {
-            echo $n->No;
-            
-        }
-        
-        
-        else {
-            $data['judul'] = "Summary list";
-            $data['main'] = "ops/error_search_student";
-            $data['aktif'] = 'class="active"';
-
-            $this->load->view('dashboard', $data);
-        }
-        */
     }
 
 
