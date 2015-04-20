@@ -1,4 +1,5 @@
 <html>
+
     <h1><?php echo $judul; ?></h1>
     <ul class="nav nav-tabs">
         <li role="presentation" class="active" ><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
@@ -12,6 +13,7 @@
         <input type="text" class="form-control" name="idMurid" placeholder="Jane Doe">
     </div>
     <button type="submit" class="btn btn-default">Search</button>
+
 
 </form>
 </div>
