@@ -69,11 +69,17 @@ class Student extends Ci_Controller {
     	$n->tanggal = $this->input->post('tanggal');
     	$n->rating = $this->input->post('rating');
     	$n->isi = $this->input->post('isi');
+    	$n->id_sales = $this->input->post('id_sales');
     
     	$a = new Feedback;
     	$a = $n->addFeedbacks();
-    	echo $a->id_murid;
-    	echo $a->id_guru;
+		
+    	$data['judul'] = "Feedback";
+    	$data['main'] = 'createFeedback1';
+    	echo 'Feedback berhasil disimpan!';
+    	//$data['feedback'] = $this->getAllFeedbacks();
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
     }
     
     function readFeedback(){

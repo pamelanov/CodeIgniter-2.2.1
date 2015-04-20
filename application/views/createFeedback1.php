@@ -8,54 +8,54 @@
 <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/readFeedback" > Feedback</a></li>
 </ul>
 
-<?php
 
-//if (!empty($student)){
+<!-- if (!empty($student)){  -->
 
- echo "<form name='update_status' action='<?php echo base_url();?>index.php/ops/student/createFeedback' method='post'>";
- echo "<div class='form-group'>";
+ <form name='update_status' action='<?php echo base_url();?>index.php/ops/student/createFeedback' method='post'>
+ <div class='form-group'>
  
- echo "<label for='id_murid'>ID Murid : </label><br/>";
- //echo "<label for='id_murid'>ID Guru : $feedback->id_murid</label><br/>";
- echo "<br>";
+ <!--  
+ <label for='id_murid'>ID Murid : </label><br/>
+ <label for='id_murid'>ID Guru : $feedback->id_murid</label><br/>
+ <br>
+ -->
  
-/*
- echo "<div class='form-group'>";
- echo "<label for='jam'>ID Guru</label>";
- echo "<input type='text' class='form-control' name='id_guru' placeholder='ID Guru'>";
- echo "</div>";
+ <div class='form-group'>
+ <label for='id_guru'>ID Guru</label>
+ <input type='text' class='form-control' name='id_guru' placeholder='ID Guru'>
+ </div>
 
- echo "<div class='form-group'>";
- echo "<label for='jam'>ID Murid</label>";
- echo "<input type='text' class='form-control' name='id_murid' placeholder='ID Murid'>";
- echo "</div>";
-*/
+ <div class='form-group'>
+ <label for='id_murid'>ID Murid</label>
+ <input type='text' class='form-control' name='id_murid' placeholder='ID Murid'>
+ </div>
 
- echo "<div class='form-group'>";
- echo "<label for='tanggal'>Tanggal</label>";
- echo "<input type='date' class='form-control' name='tanggal'>";
- echo "</div>";
 
- echo "<div class='form-group'>";
- echo "<label for='id_sales'>ID Sales</label>";
- echo "<input type='text'class='form-control' name='id_sales' placeholder='ID Sales'>";
- echo "</div>";
+ <div class='form-group'>
+ <label for='tanggal'>Tanggal</label>
+ <input type='date' class='form-control' name='tanggal'>
+ </div>
 
- echo "<div class='form-group'>";
- echo "<label for='jam'>Isi</label>";
- echo "<input type='text' class='form-control' name='isi' placeholder='Isi'>";
- echo "</div>";
+ <div class='form-group'>
+ <label for='id_sales'>ID Sales</label>
+ <input type='text'class='form-control' name='id_sales' placeholder='ID Sales'>
+ </div>
 
- echo "<div class='form-group'>";
- echo "<label for='jam'>Rating</label>";
- echo "<input type='text' class='form-control' name='rating' placeholder='Rating'>";
- echo "</div>";
+ <div class='form-group'>
+ <label for='isi'>Isi</label>
+ <input type='text' class='form-control' name='isi' placeholder='Isi'>
+ </div>
 
- echo "<button type='submit' class='btn btn-danger'>Tambah Feedback</button>";
-
- echo"</div>";
- echo "</form>";
+ <div class='form-group'>
+ <label for='rating'>Rating</label>
+ <input type='text' class='form-control' name='rating' placeholder='Rating'>
+ </div>
  
- echo anchor('dashboard/readFeedback', '<-- halaman sebelumnya');
- //}*/
-?> 
+
+ <button type='submit' class='btn btn-danger'>Tambah Feedback</button>
+
+ </div>
+ </form>
+ 
+ <?php echo anchor('dashboard/readFeedback', '<-- halaman sebelumnya');?>
+
