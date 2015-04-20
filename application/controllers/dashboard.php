@@ -106,6 +106,17 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
+    
+    
+       function overall(){
+        $t = new Target();
+        
+	$data['judul'] = "Performance";
+	$data['main'] = 'supervisor/overall_performance';
+        $data['targets'] = $t->rank();
+	$this->load->vars($data);
+	$this->load->view('dashboard');  
+    }
 
     function createUser() {
         if ($this->session->userdata('role') != 1) {
