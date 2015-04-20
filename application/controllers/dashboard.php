@@ -130,16 +130,12 @@ class Dashboard extends Ci_Controller {
         $u->nama = $this->input->post('nama');
         $u->no_telp = $this->input->post('no_telp');
         $u->role = $this->input->post('role');
-        if ($u->addAccount()) {
-
-            $this->session->set_flashdata('message', 'User created');
-            redirect('dashboard/users', 'refresh');
-        } else {
-            $data['judul'] = "Create User";
-            $data['main'] = 'admin/user_create';
-            $this->load->vars($data);
-            $this->load->view('dashboard');
-        }
+       
+        $a = new Account();
+        $a = $u->addAccount();
+        echo $a->id_acc;
+        echo "<br/>";
+        echo $a->email;
     }
 
     function edit($id = 0) {
