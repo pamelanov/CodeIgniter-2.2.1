@@ -30,7 +30,7 @@ if ($this->session->flashdata('message')){
                 foreach($targets as $t){
                 
                     echo "<td>".$t->id_sales."</td>\n";
-                    echo "<td>".$t->periode."</td>\n";
+                    echo "<td>".$t->periode_akhir."</td>\n";
                     echo "<td>".$t->target."</td>\n";
                     echo "<td>".$t->actual."</td>\n";
                     echo "</td>\n";

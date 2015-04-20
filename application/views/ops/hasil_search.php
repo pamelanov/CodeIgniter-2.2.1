@@ -15,12 +15,13 @@
     <input type="text" class="form-control" name="idMurid" placeholder="ID Murid">
   </div>
   <button type="submit" class="btn btn-default">Search</button>
-
+  <br>
+    <br>
 <?php
 if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
 }
-echo "<div id='konten'>";
+
 if (!empty($student)){
 	echo "<table id='table'>\n";
 	echo "<tr valign='top'>\n";
