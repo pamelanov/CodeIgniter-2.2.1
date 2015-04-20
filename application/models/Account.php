@@ -108,17 +108,33 @@ class Account extends DataMapper {
     }
 
     function addAccount() {
-        $u = new Account();
-   
-        $u->id_acc = $this->id_acc;
+       $inc_id = new Account();
+	$id_terakhir = new Account();
+	$inc_id->get();
+	$id_terakhir = $inc_id->select_max('id');
+	$angka = $inc_id->id;
+	
+	$u = new Account();
+	$u->id_acc = $this->id_acc;
         $u->password = $this->password;
         $u->email = $this->email;
         $u->nama = $this->nama;
-        $u->role = $this->role;
-
-        $u->save();
-        return $u;
-    }
+         $u->no_telp = $this->no_telp;
+	$u->role = $this->role;
+	
+	if ($angka == 0) {
+		$u->id = 1;
+	}
+	
+	else {
+		$u->id = $angka+1;
+	}	
+	
+	$u->save_as_new();
+	
+	return $u;
+	
+	}
     
     function updateAccount(){
          $u = new Account();
