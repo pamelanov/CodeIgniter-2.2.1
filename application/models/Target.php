@@ -37,7 +37,7 @@ class Target extends DataMapper {
 	$id_terakhir = new Target();
 	$inc_id->get();
 	$id_terakhir = $inc_id->select_max('id');
-	$angka = $inc_id->id;
+	$angka = $inc_id->id+1;
 	
 	$n = new Target();
 	$n->id_sales = $this->id_sales;
@@ -50,7 +50,7 @@ class Target extends DataMapper {
 	}
 	
 	else {
-		$n->id = $angka+1;
+		$n->id 	= $angka+1;
 	}	
 	
 	$n->save_as_new();
