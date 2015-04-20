@@ -108,7 +108,7 @@ class Dashboard extends Ci_Controller {
     }
     
     
-       function overall(){
+       function performance_sup(){
         $t = new Target();
         
 	$data['judul'] = "Performance";
