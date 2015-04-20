@@ -1,7 +1,14 @@
+<<<<<<< HEAD
  <ul class="nav nav-tabs">
   <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/supervisor/performance" > Create</a></li>
   <li role="presentation"><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showEdit" > Edit </a></li>
   <li role="presentation"><a href="<?php echo base_url(); ?>index.php/supervisor/performance/overall" > Overall Performance</a></li>
+=======
+<h1><?php echo $judul; ?></h1>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/supervisor/performance" > Create</a></li>
+  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/performance_sup" >Performance</a></li>
+>>>>>>> punya-yodi
  </ul>
  <form name='update_status' action='<?php echo base_url();?>index.php/supervisor/performance/create' method='post' >
     <div id ="konten">

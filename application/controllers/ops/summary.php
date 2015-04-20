@@ -49,7 +49,7 @@ class Summary extends Ci_Controller {
         if ($u->findStudent()) {
 
             $data['judul'] = "Hasil Pencarian";
-            $data['main'] = 'create';
+            $data['main'] = 'ops/createStatus';
             $data['student'] = $u->hasilSearch();
             //$data['riwayat'] = $n->ambilStatus();
             $this->load->vars($data);
@@ -73,19 +73,19 @@ class Summary extends Ci_Controller {
         if ($u->findStudent()) {
 
             $data['judul'] = "Hasil Pencarian";
-            $data['main'] = 'admin/status_hasil_search';
+            $data['main'] = 'ops/status_hasil_search';
             $data['student'] = $u->hasilSearch();
             $this->load->vars($data);
-            $this->load->view('admin/dashboard');
+            $this->load->view('dashboard');
         
         }
         
         else {
             $data['judul'] = "Summary list";
-            $data['main'] = "admin/error_search_student";
+            $data['main'] = "ops/error_search_student";
             $data['aktif'] = 'class="active"';
 
-            $this->load->view('admin/dashboard', $data);
+            $this->load->view('dashboard', $data);
         }
         
     }

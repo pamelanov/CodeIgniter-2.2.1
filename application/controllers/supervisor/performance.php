@@ -8,6 +8,9 @@ class Performance extends Ci_Controller {
     }
 
     function index() {
+         if ($this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $data['judul'] = "Create";
         $data['main'] = 'supervisor/performance';
         $this->load->vars($data);

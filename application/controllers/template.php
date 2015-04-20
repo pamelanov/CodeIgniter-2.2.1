@@ -63,7 +63,7 @@ class Template extends CI_Controller {
         // (no need to validate the post variables in the controller,
         // if you've set your DataMapper models up with validation rules)
         $u->id_acc = $this->input->post('id');
-        $u->password = $this->input->post('password');
+        $u->password = md5($this->input->post('password'));
 
         // Attempt to log user in with the data they supplied, using the login function setup in the User model
         // You might want to have a quick look at that login function up the top of this page to see how it authenticates the user
@@ -76,14 +76,12 @@ class Template extends CI_Controller {
             redirect('dashboard', 'refresh');
         } else {
             $data['judul'] = "Halaman Login";
-            $data['main'] = "home/error_login";
+            $data['main'] = "home/login";
             $data['aktif'] = 'class="active"';
-
-            $this->load->view('home/template', $data);
+            $this->session->set_userdata($data);
+            redirect('template', 'refresh');
         }
     }
-    
-
 
     function logout() {
         $sesi_items = array('role' => '');

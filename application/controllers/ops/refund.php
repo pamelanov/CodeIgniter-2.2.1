@@ -37,17 +37,18 @@ class Refund extends Ci_Controller {
   
   function edit($id=0){
   	$this->load->library('encrypt');
-  	if ($this->input->post('jam_hilang')){
-  		$this->mrefund->updateRefund();
+  	$r = new Refund();
+        if ($r->updateRefund()){
+  		
   		$this->session->set_flashdata('message','User updated');
-  		redirect('admin/refund/index','refresh');
+  		redirect('ops/refund/index','refresh');
   	}else{
 		//$id = $this->uri->segment(4);
 		$data['judul'] = "Edit Refund";
-		$data['main'] = 'admin/refund_edit';
-		$data['refund'] = $this->mrefund->getRefund($id);
+		$data['main'] = 'ops/refund_edit';
+		$data['refund'] = $r->getRefund($id);
 		$this->load->vars($data);
-		$this->load->view('admin/dashboard');    
+		$this->load->view('dashboard');    
 	}
   }
   

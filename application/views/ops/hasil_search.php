@@ -1,12 +1,13 @@
 <! DOCTYPE html>
-<html>
+<h1><?php echo $judul; ?></h1>
 <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
-  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
-  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbacks" > Feedback</a></li>
+      <li role="presentation" ><a href="<?php echo base_url(); ?>index.php/dashboard/summary" > Home</a></li>
+    <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
+    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
+    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbacks" > Feedback</a></li>
 </ul>
 
-<br/>
+<br>
 
 <form class="form-inline" align="left" action='<?php echo base_url();?>index.php/ops/summary/searchStudent' method='post'>
   <div class="form-group">
@@ -14,14 +15,15 @@
     <input type="text" class="form-control" name="idMurid" placeholder="ID Murid">
   </div>
   <button type="submit" class="btn btn-default">Search</button>
-
+  <br>
+    <br>
 <?php
 if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
 }
-echo "<div id='konten'>";
+
 if (!empty($student)){
-	echo "<table class='table table-bordered'>\n";
+	echo "<table id='table'>\n";
 	echo "<tr valign='top'>\n";
 	echo "<th>ID Murid</th>
         <th>Nama</th>

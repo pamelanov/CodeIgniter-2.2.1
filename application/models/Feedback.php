@@ -49,6 +49,17 @@ class Feedback extends DataMapper {
 		// Save new user
 		$f->save();
 	}
+         function updateFeedback(){
+         $f = new Feedback();
+   
+        $f->id_acc = $this->id_acc;
+        $f->password = $this->password;
+        $f->email = $this->email;
+        $f->nama = $this->nama;
+        $f->role = $this->role;
+
+    }
+        
 	
 }
 

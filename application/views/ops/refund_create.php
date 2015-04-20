@@ -1,22 +1,45 @@
-<h1><?php echo $judul;?></h1>
-
-<?php
-echo form_open('admin/refund/create');
-echo "<p><label for='uname'>Jam Hilang</label><br/>";
-$data = array('name'=>'jam_hilang','id'=>'uname','size'=>25);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='email'>Alasan</label><br/>";
-$data = array('name'=>'email','id'=>'email','size'=>25);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='status'>Status</label><br/>";
-$options = array('active' => 'active', 'inactive' => 'inactive');
-echo form_dropdown('status',$options) ."</p>";
 
 
-echo form_submit('submit','create refund');
-echo form_close();
+<!DOCTYPE html>
+<html lang="en"></html>
+<h1><?php echo $judul; ?></h1>
+<ul class="nav nav-tabs">
+    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createData" > Home</a></li>
+    <li role="presentation" ><a href="<?php echo base_url(); ?>index.php/dashboard/createStatus" > Student</a></li>
+   <li role="presentation"class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/createRefund" > Refund</a></li>
+    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createFeedback" > Feedback</a></li>
+</ul>
+<form name='update_status' action='<?php echo base_url(); ?>index.php/ops/student/createStatus' method='post' >
+    <div id ="konten">
 
+        <div class="form-group">
+            <label for="idMurid">Tanggal Refund</label>
+            <input type="text" class="form-control" id="idMurid" placeholder="Masukkan ID Murid">
+        </div>
+        <div class="form-group">
+            <label for="jam">ID Murid</label>
+            <input type="text" class="form-control" id="jam" placeholder="Masukkan Jam">
+        </div>
+        <div class="form-group">
+            <label for="tanggal">Jumlah Jam Hilang</label>
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Jam Hilang">
+        </div>
+        <div class="form-group">
+            <label for="tanggal">Harga Per Jam</label>
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Harga Per Jam">
+        </div>
+        <div class="form-group">
+            <label for="tanggal">Sebab Jam Hilang</label>
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Sebab Jam Hilang">
+        
+       
+       
 
-?>
+    </div>
+    <button type="submit" class="btn btn-danger">Create Refund</button>
+    </div>
+</form>
+</div>
+
+</body>
+</html>

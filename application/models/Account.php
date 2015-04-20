@@ -84,13 +84,13 @@ class Account extends DataMapper {
             return TRUE;
         }
     }
-    
+
     function getAllAccounts() {
-        
+
         $o = new Account();
-	$o->get();
-	$this->salt = $o->salt;
-        
+        $o->get();
+        $this->salt = $o->salt;
+
         return $o;
     }
 
@@ -105,6 +105,46 @@ class Account extends DataMapper {
     // Optionally, you can add post model initialisation code
     function post_model_init($from_cache = FALSE) {
         
+    }
+
+    function addAccount() {
+       $inc_id = new Account();
+	$id_terakhir = new Account();
+	$inc_id->get();
+	$id_terakhir = $inc_id->select_max('id');
+	$angka = $inc_id->id;
+	
+	$u = new Account();
+	$u->id_acc = $this->id_acc;
+        $u->password = $this->password;
+        $u->email = $this->email;
+        $u->nama = $this->nama;
+         $u->no_telp = $this->no_telp;
+	$u->role = $this->role;
+	
+	if ($angka == 0) {
+		$u->id = 1;
+	}
+	
+	else {
+		$u->id = $angka+1;
+	}	
+	
+	$u->save_as_new();
+	
+	return $u;
+	
+	}
+    
+    function updateAccount(){
+         $u = new Account();
+   
+        $u->id_acc = $this->id_acc;
+        $u->password = $this->password;
+        $u->email = $this->email;
+        $u->nama = $this->nama;
+        $u->role = $this->role;
+
     }
 
     // Validation prepping function to encrypt passwords
