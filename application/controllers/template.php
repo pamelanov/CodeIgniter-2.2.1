@@ -76,14 +76,12 @@ class Template extends CI_Controller {
             redirect('dashboard', 'refresh');
         } else {
             $data['judul'] = "Halaman Login";
-            $data['main'] = "home/error_login";
+            $data['main'] = "home/login";
             $data['aktif'] = 'class="active"';
-
-            $this->load->view('home/template', $data);
+            $this->session->set_userdata($data);
+            redirect('template', 'refresh');
         }
     }
-    
-
 
     function logout() {
         $sesi_items = array('role' => '');
