@@ -36,7 +36,32 @@ class Performance extends Ci_Controller {
         $data['judul'] = "Edit Sales Target";
 	$data['main'] = 'supervisor/edit_performance';
         $this->load->vars($data);
-	$this->load->view('dashboard');  
+	$this->load->view('dashboard');
+    }
+    
+    function edit(){
+
+        
+        
+        $a = new Target();
+        $a->id_sales = $this->input->post('id_sales');
+        $a->periode = $this->input->post('periode');
+    
+        if ($a->findTarget()) {
+
+            $data['judul'] = "Hasil Pencarian";
+            $data['main'] = 'supervisor/hasil_search_target';
+            // $data['target'] = $a->hasilSearch();
+            $this->load->vars($data);
+            $this->load->view('dashboard');
+        }
+         else {
+            $data['judul'] = "Hasil Pencarian";
+            $data['main'] = "supervisor/error_hasil_search";
+            $data['aktif'] = 'class="active"';
+            $this->load->vars($data);
+            $this->load->view('dashboard', $data);
+        }
     }
     
     function overall(){

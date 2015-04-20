@@ -58,6 +58,19 @@ class Target extends DataMapper {
 	return $n;
 	
 	}
+	
+	function findTarget(){
+		$t = new Target();
+		$t->where('id_sales', $this->id_sales);
+		$t->where('periode', $this->periode);
+		$t->get();
+	
+		if (empty($t)) {
+			return FALSE;
+		} else {
+			return TRUE;
+		}
+	}
 }
 
 /* End of file name.php */

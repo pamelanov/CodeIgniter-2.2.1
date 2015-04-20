@@ -13,7 +13,7 @@ class Summary extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-        function searchStudent() {
+    function searchStudent() {
         $u = new Student();
         $u->id_murid = $this->input->post('idMurid');
         
