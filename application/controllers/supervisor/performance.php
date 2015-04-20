@@ -22,13 +22,12 @@ class Performance extends Ci_Controller {
         $n->periode = $this->input->post('periode');
         $n->id_supervisor = $this->input->post('id_supervisor');
         $n->target = $this->input->post('target');
-        
-        $a = new Target;
-        $a = $n->createTarget();
-        echo $a->id_sales;
-        echo "<br/>";
-        echo $a->target;
-    
+
+        $data['judul'] = "Target Berhasil Disimpan";
+	$data['main'] = 'supervisor/created';
+        $data['targets'] = $n->createTarget();
+	$this->load->vars($data);
+	$this->load->view('dashboard');  
     
     }
     
@@ -39,10 +38,8 @@ class Performance extends Ci_Controller {
 	$this->load->view('dashboard');
     }
     
-    function edit(){
+    function findTarget(){
 
-        
-        
         $a = new Target();
         $a->id_sales = $this->input->post('id_sales');
         $a->periode = $this->input->post('periode');
@@ -51,7 +48,7 @@ class Performance extends Ci_Controller {
 
             $data['judul'] = "Hasil Pencarian";
             $data['main'] = 'supervisor/hasil_search_target';
-            // $data['target'] = $a->hasilSearch();
+            $data['target'] = $a->hasilSearch();
             $this->load->vars($data);
             $this->load->view('dashboard');
         }
@@ -62,6 +59,21 @@ class Performance extends Ci_Controller {
             $this->load->vars($data);
             $this->load->view('dashboard', $data);
         }
+    }
+    
+    function edit(){
+        $n = new Target();
+        
+        $n->id_sales = $this->input->post('id_sales');
+        $n->periode = $this->input->post('periode');
+        $n->id_supervisor = $this->input->post('id_supervisor');
+        $n->target = $this->input->post('target');
+        
+        $data['judul'] = "Update Berhasil";
+	$data['main'] = 'supervisor/updated';
+        $data['targets'] = $n->updateTarget();
+	$this->load->vars($data);
+	$this->load->view('dashboard');  
     }
     
     function overall(){

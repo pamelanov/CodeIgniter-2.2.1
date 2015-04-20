@@ -4,7 +4,7 @@
   <li role="presentation"><a href="<?php echo base_url(); ?>index.php/supervisor/performance/overall" > Overall Performance</a></li>
  </ul>
 <div id="konten">
-<form name='searchSales' action='<?php echo base_url();?>index.php/supervisor/performance/edit' method='post' >
+<form name='searchSales' action='<?php echo base_url();?>index.php/supervisor/performance/findTarget' method='post' >
 		<div class="form-group">
 		<label for="id_sales">	Enter Sales ID</label>
                         <input type='text' class="form-control" name='id_sales' placeholder="ID Sales">
@@ -14,6 +14,7 @@
                         <input type='month' class="form-control" name='periode'>
                 </div>  
                         <button type="submit" class="btn btn-danger">Search</button>
+</form>
 		
 </div>
 

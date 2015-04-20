@@ -4,6 +4,6 @@
   <li role="presentation"><a href="<?php echo base_url(); ?>index.php/supervisor/performance/overall" > Overall Performance</a></li>
  </ul>
 <div id="konten">
-    Tidak terdapat target dengan ID sales yang dimasukkan.
+    Tidak terdapat target dengan ID sales yang dimasukkan.<br/>
     <a href="<?php echo base_url(); ?>index.php/supervisor/performance/showEdit" > <button type="submit" class="btn btn-danger">Kembali</button> </a>
 </div>

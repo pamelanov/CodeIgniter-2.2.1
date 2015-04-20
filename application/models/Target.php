@@ -59,13 +59,31 @@ class Target extends DataMapper {
 	
 	}
 	
+	function hasilSearch(){
+		$o = new Target();
+		$o->where('id_sales', $this->id_sales);
+		$o->where('periode', $this->periode);
+		$o->get();
+		
+		return $o;
+	}
+	
+	function updateTarget(){
+		$n = new Target();
+		$n->where('id_sales', $this->id_sales);
+		$n->where('periode', $this->periode);
+		$n->get();
+		
+		$n->update('target', $this->target);
+		return $n;
+	}
 	function findTarget(){
 		$t = new Target();
 		$t->where('id_sales', $this->id_sales);
 		$t->where('periode', $this->periode);
 		$t->get();
 	
-		if (empty($t)) {
+		if (empty($t->id_sales)) {
 			return FALSE;
 		} else {
 			return TRUE;
