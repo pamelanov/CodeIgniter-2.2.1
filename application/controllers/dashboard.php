@@ -145,11 +145,13 @@ class Dashboard extends Ci_Controller {
         $u->no_telp = $this->input->post('no_telp');
         $u->role = $this->input->post('role');
        
-        $a = new Account();
-        $a = $u->addAccount();
-        echo $a->id_acc;
-        echo "<br/>";
-        echo $a->email;
+         $data['judul'] = "Create User";
+         
+        $data['main'] = 'admin/created';
+        $data['user'] = $u->addAccount();
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+        
     }
 
     function edit($id = 0) {
