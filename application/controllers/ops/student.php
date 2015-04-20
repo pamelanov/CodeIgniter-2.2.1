@@ -76,7 +76,7 @@ class Student extends Ci_Controller {
 		
     	$data['judul'] = "Feedback";
     	$data['main'] = 'createFeedback1';
-    	echo 'Feedback berhasil disimpan!';
+    	echo '<br><br>Feedback berhasil disimpan!';
     	//$data['feedback'] = $this->getAllFeedbacks();
     	$this->load->vars($data);
     	$this->load->view('dashboard');
