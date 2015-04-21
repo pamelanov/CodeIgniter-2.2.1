@@ -102,30 +102,4 @@ class Summary extends Ci_Controller {
             $this->load->view('dashboard');
     }
     
-    function searchFeedback() {
-    	$u = new Feedback();
-    	$u->id_murid = $this->input->post('idMurid');
-    	$u->id_guru = $this->input->post('idGuru');
-    
-    	// $n = new Beginning_number();
-    	// $n->Id_murid = $this->input->post('idMurid');
-    
-    	if ($u->findFeedback()) {
-    
-    		$data['judul'] = "Isi Feedback";
-    		$data['main'] = 'ops/hasil_search_feedback';
-    		$data['feedback'] = $u->hasilSearch();
-    		//$data['riwayat'] = $n->ambilStatus();
-    		$this->load->vars($data);
-    		$this->load->view('dashboard');
-    	}
-    	else {
-    		$data['judul'] = "Isi Feedback";
-    		$data['main'] = "ops/hasil_search_feedback";
-    		$data['aktif'] = 'class="active"';
-    
-    		$this->load->view('dashboard', $data);
-    	}
-    
-    }
 }
