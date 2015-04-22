@@ -38,27 +38,18 @@ class Account extends DataMapper {
         )
     );
     var $validation = array(
-        'id' => array(
+        'id_acc' => array(
             'label' => 'id',
-            'rules' => array('required', 'trim', 'unique', 'min_length' => 3, 'max_length' => 20)
+            'rules' => array('required', 'trim', 'unique', 'min_length' => 2, 'max_length' => 2)
         ),
         'password' => array(
             'label' => 'password',
             'rules' => array('required', 'trim', 'min_length' => 3)
         ),
-        'confirm_password' => array(// accessed via $this->confirm_password
-            'label' => 'confirm Password',
-            'rules' => array('encrypt', 'matches' => 'password')
-        ),
-        'Email' => array(
+        'email' => array(
             'label' => 'Email Address',
             'rules' => array('required')
         ),
-        array(// accessed via $this->confirm_email
-            'field' => 'confirm_email',
-            'label' => 'Confirm Email Address',
-            'rules' => array('matches' => 'email')
-        )
     );
 
     function login() {
@@ -107,34 +98,7 @@ class Account extends DataMapper {
         
     }
 
-    function addAccount() {
-       $inc_id = new Account();
-	$id_terakhir = new Account();
-	$inc_id->get();
-	$id_terakhir = $inc_id->select_max('id');
-	$angka = $inc_id->id;
-	
-	$u = new Account();
-	$u->id_acc = $this->id_acc;
-        $u->password = $this->password;
-        $u->email = $this->email;
-        $u->nama = $this->nama;
-         $u->no_telp = $this->no_telp;
-	$u->role = $this->role;
-	
-	if ($angka == 0) {
-		$u->id = 1;
-	}
-	
-	else {
-		$u->id = $angka+1;
-	}	
-	
-	$u->save_as_new();
-	
-	return $u;
-	
-	}
+  
     
     function updateAccount(){
          $u = new Account();
@@ -144,6 +108,8 @@ class Account extends DataMapper {
         $u->email = $this->email;
         $u->nama = $this->nama;
         $u->role = $this->role;
+        
+        
 
     }
 
