@@ -36,7 +36,7 @@ class Feedback extends DataMapper {
 		return $f;
 	}
 	
-<<<<<<< HEAD
+
 	function addFeedbacks(){
 		$inc_id = new Feedback();
 		$id_terakhir = new Feedback();
@@ -61,9 +61,7 @@ class Feedback extends DataMapper {
 	return $n;
 
 	}
-=======
 
->>>>>>> punya-yodi
          function updateFeedback(){
          $f = new Feedback();
    
