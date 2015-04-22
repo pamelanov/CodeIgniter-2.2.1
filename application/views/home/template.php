@@ -6,31 +6,13 @@
         <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css" />
         
     </head>
+    
     <body>
      
-      <div class="container-fluid">
-            <div id = "header"></div>
-        <!--
-            <div id="menu">
-                <ul>
-                    <li><a href="<?php echo base_url(); ?>index.php/template" <?php if ($this->uri->segment(2) == '') echo $aktif; ?>>Home</a></li>
-                    <li><a href="<?php echo base_url(); ?>index.php/template/about" <?php if ($this->uri->segment(2) == 'about') echo $aktif; ?>>About Us</a></li>
-                    <li><a href="<?php echo base_url(); ?>index.php/template/contact" <?php if ($this->uri->segment(2) == 'contact') echo $aktif; ?>>Contact</a></li>
-
-                    
-
-                </ul>
-                <ul>
-                </ul>
-            </div>
+    
+        
+        
             
-                        <div id="sidebar">
-                <p id="bg_sidebar">SICUT</p>
-                <div id="sidebar1">
-
-
-                    </div>
-        -->    
             
 
             <div id="login">

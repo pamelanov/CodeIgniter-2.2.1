@@ -1,13 +1,20 @@
+<<<<<<< HEAD
 
 
 <h1><?php echo $judul; ?></h1>
 
 <p><?php echo anchor("admin/refund/create", "Download"); ?></p>
+=======
+<h1><?php echo $judul; ?></h1>
+
+<p><?php echo anchor("admin/refund/create", "Today's Summary"); ?></p>
+>>>>>>> punya-pamela
 <?php
 if ($this->session->flashdata('message')) {
     echo "<div class='message'>" . $this->session->flashdata('message') . "</div>";
 }
 
+<<<<<<< HEAD
 if (count($admins)) {
     echo "<table id='table'>\n";
     echo "<tr valign='top'>\n";
@@ -30,4 +37,7 @@ if (count($admins)) {
     }
     echo "</table>";
 }
+=======
+
+>>>>>>> punya-pamela
 ?>

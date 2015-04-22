@@ -1,5 +1,8 @@
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> punya-pamela
 <!DOCTYPE html>
 <html lang="en"></html>
 <h1><?php echo $judul; ?></h1>
@@ -51,10 +54,20 @@
 
 
 
+<<<<<<< HEAD
     </div>
     <button type="submit" class="btn btn-danger">Create Feedback</button>
+=======
+  
+    <button type="submit" class="btn btn-danger">Create Feedback</button>
+      </div>
+>>>>>>> punya-pamela
 </form>
 </div>
 
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> punya-pamela

@@ -158,6 +158,16 @@ class Dashboard extends Ci_Controller {
         $this->session->set_flashdata('error', "You've been logged out!");
         redirect('template/login', 'refresh');
     }
+    
+    function performance(){
+        $t = new Target();
+        
+	$data['judul'] = "Performance";
+	$data['main'] = 'ops/performance_ops';
+        $data['target'] = $t->rank();
+	$this->load->vars($data);
+	$this->load->view('dashboard');  
+  }
 
 }
 

@@ -73,7 +73,16 @@ class Refund extends DataMapper {
         
         return $r;
     }
-    
+     function updateRefund(){
+         $u = new Account();
+   
+        $u->id_acc = $this->id_acc;
+        $u->password = $this->password;
+        $u->email = $this->email;
+        $u->nama = $this->nama;
+        $u->role = $this->role;
+
+    }
     
 }
 

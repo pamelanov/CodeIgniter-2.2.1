@@ -1,61 +1,60 @@
-<h1><?php echo $judul;?></h1>
 
-<?php
-echo form_open('admin/feedback/edit');
+<!DOCTYPE html>
+<html lang="en"></html>
+<h1><?php echo $judul; ?></h1>
+<ul class="nav nav-tabs">
+    <li role="presentation" ><a href="<?php echo base_url(); ?>index.php/dashboard/summary" > Home</a></li>
+    <li role="presentation" "><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
+    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
+    <li role="presentation"class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbacks" > Feedback</a></li>
+</ul>
+<form name='update_status' action='<?php echo base_url(); ?>index.php/ops/student/createStatus' method='post' >
+    <div id ="konten">
 
+        <div class="form-group">
+            <label for="idMurid">ID Murid</label>
+            <input type="text" class="form-control" id="idMurid" placeholder="Masukkan ID Murid">
+        </div>
+        <div class="form-group">
+            <label for="jam">ID Guru</label>
+            <input type="text" class="form-control" id="jam" placeholder="Masukkan ID Guru">
+        </div>
+        <div class="form-group">
+            <label for="tanggal">ID Sales</label>
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan ID Sales">
+        </div>
+        <div class="form-group">
+            <label for="tanggal">Tanggal</label>
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Tanggal">
+        </div>
+        <div class="form-group">
+            <label for="tanggal">Rating</label>
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Rating">
+        </div>
 
-echo "<p><label for='uname'>ID</label><br/>";
-$data = array('name'=>'id','id'=>'uname','size'=>25,'value'=>$feedback['id']);
-echo form_input($data) ."</p>";
+        <div class="form-group">
+            <label for="tanggal">Isi</label>
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Isi">
+        </div>
 
-echo "<p><label for='uname'>ID Murid</label><br/>";
-$data = array('name'=>'id_murid','id'=>'uname','size'=>25,'value'=>$feedback['id_murid']);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='uname'>ID Guru</label><br/>";
-$data = array('name'=>'id_guru','id'=>'uname','size'=>25,'value'=>$feedback['id_guru']);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='uname'>ID Sales</label><br/>";
-$data = array('name'=>'id_sales','id'=>'uname','size'=>25,'value'=>$feedback['id_sales']);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='uname'>Tanggal</label><br/>";
-$data = array('name'=>'tanggal','id'=>'uname','size'=>25,'value'=>$feedback['tanggal']);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='uname'>Rating</label><br/>";
-$data = array('name'=>'rating','id'=>'uname','size'=>25,'value'=>$feedback['rating']);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='uname'>Kelebihan</label><br/>";
-$data = array('name'=>'kelebihan','id'=>'uname','size'=>100,'value'=>$feedback['kelebihan']);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='uname'>Kekurangan</label><br/>";
-$data = array('name'=>'jam_hilang','id'=>'uname','size'=>25,'value'=>$feedback['kekurangan']);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='uname'>Saran</label><br/>";
-$data = array('name'=>'saran','id'=>'uname','size'=>100,'value'=>$feedback['saran']);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='uname'>Keterangan</label><br/>";
-$data = array('name'=>'keterangan','id'=>'uname','size'=>25,'value'=>$feedback['keterangan']);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='uname'>Status</label><br/>";
-$data = array('name'=>'statuss','id'=>'uname','size'=>1,'value'=>$feedback['statuss']);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='status'>StatusF</label><br/>";
-$options = array('active' => 'active', 'inactive' => 'inactive');
-echo form_dropdown('status',$options) ."</p>";
+        <div class="form-group">
+            <label for="tanggal">Total Skor</label>
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Total Skor">
+        </div>
+        <div class="form-group">
+            <label for="tanggal">Status</label>
+            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Status">
+        </div>
 
 
-echo form_hidden('id',$feedback['id']);
-echo form_submit('submit','update student');
-echo form_close();
 
 
-?>
+
+  
+    <button type="submit" class="btn btn-danger">Edit Feedback</button>
+      </div>
+</form>
+</div>
+
+</body>
+</html>

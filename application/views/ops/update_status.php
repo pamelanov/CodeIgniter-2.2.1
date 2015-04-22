@@ -6,9 +6,9 @@
 <ul class="nav nav-tabs">
   <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/student" > Student</a></li>
   <li role="presentation"><a href="<?php echo base_url(); ?>index.php/admin/refund" > Refund</a></li>
-  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/admin/feedback" > Feedback</a></li>
+  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/readFeedback" > Feedback</a></li>
 </ul>
- <form name='update_status' action='<?php echo base_url();?>index.php/ops/student/createStatus' method='post' >
+ <form name='update_status' action='<?php echo base_url();?>index.php/ops/student/createstatus' method='post' >
     <div id ="konten">
        
         <div class="form-group">
@@ -35,6 +35,22 @@
     </div>
     <button type="submit" class="btn btn-danger">Update Status</button>
 </form>
-</div>
+
+    <form name='login' action='<?php echo base_url();?>index.php/template/ceklogin' method='post' >
+		<div class="form-group">
+			<label for="exampleInputEmail1">ID</label>
+			<input type='text' class="form-control" name='id' placeholder="Enter ID">
+		</div>
+		 <div class="form-group">
+			<label for="exampleInputPassword1">Password</label>
+			<input type="password" class="form-control" name='password' placeholder="Password">
+		</div>
+		<button type="submit" class="btn btn-warning">
+			<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>  Submit
+		</button>
+	</form>
+    </div>
     
+
+</body>
 </html>

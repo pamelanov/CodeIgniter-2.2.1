@@ -13,15 +13,67 @@ class Summary extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    
     function searchStudent() {
         $u = new Student();
+        $u->id_murid = $this->input->post('idMurid');
+        
+       // $n = new Beginning_number();
+       // $n->Id_murid = $this->input->post('idMurid');
+    
+        if ($u->findStudent()) {
+
+            $data['judul'] = "Hasil Pencarian";
+            $data['main'] = 'ops/hasil_search';
+            $data['student'] = $u->hasilSearch();
+            //$data['riwayat'] = $n->ambilStatus();
+            $this->load->vars($data);
+            $this->load->view('dashboard');
+        }
+         else {
+            $data['judul'] = "Hasil Pencarian";
+            $data['main'] = "ops/hasil_search";
+            $data['aktif'] = 'class="active"';
+
+            $this->load->view('dashboard', $data);
+        }
+        
+    }
+    
+    function searchStudentStatus() {
+        $u = new Student();
+        $u->id_murid = $this->input->post('idMurid');
+        
+       // $n = new Beginning_number();
+       // $n->Id_murid = $this->input->post('idMurid');
+    
+        if ($u->findStudent()) {
+
+            $data['judul'] = "Hasil Pencarian";
+            $data['main'] = 'ops/createStatus';
+            $data['student'] = $u->hasilSearch();
+            //$data['riwayat'] = $n->ambilStatus();
+            $this->load->vars($data);
+            $this->load->view('dashboard');
+        }
+         else {
+            $data['judul'] = "Hasil Pencarian";
+            $data['main'] = "ops/hasil_search";
+            $data['aktif'] = 'class="active"';
+
+            $this->load->view('dashboard', $data);
+        }
+        
+    }
+    
+    
+    function searchStatusStudent() {
+      $u = new Student();
         $u->Id_murid = $this->input->post('idMurid');
         
         if ($u->findStudent()) {
 
             $data['judul'] = "Hasil Pencarian";
-            $data['main'] = 'ops/hasil_search';
+            $data['main'] = 'ops/status_hasil_search';
             $data['student'] = $u->hasilSearch();
             $this->load->vars($data);
             $this->load->view('dashboard');
@@ -35,42 +87,45 @@ class Summary extends Ci_Controller {
 
             $this->load->view('dashboard', $data);
         }
-    }
-    
-        function searchStatusStudent() {
-      $u = new Student();
-        $u->Id_murid = $this->input->post('idMurid');
-        
-        if ($u->findStudent()) {
-
-            $data['judul'] = "Hasil Pencarian";
-            $data['main'] = 'admin/status_hasil_search';
-            $data['student'] = $u->hasilSearch();
-            $this->load->vars($data);
-            $this->load->view('admin/dashboard');
-        
-        }
-        
-        else {
-            $data['judul'] = "Summary list";
-            $data['main'] = "admin/error_search_student";
-            $data['aktif'] = 'class="active"';
-
-            $this->load->view('admin/dashboard', $data);
-        }
         
     }
     
     function riwayatStatus(){
-        $u = new Student();
-        $s = new Beginning_number();
+        $u = new Beginning_number();
         $u->Id_murid = $this->input->post('idMurid');
         
+            
             $data['judul'] = "Riwayat Status";
             $data['main'] = 'ops/riwayat_status';
-            $data['status'] = $s->ambilStatus();
+            $data['status'] = $u->ambilStatus();
             $this->load->vars($data);
             $this->load->view('dashboard');
-        
+    }
+    
+    function searchFeedback() {
+    	$u = new Feedback();
+    	$u->id_murid = $this->input->post('idMurid');
+    	$u->id_guru = $this->input->post('idGuru');
+    
+    	// $n = new Beginning_number();
+    	// $n->Id_murid = $this->input->post('idMurid');
+    
+    	if ($u->findFeedback()) {
+    
+    		$data['judul'] = "Isi Feedback";
+    		$data['main'] = 'ops/hasil_search_feedback';
+    		$data['feedback'] = $u->hasilSearch();
+    		//$data['riwayat'] = $n->ambilStatus();
+    		$this->load->vars($data);
+    		$this->load->view('dashboard');
+    	}
+    	else {
+    		$data['judul'] = "Isi Feedback";
+    		$data['main'] = "ops/hasil_search_feedback";
+    		$data['aktif'] = 'class="active"';
+    
+    		$this->load->view('dashboard', $data);
+    	}
+    
     }
 }

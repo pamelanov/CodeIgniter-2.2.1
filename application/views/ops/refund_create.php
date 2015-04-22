@@ -31,14 +31,26 @@
         <div class="form-group">
             <label for="tanggal">Sebab Jam Hilang</label>
             <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Sebab Jam Hilang">
+<<<<<<< HEAD
         </div>
+=======
+        
+>>>>>>> punya-pamela
        
        
 
     </div>
     <button type="submit" class="btn btn-danger">Create Refund</button>
+<<<<<<< HEAD
+=======
+    </div>
+>>>>>>> punya-pamela
 </form>
 </div>
 
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> punya-pamela

@@ -11,13 +11,18 @@ class Feedback extends Ci_Controller {
   
   function index(){
 	$data['judul'] = "Feedback Summary";
-	$data['main'] = 'admin/feedback_home';
-	$data['feedback'] = $this->mfeedback->getAllFeedbacks();
+	$data['main'] = 'createFeedback';
+	//$data['feedback'] = $this->mfeedback->getAllFeedbacks();
 	$this->load->vars($data);
-	$this->load->view('admin/dashboard');  
+	$this->load->view('dashboard');  
   }
   
-
+  function searchFeedback() {
+  	$data['judul'] = "Search Feedback";
+  	$data['main'] = 'ops/feedback_summary';
+  	$this->load->vars($data);
+  	$this->load->view('dashboard');
+  }
   
   function addFeedbacksCtrl(){
   	$f = new Feedback();
@@ -54,6 +59,29 @@ class Feedback extends Ci_Controller {
 		$this->load->vars($data);
 		$this->load->view('admin/dashboard');    
 	} */
+  }
+  
+  function createFeedback() {
+  	$n = new Feedback();
+  
+  	$n->id_murid = $this->input->post('id_murid');
+  	$n->id_guru = $this->input->post('id_guru');
+  	$n->tanggal = $this->input->post('tanggal');
+  	$n->rating = $this->input->post('rating');
+  	$n->isi = $this->input->post('isi');
+  
+  	$a = new Feedback;
+  	$a = $n->addFeedbacks();
+  	echo $a->id_murid;
+  	echo $a->id_guru;
+  }
+  
+  function readFeedback(){
+  	$data['judul'] = "Feedback";
+  	$data['main'] = 'createFeedback';
+  	$data['feedback'] = $this->getAllFeedbacks();
+  	$this->load->vars($data);
+  	$this->load->view('dashboard');
   }
   
   function edit($id=0){

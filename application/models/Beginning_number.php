@@ -1,7 +1,7 @@
 <?php
 class Beginning_number extends DataMapper {
 	
-	
+	 var $default_order_by = array('id' => 'desc');
 
 	var $has_one = array(
 			'assigner' => array(
@@ -26,27 +26,34 @@ class Beginning_number extends DataMapper {
 	{
 	}
 	
-	function updateStatus($n){
-		
-		/*
-	$n->save(array('assigner' => '33333',
-		 'editor' => 'YS',
-		'No' => '4'));
+	function updateStatus(){
+	$inc_id = new Beginning_number();
+	$id_terakhir = new Beginning_number();
+	$inc_id->get();
+	$id_terakhir = $inc_id->select_max('id');
+	$angka = $inc_id->id + 1;
 	
-	*/
-	return true;
-
+	$n = new Beginning_number();
+	
+	$n->id_murid = $this->id_murid;
+	$n->id_sales = $this->id_sales;
+	$n->status = $this->status;
+	$n->jam= $this->jam;
+	$n->tanggal = $this->tanggal;
+	$n->id = $angka;
+	
+	
+	$n->save_as_new();
+	
+	return $n;
 	
 	}
 	
 	function ambilStatus(){
-	$s = new Beginning_number();	    
-        $m = new Student();
-	$m->where('id_Murid', $this->Id_murid)->get();
-	$s->where('id_Murid', $m)->get();
-
-	return $s;
-
+	$n = new Beginning_number();
+	$n->get();
+	$this->salt = $n->salt;
+	return $n;
 	}
 }
 
