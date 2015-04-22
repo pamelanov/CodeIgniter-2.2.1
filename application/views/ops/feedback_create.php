@@ -8,42 +8,42 @@
     <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createRefund" > Refund</a></li>
     <li role="presentation"class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/createFeedback" > Feedback</a></li>
 </ul>
-<form name='update_status' action='<?php echo base_url(); ?>index.php/ops/student/createStatus' method='post' >
+<form name='update_status' action='<?php echo base_url(); ?>index.php/dashboard/createFeedback' method='post' >
     <div id ="konten">
 
         <div class="form-group">
             <label for="idMurid">ID Murid</label>
-            <input type="text" class="form-control" id="idMurid" placeholder="Masukkan ID Murid">
+            <input type="text" class="form-control" name="id_murid" placeholder="Masukkan ID Murid">
         </div>
         <div class="form-group">
             <label for="jam">ID Guru</label>
-            <input type="text" class="form-control" id="jam" placeholder="Masukkan ID Guru">
+            <input type="text" class="form-control" name="id_guru" placeholder="Masukkan ID Guru">
         </div>
         <div class="form-group">
             <label for="tanggal">ID Sales</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan ID Sales">
+            <input type="text" class="form-control" name="id_sales" placeholder="Masukkan ID Sales">
         </div>
         <div class="form-group">
             <label for="tanggal">Tanggal</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Tanggal">
+            <input type="date" class="form-control" name="tanggal" placeholder="Masukkan Tanggal">
         </div>
         <div class="form-group">
             <label for="tanggal">Rating</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Rating">
+            <input type="text" class="form-control" name="rating" placeholder="Masukkan Rating">
         </div>
 
         <div class="form-group">
             <label for="tanggal">Isi</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Isi">
+            <input type="text" class="form-control" id="isi" placeholder="Masukkan Isi">
         </div>
 
         <div class="form-group">
             <label for="tanggal">Total Skor</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Total Skor">
+            <input type="text" class="form-control" id="total_skor" placeholder="Masukkan Total Skor">
         </div>
         <div class="form-group">
             <label for="tanggal">Status</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Status">
+            <input type="text" class="form-control" id="status" placeholder="Masukkan Status">
         </div>
 
 
