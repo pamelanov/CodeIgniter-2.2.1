@@ -38,7 +38,34 @@ class Student extends Ci_Controller {
     
     }
 
-
+    function createFeedback() {
+    	$n = new Feedback();
+    
+    	$n->id_murid = $this->input->post('id_murid');
+    	$n->id_guru = $this->input->post('id_guru');
+    	$n->tanggal = $this->input->post('tanggal');
+    	$n->rating = $this->input->post('rating');
+    	$n->isi = $this->input->post('isi');
+    	$n->id_sales = $this->input->post('id_sales');
+    
+    	$a = new Feedback;
+    	$a = $n->addFeedbacks();
+		
+    	$data['judul'] = "Feedback";
+    	$data['main'] = 'createFeedback1';
+    	echo '<br><br>Feedback berhasil disimpan!';
+    	//$data['feedback'] = $this->getAllFeedbacks();
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+    }
+    
+    function readFeedback(){
+    	$data['judul'] = "Feedback";
+    	$data['main'] = 'createFeedback';
+    	$data['feedback'] = $this->getAllFeedbacks();
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+    }
     
     function riwayatStatus(){
         $s = new Beginning_number();

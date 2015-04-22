@@ -37,17 +37,28 @@ class Feedback extends DataMapper {
 	}
 	
 	function addFeedbacks(){
-		$f = new Feedback();
-		
-		// Enter values into required fields
-		$f->where('id_Guru', $this->Id_guru);
-		$f->where('id_Murid', $this->Id_murid);
-		$f->get();
-		$this->salt = $u->salt;
-		$this->validate()->get();
-		
-		// Save new user
-		$f->save();
+		$inc_id = new Feedback();
+		$id_terakhir = new Feedback();
+		$inc_id->get();
+		$id_terakhir = $inc_id->select_max('id');
+		$angka = $inc_id->id + 1;
+	
+		$n = new Feedback();
+	
+		$n->id_murid = $this->id_murid;
+		$n->id_guru = $this->id_guru;
+		$n->id_sales = $this->id_sales;
+		$n->isi = $this->isi;
+		$n->status = $this->status;
+		$n->rating= $this->rating;
+		$n->tanggal = $this->tanggal;
+		$n->total_skor = $this->total_skor;
+		$n->id = $angka;
+	
+		$n->save_as_new();
+	
+	return $n;
+
 	}
          function updateFeedback(){
          $f = new Feedback();
