@@ -25,10 +25,8 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-<<<<<<< HEAD
-    
-    function refunds(){
-=======
+
+
 
     function createStatus() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
@@ -101,8 +99,8 @@ class Dashboard extends Ci_Controller {
     function refunds() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
-        }
->>>>>>> punya-yodi
+	    
+	}
         $r = new Refund();
         
         $data['judul'] = "Refund Summary";
@@ -138,14 +136,8 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-<<<<<<< HEAD
 
-    function create() {
-        $this->load->library('encrypt');
-        if ($this->input->post('username')) {
-            $this->madmins->addUser();
-            $this->session->set_flashdata('message', 'User created');
-=======
+
 
     function performance_sup() {
         if ($this->session->userdata('role') != 3) {
@@ -208,7 +200,6 @@ class Dashboard extends Ci_Controller {
         if ($u->updateAccount) {
 
             $this->session->set_flashdata('message', 'User updated');
->>>>>>> punya-yodi
             redirect('dashboard/users', 'refresh');
         } else {
             $data['judul'] = "Create User";
@@ -216,28 +207,6 @@ class Dashboard extends Ci_Controller {
             $this->load->vars($data);
             $this->load->view('dashboard');
         }
-    }
-
-    function edit($id = 0) {
-        $this->load->library('encrypt');
-        if ($this->input->post('username')) {
-            $this->madmins->updateUser();
-            $this->session->set_flashdata('message', 'User updated');
-            redirect('dashboard/users', 'refresh');
-        } else {
-            //$id = $this->uri->segment(4);
-            $data['judul'] = "Edit User";
-            $data['main'] = 'admin/user_edit';
-            $data['admin'] = $this->madmins->getUser($id);
-            $this->load->vars($data);
-            $this->load->view('dashboard');
-        }
-    }
-
-    function delete($id) {
-        $this->madmins->deleteUser($id);
-        $this->session->set_flashdata('message', 'User deleted');
-        redirect('dashboard/users', 'refresh');
     }
 
     function logout() {
