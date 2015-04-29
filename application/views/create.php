@@ -30,7 +30,7 @@ if ($this->session->flashdata('message')){
 
 if (!empty($student)){
         ?>
-        <form name='update_status' action='<?php echo base_url();?>index.php/ops/student/createStatus' method='post'>
+        <form name='update_status' action='<?php echo base_url();?>index.php/ops/create/createStatus' method='post'>
         <?php
         echo "<div class='form-group'>";
             echo "<label for='id_murid'>ID Murid: $student->id_murid</label><br/>";
@@ -43,8 +43,12 @@ if (!empty($student)){
             echo "<input type='text' class='form-control' name='id_murid' placeholder='ID Murid'>";
         echo "</div>";
         echo "<div class='form-group'>";
+            echo "<label for='noInvoice'>No Invoice (Opsional)</label>";
+            echo "<input type='text' class='form-control' name='no_invoice' placeholder='Nomor Invoice'>";
+        echo "</div>";
+        echo "<div class='form-group'>";
             echo "<label for='jam'>Jam</label>";
-            echo "<input type='text' class='form-control' name='jam' placeholder='Jam'>";
+            echo "<input type='time' class='form-control' name='jam' placeholder='Jam'>";
         echo "</div>";
         echo "<div class='form-group'>";
             echo "<label for='tanggal'>Tanggal</label>";
