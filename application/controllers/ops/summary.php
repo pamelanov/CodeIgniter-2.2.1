@@ -39,31 +39,7 @@ class Summary extends Ci_Controller {
         
     }
     
-    function searchStudentStatus() {
-        $u = new Student();
-        $u->id_murid = $this->input->post('idMurid');
-        
-       // $n = new Beginning_number();
-       // $n->Id_murid = $this->input->post('idMurid');
     
-        if ($u->findStudent()) {
-
-            $data['judul'] = "Hasil Pencarian";
-            $data['main'] = 'ops/createStatus';
-            $data['student'] = $u->hasilSearch();
-            //$data['riwayat'] = $n->ambilStatus();
-            $this->load->vars($data);
-            $this->load->view('dashboard');
-        }
-         else {
-            $data['judul'] = "Hasil Pencarian";
-            $data['main'] = "ops/hasil_search";
-            $data['aktif'] = 'class="active"';
-
-            $this->load->view('dashboard', $data);
-        }
-        
-    }
     
     
     function searchStatusStudent() {

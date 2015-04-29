@@ -8,7 +8,7 @@ class Recurring_status extends DataMapper {
 					'other_field' => 'managed_recurring_status'
 			),
 			'assigner' => array(
-					'class' => 'engagement',
+					'class' => 'course',
 					'other_field' => 'assigned_recurring_status'
 			),
 	);

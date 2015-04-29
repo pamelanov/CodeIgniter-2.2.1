@@ -27,21 +27,19 @@ class Beginning_number extends DataMapper {
 	}
 	
 	function updateStatus(){
-	$inc_id = new Beginning_number();
-	$id_terakhir = new Beginning_number();
-	$inc_id->get();
-	$id_terakhir = $inc_id->select_max('id');
-	$angka = $inc_id->id + 1;
-	
+		
 	$n = new Beginning_number();
+	$a = new Account();
+	$m = new Student();
 	
-	$n->id_murid = $this->id_murid;
-	$n->id_sales = $this->id_sales;
+	$a->where('id_acc', $this->id_sales)->get();
+	$m->where('id_murid', $this->id_murid)->get();
+	
+	$n->id_murid = $m->id;
+	$n->id_sales = $a->id;
 	$n->status = $this->status;
 	$n->jam= $this->jam;
 	$n->tanggal = $this->tanggal;
-	$n->id = $angka;
-	
 	
 	$n->save_as_new();
 	

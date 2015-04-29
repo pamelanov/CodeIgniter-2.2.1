@@ -14,7 +14,7 @@ class Invoice extends DataMapper {
 	
 	var $has_one = array(
 			'creator' => array(
-					'class' => 'engagement',
+					'class' => 'course',
 					'other_field' => 'created_invoice'
 			)
 	);

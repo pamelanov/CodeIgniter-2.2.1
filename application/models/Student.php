@@ -9,8 +9,8 @@ class Student extends DataMapper {
 	);
 	
 	var $has_many = array(
-			'ordered_engagement' => array(
-					'class' => 'engagement',
+			'ordered_course' => array(
+					'class' => 'course',
 					'other_field' => 'orderer'
 			),
 			'gave_feedback' => array(
