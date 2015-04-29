@@ -15,7 +15,7 @@
 </ul>
 
 <div id ="konten">
-<form class="form-inline" align="left" action='<?php echo base_url();?>index.php/ops/summary/searchStudentStatus' method='post'>
+<form class="form-inline" align="left" action='<?php echo base_url();?>index.php/ops/create/searchStudentStatus' method='post'>
   <div class="form-group">
     <label for="exampleInputName2">Enter Student ID</label>
     <input type="text" class="form-control" name="idMurid" placeholder="ID Student">
@@ -33,7 +33,7 @@ if (!empty($student)){
         <form name='update_status' action='<?php echo base_url();?>index.php/ops/student/createStatus' method='post'>
         <?php
         echo "<div class='form-group'>";
-            echo "<label for='id_murid'>ID Murid : $student->id_murid</label><br/>";
+            echo "<label for='id_murid'>ID Murid: $student->id_murid</label><br/>";
             echo "<label for='id_murid'>Nama : $student->nama</label><br/>";
             echo "<label for='id_murid'>Gender: $student->gender</label><br/>";
             echo "<label for='id_murid'>Domisili : $student->domisili</label><br/>";

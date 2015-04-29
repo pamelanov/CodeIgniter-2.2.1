@@ -1,5 +1,5 @@
 <?php
-class Engagement extends DataMapper {
+class Course extends DataMapper {
 
 	var $has_many = array(
 			'created_invoice' => array(
@@ -15,11 +15,11 @@ class Engagement extends DataMapper {
 	var $has_one = array(
 			'orderer' => array(
 					'class' => 'student',
-					'other_field' => 'ordered_engagement'
+					'other_field' => 'ordered_course'
 			),
 			'taughtBy' => array(
 					'class' => 'teacher',
-					'other_field' => 'taught_engagement'
+					'other_field' => 'taught_course'
 			)
 	);
 	// Optionally, don't include a constructor if you don't need one.

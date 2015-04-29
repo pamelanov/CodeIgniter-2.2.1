@@ -37,6 +37,8 @@ class Student extends Ci_Controller {
         echo $a->id_sales;
     
     }
+    
+    
 
     function createFeedback() {
     	$n = new Feedback();
