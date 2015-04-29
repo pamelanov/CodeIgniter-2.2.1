@@ -109,12 +109,33 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
+
     
-    function feedbacks(){
+    function updateFeedback(){
+    	//$r = new Feedback();
+    
+    	$data['judul'] = "Update Feedback";
+    	$data['main'] = 'updateFeedback';
+    	//$data['feedback'] = $r->getAllFeedbacks();
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+    }
+    
+    function readFeedback(){
     	$r = new Feedback();
+    	
+    	$data['judul'] = "Feedback";
+    	$data['main'] = 'createFeedback';
+    	$data['feedback'] = $r->getAllFeedbacks();
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+    }
     
-    	$data['judul'] = "Feedback Summary";
-    	$data['main'] = 'ops/feedback_home';
+    function readFeedback1(){
+    	$r = new Feedback();
+    	 
+    	$data['judul'] = "Feedback";
+    	$data['main'] = 'readFeedback';
     	$data['feedback'] = $r->getAllFeedbacks();
     	$this->load->vars($data);
     	$this->load->view('dashboard');

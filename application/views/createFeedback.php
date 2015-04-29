@@ -14,7 +14,10 @@ if ($this->session->flashdata('message')){
 }
 
 if (!empty($feedback)) {
+<<<<<<< HEAD
 	echo anchor('dashboard/createFeedback', 'Tambah Feedback');
+=======
+>>>>>>> origin/punya-pinky
 	echo "<table class='table table-bordered'>\n";
 	echo "<tr valign='top'>\n";
 	echo "<th>ID Murid</th><th>ID Guru</th><th>Tanggal Terakhir Diubah</th>\n";
@@ -26,9 +29,17 @@ if (!empty($feedback)) {
 		echo "<td align='center'>" . $list->tanggal . "</td>\n";
 	
 		echo "<td align='center'>";
+<<<<<<< HEAD
 		echo anchor('dashboard/updateFeedback', 'ubah');
 		echo " | ";
 		echo anchor('dashboard/searchFeedback/'.$list->id_murid , 'lihat');
+=======
+		echo anchor('dashboard/createFeedback', 'tambah');
+		echo " | ";
+		echo anchor('dashboard/updateFeedback', 'ubah');
+		echo " | ";
+		echo anchor('dashboard/readFeedback1' , 'lihat');
+>>>>>>> origin/punya-pinky
 		echo "</td>\n";
 		echo "</tr>\n";
 	}

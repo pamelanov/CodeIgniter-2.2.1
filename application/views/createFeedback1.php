@@ -54,9 +54,16 @@
 
  <button type='submit' class='btn btn-danger'>Tambah Feedback</button>
 
+<<<<<<< HEAD
  <?php echo anchor('dashboard/readFeedback', '       halaman sebelumnya');?>
  </div>
  </form>
  
  
+=======
+ </div>
+ </form>
+ 
+ <?php echo anchor('dashboard/readFeedback', '<-- halaman sebelumnya');?>
+>>>>>>> origin/punya-pinky
 

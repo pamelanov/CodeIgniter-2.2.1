@@ -12,56 +12,28 @@ class Refund extends DataMapper {
 			)
 	);
 	
-	// Optionally, don't include a constructor if you don't need one.
-	function __construct($id = NULL)
-	{
-		parent::__construct($id);
+	
+        function addRefunds(){
+		$inc_id = new Refund();
+		$id_terakhir = new Refund();
+		$inc_id->get();
+		$id_terakhir = $inc_id->select_max('id');
+		$angka = $inc_id->id + 1;
+	
+		$n = new Refund();
+	
+                $n->tanggal = $this->tanggal;
+		$n->id_murid = $this->id_murid;
+		$n->id_guru = $this->id_guru;
+		$n->jamHilang = $this->jamHilang;
+		$n->harga = $this->harga;
+		$n->alasan= $this->alasan;
+	
+		$n->save_as_new();
+	
+	return $n;
+
 	}
-
-	// Optionally, you can add post model initialisation code
-	function post_model_init($from_cache = FALSE)
-	{
-	}
-     
-        function register(){
-             // Create a temporary user object
-        $u = new Refund();
-
-        // Get this users stored record via their username
-        $u->idmurid= $this->Id_murid;
-        $u->idguru= $this->Id_guru;
-        $u->noinvoice= $this->No_invoice;
-        $u->idkelas= $this->Id_kelas;
-        $u->idsales= $this->Id_sales;
-        $u->tanggalr= $this->tanggalRefund;
-        $u->jamhilang= $this->jam_hilang;
-        $u->hargaperjam= $this->hargaperjam;
-        $u->selisih= $this->Selisih;
-        $u->alasan= $this->Alasan;
-        $u->status= $this->Status;
-       
-        
-        // Give this user their stored salt
-        $this->salt = $u->salt;
-
-        // Validate and get this user by their property values,
-        // this will see the 'encrypt' validation run, encrypting the password with the salt
-        $this->validate()->get();
-
-        // If the username and encrypted password matched a record in the database,
-        // this user object would be fully populated, complete with their ID.
-        // If there was no matching record, this user would be completely cleared so their id would be empty.
-        if (empty($this->Id)) {
-            // Login failed, so set a custom error message
-            $this->error_message('login', 'Username or password invalid');
-
-            return FALSE;
-        } else {
-            // Login succeeded
-            return TRUE;
-        }
-    
-        }
         
 	
 	

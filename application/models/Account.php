@@ -108,9 +108,6 @@ class Account extends DataMapper {
         $u->email = $this->email;
         $u->nama = $this->nama;
         $u->role = $this->role;
-        
-        
-
     }
 
     // Validation prepping function to encrypt passwords

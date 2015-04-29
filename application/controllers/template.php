@@ -63,7 +63,7 @@ class Template extends CI_Controller {
         // (no need to validate the post variables in the controller,
         // if you've set your DataMapper models up with validation rules)
         $u->id_acc = $this->input->post('id');
-        $u->password = md5($this->input->post('password'));
+        $u->password = $this->input->post('password');
 
         // Attempt to log user in with the data they supplied, using the login function setup in the User model
         // You might want to have a quick look at that login function up the top of this page to see how it authenticates the user
