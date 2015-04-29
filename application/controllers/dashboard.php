@@ -109,16 +109,7 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    
-    function createFeedback(){
-    	//$r = new Feedback();
-    
-    	$data['judul'] = "Create Feedback";
-    	$data['main'] = 'createFeedback1';
-    	//$data['feedback'] = $r->getAllFeedbacks();
-    	$this->load->vars($data);
-    	$this->load->view('dashboard');
-    }
+
     
     function updateFeedback(){
     	//$r = new Feedback();
