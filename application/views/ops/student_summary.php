@@ -1,14 +1,10 @@
 <h1><?php echo $judul; ?></h1>
 <ul class="nav nav-tabs">
-<<<<<<< HEAD
+
     <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
     <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
     <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbacks" > Feedback</a></li>
-=======
-  <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
-  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
-  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/ops/feedback/searchFeedback" > Feedback</a></li>
->>>>>>> origin/punya-pinky
+
 </ul>
 
 <br>

@@ -32,27 +32,33 @@ class Target extends DataMapper {
 		
 	}
 	
-	function createTarget(){
-	$inc_id = new Target();
-	$id_terakhir = new Target();
-	$inc_id->get();
-	$id_terakhir = $inc_id->select_max('id');
-	$angka = $inc_id->id+1;
+	function valid() {
 	
-	$n = new Target();
-	$n->id_sales = $this->id_sales;
-        $n->periode = $this->periode;
-        $n->id_supervisor = $this->id_supervisor;
-        $n->target = $this->target;
-	
-	if ($angka == 0) {
-		$n->id = 1;
+		$a = new Account();
+		$b = new Account();
+		$a->where('id_acc', $this->id_sales)->get();
+		$b->where('id_acc', $this->id_supervisor)->get();
+		
+		if (!empty($a) && !empty($b)) return true;
+		else return false;
 	}
 	
-	else {
-		$n->id 	= $angka+1;
-	}	
 	
+	function createTarget(){
+	
+	$n = new Target();
+	$a = new Account();
+	$b = new Account();
+	
+	$a->where('id_acc', $this->id_sales)->get();
+	$b->where('id_acc', $this->id_supervisor)->get();
+	
+	$n->id_sales = $a->id_acc;
+        $n->periode = $this->periode;
+        $n->id_supervisor = $b->id_acc;
+        $n->target = $this->target;
+	
+
 	$n->save_as_new();
 	
 	return $n;

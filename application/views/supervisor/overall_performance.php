@@ -1,5 +1,6 @@
- <div id ="konten">
-  <h1>Performance</h1>
+   <h1><?php echo $judul; ?></h1>
+
+
  <ul class="nav nav-tabs">
   <li role="presentation"><a href="<?php echo base_url(); ?>index.php/supervisor/performance" > Create</a></li>
   <li role="presentation"><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showEdit" > Edit </a></li>
@@ -7,7 +8,7 @@
  </ul>
  
  
- 
+  <div id ="konten">
  <p><?php echo anchor("admin/refund/create", "Download"); ?></p>
 
 <?php
@@ -20,7 +21,7 @@ if ($this->session->flashdata('message')){
 
 ;
 
-	echo "<table id='table'>\n";
+	echo "<table class='table'>\n";
 	echo "<tr>\n";
 		
         echo "<th ><center>#</th></center>\n";

@@ -11,8 +11,12 @@ class Performance extends Ci_Controller {
          if ($this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
-        $data['judul'] = "Create";
+        
+        $a = new Account();
+        
+        $data['judul'] = "Create Performance Target";
         $data['main'] = 'supervisor/performance';
+        $data['ops'] = $a->getAllOps();
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
@@ -26,12 +30,19 @@ class Performance extends Ci_Controller {
         $n->id_supervisor = $this->input->post('id_supervisor');
         $n->target = $this->input->post('target');
 
+        if ($n->valid()){
         $data['judul'] = "Target Berhasil Disimpan";
 	$data['main'] = 'supervisor/created';
         $data['targets'] = $n->createTarget();
 	$this->load->vars($data);
 	$this->load->view('dashboard');  
-    
+        }
+        else {
+        $data['judul'] = "Target Gagal Disimpan";
+        $data['main'] = 'supervisor/failed';
+        $this->load->vars($data);
+        $this->load->view('dashboard'); 
+        }
     }
     
     function showEdit() {
@@ -82,7 +93,7 @@ class Performance extends Ci_Controller {
     function overall(){
         $t = new Target();
         
-	$data['judul'] = "Performance";
+	$data['judul'] = "Overall Performance";
 	$data['main'] = 'supervisor/overall_performance';
         $data['targets'] = $t->rank();
 	$this->load->vars($data);
