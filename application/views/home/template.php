@@ -22,15 +22,7 @@
             
 
             </div>
-            <!--
-            <div class="clear"></div>
-            <div id="footer"><center>
-                    <b> KELOMPOK B01</a> </b>
-                    <br>
-                        <b>ruangguru.com</a> </b>  
-                </center></div>
-            </div>
-            -->
+   
       </div> 
     </body>
 </html>

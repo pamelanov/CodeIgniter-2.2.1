@@ -22,16 +22,15 @@ class Create extends Ci_Controller {
     
         if ($u->findStudent()) {
 
-            $data['judul'] = "Hasil Pencarian";
+            $data['judul'] = "Perbaharui Status";
             $data['main'] = 'create';
             $data['student'] = $u->hasilSearch();
-            //$data['riwayat'] = $n->ambilStatus();
             $this->load->vars($data);
             $this->load->view('dashboard');
         }
          else {
-            $data['judul'] = "Hasil Pencarian";
-            $data['main'] = "ops/hasil_search";
+            $data['judul'] = "Perbaharui Status";
+            $data['main'] = "ops/gagal_search";
             $data['aktif'] = 'class="active"';
 
             $this->load->view('dashboard', $data);
@@ -42,7 +41,7 @@ class Create extends Ci_Controller {
           function createStatus() {
         
         
-        if (!empty($this->input->post('no_invoice'))){
+        if ($this->input->post('status') == 6 || $this->input->post('status') == 7 || $this->input->post('status') == 8 ){
             
             $m = new End_number();
             $o = new End_number();

@@ -12,8 +12,8 @@ class Account extends DataMapper {
             'class' => 'refund',
             'other_field' => 'manager'
         ),
-        'managed_end_status' => array(
-            'class' => 'end_status',
+        'managed_end_number' => array(
+            'class' => 'end_number',
             'other_field' => 'manager'
         ),
         'managed_beginning_number' => array(
@@ -98,7 +98,12 @@ class Account extends DataMapper {
         
     }
 
-  
+    function getAllOps(){
+        $a = new Account();
+        $a->where('role', 2)->get();
+        
+        return $a;
+    }
     
     function updateAccount(){
          $u = new Account();
