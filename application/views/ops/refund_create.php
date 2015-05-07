@@ -1,73 +1,50 @@
+<h1><?php echo $judul;?></h1>
 
 
-<!DOCTYPE html>
-<html lang="en"></html>
-<h1><?php echo $judul; ?></h1>
+<body>
 <ul class="nav nav-tabs">
-       <li role="presentation" ><a href="<?php echo base_url(); ?>index.php/dashboard/createData" > Home</a></li>
-        <li role="presentation" ><a href="<?php echo base_url(); ?>index.php/dashboard/createStatus" > Student</a></li>
-       <li role="presentation"class="active" ><a href="<?php echo base_url(); ?>index.php/dashboard/createRefund" > Refund</a></li>
-    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/cFeedback" > Feedback</a></li>
-    </ul>
-<form name='update_status' action='<?php echo base_url(); ?>index.php/dashboard/createRefund' method='post' >
-    <div id ="konten">
+  <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/createRefund" > Student</a></li>
+  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/ops/refund/createData" > Refund</a></li>
+  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/readFeedback" > Feedback</a></li>
+</ul>
+    
+<?php
+//echo form_open('admin/refund/create');
+echo form_open('ops/refund/create');
 
-        <div class="form-group">
-            <label for="tanggal">Tanggal Refund</label>
-            <input type="date" class="form-control" name="tanggal" placeholder="Masukkan ID Murid">
-        </div>
-        <div class="form-group">
-            <label for="id_murid">ID Murid</label>
-            <input type="text" class="form-control" name="id_murid" placeholder="Masukkan Jam">
-        </div>
-        <div class="form-group">
-            <label for="jam_hilang">Jumlah Jam Hilang</label>
-            <input type="text" class="form-control" name="jam_hilang" placeholder="Masukkan Jam Hilang">
-        </div>
-        <div class="form-group">
-            <label for="hargaPerJam">Harga Per Jam</label>
-            <input type="text" class="form-control" name="hargaPerJam" placeholder="Masukkan Harga Per Jam">
-        </div>
-        <div class="form-group">
-            <label for="idGuru">ID Guru</label>
-            <input type="text" class="form-control" name="id_guru" placeholder="Masukkan Harga Per Jam">
-        </div>
-        <div class="form-group">
-            <label for="id_kelas">ID Kelas</label>
-            <input type="text" class="form-control" name="id_kelas" placeholder="Masukkan Harga Per Jam">
-        </div>
-        <div class="form-group">
-            <label for="action">Action</label>
-            <input type="text" class="form-control" name="action" placeholder="Masukkan Harga Per Jam">
-        </div>
-         <div class="form-group">
-            <label for="selisih">Selisih</label>
-            <input type="text" class="form-control" name="selisih" placeholder="Masukkan Harga Per Jam">
-        </div>
-         <div class="form-group">
-            <label for="no_invoice">No Invoice</label>
-            <input type="text" class="form-control" name="no_invoice" placeholder="Masukkan Harga Per Jam">
-        </div>
-        <div class="form-group">
-            <label for="alasan">Sebab Jam Hilang</label>
-            <input type="text" class="form-control" name="alasan" placeholder="Masukkan Sebab Jam Hilang">
-        
-       
-       
+echo "<p><label for='uname'>No. Invoice</label><br/>";
+$data = array('name'=>'no_invoice','id'=>'uname','size'=>25);
+echo form_input($data) ."</p>";
 
-    </div>
-          <div class="form-group">
-            <label for="id_sales">ID Sales</label>
-            <input type="text" class="form-control" name="id_sales" placeholder="Masukkan Sebab Jam Hilang">
-        
-       
-       
+echo "<p><label for='uname'>Id Kelas</label><br/>";
+$data = array('name'=>'id_kelas','id'=>'uname','size'=>25);
+echo form_input($data) ."</p>";
 
-    </div>
-    <button type="submit" class="btn btn-danger">Create Refund</button>
-    </div>
-</form>
-</div>
+echo "<p><label for='uname'>ID Murid</label><br/>";
+$data = array('name'=>'idmurid','id'=>'uname','size'=>25);
+echo form_input($data) ."</p>";
 
-</body>
-</html>
+echo "<p><label for='uname'>ID Guru</label><br/>";
+$data = array('name'=>'idguru','id'=>'uname','size'=>25);
+echo form_input($data) ."</p>";
+
+echo "<p><label for='uname'>Harga Per Jam</label><br/>";
+$data = array('name'=>'harga','id'=>'uname','size'=>25);
+echo form_input($data) ."</p>";
+
+echo "<p><label for='uname'>Jam Hilang</label><br/>";
+$data = array('name'=>'jam_hilang','id'=>'uname','size'=>25);
+echo form_input($data) ."</p>";
+
+echo "<p><label for='email'>Alasan</label><br/>";
+$data = array('name'=>'alasan','id'=>'uname','size'=>25);
+echo form_input($data) ."</p>";
+
+echo "<p><label for='status'>Status</label><br/>";
+$options = array('active' => 'active', 'inactive' => 'inactive');
+echo form_dropdown('status',$options) ."</p>";
+
+
+echo form_submit('submit','create refund');
+echo form_close();
+echo anchor('dashboard/refunds', '<-- halaman sebelumnya');?>
