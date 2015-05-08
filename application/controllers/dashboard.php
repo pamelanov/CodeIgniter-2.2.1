@@ -82,7 +82,26 @@ class Dashboard extends Ci_Controller {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
-
+        	$n = new Feedback();
+        
+        	$n->id_murid = $this->input->post('id_murid');
+        	$n->id_guru = $this->input->post('id_guru');
+        	$n->tanggal = $this->input->post('tanggal');
+        	$n->rating = $this->input->post('rating');
+        	$n->isi = $this->input->post('isi');
+        	$n->id_sales = $this->input->post('id_sales');
+        
+        	$a = new Feedback;
+        	$a = $n->addFeedbacks();
+        
+        	$data['judul'] = "Feedback";
+        	$data['main'] = 'createFeedback1';
+        	echo '<br><br>Feedback berhasil disimpan!';
+        	//$data['feedback'] = $this->getAllFeedbacks();
+        	$this->load->vars($data);
+        	$this->load->view('dashboard');
+        }
+        /*
         $f = new Feedback();
 
         $f->id_murid = $this->input->post('id_murid');
@@ -94,7 +113,8 @@ class Dashboard extends Ci_Controller {
         $f->total_skor = $this->input->post('total_skor');
         $f->id_sales = $this->input->post('id_sales');
         $f->save();
-    }
+        */
+    
 
     function refunds() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {

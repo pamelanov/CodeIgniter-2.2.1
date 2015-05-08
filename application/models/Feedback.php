@@ -38,12 +38,13 @@ class Feedback extends DataMapper {
 	
 
 	function addFeedbacks(){
+		/*
 		$inc_id = new Feedback();
 		$id_terakhir = new Feedback();
 		$inc_id->get();
 		$id_terakhir = $inc_id->select_max('id');
 		$angka = $inc_id->id + 1;
-	
+		*/
 		$n = new Feedback();
 	
 		$n->id_murid = $this->id_murid;
@@ -54,7 +55,7 @@ class Feedback extends DataMapper {
 		$n->rating= $this->rating;
 		$n->tanggal = $this->tanggal;
 		$n->total_skor = $this->total_skor;
-		$n->id = $angka;
+		$n->id = $this->id;
 	
 		$n->save_as_new();
 	
