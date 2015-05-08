@@ -27,17 +27,17 @@ if ($this->session->flashdata('message')){
 		echo "<td align='center'>" . $list->id_guru . "</td>\n";
 		echo "<td align='center'>" . $list->tanggal . "</td>\n";
 	
-
+		echo "<td align='center'>";
 		echo anchor('dashboard/updateFeedback', 'ubah');
 		echo " | ";
 		echo anchor('dashboard/searchFeedback/'.$list->id_murid , 'lihat');
-
+		/*
 		echo anchor('dashboard/createFeedback', 'tambah');
 		echo " | ";
 		echo anchor('dashboard/updateFeedback', 'ubah');
 		echo " | ";
 		echo anchor('dashboard/readFeedback1' , 'lihat');
-
+		*/
 		echo "</td>\n";
 		echo "</tr>\n";
 	}
