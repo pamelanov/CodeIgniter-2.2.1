@@ -6,9 +6,9 @@ class Feedback extends Ci_Controller {
 		parent::__construct();
   //session_start();
     
-	if ($_SESSION['userid'] < 1){
-    	redirect('template/login','refresh');
-    }
+	    if($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+           redirect('template/login', 'refresh');
+        }
   }
   
   function index(){
@@ -28,9 +28,9 @@ class Feedback extends Ci_Controller {
   }
   */
   
-  function searchFeedback($id_murid) {
+  function searchFeedback($id) {
   	$u = new Feedback();
-  	$u->where('id_murid', $id_murid);
+  	$u->where('id', $id);
   	$u->get();
   	//echo $id_murid;
   	//$u->id_guru = $this->input->post('idGuru');

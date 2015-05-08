@@ -74,7 +74,32 @@ class Feedback extends DataMapper {
 
     }
         
-	
+    function findFeedback(){
+    	$u = new Feedback();
+    	//$u->where('id_guru', $this->id_guru);
+    	$u->get();
+    	$this->salt = $u->salt;
+    
+    	// Validate and get this user by their property values,
+    	// this will see the 'encrypt' validation run, encrypting the password with the salt
+    	$this->validate()->get();
+    	if (empty($this->id_murid)) {
+    
+    		return FALSE;
+    	} else {
+    		// found something
+    		return TRUE;
+    	}
+    }
+    
+    function hasilSearch(){
+    	$o = new Feedback();
+    	//$o->where('id_guru', $this->id_guru);
+    	$o->get();
+    	$this->salt = $o->salt;
+    
+    	return $o;
+    }
 }
 
 /* End of file name.php */
