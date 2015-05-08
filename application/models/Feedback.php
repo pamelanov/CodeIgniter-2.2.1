@@ -76,6 +76,7 @@ class Feedback extends DataMapper {
         
     function findFeedback(){
     	$u = new Feedback();
+    	$u->where('id', $this->id);
     	//$u->where('id_guru', $this->id_guru);
     	$u->get();
     	$this->salt = $u->salt;
@@ -94,6 +95,7 @@ class Feedback extends DataMapper {
     
     function hasilSearch(){
     	$o = new Feedback();
+    	$o->where('id', $this->id);
     	//$o->where('id_guru', $this->id_guru);
     	$o->get();
     	$this->salt = $o->salt;
