@@ -19,12 +19,44 @@ class Feedback extends Ci_Controller {
 	$this->load->view('dashboard');  
   }
   
+  /*
   function searchFeedback() {
   	$data['judul'] = "Search Feedback";
   	$data['main'] = 'ops/feedback_summary';
   	$this->load->vars($data);
   	$this->load->view('dashboard');
   }
+  */
+  
+  function searchFeedback($id_murid) {
+  	$u = new Feedback();
+  	$u->where('id_murid', $id_murid);
+  	$u->get();
+  	//echo $id_murid;
+  	//$u->id_guru = $this->input->post('idGuru');
+  
+  	// $n = new Beginning_number();
+  	// $n->Id_murid = $this->input->post('idMurid');
+  
+  	if ($u->findFeedback()) {
+  
+  		$data['judul'] = "Isi Feedback";
+  		$data['main'] = 'ops/hasil_search_feedback';
+  		$data['feedback'] = $u->hasilSearch();
+  		//$data['riwayat'] = $n->ambilStatus();
+  		$this->load->vars($data);
+  		$this->load->view('dashboard');
+  	}
+  	else {
+  		$data['judul'] = "Isi Feedback";
+  		$data['main'] = "ops/hasil_search_feedback";
+  		$data['aktif'] = 'class="active"';
+  
+  		$this->load->view('dashboard', $data);
+  	}
+  
+  }
+  
   
   function addFeedbacksCtrl(){
   	$f = new Feedback();

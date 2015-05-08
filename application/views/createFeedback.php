@@ -30,7 +30,7 @@ if ($this->session->flashdata('message')){
 		echo "<td align='center'>";
 		echo anchor('dashboard/updateFeedback', 'ubah');
 		echo " | ";
-		echo anchor('dashboard/searchFeedback/'.$list->id_murid , 'lihat');
+		echo anchor('ops/feedback/searchFeedback/'.$list->id_murid , 'lihat');
 		/*
 		echo anchor('dashboard/createFeedback', 'tambah');
 		echo " | ";
