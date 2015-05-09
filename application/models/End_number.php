@@ -44,6 +44,22 @@ class End_number extends DataMapper {
 	return $n;
 	
 	}
+	
+	function summary(){
+		$s = new Student();
+		$s->where('id_murid', $this->id_murid)->get();
+		
+		$c = new Course();
+		$c->where('id_murid', $s->id)->get();
+		
+		$i = new Invoice();
+		$i->where('id_kelas', $c->id)->get();
+		
+		$e = new End_number();
+		$e->where('id_invoice', $i->id)->get();
+		
+		return $e;
+	}
 }
 
 /* End of file name.php */

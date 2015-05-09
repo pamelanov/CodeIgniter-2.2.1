@@ -66,8 +66,11 @@ class Target extends DataMapper {
 	}
 	
 	function hasilSearch(){
+		$a = new Account();
+		$a->where('id_acc', $this->id_sales)->get();
+		
 		$o = new Target();
-		$o->where('id_sales', $this->id_sales);
+		$o->where('id_sales', $a->id);
 		$o->where('periode', $this->periode);
 		$o->get();
 		
@@ -84,8 +87,10 @@ class Target extends DataMapper {
 		return $n;
 	}
 	function findTarget(){
+		$a = new Account();
+		$a->where('id_acc', $this->id_sales)->get();
 		$t = new Target();
-		$t->where('id_sales', $this->id_sales);
+		$t->where('id_sales', $a->id);
 		$t->where('periode', $this->periode);
 		$t->get();
 	

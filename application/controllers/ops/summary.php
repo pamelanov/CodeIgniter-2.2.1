@@ -17,21 +17,26 @@ class Summary extends Ci_Controller {
         $u = new Student();
         $u->id_murid = $this->input->post('idMurid');
         
-       // $n = new Beginning_number();
-       // $n->Id_murid = $this->input->post('idMurid');
-    
+
+          
         if ($u->findStudent()) {
+            
+            $b = new Beginning_number();
+            $b->id_murid = $u->id_murid;
+            $e = new End_number();
+            $e->id_murid = $u->id_murid;
 
             $data['judul'] = "Hasil Pencarian";
-            $data['main'] = 'ops/hasil_search';
-            $data['student'] = $u->hasilSearch();
-            //$data['riwayat'] = $n->ambilStatus();
+            $data['main'] = 'summary';
+            $data['students'] = $b->summary();
+            $data['students2'] = $e->summary();
+           // $data['invoices'] = $
             $this->load->vars($data);
             $this->load->view('dashboard');
         }
          else {
             $data['judul'] = "Hasil Pencarian";
-            $data['main'] = "ops/hasil_search";
+            $data['main'] = "ops/gagal_search_student";
             $data['aktif'] = 'class="active"';
 
             $this->load->view('dashboard', $data);
