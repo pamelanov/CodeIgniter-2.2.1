@@ -53,6 +53,16 @@ class Beginning_number extends DataMapper {
 	$this->salt = $n->salt;
 	return $n;
 	}
+	
+	function summary(){
+		$s = new Student();
+		$s->where('id_murid', $this->id_murid)->get();
+		
+		$b = new Beginning_number();
+		$b->where('id_murid', $s->id)->get();
+		
+		return $b;
+	}
 }
 
 /* End of file name.php */
