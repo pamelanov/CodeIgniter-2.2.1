@@ -15,7 +15,7 @@
 		<label for="periode">	Periode</label>
                         <input type='month' class="form-control" name='periode'>
                 </div>  
-                        <button type="submit" class="btn btn-danger">Search</button>
+                        <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
 </form>
 		
 </div>
