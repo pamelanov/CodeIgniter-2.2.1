@@ -23,7 +23,8 @@ function myFunction() {
     <label for="exampleInputName2">Enter Student ID</label>
     <input type="text" class="form-control" name="idMurid" placeholder="ID Student">
   </div>
-  <button type="submit" class="btn btn-default">Search</button>
+  <button type="submit" class="btn btn-danger">
+			 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
   <br/><br/>
 </form>
   <?php
@@ -84,7 +85,7 @@ if (!empty($student)){
                         echo "<option>8</option>";
                     echo "</select>";
         echo "</div>";
-        echo "<button id='demo' onclick='myFunction()' class='btn btn-danger'>Update Status</button>";
+        echo "<button id='demo' class='btn btn-danger'>Update Status</button>";
 
     echo"</div>";
 echo "</form>";
