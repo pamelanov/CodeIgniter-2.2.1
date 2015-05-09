@@ -1,12 +1,11 @@
 <?php
 
 class Dashboard extends Ci_Controller {
-        
-        
+
     function __construct() {
         parent::__construct();
-        if($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
-           redirect('template/login', 'refresh');
+        if ($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('template/login', 'refresh');
         }
     }
 
@@ -16,17 +15,13 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    
-          
 
-    function createData(){
-	$data['judul'] = "Create";
+    function createData() {
+        $data['judul'] = "Create";
         $data['main'] = 'create';
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-
-
 
     function createStatus() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
@@ -68,21 +63,6 @@ class Dashboard extends Ci_Controller {
         $r->id_sales = $this->input->post('id_sales');
         $r->save();
     }
-
-        /*
-        $f = new Feedback();
-
-        $f->id_murid = $this->input->post('id_murid');
-        $f->id_guru = $this->input->post('id_guru');
-        $f->tanggal = $this->input->post('tanggal');
-        $f->rating = $this->input->post('rating');
-        $f->isi = $this->input->post('isi');
-        $f->status = $this->input->post('status');
-        $f->total_skor = $this->input->post('total_skor');
-        $f->id_sales = $this->input->post('id_sales');
-        $f->save();
-        */
-    
 
     function refunds() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
@@ -148,92 +128,126 @@ class Dashboard extends Ci_Controller {
 
 
 
-    function performance_sup() {
-        if ($this->session->userdata('role') != 3) {
-            redirect('dashboard', 'refresh');
-        }
-        $t = new Target();
+        function cFeedback() {
+            $data['judul'] = "Create Feedback";
 
-        $data['judul'] = "Performance";
-        $data['main'] = 'supervisor/overall_performance';
-        $data['targets'] = $t->rank();
-        $this->load->vars($data);
-        $this->load->view('dashboard');
-    }
+            $data['main'] = 'ops/feedback_create';
 
-    function createUser() {
-        if ($this->session->userdata('role') != 1) {
-            redirect('dashboard', 'refresh');
-        }
-        $data['judul'] = "Create User";
-        $data['main'] = 'admin/user_create';
-        $this->load->vars($data);
-        $this->load->view('dashboard');
-    }
-
-    function createAccount() {
-        if ($this->session->userdata('role') != 1) {
-            redirect('dashboard', 'refresh');
-        }
-        $u = new Account();
-
-        $u->id_acc = $this->input->post('id_acc');
-        $u->password = md5($this->input->post('password'));
-
-        $u->email = $this->input->post('email');
-        $u->nama = $this->input->post('nama');
-        $u->no_telp = $this->input->post('no_telp');
-        $u->role = $this->input->post('role');
-        $u->save();
-        $data['judul'] = "Create User";
-
-        $data['main'] = 'admin/created';
-
-        $this->load->vars($data);
-        $this->load->view('dashboard');
-    }
-
-    function edit($id = 0) {
-        if ($this->session->userdata('role') != 1) {
-            redirect('dashboard', 'refresh');
-        }
-        $this->load->library('encrypt');
-        $u = new Account();
-        $u->id_acc = $this->input->post('id_acc');
-        $u->password = $this->input->post('password');
-
-        $u->email = $this->input->post('email');
-        $u->nama = $this->input->post('nama');
-        $u->no_telp = $this->input->post('no_telp');
-        $u->role = $this->input->post('role');
-        if ($u->updateAccount) {
-
-            $this->session->set_flashdata('message', 'User updated');
-            redirect('dashboard/users', 'refresh');
-        } else {
-            $data['judul'] = "Create User";
-            $data['main'] = 'admin/user_create';
             $this->load->vars($data);
             $this->load->view('dashboard');
         }
-    }
+	
+        function efeedbacks() {
+            $this->load->helper('download');
 
-    function logout() {
-        unset($_SESSION['userid']);
-        $this->session->set_flashdata('error', "You've been logged out!");
-        redirect('template/login', 'refresh');
-    }
+            $u = new Feedback();
+            // load all users
+            $feedbacks = $u->getAllFeedbacks();
+            // Output $u->all to /tmp/output.csv, using all database fields.
+            $path = "assets/exports/";
+            $filename = 'feedback_'.date("Ymd_His").'.csv';
+            $feedbacks->csv_export($path.$filename);
+            $data = file_get_contents($path.$filename); // Read the file's contents
+             force_download($filename, $data);
+            
+            /*$r = new Feedback();
+
+            $data['feedback'] = $r->getAllFeedbacks();
+            $data['feedback']->csv_export('/tmp/output.csv');
+           /* $export = "";  
+            foreach($data['feedback'] as $row){
+                $export .= $row->id_murid.",";
+                $export .= $row->id_guru.",";
+                $export .= $row->id_sales;
+                
+                $export .= "<br>";
+            }
+            echo $export;
+            *///$this->load->vars($data);
+            //$this->load->view('dashboard');
+        }
     
-    function performance(){
-        $t = new Target();
-        
-	$data['judul'] = "Performance";
-	$data['main'] = 'ops/performance_ops';
-        $data['target'] = $t->rank();
-	$this->load->vars($data);
-	$this->load->view('dashboard');  
-  }
+             	function createUser() {
+                    if ($this->session->userdata('role') != 1) {
+                        redirect('dashboard', 'refresh');
+                    }
+                    $data['judul'] = "Create User";
+                    $data['main'] = 'admin/user_create';
+                    $this->load->vars($data);
+                    $this->load->view('dashboard');
+                }
 
-}
+                function createAccount() {
+                    if ($this->session->userdata('role') != 1) {
+                        redirect('dashboard', 'refresh');
+                    }
+                    $u = new Account();
+
+                    $u->id_acc = $this->input->post('id_acc');
+                    $u->password = md5($this->input->post('password'));
+
+                    $u->email = $this->input->post('email');
+                    $u->nama = $this->input->post('nama');
+                    $u->no_telp = $this->input->post('no_telp');
+                    $u->role = $this->input->post('role');
+                    $u->save();
+                    $data['judul'] = "Create User";
+
+                    $data['main'] = 'admin/created';
+
+                    $this->load->vars($data);
+                    $this->load->view('dashboard');
+                }
+
+                function edit($id = 0) {
+                    if ($this->session->userdata('role') != 1) {
+                        redirect('dashboard', 'refresh');
+                    }
+                    $this->load->library('encrypt');
+                    $u = new Account();
+                    $u->id_acc = $this->input->post('id_acc');
+                    $u->password = $this->input->post('password');
+
+                    $u->email = $this->input->post('email');
+                    $u->nama = $this->input->post('nama');
+                    $u->no_telp = $this->input->post('no_telp');
+                    $u->role = $this->input->post('role');
+                    if ($u->updateAccount) {
+
+                        $this->session->set_flashdata('message', 'User updated');
+
+                        redirect('dashboard/users', 'refresh');
+                    } else {
+                        $data['judul'] = "Create User";
+                        $data['main'] = 'admin/user_create';
+                        $this->load->vars($data);
+                        $this->load->view('dashboard');
+                    }
+                }
+
+                function delete($id) {
+                    $this->madmins->deleteUser($id);
+                    $this->session->set_flashdata('message', 'User deleted');
+                    redirect('dashboard/users', 'refresh');
+                }
+
+                function logout() {
+                    unset($_SESSION['userid']);
+                    $this->session->set_flashdata('error', "You've been logged out!");
+                    redirect('template/login', 'refresh');
+                }
+
+                function performance() {
+                    $t = new Target();
+
+                    $data['judul'] = "Performance";
+                    $data['main'] = 'ops/performance_ops';
+                    $data['target'] = $t->rank();
+                    $this->load->vars($data);
+                    $this->load->view('dashboard');
+                }
+
+            }
+
 
 ?>
