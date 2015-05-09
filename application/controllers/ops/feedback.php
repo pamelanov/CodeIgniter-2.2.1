@@ -1,16 +1,49 @@
 <?php
 
 class Feedback extends Ci_Controller {
-  function __construct()
-	{
+  	function __construct(){
 		parent::__construct();
-  //session_start();
+  	//session_start();
     
-	    if($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+	 	if($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
            redirect('template/login', 'refresh');
-        }
+   		}
+	}
+  
+  function formCreateFeedback() {
+  	$data['judul'] = "Create Feedback";
+  
+  	$data['main'] = 'ops/formCreateFeedback';
+  
+  	$this->load->vars($data);
+  	$this->load->view('dashboard');
   }
   
+  function createFeedback() {
+  	if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+  		redirect('dashboard', 'refresh');
+  	}
+  	$n = new Feedback();
+  
+  	$n->id = $this->input->post('id');
+  	$n->id_murid = $this->input->post('id_murid');
+  	$n->id_guru = $this->input->post('id_guru');
+  	$n->tanggal = $this->input->post('tanggal');
+  	$n->rating = $this->input->post('rating');
+  	$n->isi = $this->input->post('isi');
+  	$n->status = $this->input->post('status');
+  	$n->total_skor = $this->input->post('total_skor');
+  	$n->id_sales = $this->input->post('id_sales');
+  
+  	$data['judul'] = "Feedback Berhasi Disimpan";
+  	$data['main'] = 'ops/createFeedback';
+  	$data['feedbacks'] = $n->createFeedbackModel();
+  	echo '<br><br>Feedback berhasil disimpan!';
+  	$this->load->vars($data);
+  	$this->load->view('dashboard');
+  }
+  
+  /*
   function index(){
 	$data['judul'] = "Feedback Summary";
 	$data['main'] = 'createFeedback';
@@ -18,6 +51,7 @@ class Feedback extends Ci_Controller {
 	$this->load->vars($data);
 	$this->load->view('dashboard');  
   }
+  */
   
   /*
   function searchFeedback() {
@@ -57,7 +91,6 @@ class Feedback extends Ci_Controller {
   
   }
   
-  
   function addFeedbacksCtrl(){
   	$f = new Feedback();
   	$f->Id_murid = $this->input->post('idMurid');
@@ -79,21 +112,6 @@ class Feedback extends Ci_Controller {
 	} */
   }
   
-  function createFeedback() {
-  	$n = new Feedback();
-  
-  	$n->id_murid = $this->input->post('id_murid');
-  	$n->id_guru = $this->input->post('id_guru');
-  	$n->tanggal = $this->input->post('tanggal');
-  	$n->rating = $this->input->post('rating');
-  	$n->isi = $this->input->post('isi');
-  
-  	$a = new Feedback;
-  	$a = $n->addFeedbacks();
-  	echo $a->id_murid;
-  	echo $a->id_guru;
-  }
-  
   function readFeedback(){
   	$data['judul'] = "Feedback";
   	$data['main'] = 'createFeedback';
@@ -108,7 +126,8 @@ class Feedback extends Ci_Controller {
   		$this->mfeedback->updateFeedback();
   		$this->session->set_flashdata('message','Feedback updated');
   		redirect('admin/feedback/index','refresh');
-  	}else{
+  	}
+  	else{
 		//$id = $this->uri->segment(4);
 		$data['judul'] = "Edit Feedback";
 		$data['main'] = 'admin/feedback_edit';
@@ -123,8 +142,6 @@ class Feedback extends Ci_Controller {
 	$this->session->set_flashdata('message','feedback deleted');
 	redirect('admin/feedback/index','refresh');
   }
-  
 }
-
 
 ?>

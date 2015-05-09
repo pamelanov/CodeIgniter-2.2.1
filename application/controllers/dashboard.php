@@ -69,38 +69,6 @@ class Dashboard extends Ci_Controller {
         $r->save();
     }
 
-    function cFeedback() {
-        $data['judul'] = "Create Feedback";
-
-        $data['main'] = 'ops/feedback_create';
-
-        $this->load->vars($data);
-        $this->load->view('dashboard');
-    }
-
-    function createFeedback() {
-        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
-            redirect('dashboard', 'refresh');
-        }
-        	$n = new Feedback();
-        
-        	$n->id_murid = $this->input->post('id_murid');
-        	$n->id_guru = $this->input->post('id_guru');
-        	$n->tanggal = $this->input->post('tanggal');
-        	$n->rating = $this->input->post('rating');
-        	$n->isi = $this->input->post('isi');
-        	$n->id_sales = $this->input->post('id_sales');
-        
-        	$a = new Feedback;
-        	$a = $n->addFeedbacks();
-        
-        	$data['judul'] = "Feedback";
-        	$data['main'] = 'createFeedback1';
-        	echo '<br><br>Feedback berhasil disimpan!';
-        	//$data['feedback'] = $this->getAllFeedbacks();
-        	$this->load->vars($data);
-        	$this->load->view('dashboard');
-        }
         /*
         $f = new Feedback();
 
@@ -141,11 +109,11 @@ class Dashboard extends Ci_Controller {
     	$this->load->view('dashboard');
     }
     
-    function readFeedback(){
+    function crudFeedback(){
     	$r = new Feedback();
     	
     	$data['judul'] = "Feedback";
-    	$data['main'] = 'createFeedback';
+    	$data['main'] = 'ops/crudFeedback';
     	$data['feedback'] = $r->getAllFeedbacks();
     	$this->load->vars($data);
     	$this->load->view('dashboard');
