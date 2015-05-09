@@ -109,4 +109,9 @@ class Summary extends Ci_Controller {
     	}
     
     }
+    
+    function recurring($s){
+        $data['judul'] = "Recurring Status";
+        $data['main'] = 'ops/recurring';
+    }
 }
