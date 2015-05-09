@@ -38,12 +38,13 @@ class Feedback extends DataMapper {
 	
 
 	function addFeedbacks(){
+		/*
 		$inc_id = new Feedback();
 		$id_terakhir = new Feedback();
 		$inc_id->get();
 		$id_terakhir = $inc_id->select_max('id');
 		$angka = $inc_id->id + 1;
-	
+		*/
 		$n = new Feedback();
 	
 		$n->id_murid = $this->id_murid;
@@ -54,7 +55,7 @@ class Feedback extends DataMapper {
 		$n->rating= $this->rating;
 		$n->tanggal = $this->tanggal;
 		$n->total_skor = $this->total_skor;
-		$n->id = $angka;
+		$n->id = $this->id;
 	
 		$n->save_as_new();
 	
@@ -74,7 +75,34 @@ class Feedback extends DataMapper {
 
     }
         
-	
+    function findFeedback(){
+    	$u = new Feedback();
+    	$u->where('id', $this->id);
+    	//$u->where('id_guru', $this->id_guru);
+    	$u->get();
+    	$this->salt = $u->salt;
+    
+    	// Validate and get this user by their property values,
+    	// this will see the 'encrypt' validation run, encrypting the password with the salt
+    	$this->validate()->get();
+    	if (empty($this->id_murid)) {
+    
+    		return FALSE;
+    	} else {
+    		// found something
+    		return TRUE;
+    	}
+    }
+    
+    function hasilSearch(){
+    	$o = new Feedback();
+    	$o->where('id', $this->id);
+    	//$o->where('id_guru', $this->id_guru);
+    	$o->get();
+    	$this->salt = $o->salt;
+    
+    	return $o;
+    }
 }
 
 /* End of file name.php */

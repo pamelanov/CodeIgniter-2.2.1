@@ -31,6 +31,6 @@
             <label for="target">Besar target</label>
             <input type="text" class="form-control" name="target" placeholder="Status">
         </div>
-     <button type="submit" class="btn btn-danger">Buat target</button>
+     <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Buat target</button>
  </form>
   </div>

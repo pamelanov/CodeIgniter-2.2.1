@@ -50,17 +50,10 @@ class Refund extends Ci_Controller {
   }
   
   function createRefund() {
-  	$n = new Refund();
-  
-  	$n->Tanggal = $this->input->post('tanggal');
-  	$n->Id_murid = $this->input->post('idMurid');
-  	$n->Id_guru = $this->input->post('idGuru');
-  	$n->Jam_hilang = $this->input->post('jamHilang');
-  	$n->Harga_jam = $this->input->post('harga');
-        $n->Alasan = $this->input->post('alasan');
-  
-  	$a = new Refund;
-  	$a = $n->addRefunds();
+  	 $data['judul'] = "Create refund";
+		$data['main'] = 'ops/refund_create';
+		$this->load->vars($data);
+		$this->load->view('dashboard'); 
 //  	echo $a->id_murid;
 //  	echo $a->id_guru;
   }
