@@ -117,6 +117,36 @@ class Dashboard extends Ci_Controller {
             $this->load->vars($data);
             $this->load->view('dashboard');
         }
+        
+        function efeedbacks() {
+            $this->load->helper('download');
+
+            $u = new Feedback();
+            // load all users
+            $feedbacks = $u->getAllFeedbacks();
+            // Output $u->all to /tmp/output.csv, using all database fields.
+            $path = "assets/exports/";
+            $filename = 'feedback_'.date("Ymd_His").'.csv';
+            $feedbacks->csv_export($path.$filename);
+            $data = file_get_contents($path.$filename); // Read the file's contents
+             force_download($filename, $data);
+            
+            /*$r = new Feedback();
+
+            $data['feedback'] = $r->getAllFeedbacks();
+            $data['feedback']->csv_export('/tmp/output.csv');
+           /* $export = "";  
+            foreach($data['feedback'] as $row){
+                $export .= $row->id_murid.",";
+                $export .= $row->id_guru.",";
+                $export .= $row->id_sales;
+                
+                $export .= "<br>";
+            }
+            echo $export;
+            *///$this->load->vars($data);
+            //$this->load->view('dashboard');
+        }
 
         function users() {
             $o = new Account();
