@@ -64,11 +64,11 @@
             <div class="container">
                 <div class="clear"></div> <center>
                     <div id="footer">
-                        Sistem Informasi Customer Tracking Ruangguru
+                        <b>Sistem Informasi Customer Tracking Ruangguru</b>
                         <br>
                         KELOMPOK B01
                         <br>
-                        <a href="http://ruangguru.com">ruangguru.com</a></b>        
+                        <a href="http://ruangguru.com">ruangguru.com</a>      
                     </center></div>
             </div>
             </div>

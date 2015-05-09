@@ -8,9 +8,14 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	
     </div>
-      </ul>
-     
-      <ul class="nav navbar-nav navbar-right">
+    
+	<ul class="nav navbar-nav navbar-left">
+		<div class="page-header" id="page-header">
+			<h1>Sistem Informasi Customer Tracking Ruangguru</h1>
+		</div>
+	</ul>
+	
+      <ul class="nav navbar-nav navbar-right" id="login">
 	
          <form name='login' class="navbar-form navbar-right" role="search"
 	       action='<?php echo base_url();?>index.php/template/ceklogin' method='post'>
@@ -35,16 +40,13 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<div id="loginbody">
-	Sistem Informasi Customer Tracking Ruangguru
-	<div id ="coba"></div>
-	<div id="kontak-developer">
-		<p>Developed by Propensi B01</p><br/>
-		Pamela Novranska, <br/>
-		Derien Yauma, <br/>
-		Yodi Syaeful, <br/>
-		Pinkyvi Tiffany.
-	</div>
-</div>
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+            <div id="footer-login">
+		<center>Developed by Propensi B01</center>
+	    </div>
+</nav>
    
 </html>
