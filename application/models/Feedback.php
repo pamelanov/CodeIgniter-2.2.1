@@ -63,10 +63,7 @@ class Feedback extends DataMapper {
 
 	}
 
-<<<<<<< HEAD
 
-=======
->>>>>>> tes
          function updateFeedback(){
          $f = new Feedback();
    

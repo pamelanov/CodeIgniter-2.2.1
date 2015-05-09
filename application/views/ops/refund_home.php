@@ -1,7 +1,7 @@
 <h1><?php echo $judul; ?></h1>
-<<<<<<< HEAD
+
 <p><?php echo anchor("ops/refund/create", "Create new refund"); ?></p>
-=======
+
 <ul class="nav nav-tabs">
     
     <li role="presentation" "><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
@@ -9,7 +9,7 @@
     <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbacks" > Feedback</a></li>
 </ul>
 <p><?php echo anchor("admin/refund/create", "Download"); ?></p>
->>>>>>> tes
+
 <?php
 if ($this->session->flashdata('message')) {
     echo "<div class='message'>" . $this->session->flashdata('message') . "</div>";
