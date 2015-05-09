@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+<!DOCTYPE html>
+<html lang="en">
+    
+ <h1><?php echo $judul; ?></h1>
+
+
+
+>>>>>>> tes
 
  <h1><?php echo $judul; ?></h1>
 
@@ -92,8 +102,11 @@ echo "</form>";
 
 }
 
+<<<<<<< HEAD
 ?>
 
    </div>
+=======
+>>>>>>> tes
 
 

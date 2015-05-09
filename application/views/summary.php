@@ -45,7 +45,7 @@ if ((!empty($students)) && (!empty($students2))) {
             echo "</tr>\n";
             }
         echo "</table>";
-        echo "<a href='<?php echo base_url(); ?>index.php/ops/summary/recurring' >
+        echo "<a href='" . base_url() . "index.php/ops/summary/recurring' >
         <button class='btn btn-success'>
             <span class='glyphicon glyphicon-plus-sign' aria-hidden='true'></span> Recurring Status
         </button>
