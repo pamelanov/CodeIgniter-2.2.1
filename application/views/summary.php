@@ -45,12 +45,13 @@ if ((!empty($students)) && (!empty($students2))) {
             echo "</tr>\n";
             }
         echo "</table>";
-} ?>
-    <a href="<?php echo base_url(); ?>index.php/ops/summary/recurring" >
-        <button class="btn btn-success">
-            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Recurring Status
+        echo "<a href='<?php echo base_url(); ?>index.php/ops/summary/recurring' >
+        <button class='btn btn-success'>
+            <span class='glyphicon glyphicon-plus-sign' aria-hidden='true'></span> Recurring Status
         </button>
-    </a>
+        </a>";
+} ?>
+
 </div>
 </form>
 </html>
