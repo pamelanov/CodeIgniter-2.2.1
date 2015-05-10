@@ -5,22 +5,31 @@ class Summary extends Ci_Controller {
         
     function __construct() {
         parent::__construct();
+        
     }
 
     function index() {
+         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $data['judul'] = "Summary List";
         $data['main'] = 'ops/searchStudent';
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
     function searchStudent() {
+         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $u = new Student();
         $u->id_murid = $this->input->post('idMurid');
         
 
           
         if ($u->findStudent()) {
-            
+             if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
             $b = new Beginning_number();
             $b->id_murid = $u->id_murid;
             $e = new End_number();
@@ -48,6 +57,9 @@ class Summary extends Ci_Controller {
     
     
     function searchStatusStudent() {
+         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
       $u = new Student();
         $u->Id_murid = $this->input->post('idMurid');
         
@@ -72,6 +84,9 @@ class Summary extends Ci_Controller {
     }
     
     function riwayatStatus(){
+         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $u = new Beginning_number();
         $u->Id_murid = $this->input->post('idMurid');
         
@@ -84,6 +99,9 @@ class Summary extends Ci_Controller {
     }
     
     function searchFeedback() {
+         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
     	$u = new Feedback();
     	$u->id_murid = $this->input->post('idMurid');
     	$u->id_guru = $this->input->post('idGuru');

@@ -22,7 +22,9 @@ class Performance extends Ci_Controller {
     }
     
     function create(){
-              
+              if ($this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $n = new Target();
         
         $n->id_sales = $this->input->post('id_sales');
@@ -46,6 +48,9 @@ class Performance extends Ci_Controller {
     }
     
     function showEdit() {
+        if ($this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $a = new Account();
         
         $data['judul'] = "Edit Sales Target";
@@ -56,7 +61,9 @@ class Performance extends Ci_Controller {
     }
     
     function findTarget(){
-
+if ($this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $a = new Target();
         $a->id_sales = $this->input->post('id_sales');
         $a->periode = $this->input->post('periode');
@@ -81,6 +88,9 @@ class Performance extends Ci_Controller {
     }
     
     function edit(){
+        if ($this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $n = new Target();
         
         $n->id_sales = $this->input->post('id_sales');
@@ -96,6 +106,9 @@ class Performance extends Ci_Controller {
     }
     
     function overall(){
+        if ($this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $t = new Target();
         
 	$data['judul'] = "Overall Performance";

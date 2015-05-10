@@ -8,6 +8,9 @@ class Dashboard extends Ci_Controller {
     }
 
     function index() {
+         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $data['judul'] = "Riwayat Status";
         $data['main'] = 'ops/home';
         $this->load->vars($data);

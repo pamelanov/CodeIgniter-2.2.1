@@ -10,7 +10,7 @@ if ($this->session->flashdata('message')){
 }
 
     
-	echo "<table id='table'>\n";    
+	echo "<table class='table table-bordered'>\n";    
 	echo "<tr>\n";
         echo "
 	<th><center>ID Sales</center></th>\n

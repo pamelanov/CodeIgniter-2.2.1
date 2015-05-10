@@ -6,12 +6,13 @@ class User extends Ci_Controller {
 		parent::__construct();
    // session_start();
     
-	if ($_SESSION['userid'] < 1){
-    	redirect('template/login','refresh');
-    }
+	
   }
   
   function index(){
+      if ($this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
 	$data['judul'] = "Overall Summary";
 	$data['main'] = 'admin/overall_home';
 	$data['overall'] = $this->moverall->getAllOverall();
@@ -24,6 +25,7 @@ class User extends Ci_Controller {
  
   
   function edit($id=0){
+      
   	$this->load->library('encrypt');
   	if ($this->input->post('username')){
   		$this->madmins->updateUser();

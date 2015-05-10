@@ -5,9 +5,12 @@ class Refund extends Ci_Controller {
 	{
 		parent::__construct();
    // session_start();
-    
+    if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
 	
   }
+  
   function index(){
 	$data['judul'] = "RefundSummary";
 	$data['main'] = 'createRefund';
@@ -17,6 +20,9 @@ class Refund extends Ci_Controller {
   }
   
   function refund_sum(){
+      if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
 	 $r = new Refund();
         
         $data['judul'] = "Refund Summary";
@@ -29,6 +35,9 @@ class Refund extends Ci_Controller {
 
   
   function addRefundsCtrl(){
+      if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
   	$f = new Refund();
         $f->Tanggal = $this->input->post('tanggal');
   	$f->Id_murid = $this->input->post('idMurid');
@@ -50,9 +59,10 @@ class Refund extends Ci_Controller {
   }
   
   function cRefund() {
-        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+      if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
+        
         $data['judul'] = "Create Refund";
         $data['main'] = 'ops/refund_create';
         $this->load->vars($data);
@@ -64,6 +74,7 @@ class Refund extends Ci_Controller {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
+        
 
         $r = new Refund();
 
