@@ -70,7 +70,7 @@ class Dashboard extends Ci_Controller {
     }
 
     function summary() {
-        $data['judul'] = "Summary List";
+        $data['judul'] = "Search Student";
         $data['main'] = 'summary';
         $this->load->vars($data);
         $this->load->view('dashboard');
