@@ -117,7 +117,31 @@ class Summary extends Ci_Controller {
         $r->id_sales = $this->input->post('idSales');
         $r->save_as_new();
         
-        echo $r->id;
+        $a = new Recurring_status();
+        $a->select_max('id');
+        $a->get();
+        
+        if (!empty($this->input->post('alasan'))){   
+            $n = new Not_recurring();
+            
+            $n->id_rec_status = $a->id;
+            $n->alasan = $this->input->post('alasan');
+            $n->save_as_new();
+            
+            echo "not recurring berhasil";
+        }
+        
+        else{
+            $e = new Recurring();
+            
+            $e->id_rec_status = $a->id;
+            $e->periode_awal = $this->input->post('periode-awal');
+            $e->periode_akhir = $this->input->post('periode-akhir');
+            $e->jumlah_jam = $this->input->post('jumlah-jam');
+            $e->save_as_new();
+            
+            echo "recurring berhasil";
+        }
         
         //$data['judul'] = "Recurring Status";
         //$data['main'] = 'ops/recurring';
