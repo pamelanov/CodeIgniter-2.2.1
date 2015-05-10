@@ -110,8 +110,16 @@ class Summary extends Ci_Controller {
     
     }
     
-    function recurring($s){
-        $data['judul'] = "Recurring Status";
-        $data['main'] = 'ops/recurring';
+    function recurring(){
+        $r = new Recurring_status();
+        $r->id_kelas = $this->input->post('idKelas');
+        $r->tanggal = $this->input->post('tanggal');
+        $r->id_sales = $this->input->post('idSales');
+        $r->save_as_new();
+        
+        echo $r->id;
+        
+        //$data['judul'] = "Recurring Status";
+        //$data['main'] = 'ops/recurring';
     }
 }

@@ -2,6 +2,8 @@
 <?php
 class Recurring_status extends DataMapper {
 	
+	var $table = 'recurring_statuses';
+	
 	var $has_one = array(
 			'manager' => array(
 					'class' => 'account',
