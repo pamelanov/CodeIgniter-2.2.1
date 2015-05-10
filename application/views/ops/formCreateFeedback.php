@@ -7,7 +7,7 @@
     <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createRefund" > Refund</a></li>
     <li role="presentation"class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/createFeedback" > Feedback</a></li>
 </ul>
-<form name='create_feedback' action='<?php echo base_url(); ?>index.php/dashboard/createFeedback' method='post' >
+<form name='create_feedback' action='<?php echo base_url(); ?>index.php/ops/feedback/createFeedback' method='post' >
     <div id ="konten">
 
         <div class="form-group">

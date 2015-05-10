@@ -5,7 +5,7 @@
 <ul class="nav nav-tabs">
 <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createData" > Student</a></li>
 <li role="presentation"><a href="<?php echo base_url(); ?>index.php/admin/refund" > Refund</a></li>
-<li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/readFeedback" > Feedback</a></li>
+<li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/crudFeedback" > Feedback</a></li>
 </ul>
 
 <?php
@@ -13,9 +13,7 @@ if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
 }
 
-
-	echo anchor('dashboard/cFeedback', 'Tambah Feedback');
-
+	echo anchor('ops/feedback/formCreateFeedback', 'Tambah Feedback');
 
 	echo "<table class='table table-bordered'>\n";
 	echo "<tr valign='top'>\n";

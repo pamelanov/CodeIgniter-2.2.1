@@ -64,7 +64,6 @@ class Dashboard extends Ci_Controller {
         $r->save();
     }
 
-
     function refunds() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
@@ -90,11 +89,11 @@ class Dashboard extends Ci_Controller {
     	$this->load->view('dashboard');
     }
     
-    function readFeedback(){
+    function crudFeedback(){
     	$r = new Feedback();
     	
     	$data['judul'] = "Feedback";
-    	$data['main'] = 'createFeedback';
+    	$data['main'] = 'ops/crudFeedback';
     	$data['feedback'] = $r->getAllFeedbacks();
     	$this->load->vars($data);
     	$this->load->view('dashboard');
@@ -137,34 +136,6 @@ class Dashboard extends Ci_Controller {
             $this->load->vars($data);
             $this->load->view('dashboard');
         }
-
-        function createFeedback() {
-            if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
-                redirect('dashboard', 'refresh');
-            }
-
-            $f = new Feedback();
-
-            $f->id_murid = $this->input->post('id_murid');
-            $f->id_guru = $this->input->post('id_guru');
-            $f->tanggal = $this->input->post('tanggal');
-            $f->rating = $this->input->post('rating');
-            $f->isi = $this->input->post('isi');
-            $f->status = $this->input->post('status');
-            $f->total_skor = $this->input->post('total_skor');
-            $f->id_sales = $this->input->post('id_sales');
-            $f->save();
-        }
-
-        function feedbacks() {
-            $r = new Feedback();
-
-            $data['judul'] = "Feedback Summary";
-            $data['main'] = 'ops/feedback_home';
-            $data['feedback'] = $r->getAllFeedbacks();
-            $this->load->vars($data);
-            $this->load->view('dashboard');
-        }
 	
         function efeedbacks() {
             $this->load->helper('download');
@@ -195,10 +166,8 @@ class Dashboard extends Ci_Controller {
             *///$this->load->vars($data);
             //$this->load->view('dashboard');
         }
-
-
     
-                function createUser() {
+             	function createUser() {
                     if ($this->session->userdata('role') != 1) {
                         redirect('dashboard', 'refresh');
                     }
@@ -255,8 +224,6 @@ class Dashboard extends Ci_Controller {
                         $this->load->view('dashboard');
                     }
                 }
-
-               
 
                 function delete($id) {
                     $this->madmins->deleteUser($id);

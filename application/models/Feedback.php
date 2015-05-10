@@ -27,6 +27,31 @@ class Feedback extends DataMapper {
 	{
 	}
 	
+	function createFeedbackModel(){
+	
+		$f = new Feedback();
+		$s = new Student();
+		$t = new Teacher();
+		$o = new Account();
+	
+		$s->where('id', $this->id_murid)->get();
+		$t->where('id', $this->id_guru)->get();
+		$t->where('id', $this->id_sales)->get();
+		
+		$f->id_murid = $s->id_murid;
+		$f->id_guru = $t->id_guru;
+		$f->tanggal = $this->tanggal;
+		$f->rating = $this->rating;
+		$f->isi = $this->isi;
+		$f->status = $this->status;
+		$f->total_skor = $this->total_skor;
+		$f->id_sales = $o->id_sales;
+		
+		$f->save_as_new();
+	
+		return $f;	
+	}
+	
 	function getAllFeedbacks() {
 	
 		$f = new Feedback();
@@ -38,13 +63,6 @@ class Feedback extends DataMapper {
 	
 
 	function addFeedbacks(){
-		/*
-		$inc_id = new Feedback();
-		$id_terakhir = new Feedback();
-		$inc_id->get();
-		$id_terakhir = $inc_id->select_max('id');
-		$angka = $inc_id->id + 1;
-		*/
 		$n = new Feedback();
 	
 		$n->id_murid = $this->id_murid;
@@ -63,8 +81,7 @@ class Feedback extends DataMapper {
 
 	}
 
-
-         function updateFeedback(){
+   function updateFeedback(){
          $f = new Feedback();
    
         $f->id_acc = $this->id_acc;
