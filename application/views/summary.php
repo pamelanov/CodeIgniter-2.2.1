@@ -25,7 +25,7 @@ if ((!empty($students)) && (!empty($students2))) {
         ?>
         <?php
         
-        echo "<table id='table' class='table'>\n";
+        echo "<table class='table table-bordered'>\n";
             echo "<tr valign='top'>\n";
                 echo "<th><center>Status</center></th>
                         <th><center>Tanggal Pengisian</center></th>

@@ -1,5 +1,5 @@
 <?php
-class RefundModel extends DataMapper {
+class Refund extends DataMapper {
 	
 	var $has_one = array(
 			'requester' => array(
@@ -14,13 +14,13 @@ class RefundModel extends DataMapper {
 	
 	
          function addRefunds(){
-		$inc_id = new RefundModel();
-		$id_terakhir = new RefundModel();
+		$inc_id = new Refund();
+		$id_terakhir = new Refund();
 		$inc_id->get();
 		$id_terakhir = $inc_id->select_max('id');
 		$angka = $inc_id->id + 1;
 	
-		$n = new RefundModel();
+		$n = new Refund();
                 $n->id = $angka;
                 $n->id_sales = "YS";
                 $n->tanggal = $this->tanggal;
@@ -42,7 +42,7 @@ class RefundModel extends DataMapper {
 	
 	function getAllRefunds() {
         
-        $r = new RefundModel();
+        $r = new Refund();
 	$r->get();
 	$this->salt = $r->salt;
         

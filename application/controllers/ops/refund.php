@@ -49,14 +49,39 @@ class Refund extends Ci_Controller {
 	} */
   }
   
-  function createRefund() {
-  	 $data['judul'] = "Create refund";
-		$data['main'] = 'ops/refund_create';
-		$this->load->vars($data);
-		$this->load->view('dashboard'); 
-//  	echo $a->id_murid;
-//  	echo $a->id_guru;
-  }
+  function cRefund() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $data['judul'] = "Create Refund";
+        $data['main'] = 'ops/refund_create';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+    
+    
+    function createRefund() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+
+        $r = new Refund();
+
+        $r->id_murid = $this->input->post('id_murid');
+        $r->id_guru = $this->input->post('id_guru');
+        $r->tanggal = $this->input->post('tanggal');
+        $r->no_invoice = $this->input->post('no_invoice');
+        $r->id_kelas = $this->input->post('id_kelas');
+        $r->hargaPerJam = $this->input->post('hargaPerJam');
+        $r->jam_hilang = $this->input->post('jam_hilang');
+        $r->alasan = $this->input->post('alasan');
+        $r->action = $this->input->post('action');
+        $r->selisih = $this->input->post('selisih');
+        $r->id_sales = $this->input->post('id_sales');
+        $r->save();
+    }
+    
+    
   
   function edit($id=0){
   	$this->load->library('encrypt');

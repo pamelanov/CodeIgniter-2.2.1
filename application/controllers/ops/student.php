@@ -21,6 +21,13 @@ class Student extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
+    
+      function createData() {
+        $data['judul'] = "Create Status";
+        $data['main'] = 'create';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
         
       function createStatus() {
         $n = new Beginning_number();

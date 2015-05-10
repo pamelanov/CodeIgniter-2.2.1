@@ -120,6 +120,8 @@ class Feedback extends Ci_Controller {
   	$this->load->view('dashboard');
   }
   
+  
+  
   function edit($id=0){
   	$this->load->library('encrypt');
   	if ($this->input->post('id')){

@@ -21,7 +21,7 @@ if ($this->session->flashdata('message')){
 
 ;
 
-	echo "<table class='table'>\n";
+	echo "<table class='table table-bordered'>\n";
 	echo "<tr>\n";
 		
         echo "<th ><center>#</th></center>\n";

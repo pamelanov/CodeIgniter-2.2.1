@@ -3,8 +3,8 @@
 <h1><?php echo $judul; ?></h1>
 	
 <ul class="nav nav-tabs">
-<li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createData" > Student</a></li>
-<li role="presentation"><a href="<?php echo base_url(); ?>index.php/admin/refund" > Refund</a></li>
+<li role="presentation"><a href="<?php echo base_url(); ?>index.php/ops/student/createData" > Student</a></li>
+  <li role="presentation" ><a href="<?php echo base_url(); ?>index.php/ops/refund/crefund" > Refund</a></li>
 <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/crudFeedback" > Feedback</a></li>
 </ul>
 
@@ -15,7 +15,7 @@ if ($this->session->flashdata('message')){
 
 	echo anchor('ops/feedback/formCreateFeedback', 'Tambah Feedback');
 
-	echo "<table class='table table-bordered'>\n";
+	echo "<table class='table'>\n";
 	echo "<tr valign='top'>\n";
 	echo "<th>ID Murid</th><th>ID Guru</th><th>Tanggal Terakhir Diubah</th>\n";
 	echo "</tr>\n";

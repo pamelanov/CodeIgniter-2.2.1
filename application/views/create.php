@@ -1,7 +1,7 @@
 <h1><?php echo $judul; ?></h1>
 <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/createData" > Student</a></li>
-  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/admin/refund" > Refund</a></li>
+  <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/student/createData" > Student</a></li>
+<li role="presentation"><a href="<?php echo base_url(); ?>index.php/ops/refund/crefund" > Refund</a></li>
   <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/crudFeedback" > Feedback</a></li>
 </ul>
 
@@ -35,7 +35,7 @@ if (!empty($student)){
         <form name='update_status' action='<?php echo base_url();?>index.php/ops/create/createStatus' method='post'>
         <?php
         
-        echo "<table id='table' class='table'>\n";
+        echo "<table class='table table-bordered'>\n";
             echo "<tr valign='top'>\n";
                 echo "<th><center>ID Murid</center></th>
                         <th><center>Nama</center></th>

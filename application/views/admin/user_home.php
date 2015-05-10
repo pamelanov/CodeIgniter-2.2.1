@@ -8,7 +8,7 @@ if ($this->session->flashdata('message')) {
 if (count($admins)) {
 
 
-    echo "<table class='table'>\n";
+    echo "<table class='table table-bordered'>\n";
     echo "<tr valign='top'>\n";
     echo "<th><center>ID</center></th>
 	<th><center>Email</center></th>
