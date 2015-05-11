@@ -1,6 +1,6 @@
 <?php
 
-class Feedback extends Ci_Controller {
+class feedbackCtrl extends Ci_Controller {
   	function __construct(){
 		parent::__construct();
   	//session_start();
@@ -38,7 +38,6 @@ class Feedback extends Ci_Controller {
   	$data['judul'] = "Feedback Berhasi Disimpan";
   	$data['main'] = 'ops/formCreateFeedback';
   	$data['feedback'] = $f->createFeedbackModel();
-  	echo '<br><br>Feedback berhasil disimpan!';
   	$this->load->vars($data);
   	$this->load->view('dashboard');
   }
@@ -64,17 +63,26 @@ class Feedback extends Ci_Controller {
   	}  
   }
   
-  function formUpdateFeedback() {
-  	$data['judul'] = "Create Feedback";
+  function formUpdateFeedback($id) {
+  	$u = new Feedback();
+  	$u->where('id', $id);
+  	$u->get();
+  	
+  	$data['judul'] = "Update Feedback";
   	$data['main'] = 'ops/formUpdateFeedback';
+  	$data['feedback'] = $u->hasilSearch();
   	$this->load->vars($data);
   	$this->load->view('dashboard');
   }
   
   function updateFeedback(){
   	$n = new Feedback();
-  
+  	
+  	$f->isi = $this->input->post('isi');
+  	$f->rating = $this->input->post('rating');
   	$f->id = $this->input->post('id');
+  	
+  	/*
   	$f->id_murid = $this->input->post('id_murid');
   	$f->id_guru = $this->input->post('id_guru');
   	$f->tanggal = $this->input->post('tanggal');
@@ -83,7 +91,8 @@ class Feedback extends Ci_Controller {
   	$f->status = $this->input->post('status');
   	$f->total_skor = $this->input->post('total_skor');
   	$f->id_sales = $this->input->post('id_sales');
-  
+  	*/
+  	
   	$data['judul'] = "Update Berhasil";
   	$data['main'] = 'ops/formUpdateFeedback';
   	$data['targets'] = $n->updateFeedbackModel();

@@ -36,7 +36,7 @@ class Feedback extends DataMapper {
 	
 		$s->where('id_murid', $this->id_murid)->get();
 		$t->where('id_guru', $this->id_guru)->get();
-		$o->where('id_sales', $this->id_sales)->get();
+		$o->where('id_acc', $this->id_sales)->get();
 		
 		$f->id_murid = $s->id;
 		$f->id_guru = $t->id;
@@ -53,13 +53,13 @@ class Feedback extends DataMapper {
 	}
 	
 	function updateFeedbackModel(){
-		$n = new Target();
-		$n->where('id_sales', $this->id_sales);
-		$n->where('periode', $this->periode);
-		$n->get();
+		$f = new Feedback();
+		$f->where('id', $this->id);
+		$f->get();
 	
-		$n->update('target', $this->target);
-		return $n;
+		$f->update('isi', $this->isi);
+		$f->update('rating', $this->rating);
+		return $f;
 	}
 	
 	function getAllFeedbacks() {
@@ -70,37 +70,6 @@ class Feedback extends DataMapper {
 	
 		return $f;
 	}
-	
-
-	function addFeedbacks(){
-		$n = new Feedback();
-	
-		$n->id_murid = $this->id_murid;
-		$n->id_guru = $this->id_guru;
-		$n->id_sales = $this->id_sales;
-		$n->isi = $this->isi;
-		$n->status = $this->status;
-		$n->rating= $this->rating;
-		$n->tanggal = $this->tanggal;
-		$n->total_skor = $this->total_skor;
-		$n->id = $this->id;
-	
-		$n->save_as_new();
-	
-	return $n;
-
-	}
-
-   function updateFeedback(){
-         $f = new Feedback();
-   
-        $f->id_acc = $this->id_acc;
-        $f->password = $this->password;
-        $f->email = $this->email;
-        $f->nama = $this->nama;
-        $f->role = $this->role;
-
-    }
         
     function findFeedback(){
     	$u = new Feedback();

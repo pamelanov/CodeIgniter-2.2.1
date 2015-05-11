@@ -3,11 +3,11 @@
 <html lang="en"></html>
 <h1><?php echo $judul; ?></h1>
 <ul class="nav nav-tabs">
-    <li role="presentation" ><a href="<?php echo base_url(); ?>index.php/dashboard/createStatus" > Student</a></li>
+    <li role="presentation" ><a href="<?php echo base_url(); ?>index.php/dashboard/createData" > Student</a></li>
     <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createRefund" > Refund</a></li>
-    <li role="presentation"class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/createFeedback" > Feedback</a></li>
+    <li role="presentation"class="active"><a href="<?php echo base_url(); ?>index.php/ops/feedbackCtrl/formCreateFeedback" > Feedback</a></li>
 </ul>
-<form name='create_feedback' action='<?php echo base_url(); ?>index.php/ops/feedback/createFeedback' method='post' >
+<form name='create_feedback' action='<?php echo base_url(); ?>index.php/ops/feedbackCtrl/createFeedback' method='post' >
     <div id ="konten">
 
         <div class="form-group">
@@ -33,13 +33,12 @@
 
         <div class="form-group">
             <label for="isi">Isi</label>
-            <input type="text" class="form-control" id="isi" placeholder="Masukkan Isi">
+            <input type="text" class="form-control" name="isi" placeholder="Masukkan Isi">
         </div>
  
     <button type="submit" class="btn btn-danger">Create Feedback</button>
       </div>
 </form>
 </div>
-
 </body>
 </html>

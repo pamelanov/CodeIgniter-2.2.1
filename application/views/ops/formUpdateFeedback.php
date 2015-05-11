@@ -2,60 +2,35 @@
 <html lang="en">
 
 <body>
-<ul class="nav nav-tabs">
-<li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createData" > Student</a></li>
-<li role="presentation"><a href="<?php echo base_url(); ?>index.php/admin/refund" > Refund</a></li>
-<li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/crudFeedback" > Feedback</a></li>
-</ul>
+    <h1><?php echo $judul; ?></h1>
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/summary" > Student</a></li>
+        <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
+        <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbackSummary" > Feedback</a></li>
+    </ul>
 
-<?php
-
-//if (!empty($student)){
-
- echo "<form name='update_status' action='<?php echo base_url();?>index.php/ops/feedback/updateFeedback' method='post'>";
- echo "<div class='form-group'>";
+ <form name='update_feedback' action='<?php echo base_url();?>index.php/ops/feedbackCtrl/updateFeedback' method='post'>
+ <div class='form-group'>
  
- echo "<label for='id_murid'>ID Murid : </label><br/>";
- //echo "<label for='id_murid'>ID Guru : $feedback->id_murid</label><br/>";
- echo "<br>";
+ <div class='form-group'>
+ <label for='jam'>ID Feedback</label>
+ <input type='text' class='form-control' name='id' placeholder='ID'>
+ </div>
  
-/*
- echo "<div class='form-group'>";
- echo "<label for='jam'>ID Guru</label>";
- echo "<input type='text' class='form-control' name='id_guru' placeholder='ID Guru'>";
- echo "</div>";
+ <div class='form-group'>
+ <label for='jam'>Isi</label>
+ <input type='text' class='form-control' name='isi' placeholder='Isi'>
+ </div>
 
- echo "<div class='form-group'>";
- echo "<label for='jam'>ID Murid</label>";
- echo "<input type='text' class='form-control' name='id_murid' placeholder='ID Murid'>";
- echo "</div>";
-*/
+ <div class='form-group'>
+ <label for='jam'>Rating</label>
+ <input type='text' class='form-control' name='rating' placeholder='Rating'>
+ </div>
 
- echo "<div class='form-group'>";
- echo "<label for='tanggal'>Tanggal</label>";
- echo "<input type='date' class='form-control' name='tanggal'>";
- echo "</div>";
+ <button type='submit' class='btn btn-danger'>Update Feedback</button>
 
- echo "<div class='form-group'>";
- echo "<label for='id_sales'>ID Sales</label>";
- echo "<input type='text'class='form-control' name='id_sales' placeholder='ID Sales'>";
- echo "</div>";
-
- echo "<div class='form-group'>";
- echo "<label for='jam'>Isi</label>";
- echo "<input type='text' class='form-control' name='isi' placeholder='Isi'>";
- echo "</div>";
-
- echo "<div class='form-group'>";
- echo "<label for='jam'>Rating</label>";
- echo "<input type='text' class='form-control' name='rating' placeholder='Rating'>";
- echo "</div>";
-
- echo "<button type='submit' class='btn btn-danger'>Update Feedback</button>";
-
- echo"</div>";
- echo "</form>";
+ </div>
+ </form>
  
- echo anchor('dashboard/crudFeedback', '<-- halaman sebelumnya');
- //}*/
-?> 
+ <a href="<?php echo base_url(); ?>index.php/dashboard/feedbackSummary" > Halaman sebelumnya</a>
+ 

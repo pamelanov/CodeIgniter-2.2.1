@@ -85,6 +85,7 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
     
+    /*
     function crudFeedback(){
     	$r = new Feedback();
     	
@@ -94,6 +95,7 @@ class Dashboard extends Ci_Controller {
     	$this->load->vars($data);
     	$this->load->view('dashboard');
     }
+    */
     
     function feedbackSummary(){
     	$r = new Feedback();

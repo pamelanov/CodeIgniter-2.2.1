@@ -25,8 +25,9 @@
 <br/><br/>
 <?php
 	if ($this->session->flashdata('message')){
-		echo "<div class='message'>".$this->session->flashdata('message')."</div>";
-	}	
+	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
+	}
+
 	echo "<table class='table table-bordered'>\n";
 	echo "<tr valign='top'>\n";
 	echo "<th>ID Murid</th><th>ID Guru</th><th>Tanggal Terakhir Diubah</th>\n";
@@ -36,11 +37,17 @@
 		echo "<td align='center'>" . $list->id_murid . "</td>\n";
 		echo "<td align='center'>" . $list->id_guru . "</td>\n";
 		echo "<td align='center'>" . $list->tanggal . "</td>\n";
+	
+		echo "<td align='center'>";
+		echo anchor('ops/feedbackCtrl/formUpdateFeedback/'.$list->id, 'Ubah');
+		echo " | ";
+		echo anchor('ops/feedbackCtrl/readFeedback/'.$list->id , 'Lihat');
+		echo " | ";
+		echo anchor('ops/feedbackCtrl/formCreateFeedback'.$list->id, 'Tambah');
 		echo "</td>\n";
 		echo "</tr>\n";
 	}
 	echo "</table>";
-
 ?>
 
 </div>
