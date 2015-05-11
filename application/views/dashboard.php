@@ -23,27 +23,35 @@
                         <li><a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard">| SICuT Ruangguru |</a></li>
                         
                     <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>      
-                        <li><a href="<?php echo base_url(); ?>index.php/ops/student/createData">Create</a></li>
-                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/summary">Summary</a></li>    
+                        <li><a href="<?php echo base_url(); ?>index.php/ops/student/createData">
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create</a></li>
+                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/summary">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Summary</a></li>    
                     <?php } ?>
 
                     <?php if ($this->session->userdata('role') == 2) { ?>
-                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/performance/" >Performance</a></li>
+                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/performance/" >
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Performance</a></li>
                     <?php } ?>
 
                     <?php if ($this->session->userdata('role') == 3) { ?>
-                        <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance" >Performance</a></li>
-                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/users" >Overall Summary</a></li>
+                        <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance" >
+                          <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Performance</a></li>
+                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/users" >
+                        <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Overall Summary</a></li>
                     <?php } ?>
 
                     <?php if ($this->session->userdata('role') == 1) { ?>
-                        <li><a href="<?php echo base_url(); ?>index.php/dashboard" > Home</a></li>
-                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/users" > User</a></li>
+                        <li><a href="<?php echo base_url(); ?>index.php/dashboard" >
+                         <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/users" >
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> User</a></li>
                     <?php } ?>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo base_url(); ?>index.php/template/logout" > Logout</a></li>  
+                        <li><a href="<?php echo base_url(); ?>index.php/template/logout" >
+                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</a></li>  
                     </ul>
 
                 </div><!-- /.navbar-collapse -->
