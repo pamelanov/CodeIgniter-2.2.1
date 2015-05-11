@@ -85,7 +85,6 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
-
     function createUser() {
         if ($this->session->userdata('role') != 1) {
             redirect('dashboard', 'refresh');
@@ -116,6 +115,38 @@ class Dashboard extends Ci_Controller {
 
         $this->load->vars($data);
         $this->load->view('dashboard');
+    }
+
+    function editUser() {
+        if ($this->session->userdata('role') != 1) {
+            redirect('dashboard', 'refresh');
+        }
+        $data['judul'] = "Create User";
+        $data['main'] = 'admin/user_edit';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+    
+    function editAccount() {
+        if ($this->session->userdata('role') != 1) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Account();
+
+        $u->id_acc = $this->input->post('id_acc');
+        $u->password = md5($this->input->post('password'));
+
+        $u->email = $this->input->post('email');
+        $u->nama = $this->input->post('nama');
+        $u->no_telp = $this->input->post('no_telp');
+        $u->role = $this->input->post('role');
+      
+        
+        $data['judul'] = "Update Berhasil";
+	$data['main'] = 'supervisor/updated';
+        $data['targets'] = $u->updateAccount();
+	$this->load->vars($data);
+	$this->load->view('dashboard');  
     }
 
     function edit($id = 0) {

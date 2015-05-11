@@ -27,7 +27,7 @@ if (count($admins)) {
 
         echo "<td align='center'>";
 
-        echo anchor('dashboard/edit/' . $list->id, 'edit ');
+        echo anchor('dashboard/editUser/' . $list->id, 'edit ');
         echo "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>";
         echo " | ";
         echo anchor('dashboard/delete/' . $list->id, 'delete ');
