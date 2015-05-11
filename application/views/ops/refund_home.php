@@ -3,11 +3,13 @@
 
 <ul class="nav nav-tabs">
     
-    <li role="presentation" "><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
+    <li role="presentation" "><a href="<?php echo base_url(); ?>index.php/ops/student/createData" > Student</a></li>
     <li role="presentation"class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
     <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbacks" > Feedback</a></li>
 </ul>
-<p><?php echo anchor("download/download_refunds", "Download"); ?></p>
+
+<div id="konten">
+<p><?php echo anchor("download/download_refunds", "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
 
 <?php
 if ($this->session->flashdata('message')) {
@@ -40,3 +42,4 @@ if (count($admins)) {
     echo "</table>";
 }
 ?>
+</div>

@@ -29,7 +29,7 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
-    function Feedbacks() {
+    function feedbacks() {
         $r = new Feedback();
 
         $data['judul'] = "Feedback Summary";
