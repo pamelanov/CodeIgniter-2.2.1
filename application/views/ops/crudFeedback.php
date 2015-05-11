@@ -15,7 +15,7 @@ if ($this->session->flashdata('message')){
 
 	echo anchor('ops/feedback/formCreateFeedback', 'Tambah Feedback');
 
-	echo "<table class='table'>\n";
+	echo "<table class='table table-bordered'>\n";
 	echo "<tr valign='top'>\n";
 	echo "<th>ID Murid</th><th>ID Guru</th><th>Tanggal Terakhir Diubah</th>\n";
 	echo "</tr>\n";
