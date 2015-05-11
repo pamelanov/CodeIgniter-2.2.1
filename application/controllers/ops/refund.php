@@ -78,18 +78,25 @@ class Refund extends Ci_Controller {
 
         $r = new Refund();
 
-        $r->id_murid = $this->input->post('id_murid');
-        $r->id_guru = $this->input->post('id_guru');
+        //$r->id_murid = $this->input->post('id_murid');
+       //$r->id_guru = $this->input->post('id_guru');
         $r->tanggal = $this->input->post('tanggal');
         $r->no_invoice = $this->input->post('no_invoice');
-        $r->id_kelas = $this->input->post('id_kelas');
-        $r->hargaPerJam = $this->input->post('hargaPerJam');
+        //$r->id_kelas = $this->input->post('id_kelas');
+        //$r->hargaPerJam = $this->input->post('hargaPerJam');
         $r->jam_hilang = $this->input->post('jam_hilang');
         $r->alasan = $this->input->post('alasan');
         $r->action = $this->input->post('action');
-        $r->selisih = $this->input->post('selisih');
+        //$r->selisih = $this->input->post('selisih');
         $r->id_sales = $this->input->post('id_sales');
-        $r->save();
+       // $r->save_as_new();
+        
+        $data['judul'] = "Refund Berhasil Disimpan";
+  	$data['main'] = 'ops/createRefund';
+  	$data['refunds'] = $r->createRefundModel();
+  	//echo '<br><br>Refund berhasil disimpan!';
+  	$this->load->vars($data);
+  	$this->load->view('dashboard');
     }
     
     

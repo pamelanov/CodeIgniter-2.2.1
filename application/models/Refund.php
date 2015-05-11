@@ -11,26 +11,49 @@ class Refund extends DataMapper {
 					'other_field' => 'managed_refund'
 			)
 	);
+        
+        function createRefundModel(){
+	
+		$r = new Refund();
+		$i = new NoInvoice();
+		//$t = new Teacher();
+		//$o = new Account();
+	
+		$i->where('id', $this->no_invoice)->get();
+		//$t->where('id', $this->id_guru)->get();
+		//$t->where('id', $this->id_sales)->get();
+		
+		$r->no_invoice = $i->no_invoice;
+		//$f->id_guru = $t->id_guru;
+		$r->tanggal = $this->input->post('tanggal');
+                //$r->no_invoice = $this->input->post('no_invoice');
+        //$r->id_kelas = $this->input->post('id_kelas');
+        //$r->hargaPerJam = $this->input->post('hargaPerJam');
+                $r->jam_hilang = $this->input->post('jam_hilang');
+                $r->alasan = $this->input->post('alasan');
+                $r->action = $this->input->post('action');
+        //$r->selisih = $this->input->post('selisih');
+                $r->id_sales = $this->input->post('id_sales');
+		
+		$r->save_as_new();
+	
+		return $r;	
+	}
 	
 	
-         function addRefunds(){
-		$inc_id = new Refund();
-		$id_terakhir = new Refund();
-		$inc_id->get();
-		$id_terakhir = $inc_id->select_max('id');
-		$angka = $inc_id->id + 1;
-	
+         
+        function addRefunds(){
 		$n = new Refund();
-                $n->id = $angka;
-                $n->id_sales = "YS";
+	
+		
+		$n->id_sales = $this->id_sales;
+		$n->no_invoice = $this->no_invoice;
+		$n->status = $this->status;
+		$n->jam_hilang= $this->jam_hilang;
+		$n->action = $this->action;
+		$n->alasan = $this->alasan;
                 $n->tanggal = $this->tanggal;
-		$n->id_murid = $this->id_murid;
-		$n->id_guru = $this->id_guru;
-		$n->jam_hilang = $this->jam_hilang;
-		$n->harga = $this->harga;
-		$n->alasan= $this->alasan;
-                $n->no_invoice = $this->no_invoice;
-                $n->id_kelas = $this->id_kelas;
+	
 	
 		$n->save_as_new();
 	
