@@ -143,7 +143,5 @@ class Summary extends Ci_Controller {
             echo "recurring berhasil";
         }
         
-        //$data['judul'] = "Recurring Status";
-        //$data['main'] = 'ops/recurring';
     }
 }
