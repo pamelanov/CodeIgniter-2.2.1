@@ -61,7 +61,7 @@ class Performance extends Ci_Controller {
     }
     
     function findTarget(){
-if ($this->session->userdata('role') != 3) {
+        if ($this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
         $a = new Target();
@@ -91,11 +91,14 @@ if ($this->session->userdata('role') != 3) {
         if ($this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
+        
+        $a = new Account();
+        $a->where('id_acc', $this->input->post('id_sales'))->get(); 
+        
         $n = new Target();
         
-        $n->id_sales = $this->input->post('id_sales');
+        $n->id_sales = $a->id;
         $n->periode = $this->input->post('periode');
-        $n->id_supervisor = $this->input->post('id_supervisor');
         $n->target = $this->input->post('target');
         
         $data['judul'] = "Update Berhasil";

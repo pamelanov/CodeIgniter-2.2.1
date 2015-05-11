@@ -11,7 +11,7 @@
     
 	<ul class="nav navbar-nav navbar-left">
 		<div class="page-header" id="page-header">
-			<h1>Sistem Informasi Customer Tracking Ruangguru</h1>
+			<h1><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Sistem Informasi Customer Tracking Ruangguru</h1>
 		</div>
 	</ul>
 	

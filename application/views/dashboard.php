@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang ="en">
     <head>
@@ -65,11 +67,9 @@
 
         <div id="konten">
         
-
         <?php $this->load->view($main); ?>
-        <!--
-        
-</div>-->
+         
+    
         
 
 
