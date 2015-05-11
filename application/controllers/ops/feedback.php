@@ -11,6 +11,9 @@ class Feedback extends Ci_Controller {
 	}
   
   function formCreateFeedback() {
+      if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
   	$data['judul'] = "Create Feedback";
   
   	$data['main'] = 'ops/formCreateFeedback';
@@ -63,6 +66,9 @@ class Feedback extends Ci_Controller {
   */
   
   function searchFeedback($id) {
+      if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
   	$u = new Feedback();
   	$u->where('id', $id);
   	$u->get();
@@ -92,6 +98,9 @@ class Feedback extends Ci_Controller {
   }
   
   function addFeedbacksCtrl(){
+      if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
   	$f = new Feedback();
   	$f->Id_murid = $this->input->post('idMurid');
   	$f->Id_guru = $this->input->post('idGuru');
@@ -113,12 +122,17 @@ class Feedback extends Ci_Controller {
   }
   
   function readFeedback(){
+      if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
   	$data['judul'] = "Feedback";
   	$data['main'] = 'createFeedback';
   	$data['feedback'] = $this->getAllFeedbacks();
   	$this->load->vars($data);
   	$this->load->view('dashboard');
   }
+  
+  
   
   function edit($id=0){
   	$this->load->library('encrypt');

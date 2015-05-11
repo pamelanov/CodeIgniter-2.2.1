@@ -16,6 +16,9 @@ class Create extends Ci_Controller {
     
     
     function searchStudentStatus() {
+       if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $u = new Student();
         $u->id_murid = $this->input->post('idMurid');
         
@@ -40,7 +43,9 @@ class Create extends Ci_Controller {
     
           function createStatus() {
         
-        
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         if ($this->input->post('status') == 6 || $this->input->post('status') == 7 || $this->input->post('status') == 8 ){
             
             $m = new End_number();

@@ -23,7 +23,7 @@
                         <li><a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard">| SICuT Ruangguru |</a></li>
                         
                     <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>      
-                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/createData">Create</a></li>
+                        <li><a href="<?php echo base_url(); ?>index.php/ops/student/createData">Create</a></li>
                         <li><a href="<?php echo base_url(); ?>index.php/dashboard/summary">Summary</a></li>    
                     <?php } ?>
 

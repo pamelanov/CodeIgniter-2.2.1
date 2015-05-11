@@ -1,50 +1,47 @@
-<h1><?php echo $judul;?></h1>
+<h1><?php echo $judul; ?></h1>
 
 
 <body>
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/createRefund" > Student</a></li>
-  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/ops/refund/createData" > Refund</a></li>
-  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/readFeedback" > Feedback</a></li>
-</ul>
-    
-<?php
-//echo form_open('admin/refund/create');
-echo form_open('ops/refund/create');
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="<?php echo base_url(); ?>index.php/ops/student/createData" > Student</a></li>
+        <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/refund/crefund" > Refund</a></li>
+        <li role="presentation" ><a href="<?php echo base_url(); ?>index.php/dashboard/crudFeedback" > Feedback</a></li>
+    </ul>
 
-echo "<p><label for='uname'>No. Invoice</label><br/>";
-$data = array('name'=>'no_invoice','id'=>'uname','size'=>25);
-echo form_input($data) ."</p>";
+   
 
-echo "<p><label for='uname'>Id Kelas</label><br/>";
-$data = array('name'=>'id_kelas','id'=>'uname','size'=>25);
-echo form_input($data) ."</p>";
+    <form name='create_feedback' action='<?php echo base_url(); ?>index.php/ops/refund/createRefund' method='post' >
+        <div id ="konten">
+            cek
+            <div class="form-group">
+                <label for="id_murid">No. Invoice</label>
+                <input type="text" class="form-control" name="no_invoice" placeholder="Masukkan No Invoice">
+            </div>
+            <div class="form-group">
+                <label for="id_guru">Id Sales</label>
+                <input type="text" class="form-control" name="id_sales" placeholder="Masukkan ID Sales">
+            </div>
+            <div class="form-group">
+                <label for="id_sales">Jam Hilang</label>
+                <input type="text" class="form-control" name="jam_hilang" placeholder="Masukkan Jam Hilang">
+            </div>
+            <div class="form-group">
+                <label for="tanggal">Tanggal</label>
+                <input type="date" class="form-control" name="tanggal" placeholder="Masukkan Tanggal">
+            </div>
+            <div class="form-group">
+                <label for="rating">Action</label>
+                <input type="text" class="form-control" name="action" placeholder="Masukkan Action">
+            </div>
 
-echo "<p><label for='uname'>ID Murid</label><br/>";
-$data = array('name'=>'idmurid','id'=>'uname','size'=>25);
-echo form_input($data) ."</p>";
+            <div class="form-group">
+                <label for="isi">Alasan</label>
+                <input type="text" class="form-control" id="alasan" placeholder="Masukkan Alasan">
+            </div>
 
-echo "<p><label for='uname'>ID Guru</label><br/>";
-$data = array('name'=>'idguru','id'=>'uname','size'=>25);
-echo form_input($data) ."</p>";
+            <button type="submit" class="btn btn-danger">Create Refund</button>
+        </div>
+    </form>
+</div>
 
-echo "<p><label for='uname'>Harga Per Jam</label><br/>";
-$data = array('name'=>'harga','id'=>'uname','size'=>25);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='uname'>Jam Hilang</label><br/>";
-$data = array('name'=>'jam_hilang','id'=>'uname','size'=>25);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='email'>Alasan</label><br/>";
-$data = array('name'=>'alasan','id'=>'uname','size'=>25);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='status'>Status</label><br/>";
-$options = array('active' => 'active', 'inactive' => 'inactive');
-echo form_dropdown('status',$options) ."</p>";
-
-
-echo form_submit('submit','create refund');
-echo form_close();
-echo anchor('dashboard/refunds', '<-- halaman sebelumnya');?>
+</body>
