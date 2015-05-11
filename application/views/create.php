@@ -40,12 +40,9 @@ function myFunction() {
         <div class="col-xs-12 col-sm-6 col-md-8">
         <form name='update_status' action='<?php echo base_url();?>index.php/ops/create/createStatus' method='post'>
         <?php
-<<<<<<< HEAD
         
         echo "<table class='table table-bordered'>\n";
-=======
-        echo "<table id='table' class='table'>\n";
->>>>>>> punya-pamela
+
             echo "<tr valign='top'>\n";
                 echo "<th><center>ID Murid</center></th>
                         <th><center>Nama</center></th>
