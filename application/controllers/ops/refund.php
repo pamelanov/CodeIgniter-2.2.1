@@ -89,11 +89,11 @@ class Refund extends Ci_Controller {
         $r->action = $this->input->post('action');
         //$r->selisih = $this->input->post('selisih');
         $r->id_sales = $this->input->post('id_sales');
-       // $r->save_as_new();
+       //$r->save_as_new();
         
         $data['judul'] = "Refund Berhasil Disimpan";
   	$data['main'] = 'ops/createRefund';
-  	$data['refunds'] = $r->createRefundModel();
+  	 $data['refunds'] = $r->createRefundModel();
   	//echo '<br><br>Refund berhasil disimpan!';
   	$this->load->vars($data);
   	$this->load->view('dashboard');

@@ -12,7 +12,7 @@
 
     <form name='create_feedback' action='<?php echo base_url(); ?>index.php/ops/refund/createRefund' method='post' >
         <div id ="konten">
-            cek
+            
             <div class="form-group">
                 <label for="id_murid">No. Invoice</label>
                 <input type="text" class="form-control" name="no_invoice" placeholder="Masukkan No Invoice">
@@ -34,6 +34,10 @@
                 <input type="text" class="form-control" name="action" placeholder="Masukkan Action">
             </div>
 
+             <div class="form-group">
+                <label for="rating">Selisih</label>
+                <input type="text" class="form-control" name="selisih" placeholder="Masukkan Selisih">
+            </div>
             <div class="form-group">
                 <label for="isi">Alasan</label>
                 <input type="text" class="form-control" id="alasan" placeholder="Masukkan Alasan">
