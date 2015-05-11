@@ -4,13 +4,13 @@
 <body>
     <ul class="nav nav-tabs">
         <li role="presentation"><a href="<?php echo base_url(); ?>index.php/ops/student/createData" > Student</a></li>
-        <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/refund/crefund" > Refund</a></li>
+        <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/refund/cRefund" > Refund</a></li>
         <li role="presentation" ><a href="<?php echo base_url(); ?>index.php/dashboard/crudFeedback" > Feedback</a></li>
     </ul>
 
    
 
-    <form name='create_feedback' action='<?php echo base_url(); ?>index.php/ops/refund/createRefund' method='post' >
+    <form name='create_refund' action='<?php echo base_url(); ?>index.php/ops/refund/createRefund' method='post' >
         <div id ="konten">
             
             <div class="form-group">
