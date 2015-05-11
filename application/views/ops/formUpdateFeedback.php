@@ -5,14 +5,14 @@
 <ul class="nav nav-tabs">
 <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/createData" > Student</a></li>
 <li role="presentation"><a href="<?php echo base_url(); ?>index.php/admin/refund" > Refund</a></li>
-<li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/readFeedback" > Feedback</a></li>
+<li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/crudFeedback" > Feedback</a></li>
 </ul>
 
 <?php
 
 //if (!empty($student)){
 
- echo "<form name='update_status' action='<?php echo base_url();?>index.php/ops/student/createFeedback' method='post'>";
+ echo "<form name='update_status' action='<?php echo base_url();?>index.php/ops/feedback/updateFeedback' method='post'>";
  echo "<div class='form-group'>";
  
  echo "<label for='id_murid'>ID Murid : </label><br/>";
@@ -56,6 +56,6 @@
  echo"</div>";
  echo "</form>";
  
- echo anchor('dashboard/readFeedback', '<-- halaman sebelumnya');
+ echo anchor('dashboard/crudFeedback', '<-- halaman sebelumnya');
  //}*/
 ?> 

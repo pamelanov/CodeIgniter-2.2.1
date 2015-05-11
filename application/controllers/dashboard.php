@@ -16,6 +16,13 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
+    function todaySummary() {
+    	$data['judul'] = "Today Summary";
+    	$data['main'] = 'todaySummary';
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+    }
+    
     function createData() {
         $data['judul'] = "Create";
         $data['main'] = 'create';
@@ -77,17 +84,6 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-
-    
-    function updateFeedback(){
-    	//$r = new Feedback();
-    
-    	$data['judul'] = "Update Feedback";
-    	$data['main'] = 'updateFeedback';
-    	//$data['feedback'] = $r->getAllFeedbacks();
-    	$this->load->vars($data);
-    	$this->load->view('dashboard');
-    }
     
     function crudFeedback(){
     	$r = new Feedback();
@@ -99,11 +95,10 @@ class Dashboard extends Ci_Controller {
     	$this->load->view('dashboard');
     }
     
-    function readFeedback1(){
+    function feedbackSummary(){
     	$r = new Feedback();
-    	 
-    	$data['judul'] = "Feedback";
-    	$data['main'] = 'readFeedback';
+    	$data['judul'] = "Feedback Summary";
+    	$data['main'] = 'feedbackSummary';
     	$data['feedback'] = $r->getAllFeedbacks();
     	$this->load->vars($data);
     	$this->load->view('dashboard');
@@ -125,18 +120,6 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-
-
-
-        function cFeedback() {
-            $data['judul'] = "Create Feedback";
-
-            $data['main'] = 'ops/feedback_create';
-
-            $this->load->vars($data);
-            $this->load->view('dashboard');
-        }
-	
         function efeedbacks() {
             $this->load->helper('download');
 

@@ -34,22 +34,32 @@ class Feedback extends DataMapper {
 		$t = new Teacher();
 		$o = new Account();
 	
-		$s->where('id', $this->id_murid)->get();
-		$t->where('id', $this->id_guru)->get();
-		$t->where('id', $this->id_sales)->get();
+		$s->where('id_murid', $this->id_murid)->get();
+		$t->where('id_guru', $this->id_guru)->get();
+		$o->where('id_sales', $this->id_sales)->get();
 		
-		$f->id_murid = $s->id_murid;
-		$f->id_guru = $t->id_guru;
+		$f->id_murid = $s->id;
+		$f->id_guru = $t->id;
 		$f->tanggal = $this->tanggal;
 		$f->rating = $this->rating;
 		$f->isi = $this->isi;
 		$f->status = $this->status;
 		$f->total_skor = $this->total_skor;
-		$f->id_sales = $o->id_sales;
+		$f->id_sales = $o->id;
 		
 		$f->save_as_new();
 	
 		return $f;	
+	}
+	
+	function updateFeedbackModel(){
+		$n = new Target();
+		$n->where('id_sales', $this->id_sales);
+		$n->where('periode', $this->periode);
+		$n->get();
+	
+		$n->update('target', $this->target);
+		return $n;
 	}
 	
 	function getAllFeedbacks() {

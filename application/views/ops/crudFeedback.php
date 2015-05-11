@@ -26,9 +26,9 @@ if ($this->session->flashdata('message')){
 		echo "<td align='center'>" . $list->tanggal . "</td>\n";
 	
 		echo "<td align='center'>";
-		echo anchor('dashboard/updateFeedback', 'ubah');
+		echo anchor('ops/feedback/formUpdateFeedback', 'ubah');
 		echo " | ";
-		echo anchor('ops/feedback/searchFeedback/'.$list->id , 'lihat');
+		echo anchor('ops/feedback/readFeedback/'.$list->id , 'lihat');
 		/*
 		echo anchor('dashboard/createFeedback', 'tambah');
 		echo " | ";
