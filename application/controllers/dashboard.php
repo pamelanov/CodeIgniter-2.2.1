@@ -131,7 +131,7 @@ class Dashboard extends Ci_Controller {
         
         $r->no_invoice = $this->input->post('no_invoice');
         $r->id_sales = $this->input->post('id_sales');
-$r->jam_hilang = $this->input->post('jam_hilang');
+        $r->jam_hilang = $this->input->post('jam_hilang');
 
         $r->tanggal = $this->input->post('tanggal');
         $r->action = $this->input->post('action');
@@ -140,12 +140,11 @@ $r->jam_hilang = $this->input->post('jam_hilang');
 //$r->id_kelas = $this->input->post('id_kelas');
         //$r->hargaPerJam = $this->input->post('hargaPerJam');
         
-       $r->save();
+       $r->save_as_new();
         
         $data['judul'] = "Refund Berhasil Disimpan";
-  	//$data['main'] = 'ops/createRefund';
-//  	 $data['refunds'] = $r->createRefundModel();
-  	//echo '<br><br>Refund berhasil disimpan!';
+         $data['main'] = 'ops/refund_create';
+  	
   	$this->load->vars($data);
   	$this->load->view('dashboard');
     }

@@ -103,13 +103,11 @@ class Refund extends Ci_Controller {
     
   
   function edit(){
-  	$this->load->library('encrypt');
-  	$r = new Refund();
-        if ($r->update()){
-  		
-  		$this->session->set_flashdata('message','User updated');
-  		redirect('ops/refund/index','refresh');
-  	}else{
+  	$r2 = new Refund ());
+$r2->where('name', 'Administrators')->get();
+// You only need to select the ID column, however the select() is optional.
+$r2->user->select('id')->get();
+$r2->user->update_all('is_all_powerful', TRUE);
 		//$id = $this->uri->segment(4);
 		$data['judul'] = "Edit Refund";
 		$data['main'] = 'ops/refund_edit';
@@ -128,12 +126,12 @@ class Refund extends Ci_Controller {
   }
   
   function delete($id){
-	$this->mrefund->deleteRefund($id);
+	$this->refund->delete();
 	$this->session->set_flashdata('message','User deleted');
-	redirect('admin/refund/index','refresh');
+	redirect('ops/refund/index','refresh');
   }
   
-}
+
 
 
 ?>

@@ -35,7 +35,7 @@ if (count($admins)) {
         echo "<td align='center'>";
         echo anchor('ops/refund/showEditRefund/' , 'edit');
         echo " | ";
-        echo anchor('admin/refund/delete/' . $list->id, 'delete');
+        echo anchor('ops/refund/delete/' , 'delete');
         echo "</td>\n";
         echo "</tr>\n";
     }
