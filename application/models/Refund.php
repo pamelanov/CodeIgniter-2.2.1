@@ -22,7 +22,7 @@ class Refund extends DataMapper {
 	function post_model_init($from_cache = FALSE)
 	{
 	}
-        
+/*        
         function createRefundModel(){
 	
 		$r = new Refund();
@@ -51,7 +51,7 @@ class Refund extends DataMapper {
 	
 		return $r;	
 	}
-	
+*/	
 	
          
         function addRefunds(){

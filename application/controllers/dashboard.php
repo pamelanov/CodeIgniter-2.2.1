@@ -116,6 +116,40 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
+    
+      function createRefund() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        
+
+        $r = new Refund();
+        
+
+        //$r->id_murid = $this->input->post('id_murid');
+       //$r->id_guru = $this->input->post('id_guru');
+        
+        $r->no_invoice = $this->input->post('no_invoice');
+        $r->id_sales = $this->input->post('id_sales');
+$r->jam_hilang = $this->input->post('jam_hilang');
+
+        $r->tanggal = $this->input->post('tanggal');
+        $r->action = $this->input->post('action');
+        $r->selisih = $this->input->post('selisih');
+        $r->alasan = $this->input->post('alasan');
+//$r->id_kelas = $this->input->post('id_kelas');
+        //$r->hargaPerJam = $this->input->post('hargaPerJam');
+        
+       $r->save();
+        
+        $data['judul'] = "Refund Berhasil Disimpan";
+  	//$data['main'] = 'ops/createRefund';
+//  	 $data['refunds'] = $r->createRefundModel();
+  	//echo '<br><br>Refund berhasil disimpan!';
+  	$this->load->vars($data);
+  	$this->load->view('dashboard');
+    }
+  
 
     function editUser() {
         if ($this->session->userdata('role') != 1) {

@@ -10,19 +10,19 @@
 
    
 
-    <form name='create_refund' action='<?php echo base_url(); ?>index.php/ops/refund/createRefund' method='post' >
+    <form name='create_refund' action='<?php echo base_url(); ?>index.php/dashboard/createRefund' method='post' >
         <div id ="konten">
             
             <div class="form-group">
-                <label for="id_murid">No. Invoice</label>
+                <label for="no_invoice">No. Invoice</label>
                 <input type="text" class="form-control" name="no_invoice" placeholder="Masukkan No Invoice">
             </div>
             <div class="form-group">
-                <label for="id_guru">Id Sales</label>
+                <label for="id_sales">Id Sales</label>
                 <input type="text" class="form-control" name="id_sales" placeholder="Masukkan ID Sales">
             </div>
             <div class="form-group">
-                <label for="id_sales">Jam Hilang</label>
+                <label for="jam_hilang">Jam Hilang</label>
                 <input type="text" class="form-control" name="jam_hilang" placeholder="Masukkan Jam Hilang">
             </div>
             <div class="form-group">
@@ -30,17 +30,17 @@
                 <input type="date" class="form-control" name="tanggal" placeholder="Masukkan Tanggal">
             </div>
             <div class="form-group">
-                <label for="rating">Action</label>
+                <label for="action">Action</label>
                 <input type="text" class="form-control" name="action" placeholder="Masukkan Action">
             </div>
 
              <div class="form-group">
-                <label for="rating">Selisih</label>
+                <label for="selisih">Selisih</label>
                 <input type="text" class="form-control" name="selisih" placeholder="Masukkan Selisih">
             </div>
             <div class="form-group">
-                <label for="isi">Alasan</label>
-                <input type="text" class="form-control" id="alasan" placeholder="Masukkan Alasan">
+                <label for="alasan">Alasan</label>
+                <input type="text" class="form-control" name="alasan" placeholder="Masukkan Alasan">
             </div>
 
             <button type="submit" class="btn btn-danger">Create Refund</button>
