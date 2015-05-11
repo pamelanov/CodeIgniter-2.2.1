@@ -102,10 +102,10 @@ class Refund extends Ci_Controller {
     
     
   
-  function edit($id=0){
+  function edit(){
   	$this->load->library('encrypt');
   	$r = new Refund();
-        if ($r->updateRefund()){
+        if ($r->update()){
   		
   		$this->session->set_flashdata('message','User updated');
   		redirect('ops/refund/index','refresh');
@@ -117,6 +117,14 @@ class Refund extends Ci_Controller {
 		$this->load->vars($data);
 		$this->load->view('dashboard');    
 	}
+  }
+  
+  function showEditRefund(){
+      $data['judul'] = "Edit Refund";
+      $data['main'] = 'ops/refund_edit';
+      
+      		$this->load->vars($data);
+		$this->load->view('dashboard');
   }
   
   function delete($id){

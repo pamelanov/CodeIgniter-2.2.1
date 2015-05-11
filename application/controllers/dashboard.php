@@ -150,6 +150,22 @@ $r->jam_hilang = $this->input->post('jam_hilang');
   	$this->load->view('dashboard');
     }
   
+//    function editRefund($id=0){
+//  	$this->load->library('encrypt');
+//  	$r = new Refund();
+//        if ($r->update()){
+//  		
+//  		$this->session->set_flashdata('message','User updated');
+//  		redirect('ops/refund/index','refresh');
+//  	}else{
+//		//$id = $this->uri->segment(4);
+//		$data['judul'] = "Edit Refund";
+//		$data['main'] = 'ops/refund_edit';
+//		$data['refund'] = $r->getRefund($id);
+//		$this->load->vars($data);
+//		$this->load->view('dashboard');    
+//	}
+//  }
 
     function editUser() {
         if ($this->session->userdata('role') != 1) {
