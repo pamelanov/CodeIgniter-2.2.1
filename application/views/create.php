@@ -16,26 +16,30 @@ function myFunction() {
 }
 </script>
 <div id="konten">
+   
     
-<form class="form-inline" align="left" action='<?php echo base_url();?>index.php/ops/create/searchStudentStatus' method='post'>
-  <div class="form-group">
-    <label for="exampleInputName2">Enter Student ID</label>
-    <input type="text" class="form-control" name="idMurid" placeholder="ID Student">
-  </div>
-  <button type="submit" class="btn btn-danger">
-			 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
-  <br/><br/>
-</form>
+        <form class="form-inline" align="left" action='<?php echo base_url();?>index.php/ops/create/searchStudentStatus' method='post'>
+            <div class="form-group">
+                <label for="exampleInputName2">Enter Student ID</label>
+                <input type="text" class="form-control" name="idMurid" placeholder="ID Student">
+            </div>
+                 <button type="submit" class="btn btn-danger">
+		<span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
+                <br/><br/>
+        </form>
+  
   <?php
-if ($this->session->flashdata('message')){
+    if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
-}
+    }
 
-if (!empty($student)){
+    if (!empty($student)){
         ?>
+        
+        <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-8">
         <form name='update_status' action='<?php echo base_url();?>index.php/ops/create/createStatus' method='post'>
         <?php
-        
         echo "<table id='table' class='table'>\n";
             echo "<tr valign='top'>\n";
                 echo "<th><center>ID Murid</center></th>
@@ -51,26 +55,31 @@ if (!empty($student)){
             echo "</tr>\n";
         echo "</table>";
 
-         echo "<div class='form-group'>";
+        echo "<div class='form-group'>";
             echo "<label for='id_murid'>ID Murid</label>";
             echo "<input type='text' class='form-control' name='id_murid' placeholder='ID Murid' value=$student->id_murid>";
         echo "</div>";
+        
         echo "<div class='form-group'>";
             echo "<label for='noInvoice'>No Invoice (Opsional)</label>";
             echo "<input type='text' class='form-control' name='no_invoice' placeholder='Nomor Invoice'>";
         echo "</div>";
+        
         echo "<div class='form-group'>";
             echo "<label for='jam'>Jam</label>";
             echo "<input type='time' class='form-control' name='jam' placeholder='Jam'>";
         echo "</div>";
+        
         echo "<div class='form-group'>";
             echo "<label for='tanggal'>Tanggal</label>";
             echo "<input type='date' class='form-control' name='tanggal'>";
         echo "</div>";
+        
         echo "<div class='form-group'>";
             echo "<label for='id_sales'>ID Sales</label>";
             echo "<input type='text'class='form-control' name='id_sales' placeholder='ID Sales'>";
         echo "</div>";
+        
         echo "<div class='form-group'>";
                   echo "<label for='status'>Status</label>";
                     echo "<select class='form-control' name='status'>";
@@ -84,62 +93,45 @@ if (!empty($student)){
                         echo "<option>8</option>";
                     echo "</select>";
         echo "</div>";
+        
         echo "<button id='demo' class='btn btn-danger'>Update Status</button>";
-
-    echo"</div>";
-echo "</form>";
-
-}
-
-
-?>
-
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title" id ="toggle">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Collapsible Group Item #1
-        </a>
-      </h4>
+        ?>
+        </form>
+        </div>
+        
+                <div class="col-xs-6 col-md-4">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title" id ="toggle">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Penjelasan Status
+                        </a>
+                        
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <p><b>1</b> = yang direncanakan</p>
+                        <p><b>2</b> = sudah ditelepon, belum bisa dihubungi</p>
+                        <p><b>3</b> = sudah ditelepon, belum mau request</p>
+                        <p><b>4</b> = sudah request, guru belum tersedia</p>
+                        <p><b>5</b> = sudah request, guru sudah setuju, murid belum</p>
+                        <p><b>6</b> = sudah request, guru dan murid sudah setuju</p>
+                        <p><b>7</b> = invoice sudah dikirim</p>
+                        <p><b>8</b> = uang sudah ditransfer ke Ruangguru</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
     </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingTwo">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Collapsible Group Item #2
-        </a>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingThree">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Collapsible Group Item #3
-        </a>
-      </h4>
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-      <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-
-   </div>
+    <?php } ?>
+        
 
 
+
+    
+</div>
 
 
