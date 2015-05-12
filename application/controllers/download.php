@@ -40,7 +40,7 @@ class Download extends Ci_Controller {
          *///$this->load->vars($data);
         //$this->load->view('dashboard');
     }
-    
+
     function download_refunds() {
         $this->load->helper('download');
 
@@ -70,17 +70,24 @@ class Download extends Ci_Controller {
          *///$this->load->vars($data);
         //$this->load->view('dashboard');
     }
-    
+
     function download_overall() {
         $this->load->helper('download');
-
-        $u = new Refund();
+        $o = new overall();
+        $r = new Refund();
         // load all users
-        $refunds = $u->getAllRefunds();
+        $refunds = $r->getAllRefunds();
         // Output $u->all to /tmp/output.csv, using all database fields.
+        $f = new Feedback();
+        // load all users
+        $feedbacks = $f->getAllFeedbacks();
+        $overall = $refunds . $feedbacks;
+
+// Output $u->all to /tmp/output.csv, using all database fields.
         $path = "assets/exports/";
-        $filename = 'refund_' . date("Ymd_His") . '.csv';
-        $refunds->csv_export($path . $filename);
+        $filename = 'overallSummary_' . date("Ymd_His") . '.csv';
+    
+        $overall->csv_export($path . $filename);
         $data = file_get_contents($path . $filename); // Read the file's contents
         force_download($filename, $data);
 

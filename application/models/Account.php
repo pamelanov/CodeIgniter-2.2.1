@@ -110,7 +110,9 @@ class Account extends DataMapper {
         $u->where('id_acc', $this->id_acc);
 
         $u->get();
-
+        var_dump($u->id_acc);
+        var_dump(count($u));exit();
+        
         $u->update(array('id_acc', $this->id_acc));
         $u->update('password', $this->password);
         $u->update('email', $this->email);

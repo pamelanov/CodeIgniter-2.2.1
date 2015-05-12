@@ -69,6 +69,25 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
+    function overallSum() {
+
+        $r = new Refund();
+        $f = new Feedback();
+        $data['judul'] = "Overall Summary";
+        $data['judul2'] = "Refund";
+        $data['judul3'] = "Feedback";
+        $data['main'] = 'supervisor/overall_home';
+       
+
+        $data['refund'] = $r->getAllRefunds();
+        $data['feedback'] = $f->getAllFeedbacks();
+
+
+        
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
     function summary() {
         $data['judul'] = "Search Student";
         $data['main'] = 'summary';
@@ -166,36 +185,87 @@ class Dashboard extends Ci_Controller {
 //	}
 //  }
 
-    function editUser() {
+    function editUser($id) {
         if ($this->session->userdata('role') != 1) {
             redirect('dashboard', 'refresh');
         }
+        $u = new Account();
+        $u->where('id', $id)->get();
+
         $data['judul'] = "Create User";
         $data['main'] = 'admin/user_edit';
+        $data['user'] = $u;
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    
+
     function editAccount() {
         if ($this->session->userdata('role') != 1) {
             redirect('dashboard', 'refresh');
         }
         $u = new Account();
+        $u->where('id_acc', $this->input->post('id_acc'))->get();
 
-        $u->id_acc = $this->input->post('id_acc');
         $u->password = md5($this->input->post('password'));
 
         $u->email = $this->input->post('email');
         $u->nama = $this->input->post('nama');
         $u->no_telp = $this->input->post('no_telp');
         $u->role = $this->input->post('role');
-      
-        
+
+        $u->save();
         $data['judul'] = "Update Berhasil";
-	$data['main'] = 'supervisor/updated';
-        $data['targets'] = $u->updateAccount();
-	$this->load->vars($data);
-	$this->load->view('dashboard');  
+        $data['main'] = 'supervisor/updated';
+
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    function ePassword($id) {
+        if ($this->session->userdata('role') != 1) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Account();
+        $u->where('id', $id)->get();
+
+        $data['judul'] = "Create User";
+        $data['main'] = 'admin/password_edit';
+        $data['user'] = $u;
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    function editPassword() {
+        if ($this->session->userdata('role') != 1) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Account();
+        $u->where('id_acc', $this->input->post('id_acc'))->get();
+
+        $u->password = md5($this->input->post('password'));
+
+
+        $u->save();
+        $data['judul'] = "Update Berhasil";
+        $data['main'] = 'supervisor/updated';
+
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    function deleteAccount() {
+        if ($this->session->userdata('role') != 1) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Account();
+        $u->where('id_acc', $this->input->post('id_acc'))->get();
+
+        $u->delete();
+        $data['judul'] = "Update Berhasil";
+        $data['main'] = 'supervisor/updated';
+
+        $this->load->vars($data);
+        $this->load->view('dashboard');
     }
 
     function edit($id = 0) {
