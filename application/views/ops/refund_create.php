@@ -1,22 +1,51 @@
-<h1><?php echo $judul;?></h1>
-
-<?php
-echo form_open('admin/refund/create');
-echo "<p><label for='uname'>Jam Hilang</label><br/>";
-$data = array('name'=>'jam_hilang','id'=>'uname','size'=>25);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='email'>Alasan</label><br/>";
-$data = array('name'=>'email','id'=>'email','size'=>25);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='status'>Status</label><br/>";
-$options = array('active' => 'active', 'inactive' => 'inactive');
-echo form_dropdown('status',$options) ."</p>";
+<h1><?php echo $judul; ?></h1>
 
 
-echo form_submit('submit','create refund');
-echo form_close();
+<body>
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="<?php echo base_url(); ?>index.php/ops/student/createData" > Student</a></li>
+        <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/refund/cRefund" > Refund</a></li>
+        <li role="presentation" ><a href="<?php echo base_url(); ?>index.php/dashboard/crudFeedback" > Feedback</a></li>
+    </ul>
 
+   
 
-?>
+    <form name='create_refund' action='<?php echo base_url(); ?>index.php/dashboard/createRefund' method='post' >
+        <div id ="konten">
+            
+            <div class="form-group">
+                <label for="no_invoice">No. Invoice</label>
+                <input type="text" class="form-control" name="no_invoice" placeholder="Masukkan No Invoice">
+            </div>
+            <div class="form-group">
+                <label for="id_sales">Id Sales</label>
+                <input type="text" class="form-control" name="id_sales" placeholder="Masukkan ID Sales">
+            </div>
+            <div class="form-group">
+                <label for="jam_hilang">Jam Hilang</label>
+                <input type="text" class="form-control" name="jam_hilang" placeholder="Masukkan Jam Hilang">
+            </div>
+            <div class="form-group">
+                <label for="tanggal">Tanggal</label>
+                <input type="date" class="form-control" name="tanggal" placeholder="Masukkan Tanggal">
+            </div>
+            <div class="form-group">
+                <label for="action">Action</label>
+                <input type="text" class="form-control" name="action" placeholder="Masukkan Action">
+            </div>
+
+             <div class="form-group">
+                <label for="selisih">Selisih</label>
+                <input type="text" class="form-control" name="selisih" placeholder="Masukkan Selisih">
+            </div>
+            <div class="form-group">
+                <label for="alasan">Alasan</label>
+                <input type="text" class="form-control" name="alasan" placeholder="Masukkan Alasan">
+            </div>
+
+            <button type="submit" class="btn btn-danger">Create Refund</button>
+        </div>
+    </form>
+</div>
+
+</body>

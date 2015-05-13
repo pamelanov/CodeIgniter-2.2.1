@@ -1,5 +1,10 @@
-<html>
-<h2>Selamat Datang di Sistem Informasi Customer Tracking</h2>
-<a href="<?php echo base_url(); ?>index.php/admin/dashboard" > Today's Summary</a>
+<h1><?php echo $judul; ?></h1>
 
-</html>
+<p><?php echo anchor("dashboard/todaySummary", "Today's Summary"); ?></p>
+<?php
+if ($this->session->flashdata('message')) {
+    echo "<div class='message'>" . $this->session->flashdata('message') . "</div>";
+}
+
+
+?>

@@ -2,8 +2,8 @@
 class Teacher extends DataMapper {
 
 	var $has_many = array(
-			'taught_engagement' => array(
-					'class' => 'engagement',
+			'taught_course' => array(
+					'class' => 'course',
 					'other_field' => 'taughtBy'
 			),
 			'received_feedback' => array(

@@ -1,36 +1,50 @@
-<h1><?php echo $judul;?></h1>
-
-<?php
-echo form_open('admin/refund/edit');
 
 
-echo "<p><label for='uname'>Jam Hilang</label><br/>";
-$data = array('name'=>'jam_hilang','id'=>'uname','size'=>25,'value'=>$refund['jam_hilang']);
-echo form_input($data) ."</p>";
+<!DOCTYPE html>
+<html lang="en"></html>
+<h1><?php echo $judul; ?></h1>
+<ul class="nav nav-tabs">
+    <li role="presentation" "><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
+    <li role="presentation"class="active"><a href="<?php echo base_url(); ?>index.php/ops/refund/cRefund" > Refund</a></li>
+    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbacks" > Feedback</a></li>
+</ul>
+<form name='update_refund' action='<?php echo base_url(); ?>index.php/ops/refund/edit' method='post' >
+    <div id ="konten">
 
-echo "<p><label for='uname'>ID Guru</label><br/>";
-$data = array('name'=>'id_guru','id'=>'uname','size'=>25,'value'=>$refund['id_guru']);
-echo form_input($data) ."</p>";
+         <div class="form-group">
+                <label for="no_invoice">No. Invoice</label>
+                <input type="text" class="form-control" name="no_invoice" placeholder="Masukkan No Invoice">
+            </div>
+            <div class="form-group">
+                <label for="id_sales">Id Sales</label>
+                <input type="text" class="form-control" name="id_sales" placeholder="Masukkan ID Sales">
+            </div>
+            <div class="form-group">
+                <label for="jam_hilang">Jam Hilang</label>
+                <input type="text" class="form-control" name="jam_hilang" placeholder="Masukkan Jam Hilang">
+            </div>
+            <div class="form-group">
+                <label for="tanggal">Tanggal</label>
+                <input type="date" class="form-control" name="tanggal" placeholder="Masukkan Tanggal">
+            </div>
+            <div class="form-group">
+                <label for="action">Action</label>
+                <input type="text" class="form-control" name="action" placeholder="Masukkan Action">
+            </div>
 
-echo "<p><label for='uname'>ID Murid</label><br/>";
-$data = array('name'=>'id_murid','id'=>'uname','size'=>25,'value'=>$refund['id_murid']);
-echo form_input($data) ."</p>";
+             <div class="form-group">
+                <label for="selisih">Selisih</label>
+                <input type="text" class="form-control" name="selisih" placeholder="Masukkan Selisih">
+            </div>
+            <div class="form-group">
+                <label for="alasan">Alasan</label>
+                <input type="text" class="form-control" name="alasan" placeholder="Masukkan Alasan">
+            </div>
 
-echo "<p><label for='uname'>ID Sales</label><br/>";
-$data = array('name'=>'id_sales','id'=>'uname','size'=>25,'value'=>$refund['id_sales']);
-echo form_input($data) ."</p>";
+    <button type="submit" class="btn btn-danger">Edit Refund</button>
+    </div>
+</form>
+</div>
 
-echo "<p><label for='uname'>Alasan</label><br/>";
-$data = array('name'=>'alasan','id'=>'uname','size'=>25,'value'=>$refund['alasan']);
-echo form_input($data) ."</p>";
-
-echo "<p><label for='status'>Status</label><br/>";
-$options = array('active' => 'active', 'inactive' => 'inactive');
-echo form_dropdown('status',$options, $refund['status']) ."</p>";
-
-echo form_hidden('id',$refund['id']);
-echo form_submit('submit','Update Refund');
-echo form_close();
-
-
-?>
+</body>
+</html>

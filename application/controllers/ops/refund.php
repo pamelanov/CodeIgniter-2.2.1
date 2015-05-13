@@ -5,9 +5,12 @@ class Refund extends Ci_Controller {
 	{
 		parent::__construct();
    // session_start();
-    
+    if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
 	
   }
+  
   function index(){
 	$data['judul'] = "RefundSummary";
 	$data['main'] = 'createRefund';
@@ -17,6 +20,9 @@ class Refund extends Ci_Controller {
   }
   
   function refund_sum(){
+      if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
 	 $r = new Refund();
         
         $data['judul'] = "Refund Summary";
@@ -29,6 +35,9 @@ class Refund extends Ci_Controller {
 
   
   function addRefundsCtrl(){
+      if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
   	$f = new Refund();
         $f->Tanggal = $this->input->post('tanggal');
   	$f->Id_murid = $this->input->post('idMurid');
@@ -49,45 +58,80 @@ class Refund extends Ci_Controller {
 	} */
   }
   
-  function createRefund() {
-  	$n = new Refund();
+  function cRefund() {
+      if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        
+        $data['judul'] = "Create Refund";
+        $data['main'] = 'ops/refund_create';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+    
+    
+    function createRefund() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        
+
+        $r = new Refund();
+        
+
+        //$r->id_murid = $this->input->post('id_murid');
+       //$r->id_guru = $this->input->post('id_guru');
+        $r->tanggal = $this->input->post('tanggal');
+        $r->no_invoice = $this->input->post('no_invoice');
+        //$r->id_kelas = $this->input->post('id_kelas');
+        //$r->hargaPerJam = $this->input->post('hargaPerJam');
+        $r->jam_hilang = $this->input->post('jam_hilang');
+        $r->alasan = $this->input->post('alasan');
+        $r->action = $this->input->post('action');
+        //$r->selisih = $this->input->post('selisih');
+        $r->id_sales = $this->input->post('id_sales');
+       $r->save();
+        
+        $data['judul'] = "Refund Berhasil Disimpan";
+  	//$data['main'] = 'ops/createRefund';
+//  	 $data['refunds'] = $r->createRefundModel();
+  	//echo '<br><br>Refund berhasil disimpan!';
+  	$this->load->vars($data);
+  	$this->load->view('dashboard');
+    }
+    
+    
   
-  	$n->Tanggal = $this->input->post('tanggal');
-  	$n->Id_murid = $this->input->post('idMurid');
-  	$n->Id_guru = $this->input->post('idGuru');
-  	$n->Jam_hilang = $this->input->post('jamHilang');
-  	$n->Harga_jam = $this->input->post('harga');
-        $n->Alasan = $this->input->post('alasan');
-  
-  	$a = new Refund;
-  	$a = $n->addRefunds();
-//  	echo $a->id_murid;
-//  	echo $a->id_guru;
-  }
-  
-  function edit($id=0){
-  	$this->load->library('encrypt');
-  	if ($this->input->post('jam_hilang')){
-  		$this->mrefund->updateRefund();
-  		$this->session->set_flashdata('message','User updated');
-  		redirect('admin/refund/index','refresh');
-  	}else{
+  function edit(){
+  	$r2 = new Refund();
+$r2->where('name', 'Administrators')->get();
+// You only need to select the ID column, however the select() is optional.
+$r2->user->select('id')->get();
+$r2->user->update_all('is_all_powerful', TRUE);
 		//$id = $this->uri->segment(4);
 		$data['judul'] = "Edit Refund";
-		$data['main'] = 'admin/refund_edit';
-		$data['refund'] = $this->mrefund->getRefund($id);
+		$data['main'] = 'ops/refund_edit';
+		$data['refund'] = $r->getRefund($id);
 		$this->load->vars($data);
-		$this->load->view('admin/dashboard');    
+		$this->load->view('dashboard');    
 	}
   }
   
-  function delete($id){
-	$this->mrefund->deleteRefund($id);
-	$this->session->set_flashdata('message','User deleted');
-	redirect('admin/refund/index','refresh');
+  function showEditRefund(){
+      $data['judul'] = "Edit Refund";
+      $data['main'] = 'ops/refund_edit';
+      
+      		$this->load->vars($data);
+		$this->load->view('dashboard');
   }
   
-}
+  function delete($id){
+	$this->refund->delete();
+	$this->session->set_flashdata('message','User deleted');
+	redirect('ops/refund/index','refresh');
+  }
+  
+
 
 
 ?>

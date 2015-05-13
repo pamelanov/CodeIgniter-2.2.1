@@ -12,8 +12,8 @@ class Account extends DataMapper {
             'class' => 'refund',
             'other_field' => 'manager'
         ),
-        'managed_end_status' => array(
-            'class' => 'end_status',
+        'managed_end_number' => array(
+            'class' => 'end_number',
             'other_field' => 'manager'
         ),
         'managed_beginning_number' => array(
@@ -38,27 +38,18 @@ class Account extends DataMapper {
         )
     );
     var $validation = array(
-        'id' => array(
+        'id_acc' => array(
             'label' => 'id',
-            'rules' => array('required', 'trim', 'unique', 'min_length' => 3, 'max_length' => 20)
+            'rules' => array('required', 'trim', 'unique', 'min_length' => 2, 'max_length' => 2)
         ),
         'password' => array(
             'label' => 'password',
             'rules' => array('required', 'trim', 'min_length' => 3)
         ),
-        'confirm_password' => array(// accessed via $this->confirm_password
-            'label' => 'confirm Password',
-            'rules' => array('encrypt', 'matches' => 'password')
-        ),
-        'Email' => array(
+        'email' => array(
             'label' => 'Email Address',
             'rules' => array('required')
         ),
-        array(// accessed via $this->confirm_email
-            'field' => 'confirm_email',
-            'label' => 'Confirm Email Address',
-            'rules' => array('matches' => 'email')
-        )
     );
 
     function login() {
@@ -84,13 +75,13 @@ class Account extends DataMapper {
             return TRUE;
         }
     }
-    
+
     function getAllAccounts() {
-        
+
         $o = new Account();
-	$o->get();
-	$this->salt = $o->salt;
-        
+        $o->get();
+        $this->salt = $o->salt;
+
         return $o;
     }
 
@@ -105,6 +96,30 @@ class Account extends DataMapper {
     // Optionally, you can add post model initialisation code
     function post_model_init($from_cache = FALSE) {
         
+    }
+
+    function getAllOps() {
+        $a = new Account();
+        $a->where('role', 2)->get();
+
+        return $a;
+    }
+
+    function updateAccount() {
+        $u = new Account();
+        $u->where('id_acc', $this->id_acc);
+
+        $u->get();
+        var_dump($u->id_acc);
+        var_dump(count($u));exit();
+        
+        $u->update(array('id_acc', $this->id_acc));
+        $u->update('password', $this->password);
+        $u->update('email', $this->email);
+        $u->update('nama', $this->nama);
+        $u->update('no_telp', $this->no_telp);
+        $u->update('role', $this->role);
+        return $u;
     }
 
     // Validation prepping function to encrypt passwords

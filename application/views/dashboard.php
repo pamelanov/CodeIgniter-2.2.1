@@ -1,135 +1,92 @@
 <!DOCTYPE html>
-<html lang ="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang ="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title><?php echo $judul; ?></title>
-        <link href="<?php echo base_url(); ?>assets/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+        <script type="text/javascript" src="http://pamelanov.com/bootbox.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        
         <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css" />
-        <!-- TinyMCE -->
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/TINYMCE/JSCRIPTS/TINY_MCE/tiny_mce_src.js"></script>
         <link href="<?php echo base_url(); ?>assets/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript">
-            tinyMCE.init({
-                // General options
-                mode: "textareas",
-                theme: "advanced",
-                plugins: "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                // Theme options
-                theme_advanced_buttons1: "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,cut,copy,paste,pastetext,pasteword,|,search,replace,|",
-                theme_advanced_buttons2:
-                        "styleselect,formatselect,fontselect,fontsizeselect,forecolor,backcolor",
-                theme_advanced_buttons3: "bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|",
-                theme_advanced_toolbar_location: "top",
-                theme_advanced_toolbar_align: "left",
-                theme_advanced_statusbar_location: "bottom",
-                theme_advanced_resizing: true,
-                // Example content CSS (should be your site CSS)
-                content_css: "css/content.css",
-                // Drop lists for link/image/media/template dialogs
-                template_external_list_url: "lists/template_list.js",
-                external_link_list_url: "lists/link_list.js",
-                external_image_list_url: "lists/image_list.js",
-                media_external_list_url: "lists/media_list.js",
-                // Replace values for the template plugin
-                template_replace_values: {
-                    username: "Some User",
-                    staffid: "991234"
-                }
-            });
 
-            function convLinkVC(strUrl, node, on_save) {
-                strUrl = strUrl.replace("../", "");
-                return strUrl;
-            }
-
-            function ajaxLoad() {
-                var ed = tinyMCE.get('elm');
-
-                // Do you ajax call here, window.setTimeout fakes ajax call
-                ed.setProgressState(1); // Show progress
-                window.setTimeout(function () {
-                    ed.setProgressState(0); // Hide progress
-                    ed.setContent('HTML content that got passed from server.');
-                }, 3000);
-            }
-
-            function ajaxSave() {
-                var ed = tinyMCE.get('elm');
-
-                // Do you ajax call here, window.setTimeout fakes ajax call
-                ed.setProgressState(1); // Show progress
-                window.setTimeout(function () {
-                    ed.setProgressState(0); // Hide progress				
-                }, 3000);
-            }
-
-        </script>
-        <!-- /TinyMCE -->
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                <div class="header"></div>
+            
+                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">   
+                    
+                    <ul class="nav navbar-nav">
+                        <li><a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard">| SICuT Ruangguru |</a></li>
                         
-                    </button>
-
                     <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>      
-                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard">Home</a>
-                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/createData">Create</a>
-                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/summary">Summary</a>
-                        
+                        <li><a href="<?php echo base_url(); ?>index.php/ops/student/createData">
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create</a></li>
+                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/summary">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Summary</a></li>    
                     <?php } ?>
 
                     <?php if ($this->session->userdata('role') == 2) { ?>
-                        <a class = "navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/performance/" >Performance</a>
+                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/performance/" >
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Performance</a></li>
                     <?php } ?>
 
                     <?php if ($this->session->userdata('role') == 3) { ?>
-                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/supervisor/performance" >Performance</a>
-                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" >Overall Summary</a>
-
+                        <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance" >
+                          <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Performance</a></li>
+                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/overallSum" >
+                        <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Overall Summary</a></li>
                     <?php } ?>
 
                     <?php if ($this->session->userdata('role') == 1) { ?>
-                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard" > Home</a>
-                        <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard/users" > User</a>
-                    <?php } ?>              
-                </div>
+                        <li><a href="<?php echo base_url(); ?>index.php/dashboard" >
+                         <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/users" >
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> User</a></li>
+                    <?php } ?>
+                    </ul>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-
-                        <li><a class="navbar-brand" href="<?php echo base_url(); ?>index.php/template/logout" > Logout</a>
-                        </li>
+                        <li><a href="<?php echo base_url(); ?>index.php/template/logout" >
+                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</a></li>  
                     </ul>
 
                 </div><!-- /.navbar-collapse -->
+              
             </div><!-- /.container-fluid -->
         </nav>
+    
+   
+    </script>
 
 
         <div id="konten">
-            
-            <?php $this->load->view($main); ?>
+        
+        <?php $this->load->view($main); ?>
+        
+         
+    
+        
+
+
+
         </div>
+        
+
 
         <nav class="navbar navbar-inverse navbar-fixed-bottom">
             <div class="container">
                 <div class="clear"></div> <center>
                     <div id="footer">
-                        Sistem Informasi Customer Tracking (SICuT) Ruangguru
+                        <b>Sistem Informasi Customer Tracking Ruangguru</b>
                         <br>
                         KELOMPOK B01
                         <br>
-                            <a href="http://ruangguru.com">ruangguru.com</a></b>        
-                        </center></div>
+                        <a href="http://ruangguru.com">ruangguru.com</a>      
+                    </center></div>
             </div>
             </div>
         </nav>

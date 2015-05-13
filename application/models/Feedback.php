@@ -27,6 +27,41 @@ class Feedback extends DataMapper {
 	{
 	}
 	
+	function createFeedbackModel(){
+	
+		$f = new Feedback();
+		$s = new Student();
+		$t = new Teacher();
+		$o = new Account();
+	
+		$s->where('id_murid', $this->id_murid)->get();
+		$t->where('id_guru', $this->id_guru)->get();
+		$o->where('id_acc', $this->id_sales)->get();
+		
+		$f->id_murid = $s->id;
+		$f->id_guru = $t->id;
+		$f->tanggal = $this->tanggal;
+		$f->rating = $this->rating;
+		$f->isi = $this->isi;
+		$f->status = $this->status;
+		$f->total_skor = $this->total_skor;
+		$f->id_sales = $o->id;
+		
+		$f->save_as_new();
+	
+		return $f;	
+	}
+	
+	function updateFeedbackModel(){
+		$f = new Feedback();
+		$f->where('id', $this->id);
+		$f->get();
+	
+		$f->update('isi', $this->isi);
+		$f->update('rating', $this->rating);
+		return $f;
+	}
+	
 	function getAllFeedbacks() {
 	
 		$f = new Feedback();
@@ -35,32 +70,35 @@ class Feedback extends DataMapper {
 	
 		return $f;
 	}
-	
-	function addFeedbacks(){
-		$inc_id = new Feedback();
-		$id_terakhir = new Feedback();
-		$inc_id->get();
-		$id_terakhir = $inc_id->select_max('id');
-		$angka = $inc_id->id + 1;
-	
-		$n = new Feedback();
-	
-		$n->id_murid = $this->id_murid;
-		$n->id_guru = $this->id_guru;
-		$n->id_sales = $this->id_sales;
-		$n->isi = $this->isi;
-		$n->status = $this->status;
-		$n->rating= $this->rating;
-		$n->tanggal = $this->tanggal;
-		$n->total_skor = $this->total_skor;
-		$n->id = $angka;
-	
-		$n->save_as_new();
-	
-	return $n;
-
-	}
-	
+        
+    function findFeedback(){
+    	$u = new Feedback();
+    	$u->where('id', $this->id);
+    	//$u->where('id_guru', $this->id_guru);
+    	$u->get();
+    	$this->salt = $u->salt;
+    
+    	// Validate and get this user by their property values,
+    	// this will see the 'encrypt' validation run, encrypting the password with the salt
+    	$this->validate()->get();
+    	if (empty($this->id_murid)) {
+    
+    		return FALSE;
+    	} else {
+    		// found something
+    		return TRUE;
+    	}
+    }
+    
+    function hasilSearch(){
+    	$o = new Feedback();
+    	$o->where('id', $this->id);
+    	//$o->where('id_guru', $this->id_guru);
+    	$o->get();
+    	$this->salt = $o->salt;
+    
+    	return $o;
+    }
 }
 
 /* End of file name.php */
