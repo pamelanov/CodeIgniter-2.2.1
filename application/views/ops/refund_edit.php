@@ -8,7 +8,7 @@
     <li role="presentation"class="active"><a href="<?php echo base_url(); ?>index.php/ops/refund/cRefund" > Refund</a></li>
     <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbacks" > Feedback</a></li>
 </ul>
-<form name='update_refund' action='<?php echo base_url(); ?>index.php/ops/refund/edit' method='post' >
+<form name='update_refund' action='<?php echo base_url(); ?>index.php/dashboard/editRefund' method='post' >
     <div id ="konten">
 
          <div class="form-group">

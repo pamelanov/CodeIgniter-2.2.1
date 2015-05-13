@@ -121,8 +121,8 @@ $r2->user->update_all('is_all_powerful', TRUE);
       $data['judul'] = "Edit Refund";
       $data['main'] = 'ops/refund_edit';
       
-      		$this->load->vars($data);
-		$this->load->view('dashboard');
+      $this->load->vars($data);
+      $this->load->view('dashboard');
   }
   
   function delete($id){

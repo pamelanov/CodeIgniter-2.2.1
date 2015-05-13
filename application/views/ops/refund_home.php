@@ -33,7 +33,7 @@ if (count($admins)) {
         
 
         echo "<td align='center'>";
-        echo anchor('ops/refund/showEditRefund/' , 'edit');
+        echo anchor('dashboard/showEditRefund/' , 'edit');
         echo " | ";
         echo anchor('ops/refund/delete/' , 'delete');
         echo "</td>\n";

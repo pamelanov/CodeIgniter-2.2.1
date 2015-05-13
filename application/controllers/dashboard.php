@@ -233,6 +233,37 @@ class Dashboard extends Ci_Controller {
         $data['main'] = 'supervisor/updated';
     }
     
+    function editRefund() {
+       if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Refund();
+        $u->where('no_invoice', $this->input->post('no_invoice'))->get();
+
+        //$u->password = md5($this->input->post('password'));
+
+        //$u->no_invoice = $this->input->post('no_invoice');
+        $u->id_sales = $this->input->post('id_sales');
+        $u->tanggal = $this->input->post('tanggal');
+        $u->action = $this->input->post('action');
+        $u->selisih = $this->input->post('selisih');
+        $u->alasan = $this->input->post('alasan');
+        $u->jam_hilang = $this->input->post('jam_hilang');
+
+        $u->save();
+        $data['judul'] = "Update Refund Berhasil";
+        $data['main'] = 'ops/refund_edit';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+    
+     function showEditRefund(){
+      $data['judul'] = "Edit Refund";
+      $data['main'] = 'ops/refund_edit';
+      
+      $this->load->vars($data);
+      $this->load->view('dashboard');
+  }
     /*
     function crudFeedback(){
     	$r = new Feedback();
