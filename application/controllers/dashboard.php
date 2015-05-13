@@ -271,6 +271,14 @@ class Dashboard extends Ci_Controller {
       $this->load->vars($data);
       $this->load->view('dashboard');
   }
+  
+   function showDeleteRefund(){
+      $data['judul'] = "Delete Refund";
+      $data['main'] = 'ops/refund_delete';
+      
+      $this->load->vars($data);
+      $this->load->view('dashboard');
+  }
     /*
     function crudFeedback(){
     	$r = new Feedback();
@@ -350,14 +358,15 @@ class Dashboard extends Ci_Controller {
             redirect('dashboard', 'refresh');
         }
         $u = new Refund();
-        $u->where('no_invoice', $this->input->post('no_invoice'))->get();
+        $u->where('id', $this->input->post('id'))->get();
 
         $u->delete();
         $data['judul'] = "Delete Refund Berhasil";
-        $data['main'] = 'ops/refund_home';
+        $data['main'] = 'ops/refund_delete';
 
         $this->load->vars($data);
         $this->load->view('dashboard');
+        
     }
 
     function edit($id = 0) {
