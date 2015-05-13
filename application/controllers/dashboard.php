@@ -335,11 +335,11 @@ class Dashboard extends Ci_Controller {
             redirect('dashboard', 'refresh');
         }
         $u = new Account();
-        $u->where('no_invoice', $this->input->post('no_invoice'))->get();
+        $u->where('id_acc', $this->input->post('id_acc'))->get();
 
         $u->delete();
-        $data['judul'] = "Delete Refund Berhasil";
-        $data['main'] = 'ops/refund_home';
+        $data['judul'] = "Update Berhasil";
+        $data['main'] = 'supervisor/updated';
 
         $this->load->vars($data);
         $this->load->view('dashboard');
@@ -353,8 +353,8 @@ class Dashboard extends Ci_Controller {
         $u->where('no_invoice', $this->input->post('no_invoice'))->get();
 
         $u->delete();
-        $data['judul'] = "Update Berhasil";
-        $data['main'] = 'ops/refund_delete';
+        $data['judul'] = "Delete Refund Berhasil";
+        $data['main'] = 'ops/refund_home';
 
         $this->load->vars($data);
         $this->load->view('dashboard');
