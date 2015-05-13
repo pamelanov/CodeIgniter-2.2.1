@@ -31,21 +31,6 @@ class Template extends CI_Controller {
         $this->load->view('home/template', $data);
     }
 
-    public function contact() {
-        $data['judul'] = "Contact Us";
-        $data['main'] = "home/contact";
-        $data['aktif'] = 'class="active"';
-
-        $this->load->view('home/template', $data);
-    }
-
-    public function about() {
-        $data['judul'] = "About Us";
-        $data['main'] = "home/about";
-        $data['aktif'] = 'class="active"';
-        $this->load->view('home/template', $data);
-    }
-
     public function login() {
         $data['judul'] = "Halaman Login";
         $data['main'] = "home/login";
