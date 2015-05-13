@@ -103,7 +103,7 @@ class Refund extends Ci_Controller {
     
   
   function edit(){
-  	$r2 = new Refund ());
+  	$r2 = new Refund();
 $r2->where('name', 'Administrators')->get();
 // You only need to select the ID column, however the select() is optional.
 $r2->user->select('id')->get();
