@@ -16,6 +16,7 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
+<<<<<<< HEAD
     function refunds() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
@@ -25,6 +26,18 @@ class Dashboard extends Ci_Controller {
         $data['judul'] = "Refund Summary";
         $data['main'] = 'ops/refund_home';
         $data['admins'] = $r->getAllRefunds();
+=======
+    function todaySummary() {
+    	$data['judul'] = "Today Summary";
+    	$data['main'] = 'todaySummary';
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+    }
+    
+    function createData() {
+        $data['judul'] = "Create";
+        $data['main'] = 'create';
+>>>>>>> punya-derien(baru)
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
@@ -198,6 +211,7 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
+<<<<<<< HEAD
 
     function editAccount() {
         if ($this->session->userdata('role') != 1) {
@@ -217,6 +231,36 @@ class Dashboard extends Ci_Controller {
         $data['judul'] = "Update Berhasil";
         $data['main'] = 'supervisor/updated';
 
+=======
+    
+    /*
+    function crudFeedback(){
+    	$r = new Feedback();
+    	
+    	$data['judul'] = "Feedback";
+    	$data['main'] = 'ops/crudFeedback';
+    	$data['feedback'] = $r->getAllFeedbacks();
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+    }
+    */
+    
+    function feedbackSummary(){
+    	$r = new Feedback();
+    	$data['judul'] = "Feedback Summary";
+    	$data['main'] = 'feedbackSummary';
+    	$data['feedback'] = $r->getAllFeedbacks();
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+    }
+    
+    function users() {
+        $o = new Account();
+        
+        $data['judul'] = "Manage Users";
+        $data['main'] = 'admin/user_home';
+        $data['admins'] = $o->getAllAccounts();
+>>>>>>> punya-derien(baru)
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
@@ -234,6 +278,7 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
+<<<<<<< HEAD
 
     function editPassword() {
         if ($this->session->userdata('role') != 1) {
@@ -315,6 +360,119 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
+=======
+        function efeedbacks() {
+            $this->load->helper('download');
+
+            $u = new Feedback();
+            // load all users
+            $feedbacks = $u->getAllFeedbacks();
+            // Output $u->all to /tmp/output.csv, using all database fields.
+            $path = "assets/exports/";
+            $filename = 'feedback_'.date("Ymd_His").'.csv';
+            $feedbacks->csv_export($path.$filename);
+            $data = file_get_contents($path.$filename); // Read the file's contents
+             force_download($filename, $data);
+            
+            /*$r = new Feedback();
+
+            $data['feedback'] = $r->getAllFeedbacks();
+            $data['feedback']->csv_export('/tmp/output.csv');
+           /* $export = "";  
+            foreach($data['feedback'] as $row){
+                $export .= $row->id_murid.",";
+                $export .= $row->id_guru.",";
+                $export .= $row->id_sales;
+                
+                $export .= "<br>";
+            }
+            echo $export;
+            *///$this->load->vars($data);
+            //$this->load->view('dashboard');
+        }
+    
+             	function createUser() {
+                    if ($this->session->userdata('role') != 1) {
+                        redirect('dashboard', 'refresh');
+                    }
+                    $data['judul'] = "Create User";
+                    $data['main'] = 'admin/user_create';
+                    $this->load->vars($data);
+                    $this->load->view('dashboard');
+                }
+
+                function createAccount() {
+                    if ($this->session->userdata('role') != 1) {
+                        redirect('dashboard', 'refresh');
+                    }
+                    $u = new Account();
+
+                    $u->id_acc = $this->input->post('id_acc');
+                    $u->password = md5($this->input->post('password'));
+
+                    $u->email = $this->input->post('email');
+                    $u->nama = $this->input->post('nama');
+                    $u->no_telp = $this->input->post('no_telp');
+                    $u->role = $this->input->post('role');
+                    $u->save();
+                    $data['judul'] = "Create User";
+
+                    $data['main'] = 'admin/created';
+
+                    $this->load->vars($data);
+                    $this->load->view('dashboard');
+                }
+
+                function edit($id = 0) {
+                    if ($this->session->userdata('role') != 1) {
+                        redirect('dashboard', 'refresh');
+                    }
+                    $this->load->library('encrypt');
+                    $u = new Account();
+                    $u->id_acc = $this->input->post('id_acc');
+                    $u->password = $this->input->post('password');
+
+                    $u->email = $this->input->post('email');
+                    $u->nama = $this->input->post('nama');
+                    $u->no_telp = $this->input->post('no_telp');
+                    $u->role = $this->input->post('role');
+                    if ($u->updateAccount) {
+
+                        $this->session->set_flashdata('message', 'User updated');
+
+                        redirect('dashboard/users', 'refresh');
+                    } else {
+                        $data['judul'] = "Create User";
+                        $data['main'] = 'admin/user_create';
+                        $this->load->vars($data);
+                        $this->load->view('dashboard');
+                    }
+                }
+
+                function delete($id) {
+                    $this->madmins->deleteUser($id);
+                    $this->session->set_flashdata('message', 'User deleted');
+                    redirect('dashboard/users', 'refresh');
+                }
+
+                function logout() {
+                    unset($_SESSION['userid']);
+                    $this->session->set_flashdata('error', "You've been logged out!");
+                    redirect('template/login', 'refresh');
+                }
+
+                function performance() {
+                    $t = new Target();
+
+                    $data['judul'] = "Performance";
+                    $data['main'] = 'ops/performance_ops';
+                    $data['target'] = $t->rank();
+                    $this->load->vars($data);
+                    $this->load->view('dashboard');
+                }
+
+            }
+>>>>>>> punya-derien(baru)
 
 }
 

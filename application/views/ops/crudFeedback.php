@@ -13,7 +13,7 @@ if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
 }
 
-	echo anchor('ops/feedback/formCreateFeedback', 'Tambah Feedback');
+	echo anchor('ops/feedbackCtrl/formCreateFeedback', 'Tambah Feedback');
 
 	echo "<table class='table table-bordered'>\n";
 	echo "<tr valign='top'>\n";
@@ -26,9 +26,9 @@ if ($this->session->flashdata('message')){
 		echo "<td align='center'>" . $list->tanggal . "</td>\n";
 	
 		echo "<td align='center'>";
-		echo anchor('dashboard/updateFeedback', 'ubah');
+		echo anchor('ops/feedbackCtrl/formUpdateFeedback', 'ubah');
 		echo " | ";
-		echo anchor('ops/feedback/searchFeedback/'.$list->id , 'lihat');
+		echo anchor('ops/feedbackCtrl/readFeedback/'.$list->id , 'lihat');
 		/*
 		echo anchor('dashboard/createFeedback', 'tambah');
 		echo " | ";
