@@ -76,11 +76,13 @@ class feedbackCtrl extends Ci_Controller {
   }
   
   function updateFeedback(){
-  	$n = new Feedback();
+  	$f = new Feedback();
   	
+  	$f->where('id', $this->input->post('id'))->get();
   	$f->isi = $this->input->post('isi');
   	$f->rating = $this->input->post('rating');
-  	$f->id = $this->input->post('id');
+  	
+  	$f->save();
   	
   	/*
   	$f->id_murid = $this->input->post('id_murid');
@@ -95,7 +97,7 @@ class feedbackCtrl extends Ci_Controller {
   	
   	$data['judul'] = "Update Berhasil";
   	$data['main'] = 'ops/formUpdateFeedback';
-  	$data['targets'] = $n->updateFeedbackModel();
+  	//$data['targets'] = $n->updateFeedbackModel();
   	$this->load->vars($data);
   	$this->load->view('dashboard');
   }
