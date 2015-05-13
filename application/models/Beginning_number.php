@@ -63,6 +63,23 @@ class Beginning_number extends DataMapper {
 		
 		return $b;
 	}
+	
+	function forTodaySum(){
+		$b = new Beginning_number();
+		$b->get();
+		$s = new Student();
+		$s->get();
+		
+		foreach ($b as $c) {
+			foreach ($s as $t) {
+				if ($c->id_murid = $t->id) {
+					$c->id_murid = $t->id_murid;
+				}
+			}
+		}
+		
+		return $b;
+	}
 }
 
 /* End of file name.php */

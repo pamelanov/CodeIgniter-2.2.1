@@ -60,6 +60,49 @@ class End_number extends DataMapper {
 		
 		return $e;
 	}
+	
+	function forTodaySum(){
+		$b = new End_number();
+		$b->get();
+		
+		$i = new Invoice();
+		$i->get();
+		
+		foreach ($b as $e) {
+			foreach($i as $j) {
+				if ($e->id_invoice = $j->id) {
+					$e->id_invoice = $j->id_kelas;
+				}
+			}
+		}
+	
+		
+		$c = new Course();
+		$c->get();
+		
+		foreach($b as $x) {
+			foreach ($c as $y) {
+				if ($x->id_invoice = $y->id) {
+					$x->id_invoice = $y->id_murid;
+				}
+			}
+		}
+		
+		
+		$s = new Student();
+		$s->get();
+		
+		foreach($b as $x) {
+			foreach ($s as $y) {
+				if ($x->id_invoice = $y->id) {
+					$x->id_invoice = $y->id_murid;
+				}
+			}
+		}
+		
+		
+		return $b;
+	}
 }
 
 /* End of file name.php */
