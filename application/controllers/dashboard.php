@@ -25,13 +25,8 @@ class Dashboard extends Ci_Controller {
         $data['judul'] = "Refund Summary";
         $data['main'] = 'ops/refund_home';
         $data['admins'] = $r->getAllRefunds();
-<<<<<<< HEAD
         $this->load->vars($data);
         $this->load->view('dashboard');
-=======
-         	$this->load->vars($data);
-    	$this->load->view('dashboard');
->>>>>>> 17ca28bbb64db83da3ce43ee0d36e107ee4a0be5
     }
 
     function todaySummary() {
