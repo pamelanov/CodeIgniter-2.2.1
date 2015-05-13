@@ -30,8 +30,15 @@ class Dashboard extends Ci_Controller {
     }
 
     function todaySummary() {
-    	$data['judul'] = "Today Summary";
+	$b = new Beginning_number();
+	$e = new End_number();
+	$s = new Student();
+
+    	$data['judul'] = "Dashboard Home";
     	$data['main'] = 'todaySummary';
+	$data['statusAwal'] = $b->forTodaySum();
+	$data['statusAkhir'] = $e->forTodaySum();
+	$data['students'] = $s->get();
     	$this->load->vars($data);
     	$this->load->view('dashboard');
     }
