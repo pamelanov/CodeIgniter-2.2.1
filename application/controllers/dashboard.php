@@ -28,7 +28,7 @@ class Dashboard extends Ci_Controller {
     }
 
     function todaySummary() {
-    	$data['judul'] = "Today Summary";
+    	$data['judul'] = "Dashboard Home";
     	$data['main'] = 'todaySummary';
     	$this->load->vars($data);
     	$this->load->view('dashboard');
