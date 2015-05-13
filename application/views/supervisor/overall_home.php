@@ -1,6 +1,6 @@
 <html>
     
-     <h1><?php echo $judul2; ?></h1>
+     <h1><?php echo $judul3; ?></h1>
      
     <?php
     if ($this->session->flashdata('message')) {
@@ -10,7 +10,7 @@
     if (!empty($feedback)) {
         echo "<table class='table table-bordered'>\n";
         echo "<tr valign='top'>\n";
-        echo "<th><center>ID Murid</th><th><center>ID Guru</th><th><center>Isi</th><th><center>Rating</th><th><center>Total Skor</th>\n";
+        echo "<th><center>ID Murid</th><th><center>ID Guru</th><th><center>Isi</th><th><center>Rating</th><th><center>Total Skor</th><th><center>Tanggal</th>\n";
         echo "</tr>\n";
         foreach ($feedback as $list) {
             echo "<tr valign='top'>\n";
@@ -19,7 +19,7 @@
             echo "<td align='center'>" . $list->isi . "</td>\n";
             echo "<td align='center'>" . $list->rating . "</td>\n";
             echo "<td align='center'>" . $list->total_skor . "</td>\n";
-
+            echo "<td align='center'>" . $list->tanggal . "</td>\n";
             /* echo "<td align='center'>";
               echo anchor('dashboard/createFeedback', 'tambah');
               echo " | ";
@@ -36,7 +36,7 @@
     
     ?>
     
- <h1><?php echo $judul3; ?></h1>
+ <h1><?php echo $judul2; ?></h1>
     <?php
     if ($this->session->flashdata('message')) {
         echo "<div class='message'>" . $this->session->flashdata('message') . "</div>";
@@ -45,7 +45,7 @@
     if (count($refund)) {
         echo "<table class='table table-bordered'>\n";
         echo "<tr valign='top '>\n";
-        echo "<th><center>Tanggal Refund</th><th><center>No Invoice</th><th><center>Jumlah Jam Hilang</th><th><center>Alasan</th><th><center>Aksi</th><th><center>Selisih</th><th><center>ID Sales</th><th><center>Action</th>\n";
+        echo "<th><center>Tanggal Refund</th><th><center>No Invoice</th><th><center>Jumlah Jam Hilang</th><th><center>Alasan</th><th><center>Aksi</th><th><center>Selisih</th><th><center>ID Sales</th>\n";
         echo "</tr>\n";
         foreach ($refund as $list) {
             echo "<tr valign='top'>\n";
@@ -58,15 +58,12 @@
             echo "<td align='center'>" . $list->id_sales . "</td>\n";
 
 
-            echo "<td align='center'>";
-            echo anchor('admin/refund/edit/' . $list->id, 'edit');
-            echo " | ";
-            echo anchor('admin/refund/delete/' . $list->id, 'delete');
             echo "</td>\n";
             echo "</tr>\n";
         }
         echo "</table>";
     }
     ?>
-</div>
+
 <p><?php echo anchor("download/download_overall", "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
+</div>

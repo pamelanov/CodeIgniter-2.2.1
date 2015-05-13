@@ -1,4 +1,5 @@
 <h1><?php echo $judul; ?></h1>
+<body>
 <ul class="nav nav-tabs">
 
 
@@ -7,7 +8,6 @@
 <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/feedbackCtrl/formCreateFeedback" > Feedback</a></li>
 </ul>
 
-<div id="konten">
 <form name='create_feedback' action='<?php echo base_url(); ?>index.php/ops/feedbackCtrl/createFeedback' method='post' >
     <div id ="konten">
 
@@ -40,4 +40,5 @@
     <button type="submit" class="btn btn-danger">Create Feedback</button>
       </div>
 </form>
-</div>
+
+</body>

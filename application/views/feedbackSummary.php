@@ -8,6 +8,7 @@
     </ul>
     
 <div id="konten">
+    
     <form class="form-inline" align="left" action='<?php echo base_url(); ?>index.php/ops/feedback/searchFeedback' method='post'>
     <div class="form-group">
         <label for="formIdSales">Masukan ID Sales</label>
@@ -22,6 +23,7 @@
 			 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
 
 </form>
+    
 <br/><br/>
 <?php
 	if ($this->session->flashdata('message')){
@@ -30,7 +32,7 @@
 
 	echo "<table class='table table-bordered'>\n";
 	echo "<tr valign='top'>\n";
-	echo "<th>ID Murid</th><th>ID Guru</th><th>Tanggal Terakhir Diubah</th>\n";
+	echo "<th>ID Murid</th><th>ID Guru</th><th>Tanggal Terakhir Diubah</th><th><center>Action</th>\n";
 	echo "</tr>\n";
 	foreach ($feedback as $list) {
 		echo "<tr valign='top'>\n";
@@ -45,6 +47,22 @@
 		echo " | ";
 		echo anchor('ops/feedbackCtrl/formCreateFeedback'.$list->id, 'Tambah');
 		echo "</td>\n";
+		echo "</tr>\n";
+	}
+	echo "</table>";
+
+?>  <p><?php echo anchor("download/download_feedbacks", "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
+
+	<?php
+	echo "<table class='table table-bordered'>\n";
+	echo "<tr valign='top'>\n";
+	echo "<th>ID Sales</th><th>Jumlah Feedback</th>\n";
+	echo "</tr>\n";
+	foreach ($feedback1 as $list) {
+		echo "<tr valign='top'>\n";
+		echo "<td align='center'>" . $list->id_sales . "</td>\n";
+		echo "<td align='center'>" . $list->where('id_sales')->count() . "</td>\n";
+		//echo anchor('ops/feedbackCtrl/countFeedback/');
 		echo "</tr>\n";
 	}
 	echo "</table>";

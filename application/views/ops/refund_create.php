@@ -5,14 +5,14 @@
     <ul class="nav nav-tabs">
         <li role="presentation"><a href="<?php echo base_url(); ?>index.php/ops/student/createData" > Student</a></li>
         <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/refund/cRefund" > Refund</a></li>
-        <li role="presentation" ><a href="<?php echo base_url(); ?>index.php/dashboard/crudFeedback" > Feedback</a></li>
+        <li role="presentation" ><a href="<?php echo base_url(); ?>index.php/ops/feedbackCtrl/formCreateFeedback" > Feedback</a></li>
     </ul>
 
-   
+
 
     <form name='create_refund' action='<?php echo base_url(); ?>index.php/dashboard/createRefund' method='post' >
         <div id ="konten">
-            
+
             <div class="form-group">
                 <label for="no_invoice">No. Invoice</label>
                 <input type="text" class="form-control" name="no_invoice" placeholder="Masukkan No Invoice">
@@ -34,7 +34,7 @@
                 <input type="text" class="form-control" name="action" placeholder="Masukkan Action">
             </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label for="selisih">Selisih</label>
                 <input type="text" class="form-control" name="selisih" placeholder="Masukkan Selisih">
             </div>
@@ -46,6 +46,6 @@
             <button type="submit" class="btn btn-danger">Create Refund</button>
         </div>
     </form>
-</div>
+
 
 </body>
