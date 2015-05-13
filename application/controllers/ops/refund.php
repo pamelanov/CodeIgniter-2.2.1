@@ -77,6 +77,7 @@ class Refund extends Ci_Controller {
         
 
         $r = new Refund();
+        
 
         //$r->id_murid = $this->input->post('id_murid');
        //$r->id_guru = $this->input->post('id_guru');
@@ -89,11 +90,11 @@ class Refund extends Ci_Controller {
         $r->action = $this->input->post('action');
         //$r->selisih = $this->input->post('selisih');
         $r->id_sales = $this->input->post('id_sales');
-       // $r->save_as_new();
+       $r->save();
         
         $data['judul'] = "Refund Berhasil Disimpan";
-  	$data['main'] = 'ops/createRefund';
-  	$data['refunds'] = $r->createRefundModel();
+  	//$data['main'] = 'ops/createRefund';
+//  	 $data['refunds'] = $r->createRefundModel();
   	//echo '<br><br>Refund berhasil disimpan!';
   	$this->load->vars($data);
   	$this->load->view('dashboard');
@@ -101,14 +102,12 @@ class Refund extends Ci_Controller {
     
     
   
-  function edit($id=0){
-  	$this->load->library('encrypt');
-  	$r = new Refund();
-        if ($r->updateRefund()){
-  		
-  		$this->session->set_flashdata('message','User updated');
-  		redirect('ops/refund/index','refresh');
-  	}else{
+  function edit(){
+  	$r2 = new Refund();
+$r2->where('name', 'Administrators')->get();
+// You only need to select the ID column, however the select() is optional.
+$r2->user->select('id')->get();
+$r2->user->update_all('is_all_powerful', TRUE);
 		//$id = $this->uri->segment(4);
 		$data['judul'] = "Edit Refund";
 		$data['main'] = 'ops/refund_edit';
@@ -118,13 +117,21 @@ class Refund extends Ci_Controller {
 	}
   }
   
-  function delete($id){
-	$this->mrefund->deleteRefund($id);
-	$this->session->set_flashdata('message','User deleted');
-	redirect('admin/refund/index','refresh');
+  function showEditRefund(){
+      $data['judul'] = "Edit Refund";
+      $data['main'] = 'ops/refund_edit';
+      
+      		$this->load->vars($data);
+		$this->load->view('dashboard');
   }
   
-}
+  function delete($id){
+	$this->refund->delete();
+	$this->session->set_flashdata('message','User deleted');
+	redirect('ops/refund/index','refresh');
+  }
+  
+
 
 
 ?>

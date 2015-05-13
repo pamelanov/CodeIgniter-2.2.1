@@ -98,21 +98,28 @@ class Account extends DataMapper {
         
     }
 
-    function getAllOps(){
+    function getAllOps() {
         $a = new Account();
         $a->where('role', 2)->get();
-        
+
         return $a;
     }
-    
-    function updateAccount(){
-         $u = new Account();
-   
-        $u->id_acc = $this->id_acc;
-        $u->password = $this->password;
-        $u->email = $this->email;
-        $u->nama = $this->nama;
-        $u->role = $this->role;
+
+    function updateAccount() {
+        $u = new Account();
+        $u->where('id_acc', $this->id_acc);
+
+        $u->get();
+        var_dump($u->id_acc);
+        var_dump(count($u));exit();
+        
+        $u->update(array('id_acc', $this->id_acc));
+        $u->update('password', $this->password);
+        $u->update('email', $this->email);
+        $u->update('nama', $this->nama);
+        $u->update('no_telp', $this->no_telp);
+        $u->update('role', $this->role);
+        return $u;
     }
 
     // Validation prepping function to encrypt passwords

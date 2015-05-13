@@ -12,34 +12,46 @@ class Refund extends DataMapper {
 			)
 	);
         
+        
+        function __construct($id = NULL)
+	{
+		parent::__construct($id);
+	}
+
+	// Optionally, you can add post model initialisation code
+	function post_model_init($from_cache = FALSE)
+	{
+	}
+/*        
         function createRefundModel(){
 	
 		$r = new Refund();
-		$i = new NoInvoice();
+		$i = new Invoice();
 		//$t = new Teacher();
 		//$o = new Account();
 	
-		$i->where('id', $this->no_invoice)->get();
+		$i->where('no_invoice', $this->no_invoice)->get();
 		//$t->where('id', $this->id_guru)->get();
 		//$t->where('id', $this->id_sales)->get();
 		
-		$r->no_invoice = $i->no_invoice;
+		$r->no_invoice = $i->id;
 		//$f->id_guru = $t->id_guru;
-		$r->tanggal = $this->input->post('tanggal');
+		$r->tanggal = $this->tanggal;
                 //$r->no_invoice = $this->input->post('no_invoice');
         //$r->id_kelas = $this->input->post('id_kelas');
+        //$f->isi = $this->isi;
         //$r->hargaPerJam = $this->input->post('hargaPerJam');
-                $r->jam_hilang = $this->input->post('jam_hilang');
-                $r->alasan = $this->input->post('alasan');
-                $r->action = $this->input->post('action');
+                $r->jam_hilang = $this->jam_hilang;
+                $r->alasan = $this->alasan;
+                $r->action = $this->action;
         //$r->selisih = $this->input->post('selisih');
-                $r->id_sales = $this->input->post('id_sales');
+                $r->id_sales = $this->id_sales;
 		
 		$r->save_as_new();
 	
 		return $r;	
 	}
-	
+*/	
 	
          
         function addRefunds(){

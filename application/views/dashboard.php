@@ -37,7 +37,7 @@
                     <?php if ($this->session->userdata('role') == 3) { ?>
                         <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance" >
                           <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Performance</a></li>
-                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/users" >
+                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/overallSum" >
                         <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Overall Summary</a></li>
                     <?php } ?>
 
@@ -65,11 +65,10 @@
 
         <div id="konten">
         
-
         <?php $this->load->view($main); ?>
-        <!--
         
-</div>-->
+         
+    
         
 
 

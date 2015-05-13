@@ -127,7 +127,7 @@
     <ul class="nav nav-tabs">
         <li role="presentation" class="active" ><a href="<?php echo base_url(); ?>index.php/dashboard/summary" > Student</a></li>
         <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
-        <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbacks" > Feedback</a></li>
+        <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbackSummary" > Feedback</a></li>
     </ul>
 
 <div class="row">
