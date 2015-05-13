@@ -36,9 +36,7 @@
                         label: "Bikin dulu dah huhuhu",
                         className: "btn-success",
                         callback: function () {
-                            var name = $('#name').val();
-                            var answer = $("input[name='awesomeness']:checked").val()
-                            Example.show("Hello " + name + ". You've chosen <b>" + answer + "</b>");
+                            window.location.href = "<?php echo base_url(); ?>index.php/ops/summary/";
                         }
                     }
                 }
