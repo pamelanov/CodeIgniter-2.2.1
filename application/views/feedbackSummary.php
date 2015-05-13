@@ -50,10 +50,10 @@
 		echo "</tr>\n";
 	}
 	echo "</table>";
-<<<<<<< HEAD
+
 ?>  <p><?php echo anchor("download/download_feedbacks", "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
-=======
-	
+
+	<?php
 	echo "<table class='table table-bordered'>\n";
 	echo "<tr valign='top'>\n";
 	echo "<th>ID Sales</th><th>Jumlah Feedback</th>\n";
@@ -67,7 +67,6 @@
 	}
 	echo "</table>";
 ?>
->>>>>>> punya-derien(baru)
 
 </div>
 </form>
