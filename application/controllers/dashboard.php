@@ -335,11 +335,26 @@ class Dashboard extends Ci_Controller {
             redirect('dashboard', 'refresh');
         }
         $u = new Account();
-        $u->where('id_acc', $this->input->post('id_acc'))->get();
+        $u->where('no_invoice', $this->input->post('no_invoice'))->get();
+
+        $u->delete();
+        $data['judul'] = "Delete Refund Berhasil";
+        $data['main'] = 'ops/refund_home';
+
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+    
+     function deleteRefund() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Refund();
+        $u->where('no_invoice', $this->input->post('no_invoice'))->get();
 
         $u->delete();
         $data['judul'] = "Update Berhasil";
-        $data['main'] = 'supervisor/updated';
+        $data['main'] = 'ops/refund_delete';
 
         $this->load->vars($data);
         $this->load->view('dashboard');
