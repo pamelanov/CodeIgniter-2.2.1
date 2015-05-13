@@ -99,6 +99,12 @@ class Dashboard extends Ci_Controller {
     
     function feedbackSummary(){
     	$r = new Feedback();
+    	$f = new Feedback();
+    	 
+    	$f->group_by('id_sales');
+    	$f->get();
+    	$data['feedback1'] = $f;
+    	
     	$data['judul'] = "Feedback Summary";
     	$data['main'] = 'feedbackSummary';
     	$data['feedback'] = $r->getAllFeedbacks();

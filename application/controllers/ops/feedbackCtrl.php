@@ -101,6 +101,16 @@ class feedbackCtrl extends Ci_Controller {
   	$this->load->vars($data);
   	$this->load->view('dashboard');
   }
+  
+  function countFeedback(){
+  	$f = new Feedback();
+  	
+  	$f->group_by(id_sales);
+  	$data['feedback'] = $u->hasilSearch();
+  	
+  	//$f->where('id_sales', $this->input->post('id_sales'))->get();
+  	//$f->count();
+  }
 }
 
 ?>

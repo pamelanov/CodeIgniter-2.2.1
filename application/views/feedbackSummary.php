@@ -48,6 +48,19 @@
 		echo "</tr>\n";
 	}
 	echo "</table>";
+	
+	echo "<table class='table table-bordered'>\n";
+	echo "<tr valign='top'>\n";
+	echo "<th>ID Sales</th><th>Jumlah Feedback</th>\n";
+	echo "</tr>\n";
+	foreach ($feedback1 as $list) {
+		echo "<tr valign='top'>\n";
+		echo "<td align='center'>" . $list->id_sales . "</td>\n";
+		echo "<td align='center'>" . $list->where('id_sales')->count() . "</td>\n";
+		//echo anchor('ops/feedbackCtrl/countFeedback/');
+		echo "</tr>\n";
+	}
+	echo "</table>";
 ?>
 
 </div>
