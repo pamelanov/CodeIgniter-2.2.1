@@ -294,6 +294,7 @@ class Dashboard extends Ci_Controller {
     function feedbackSummary(){
     	$r = new Feedback();
     	$f = new Feedback();
+    	$jumlahFeedback = 0;
     	 
     	$f->group_by('id_sales');
     	$f->get();

@@ -43,13 +43,28 @@ class Feedback extends DataMapper {
 		$f->tanggal = $this->tanggal;
 		$f->rating = $this->rating;
 		$f->isi = $this->isi;
-		$f->status = $this->status;
-		$f->total_skor = $this->total_skor;
+		$f->status = '1';
+		$f->total_skor = $f->hitungTotalSkor();
 		$f->id_sales = $o->id;
 		
 		$f->save_as_new();
 	
 		return $f;	
+	}
+	
+	function hitungTotalSkor(){
+		$f1 = new Feedback();
+		$f2 = new Feedback();
+		$rating = 0;
+		$f1->where('id_guru', $this->id_guru)->get();
+		$f2->rating = $this->rating;
+		
+		foreach($f1 as $list){
+			$rating += $list->rating; 
+		}
+		//$f1->total_skor = $this->rating + $f2->rating;
+		$rating = $rating + $f2->rating;
+		return $rating;
 	}
 	
 	function updateFeedbackModel(){
