@@ -72,6 +72,8 @@
         
         <?php $this->load->view($main); ?>
         
+        
+        
         <!--
         <div id="the-basics">
   <input class="typeahead" type="text" placeholder="States of USA">
