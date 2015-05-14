@@ -4,8 +4,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title><?php echo $judul; ?></title>
         
-        <!--<script type="text/javascript" src="../../assets/jquery/jquery-1.11.2.min.js"></script> 
-        <script type="text/javascript" src="../../assets/jquery/bootbox.min.js"></script>-->
+        <script type="text/javascript" src="../../assets/jquery/jquery-1.11.2.min.js"></script> 
+        <script type="text/javascript" src="../../assets/jquery/bootbox.min.js"></script>
         
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
         <script type="text/javascript" src="http://pamelanov.com/bootbox.min.js"></script>
@@ -14,6 +14,7 @@
         
         <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url(); ?>assets/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
 
     </head>
     <body>
@@ -71,9 +72,10 @@
         
         <?php $this->load->view($main); ?>
         
+        <!--
         <div id="the-basics">
   <input class="typeahead" type="text" placeholder="States of USA">
-</div>
+</div>-->
         <?php
     /*
     echo "Today is " . date("Y/m/d") . "<br>";
