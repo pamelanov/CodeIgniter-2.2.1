@@ -9,7 +9,7 @@ if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
 }
 
-    
+	echo "<p>" . $performa->actual . "</p>";    
 	echo "<table class='table table-bordered'>\n";    
 	echo "<tr>\n";
         echo "

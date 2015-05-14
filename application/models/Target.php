@@ -11,6 +11,7 @@ class Target extends DataMapper {
 					'other_field' => 'assigned_target'
 			)
 	);
+	
 	// Optionally, don't include a constructor if you don't need one.
 	function __construct($id = NULL)
 	{
@@ -100,6 +101,35 @@ class Target extends DataMapper {
 		} else {
 			return TRUE;
 		}
+	}
+	
+	function addActual(){
+		$t = new Target();
+		$a = new Account();
+		$i = new Invoice();
+		$c = new Course();
+		$e = new End_number();
+		
+		$e->select_max('id');
+		$e->get();
+		
+		$i->where('id', $e->id_invoice)->get();
+		
+		$a->where('id_acc', $this->session->userdata('id'))->get();
+		$t->where('id_sales', $a->id)->get();
+		$t->actual = $t->actual + $i->jumlah_jam;
+		
+		return $t;
+	}
+	
+	function ambilPerforma($id_sales){
+		
+		$t = new Target();
+		$a = new Account();
+		$a->where('id_acc', $id_sales)->get();
+		$t->where('id_sales', $a->id)->get();
+		
+		return $t;
 	}
 }
 

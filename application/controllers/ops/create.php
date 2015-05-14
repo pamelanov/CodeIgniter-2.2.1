@@ -41,7 +41,7 @@ class Create extends Ci_Controller {
         
     }
     
-          function createStatus() {
+        function createStatus() {
         
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
@@ -59,7 +59,18 @@ class Create extends Ci_Controller {
             $m->no_invoice = $this->input->post('no_invoice');
             
             $o = $m->updateStatus();
-            echo "berhasil";
+            
+            if ($this->input->post('status') == 8){
+                $t = new Target();
+                $t->addActual();
+            }
+            
+            $data['judul'] = "Create Status";
+            $data['main'] = "ops/status_berhasil";
+
+            $this->load->view('dashboard', $data);
+            
+            
         }
         
         else{
@@ -72,7 +83,11 @@ class Create extends Ci_Controller {
             $n->id_sales = $this->input->post('id_sales');
             $n->status = $this->input->post('status');
             $a = $n->updateStatus();
-            echo "berhasil!";
+            
+            $data['judul'] = "Create Status";
+            $data['main'] = "ops/status_berhasil";
+
+            $this->load->view('dashboard', $data);
         }
     }
 

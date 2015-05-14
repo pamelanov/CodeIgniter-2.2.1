@@ -385,9 +385,10 @@ class Dashboard extends Ci_Controller {
 
     function performance() {
         $t = new Target();
-
+	$a = new Target();
         $data['judul'] = "Performance";
         $data['main'] = 'ops/performance_ops';
+	$data['performa'] = $a->ambilPerforma($this->session->userdata('id'));
         $data['target'] = $t->rank();
         $this->load->vars($data);
         $this->load->view('dashboard');
