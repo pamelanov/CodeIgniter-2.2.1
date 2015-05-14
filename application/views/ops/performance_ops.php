@@ -2,14 +2,13 @@
 
  
  
- <p><?php echo anchor("admin/refund/create", "Download"); ?></p>
 
 <?php
 if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
 }
 
-	echo "<p>" . $performa->actual . "</p>";    
+	echo "<p><h4> Pencapaian target sejauh ini: " . $performa->actual . "</h4></p>";    
 	echo "<table class='table table-bordered'>\n";    
 	echo "<tr>\n";
         echo "
@@ -25,7 +24,7 @@ if ($this->session->flashdata('message')){
                 foreach($target as $t){
                 
                     echo "<td>".$t->id_sales."</td>\n";
-                    echo "<td>".$t->periode_awal. " - ". $t->periode_akhir."</td>\n";
+                    echo "<td>".$t->periode."</td>\n";
                     echo "<td>".$t->target."</td>\n";
                     echo "<td>".$t->actual."</td>\n";
                     echo "</td>\n";

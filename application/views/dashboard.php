@@ -53,10 +53,10 @@
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span> User</a></li>
                     <?php } ?>
                     </ul>
-
+                    
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="<?php echo base_url(); ?>index.php/template/logout" >
-                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</a></li>  
+                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout (<?php echo $this->session->userdata('id') ?>)</a></li>
                     </ul>
 
                 </div><!-- /.navbar-collapse -->
@@ -82,7 +82,7 @@
     /*
     echo "Today is " . date("Y/m/d") . "<br>";
     echo "Today is " . date("Y.m.d") . "<br>";
-    echo "Today is " . date("Y-m-d") . "<br>";
+    echo "Today is " . date("Y-m") . "<br>";
     echo "Today is " . date("l");
     */
     ?>

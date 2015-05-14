@@ -127,7 +127,9 @@ class Target extends DataMapper {
 		$t = new Target();
 		$a = new Account();
 		$a->where('id_acc', $id_sales)->get();
-		$t->where('id_sales', $a->id)->get();
+		$t->where('id_sales', $a->id);
+		$t->where('periode', date("Y-m"));
+		$t->get();
 		
 		return $t;
 	}
