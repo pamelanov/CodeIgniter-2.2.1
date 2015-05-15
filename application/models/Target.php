@@ -61,9 +61,9 @@ class Target extends DataMapper {
 	$a->where('id_acc', $this->id_sales)->get();
 	$b->where('id_acc', $this->id_supervisor)->get();
 	
-	$n->id_sales = $a->id_acc;
+	$n->id_sales = $a->id;
         $n->periode = $this->periode;
-        $n->id_supervisor = $b->id_acc;
+        $n->id_supervisor = $b->id;
         $n->target = $this->target;
 	
 
