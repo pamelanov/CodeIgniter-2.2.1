@@ -267,6 +267,7 @@ class Dashboard extends Ci_Controller {
      function showEditRefund(){
       $data['judul'] = "Edit Refund";
       $data['main'] = 'ops/refund_edit';
+      $data['refunds'] = $list;
       
       $this->load->vars($data);
       $this->load->view('dashboard');

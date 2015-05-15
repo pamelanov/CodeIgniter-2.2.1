@@ -26,8 +26,15 @@ class Target extends DataMapper {
 	
 	function rank(){
 		$t = new Target();
+		$a = new Account();
+		$t->where('periode', date("Y-m"));
 		$t->get();
 		$t->order_by("actual", "desc");
+		
+		foreach($t as $b) {
+			$a->where('id', $b->id_sales)->get();
+			$b->id_sales = $a->id_acc;
+		}
 		
 		return $t;
 		
