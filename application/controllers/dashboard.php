@@ -280,25 +280,10 @@ class Dashboard extends Ci_Controller {
       $data['feedback'] = $r->getAllFeedbacks();
       $this->load->vars($data);
       $this->load->view('dashboard');
-<<<<<<< HEAD
+
       }
      */
 
-    function feedbackSummary() {
-        $r = new Feedback();
-        $f = new Feedback();
-
-        $f->group_by('id_sales');
-        $f->get();
-        $data['feedback1'] = $f;
-
-        $data['judul'] = "Feedback Summary";
-        $data['main'] = 'feedbackSummary';
-        $data['feedback'] = $r->getAllFeedbacks();
-        $this->load->vars($data);
-        $this->load->view('dashboard');
-=======
-  }
   
    function showDeleteRefund(){
       $data['judul'] = "Delete Refund";
@@ -333,7 +318,7 @@ class Dashboard extends Ci_Controller {
     	$data['feedback'] = $r->getAllFeedbacks();
     	$this->load->vars($data);
     	$this->load->view('dashboard');
->>>>>>> origin/master-yang-ini
+
     }
 
     function ePassword($id) {
