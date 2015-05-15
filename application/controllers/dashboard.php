@@ -258,7 +258,7 @@ class Dashboard extends Ci_Controller {
         $u->jam_hilang = $this->input->post('jam_hilang');
 
         $u->save();
-        $data['judul'] = "Update Refund Berhasil";
+        $data['judul'] = "Update Refund";
         $data['main'] = 'ops/refund_editberhasil';
         $this->load->vars($data);
         $this->load->view('dashboard');
@@ -358,8 +358,8 @@ class Dashboard extends Ci_Controller {
         $u->where('no_invoice', $this->input->post('no_invoice'))->get();
 
         $u->delete();
-        $data['judul'] = "Delete Refund Berhasil";
-        $data['main'] = 'ops/refund_delete';
+        $data['judul'] = "Delete Refund";
+        $data['main'] = 'ops/refund_deleteberhasil';
 
         $this->load->vars($data);
         $this->load->view('dashboard');

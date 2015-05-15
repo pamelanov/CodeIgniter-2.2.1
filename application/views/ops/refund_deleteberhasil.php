@@ -9,5 +9,5 @@
 </ul>
 
 <body>
-<h2> Update Refund Berhasil</h2>
+<h2> Delete Refund Berhasil</h2>
 </body>
