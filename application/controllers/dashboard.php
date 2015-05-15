@@ -274,12 +274,7 @@ class Dashboard extends Ci_Controller {
         $u->where('id', $id)->get();
       $data['judul'] = "Edit Refund";
       $data['main'] = 'ops/refund_edit';
-<<<<<<< HEAD
       $data['refunds']=$u;
-=======
-      $data['refunds'] = $list;
-      
->>>>>>> punya-pamela
       $this->load->vars($data);
       $this->load->view('dashboard');
      }      

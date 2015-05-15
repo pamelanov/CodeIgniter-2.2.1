@@ -60,11 +60,6 @@ class Template extends CI_Controller {
             $data['nama'] = $u->nama;
             $this->session->set_userdata($data);
             redirect('dashboard', 'refresh');
-<<<<<<< HEAD
-            
-=======
-
->>>>>>> punya-pamela
         } else {
             $data['judul'] = "Halaman Login";
             $data['main'] = "home/login";
