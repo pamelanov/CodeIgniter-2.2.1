@@ -32,7 +32,7 @@
 
 	echo "<table class='table table-bordered'>\n";
 	echo "<tr valign='top'>\n";
-	echo "<th>ID Murid</th><th>ID Guru</th><th>Tanggal Terakhir Diubah</th><th><center>Action</th>\n";
+	echo "<th>Nama Murid</th><th>Nama Guru</th><th>Tanggal Terakhir Diubah</th><th><center>Action</th>\n";
 	echo "</tr>\n";
 	foreach ($feedback as $list) {
 		echo "<tr valign='top'>\n";

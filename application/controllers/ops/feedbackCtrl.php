@@ -32,13 +32,12 @@ class feedbackCtrl extends Ci_Controller {
   	$f->rating = $this->input->post('rating');
   	$f->isi = $this->input->post('isi');
   	$f->status = $this->input->post('status');
-  	$f->total_skor = $this->input->post('total_skor');
+  	$f->total_skor = $f->hitungTotalSkor();
   	$f->id_sales = $this->input->post('id_sales');
   
-  	$data['judul'] = "Feedback Berhasi Disimpan";
-  	$data['main'] = 'ops/formCreateFeedback';
+  	$data['judul'] = "Feedback berhasi disimpan";
+  	$data['main'] = 'ops/createFeedbackBerhasil';
   	$data['feedback'] = $f->createFeedbackModel();
-  	$data['feedback1'] = $f->hitungTotalSkor();
   	$this->load->vars($data);
   	$this->load->view('dashboard');
   }
@@ -71,7 +70,7 @@ class feedbackCtrl extends Ci_Controller {
   	
   	$data['judul'] = "Update Feedback";
   	$data['main'] = 'ops/formUpdateFeedback';
-  	$data['feedback'] = $u->hasilSearch();
+  	$data['feedback'] = $u;
   	$this->load->vars($data);
   	$this->load->view('dashboard');
   }
@@ -82,23 +81,21 @@ class feedbackCtrl extends Ci_Controller {
   	$f->where('id', $this->input->post('id'))->get();
   	$f->isi = $this->input->post('isi');
   	$f->rating = $this->input->post('rating');
+  	$f->total_skor = $f->hitungTotalSkor();
   	
   	$f->save();
   	
-  	/*
-  	$f->id_murid = $this->input->post('id_murid');
-  	$f->id_guru = $this->input->post('id_guru');
-  	$f->tanggal = $this->input->post('tanggal');
-  	$f->rating = $this->input->post('rating');
-  	$f->isi = $this->input->post('isi');
-  	$f->status = $this->input->post('status');
-  	$f->total_skor = $this->input->post('total_skor');
-  	$f->id_sales = $this->input->post('id_sales');
-  	*/
+  	$f1 = new Feedback();
+  	$f1->where('id_murid', $f->id_murid);
+  	$f1->where('id_guru', $f->id_guru);
+  	$f1->get();
+  	foreach($f1 as $list){
+  		$list->total_skor = $f->total_skor;
+  		$list->save();
+  	}
   	
-  	$data['judul'] = "Update Berhasil";
-  	$data['main'] = 'ops/formUpdateFeedback';
-  	//$data['targets'] = $n->updateFeedbackModel();
+  	$data['judul'] = "Feedback berhasil disimpan";
+  	$data['main'] = 'ops/updateFeedbackBerhasil';
   	$this->load->vars($data);
   	$this->load->view('dashboard');
   }

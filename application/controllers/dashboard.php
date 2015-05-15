@@ -447,13 +447,6 @@ class Dashboard extends Ci_Controller {
             *///$this->load->vars($data);
             //$this->load->view('dashboard');
         }
-    
-
-  
-
-            
-
-
 }
 
 ?>
