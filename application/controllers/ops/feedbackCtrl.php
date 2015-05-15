@@ -38,6 +38,7 @@ class feedbackCtrl extends Ci_Controller {
   	$data['judul'] = "Feedback Berhasi Disimpan";
   	$data['main'] = 'ops/formCreateFeedback';
   	$data['feedback'] = $f->createFeedbackModel();
+  	$data['feedback1'] = $f->hitungTotalSkor();
   	$this->load->vars($data);
   	$this->load->view('dashboard');
   }
@@ -108,8 +109,8 @@ class feedbackCtrl extends Ci_Controller {
   	$f->group_by(id_sales);
   	$data['feedback'] = $u->hasilSearch();
   	
-  	//$f->where('id_sales', $this->input->post('id_sales'))->get();
-  	//$f->count();
+  	$f->where('id_sales', $this->input->post('id_sales'))->get();
+  	$f->count();
   }
 }
 

@@ -280,6 +280,7 @@ class Dashboard extends Ci_Controller {
       $data['feedback'] = $r->getAllFeedbacks();
       $this->load->vars($data);
       $this->load->view('dashboard');
+<<<<<<< HEAD
       }
      */
 
@@ -296,6 +297,43 @@ class Dashboard extends Ci_Controller {
         $data['feedback'] = $r->getAllFeedbacks();
         $this->load->vars($data);
         $this->load->view('dashboard');
+=======
+  }
+  
+   function showDeleteRefund(){
+      $data['judul'] = "Delete Refund";
+      $data['main'] = 'ops/refund_delete';
+      
+      $this->load->vars($data);
+      $this->load->view('dashboard');
+  }
+    /*
+    function crudFeedback(){
+    	$r = new Feedback();
+    	
+    	$data['judul'] = "Feedback";
+    	$data['main'] = 'ops/crudFeedback';
+    	$data['feedback'] = $r->getAllFeedbacks();
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+    }
+    */
+    
+    function feedbackSummary(){
+    	$r = new Feedback();
+    	$f = new Feedback();
+    	$jumlahFeedback = 0;
+    	 
+    	$f->group_by('id_sales');
+    	$f->get();
+    	$data['feedback1'] = $f;
+    	
+    	$data['judul'] = "Feedback Summary";
+    	$data['main'] = 'feedbackSummary';
+    	$data['feedback'] = $r->getAllFeedbacks();
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+>>>>>>> origin/master-yang-ini
     }
 
     function ePassword($id) {
@@ -343,6 +381,22 @@ class Dashboard extends Ci_Controller {
 
         $this->load->vars($data);
         $this->load->view('dashboard');
+    }
+    
+     function deleteRefund() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Refund();
+        $u->where('id', $this->input->post('id'))->get();
+
+        $u->delete();
+        $data['judul'] = "Delete Refund Berhasil";
+        $data['main'] = 'ops/refund_delete';
+
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+        
     }
 
     function edit($id = 0) {
