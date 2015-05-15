@@ -6,11 +6,11 @@ class Dashboard extends Ci_Controller {
         parent::__construct();
         if ($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('template/login', 'refresh');
-        } 
+        }
     }
 
     function index() {
-        
+
         $data['judul'] = "Dashboard Home";
         $data['main'] = 'home';
         $this->load->vars($data);
@@ -284,41 +284,40 @@ class Dashboard extends Ci_Controller {
       }
      */
 
-  
-   function showDeleteRefund(){
-      $data['judul'] = "Delete Refund";
-      $data['main'] = 'ops/refund_delete';
-      
+    function showDeleteRefund() {
+        $data['judul'] = "Delete Refund";
+        $data['main'] = 'ops/refund_delete';
+
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    /*
+      function crudFeedback(){
+      $r = new Feedback();
+
+      $data['judul'] = "Feedback";
+      $data['main'] = 'ops/crudFeedback';
+      $data['feedback'] = $r->getAllFeedbacks();
       $this->load->vars($data);
       $this->load->view('dashboard');
-  }
-    /*
-    function crudFeedback(){
-    	$r = new Feedback();
-    	
-    	$data['judul'] = "Feedback";
-    	$data['main'] = 'ops/crudFeedback';
-    	$data['feedback'] = $r->getAllFeedbacks();
-    	$this->load->vars($data);
-    	$this->load->view('dashboard');
-    }
-    */
-    
-    function feedbackSummary(){
-    	$r = new Feedback();
-    	$f = new Feedback();
-    	$jumlahFeedback = 0;
-    	 
-    	$f->group_by('id_sales');
-    	$f->get();
-    	$data['feedback1'] = $f;
-    	
-    	$data['judul'] = "Feedback Summary";
-    	$data['main'] = 'feedbackSummary';
-    	$data['feedback'] = $r->getAllFeedbacks();
-    	$this->load->vars($data);
-    	$this->load->view('dashboard');
+      }
+     */
 
+    function feedbackSummary() {
+        $r = new Feedback();
+        $f = new Feedback();
+        $jumlahFeedback = 0;
+
+        $f->group_by('id_sales');
+        $f->get();
+        $data['feedback1'] = $f;
+
+        $data['judul'] = "Feedback Summary";
+        $data['main'] = 'feedbackSummary';
+        $data['feedback'] = $r->getAllFeedbacks();
+        $this->load->vars($data);
+        $this->load->view('dashboard');
     }
 
     function ePassword($id) {
@@ -357,18 +356,20 @@ class Dashboard extends Ci_Controller {
         if ($this->session->userdata('role') != 1) {
             redirect('dashboard', 'refresh');
         }
+ 
         $u = new Account();
         $u->where('id_acc', $this->input->post('id_acc'))->get();
 
-        $u->delete();
+         $u->delete();
         $data['judul'] = "Update Berhasil";
         $data['main'] = 'supervisor/updated';
 
         $this->load->vars($data);
         $this->load->view('dashboard');
+        
     }
-    
-     function deleteRefund() {
+
+    function deleteRefund() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
@@ -381,7 +382,6 @@ class Dashboard extends Ci_Controller {
 
         $this->load->vars($data);
         $this->load->view('dashboard');
-        
     }
 
     function edit($id = 0) {

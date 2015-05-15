@@ -1,10 +1,11 @@
 <h1><?php echo $judul; ?></h1>  
-
+<p><?php echo anchor('dashboard/createUser', 'Create Account'); ?></p>
 
     <?php
 if ($this->session->flashdata('message')) {
     echo "<div class='message'>" . $this->session->flashdata('message') . "</div>";
 }
+ 
 
 if (count($admins)) {
 

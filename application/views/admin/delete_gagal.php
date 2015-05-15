@@ -1,5 +1,5 @@
 <div id="konten">
-    <p>Pembuatan Account Berhasil</p>
+    <p>Delete Account Failed</p>
     <br>
     <p><?php echo anchor('dashboard/Users', 'back'); ?></p>
 </div>

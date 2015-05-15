@@ -4,39 +4,6 @@ class Account extends DataMapper {
 
     // Establish the relationship between entities
 
-    var $has_many = array('created_target' => array(
-            'class' => 'target',
-            'other_field' => 'creator'
-        ),
-        'managed_refund' => array(
-            'class' => 'refund',
-            'other_field' => 'manager'
-        ),
-        'managed_end_number' => array(
-            'class' => 'end_number',
-            'other_field' => 'manager'
-        ),
-        'managed_beginning_number' => array(
-            'class' => 'beginning_number',
-            'other_field' => 'manager'
-        ),
-        'handled_student' => array(
-            'class' => 'student',
-            'other_field' => 'handler'
-        ),
-        'asked_feedback' => array(
-            'class' => 'feedback',
-            'other_field' => 'handler'
-        ),
-        'managed_recurring_status' => array(
-            'class' => 'recurring_status',
-            'other_field' => 'manager'
-        ),
-        'assigned_target' => array(
-            'class' => 'target',
-            'other_field' => 'assigner'
-        )
-    );
     var $validation = array(
         'id_acc' => array(
             'label' => 'id',
