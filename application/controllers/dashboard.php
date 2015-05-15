@@ -240,6 +240,7 @@ class Dashboard extends Ci_Controller {
         $data['main'] = 'supervisor/updated';
     }
     
+    
     function editRefund() {
        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
@@ -264,9 +265,17 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
     
-     function showEditRefund(){
+    
+    }
+     function showEditRefund($id){
+          if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Refund();
+        $u->where('id', $id)->get();
       $data['judul'] = "Edit Refund";
       $data['main'] = 'ops/refund_edit';
+      $data['refunds']=$u;
       
       $this->load->vars($data);
       $this->load->view('dashboard');
@@ -359,7 +368,7 @@ class Dashboard extends Ci_Controller {
             redirect('dashboard', 'refresh');
         }
         $u = new Refund();
-        $u->where('id', $this->input->post('id'))->get();
+        $u->where('no_invoice', $this->input->post('no_invoice'))->get();
 
         $u->delete();
         $data['judul'] = "Delete Refund Berhasil";
@@ -446,7 +455,8 @@ class Dashboard extends Ci_Controller {
             echo $export;
             *///$this->load->vars($data);
             //$this->load->view('dashboard');
-        }
+        
+     
     
 
   
