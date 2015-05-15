@@ -57,10 +57,14 @@ class Template extends CI_Controller {
             
             $data['role'] = $u->role;
             $data['id'] = $u->id_acc;
-            $data['email'] = $u->email;
+            $data['nama'] = $u->nama;
             $this->session->set_userdata($data);
             redirect('dashboard', 'refresh');
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> punya-pamela
         } else {
             $data['judul'] = "Halaman Login";
             $data['main'] = "home/login";

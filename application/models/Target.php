@@ -11,6 +11,7 @@ class Target extends DataMapper {
 					'other_field' => 'assigned_target'
 			)
 	);
+	
 	// Optionally, don't include a constructor if you don't need one.
 	function __construct($id = NULL)
 	{
@@ -25,8 +26,17 @@ class Target extends DataMapper {
 	
 	function rank(){
 		$t = new Target();
-		$t->get();
+		$a = new Account();
+		$t->where('periode', date("Y-m"));
 		$t->order_by("actual", "desc");
+		$t->get();
+		
+		
+		foreach($t as $b) {
+			$a->where('id', $b->id_sales)->get();
+			$b->id_sales = $a->id_acc;
+		}
+		
 		
 		return $t;
 		
@@ -53,9 +63,9 @@ class Target extends DataMapper {
 	$a->where('id_acc', $this->id_sales)->get();
 	$b->where('id_acc', $this->id_supervisor)->get();
 	
-	$n->id_sales = $a->id_acc;
+	$n->id_sales = $a->id;
         $n->periode = $this->periode;
-        $n->id_supervisor = $b->id_acc;
+        $n->id_supervisor = $b->id;
         $n->target = $this->target;
 	
 
@@ -100,6 +110,44 @@ class Target extends DataMapper {
 		} else {
 			return TRUE;
 		}
+	}
+	
+	function addActual($id){
+		$t = new Target();
+		$a = new Account();
+		$i = new Invoice();
+		$c = new Course();
+		$e = new End_number();
+		$f = new End_number();
+		
+		$e->select_max('id');
+		$e->get();
+		
+		$f->where('id', $e->id)->get();
+		
+		$i->where('id', $f->id_invoice)->get();
+		$jam = $i->jumlah_jam;
+		
+		$a->where('id_acc', $id)->get();
+		$t->where('id_sales', $a->id);
+		$t->where('periode', date("Y-m"));
+		$t->get();
+		$t->actual = $t->actual + $jam;
+		$t->save();
+		
+		return $f;
+	}
+	
+	function ambilPerforma($id_sales){
+		
+		$t = new Target();
+		$a = new Account();
+		$a->where('id_acc', $id_sales)->get();
+		$t->where('id_sales', $a->id);
+		$t->where('periode', date("Y-m"));
+		$t->get();
+		
+		return $t;
 	}
 }
 

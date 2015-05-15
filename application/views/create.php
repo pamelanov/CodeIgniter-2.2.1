@@ -43,6 +43,7 @@ function myFunction() {
         <form name='update_status' action='<?php echo base_url();?>index.php/ops/create/createStatus' method='post'>
         <?php
         
+        $id_sales = $this->session->userdata('id');
         echo "<table class='table table-bordered'>\n";
 
             echo "<tr valign='top'>\n";
@@ -81,7 +82,7 @@ function myFunction() {
         
         echo "<div class='form-group'>";
             echo "<label for='id_sales'>ID Sales</label>";
-            echo "<input type='text'class='form-control' name='id_sales' placeholder='ID Sales'>";
+            echo "<input type='text' class='form-control' name='id_sales' value=$id_sales>";
         echo "</div>";
         
         echo "<div class='form-group'>";

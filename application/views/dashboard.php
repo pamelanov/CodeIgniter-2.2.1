@@ -3,13 +3,26 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title><?php echo $judul; ?></title>
+<<<<<<< HEAD
         <!--
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
         <script type="text/javascript" src="http://pamelanov.com/bootbox.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         -->
+=======
+        
+        <script type="text/javascript" src="../../assets/jquery/jquery-1.11.2.min.js"></script> 
+        <script type="text/javascript" src="../../assets/jquery/bootbox.min.js"></script>
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+        <script type="text/javascript" src="http://pamelanov.com/bootbox.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+        
+>>>>>>> punya-pamela
         <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url(); ?>assets/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
 
     </head>
     <body>
@@ -48,10 +61,10 @@
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span> User</a></li>
                     <?php } ?>
                     </ul>
-
+                    
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="<?php echo base_url(); ?>index.php/template/logout" >
-                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</a></li>  
+                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout (<?php echo $this->session->userdata('id') ?>)</a></li>
                     </ul>
 
                 </div><!-- /.navbar-collapse -->
@@ -67,6 +80,20 @@
         
         <?php $this->load->view($main); ?>
         
+        
+        
+        <!--
+        <div id="the-basics">
+  <input class="typeahead" type="text" placeholder="States of USA">
+</div>-->
+        <?php
+    /*
+    echo "Today is " . date("Y/m/d") . "<br>";
+    echo "Today is " . date("Y.m.d") . "<br>";
+    echo "Today is " . date("Y-m") . "<br>";
+    echo "Today is " . date("l");
+    */
+    ?>
          
     
         

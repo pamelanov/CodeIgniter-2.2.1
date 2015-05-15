@@ -274,7 +274,12 @@ class Dashboard extends Ci_Controller {
         $u->where('id', $id)->get();
       $data['judul'] = "Edit Refund";
       $data['main'] = 'ops/refund_edit';
+<<<<<<< HEAD
       $data['refunds']=$u;
+=======
+      $data['refunds'] = $list;
+      
+>>>>>>> punya-pamela
       $this->load->vars($data);
       $this->load->view('dashboard');
      }      
@@ -424,9 +429,10 @@ class Dashboard extends Ci_Controller {
 
     function performance() {
         $t = new Target();
-
+	$a = new Target();
         $data['judul'] = "Performance";
         $data['main'] = 'ops/performance_ops';
+	$data['performa'] = $a->ambilPerforma($this->session->userdata('id'));
         $data['target'] = $t->rank();
         $this->load->vars($data);
         $this->load->view('dashboard');
