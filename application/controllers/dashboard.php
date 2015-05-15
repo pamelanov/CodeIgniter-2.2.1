@@ -6,10 +6,11 @@ class Dashboard extends Ci_Controller {
         parent::__construct();
         if ($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('template/login', 'refresh');
-        }
+        } 
     }
 
     function index() {
+        
         $data['judul'] = "Dashboard Home";
         $data['main'] = 'home';
         $this->load->vars($data);
@@ -30,19 +31,19 @@ class Dashboard extends Ci_Controller {
     }
 
     function todaySummary() {
-	$b = new Beginning_number();
-	$e = new End_number();
-	$s = new Student();
+        $b = new Beginning_number();
+        $e = new End_number();
+        $s = new Student();
 
-    	$data['judul'] = "Dashboard Home";
-    	$data['main'] = 'todaySummary';
-	$data['statusAwal'] = $b->forTodaySum();
-	$data['statusAkhir'] = $e->forTodaySum();
-	$data['students'] = $s->get();
-    	$this->load->vars($data);
-    	$this->load->view('dashboard');
+        $data['judul'] = "Dashboard Home";
+        $data['main'] = 'todaySummary';
+        $data['statusAwal'] = $b->forTodaySum();
+        $data['statusAkhir'] = $e->forTodaySum();
+        $data['students'] = $s->get();
+        $this->load->vars($data);
+        $this->load->view('dashboard');
     }
-    
+
     function createData() {
         $data['judul'] = "Create";
         $data['main'] = 'create';
@@ -98,13 +99,13 @@ class Dashboard extends Ci_Controller {
         $data['judul2'] = "Refund";
         $data['judul3'] = "Feedback";
         $data['main'] = 'supervisor/overall_home';
-       
+
 
         $data['refund'] = $r->getAllRefunds();
         $data['feedback'] = $f->getAllFeedbacks();
 
 
-        
+
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
@@ -156,19 +157,19 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    
-      function createRefund() {
+
+    function createRefund() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
-        
+
 
         $r = new Refund();
-        
+
 
         //$r->id_murid = $this->input->post('id_murid');
-       //$r->id_guru = $this->input->post('id_guru');
-        
+        //$r->id_guru = $this->input->post('id_guru');
+
         $r->no_invoice = $this->input->post('no_invoice');
         $r->id_sales = $this->input->post('id_sales');
         $r->jam_hilang = $this->input->post('jam_hilang');
@@ -179,16 +180,16 @@ class Dashboard extends Ci_Controller {
         $r->alasan = $this->input->post('alasan');
 //$r->id_kelas = $this->input->post('id_kelas');
         //$r->hargaPerJam = $this->input->post('hargaPerJam');
-        
-       $r->save_as_new();
-        
+
+        $r->save_as_new();
+
         $data['judul'] = "Refund Berhasil Disimpan";
-         $data['main'] = 'ops/refund_create';
-  	
-  	$this->load->vars($data);
-  	$this->load->view('dashboard');
+        $data['main'] = 'ops/refund_create';
+
+        $this->load->vars($data);
+        $this->load->view('dashboard');
     }
-  
+
 //    function editRefund($id=0){
 //  	$this->load->library('encrypt');
 //  	$r = new Refund();
@@ -220,7 +221,6 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
-
     function editAccount() {
         if ($this->session->userdata('role') != 1) {
             redirect('dashboard', 'refresh');
@@ -239,16 +239,16 @@ class Dashboard extends Ci_Controller {
         $data['judul'] = "Update Berhasil";
         $data['main'] = 'supervisor/updated';
     }
+
     
     function editRefund() {
-       if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
         $u = new Refund();
         $u->where('no_invoice', $this->input->post('no_invoice'))->get();
 
         //$u->password = md5($this->input->post('password'));
-
         //$u->no_invoice = $this->input->post('no_invoice');
         $u->id_sales = $this->input->post('id_sales');
         $u->tanggal = $this->input->post('tanggal');
@@ -259,19 +259,26 @@ class Dashboard extends Ci_Controller {
 
         $u->save();
         $data['judul'] = "Update Refund Berhasil";
-        $data['main'] = 'ops/refund_edit';
+        $data['main'] = 'ops/refund_editberhasil';
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
+
     
-     function showEditRefund(){
+    
+    function showEditRefund($id){
+          if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Refund();
+        $u->where('id', $id)->get();
       $data['judul'] = "Edit Refund";
       $data['main'] = 'ops/refund_edit';
-      
+      $data['refunds']=$u;
       $this->load->vars($data);
       $this->load->view('dashboard');
-  }
-  
+     }
+
    function showDeleteRefund(){
       $data['judul'] = "Delete Refund";
       $data['main'] = 'ops/refund_delete';
@@ -279,18 +286,6 @@ class Dashboard extends Ci_Controller {
       $this->load->vars($data);
       $this->load->view('dashboard');
   }
-    /*
-    function crudFeedback(){
-    	$r = new Feedback();
-    	
-    	$data['judul'] = "Feedback";
-    	$data['main'] = 'ops/crudFeedback';
-    	$data['feedback'] = $r->getAllFeedbacks();
-    	$this->load->vars($data);
-    	$this->load->view('dashboard');
-    }
-    */
-    
     function feedbackSummary(){
     	$r = new Feedback();
     	$f = new Feedback();
@@ -305,8 +300,9 @@ class Dashboard extends Ci_Controller {
     	$data['feedback'] = $r->getAllFeedbacks();
     	$this->load->vars($data);
     	$this->load->view('dashboard');
+
     }
-    
+
     function ePassword($id) {
         if ($this->session->userdata('role') != 1) {
             redirect('dashboard', 'refresh');
@@ -359,7 +355,7 @@ class Dashboard extends Ci_Controller {
             redirect('dashboard', 'refresh');
         }
         $u = new Refund();
-        $u->where('id', $this->input->post('id'))->get();
+        $u->where('no_invoice', $this->input->post('no_invoice'))->get();
 
         $u->delete();
         $data['judul'] = "Delete Refund Berhasil";
@@ -403,7 +399,8 @@ class Dashboard extends Ci_Controller {
     }
 
     function logout() {
-        unset($_SESSION['userid']);
+        $sesi_items = array('role' => '');
+        $this->session->unset_userdata($sesi_items);
         $this->session->set_flashdata('error', "You've been logged out!");
         redirect('template/login', 'refresh');
     }
@@ -418,35 +415,20 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
-    function efeedbacks() {
-            $this->load->helper('download');
+    function efeedbacks() {    
+        $this->load->helper('download');
 
-            $u = new Feedback();
-            // load all users
-            $feedbacks = $u->getAllFeedbacks();
-            // Output $u->all to /tmp/output.csv, using all database fields.
-            $path = "assets/exports/";
-            $filename = 'feedback_'.date("Ymd_His").'.csv';
-            $feedbacks->csv_export($path.$filename);
-            $data = file_get_contents($path.$filename); // Read the file's contents
-             force_download($filename, $data);
-            
-            /*$r = new Feedback();
+        $u = new Feedback();
+        // load all users
+        $feedbacks = $u->getAllFeedbacks();
+        // Output $u->all to /tmp/output.csv, using all database fields.
+        $path = "assets/exports/";
+        $filename = 'feedback_' . date("Ymd_His") . '.csv';
+        $feedbacks->csv_export($path . $filename);
+        $data = file_get_contents($path . $filename); // Read the file's contents
+        force_download($filename, $data);
 
-            $data['feedback'] = $r->getAllFeedbacks();
-            $data['feedback']->csv_export('/tmp/output.csv');
-           /* $export = "";  
-            foreach($data['feedback'] as $row){
-                $export .= $row->id_murid.",";
-                $export .= $row->id_guru.",";
-                $export .= $row->id_sales;
-                
-                $export .= "<br>";
-            }
-            echo $export;
-            *///$this->load->vars($data);
-            //$this->load->view('dashboard');
-        }
+    }
+
 }
-
 ?>
