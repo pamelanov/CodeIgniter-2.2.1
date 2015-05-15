@@ -62,13 +62,17 @@ class Create extends Ci_Controller {
             
             if ($this->input->post('status') == 8){
                 $t = new Target();
-                $t->addActual();
-            }
-            
+               
+                
             $data['judul'] = "Create Status";
             $data['main'] = "ops/status_berhasil";
+            $data['tes'] =  $t->addActual($this->session->userdata('id'));
+            
 
             $this->load->view('dashboard', $data);
+            }
+            
+
             
             
         }

@@ -28,13 +28,15 @@ class Target extends DataMapper {
 		$t = new Target();
 		$a = new Account();
 		$t->where('periode', date("Y-m"));
-		$t->get();
 		$t->order_by("actual", "desc");
+		$t->get();
+		
 		
 		foreach($t as $b) {
 			$a->where('id', $b->id_sales)->get();
 			$b->id_sales = $a->id_acc;
 		}
+		
 		
 		return $t;
 		
@@ -110,23 +112,30 @@ class Target extends DataMapper {
 		}
 	}
 	
-	function addActual(){
+	function addActual($id){
 		$t = new Target();
 		$a = new Account();
 		$i = new Invoice();
 		$c = new Course();
 		$e = new End_number();
+		$f = new End_number();
 		
 		$e->select_max('id');
 		$e->get();
 		
-		$i->where('id', $e->id_invoice)->get();
+		$f->where('id', $e->id)->get();
 		
-		$a->where('id_acc', $this->session->userdata('id'))->get();
-		$t->where('id_sales', $a->id)->get();
-		$t->actual = $t->actual + $i->jumlah_jam;
+		$i->where('id', $f->id_invoice)->get();
+		$jam = $i->jumlah_jam;
 		
-		return $t;
+		$a->where('id_acc', $id)->get();
+		$t->where('id_sales', $a->id);
+		$t->where('periode', date("Y-m"));
+		$t->get();
+		$t->actual = $t->actual + $jam;
+		$t->save();
+		
+		return $f;
 	}
 	
 	function ambilPerforma($id_sales){
