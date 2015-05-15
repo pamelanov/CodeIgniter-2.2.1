@@ -1,7 +1,3 @@
-
-
-<!DOCTYPE html>
-<html lang="en"></html>
 <h1><?php echo $judul; ?></h1>
 <ul class="nav nav-tabs">
     <li role="presentation" "><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
@@ -13,7 +9,7 @@
 
          <div class="form-group">
                 <label for="no_invoice">No. Invoice</label>
-                <input type="text" class="form-control" name="no_invoice" value="<?php echo $list->no_invoice?>" >
+                <input type="text" class="form-control" name="no_invoice" value="<?php echo $refunds->no_invoice ?>" >
             </div>
             <div class="form-group">
                 <label for="id_sales">Id Sales</label>

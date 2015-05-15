@@ -239,12 +239,8 @@ class Dashboard extends Ci_Controller {
         $data['judul'] = "Update Berhasil";
         $data['main'] = 'supervisor/updated';
     }
-<<<<<<< HEAD
-    
-    
-=======
 
->>>>>>> origin/master-yang-ini
+    
     function editRefund() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
@@ -267,11 +263,10 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-<<<<<<< HEAD
+
     
     
-    }
-     function showEditRefund($id){
+    function showEditRefund($id){
           if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
@@ -280,32 +275,10 @@ class Dashboard extends Ci_Controller {
       $data['judul'] = "Edit Refund";
       $data['main'] = 'ops/refund_edit';
       $data['refunds']=$u;
-      
-=======
-
-    function showEditRefund() {
-        $data['judul'] = "Edit Refund";
-        $data['main'] = 'ops/refund_edit';
-
-        $this->load->vars($data);
-        $this->load->view('dashboard');
-    }
-
-    /*
-      function crudFeedback(){
-      $r = new Feedback();
-
-      $data['judul'] = "Feedback";
-      $data['main'] = 'ops/crudFeedback';
-      $data['feedback'] = $r->getAllFeedbacks();
->>>>>>> origin/master-yang-ini
       $this->load->vars($data);
       $this->load->view('dashboard');
+     }
 
-      }
-     */
-
-  
    function showDeleteRefund(){
       $data['judul'] = "Delete Refund";
       $data['main'] = 'ops/refund_delete';
@@ -313,18 +286,6 @@ class Dashboard extends Ci_Controller {
       $this->load->vars($data);
       $this->load->view('dashboard');
   }
-    /*
-    function crudFeedback(){
-    	$r = new Feedback();
-    	
-    	$data['judul'] = "Feedback";
-    	$data['main'] = 'ops/crudFeedback';
-    	$data['feedback'] = $r->getAllFeedbacks();
-    	$this->load->vars($data);
-    	$this->load->view('dashboard');
-    }
-    */
-    
     function feedbackSummary(){
     	$r = new Feedback();
     	$f = new Feedback();
@@ -455,7 +416,7 @@ class Dashboard extends Ci_Controller {
     }
 
     function efeedbacks() {
-<<<<<<< HEAD
+
             $this->load->helper('download');
 
             $u = new Feedback();
@@ -484,14 +445,7 @@ class Dashboard extends Ci_Controller {
             *///$this->load->vars($data);
             //$this->load->view('dashboard');
         
-     
     
-
-  
-
-            
-
-=======
         $this->load->helper('download');
 
         $u = new Feedback();
@@ -520,8 +474,8 @@ class Dashboard extends Ci_Controller {
          *///$this->load->vars($data);
         //$this->load->view('dashboard');
     }
->>>>>>> origin/master-yang-ini
+
+
 
 }
-
 ?>
