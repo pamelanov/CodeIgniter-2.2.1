@@ -32,7 +32,7 @@
 
 	echo "<table class='table table-bordered'>\n";
 	echo "<tr valign='top'>\n";
-	echo "<th>ID Murid</th><th>ID Guru</th><th>Tanggal Terakhir Diubah</th><th><center>Action</th>\n";
+	echo "<th>Nama Murid</th><th>Nama Guru</th><th>Tanggal Terakhir Diubah</th><th><center>Action</th>\n";
 	echo "</tr>\n";
 	foreach ($feedback as $list) {
 		echo "<tr valign='top'>\n";
@@ -61,10 +61,19 @@
 	foreach ($feedback1 as $list) {
 		echo "<tr valign='top'>\n";
 		echo "<td align='center'>" . $list->id_sales . "</td>\n";
-		echo "<td align='center'>" . $list->where('id_sales')->count() . "</td>\n";
+		echo "<td align='center'>" . $list->where('id_sales', $list->id_sales)->count() . "</td>\n";
 		//echo anchor('ops/feedbackCtrl/countFeedback/');
 		echo "</tr>\n";
 	}
+	/*
+	foreach ($feedback as $list) {
+		//echo "<tr valign='top'>\n";
+		//echo "<td align='center'>" . $list->group_by('id_sales') . "</td>\n";
+		echo "<td align='center'>" . $list->count_distinct('id_sales') . "</td>\n";
+		//echo anchor('ops/feedbackCtrl/countFeedback/');
+		echo "</tr>\n";
+	}
+	*/
 	echo "</table>";
 ?>
 

@@ -28,7 +28,6 @@ class Feedback extends DataMapper {
 	}
 	
 	function createFeedbackModel(){
-	
 		$f = new Feedback();
 		$s = new Student();
 		$t = new Teacher();
@@ -43,30 +42,57 @@ class Feedback extends DataMapper {
 		$f->tanggal = $this->tanggal;
 		$f->rating = $this->rating;
 		$f->isi = $this->isi;
-		$f->status = $this->status;
-		$f->total_skor = $this->total_skor;
+		$f->status = '1';
+		$f->total_skor = $f->hitungTotalSkor();
 		$f->id_sales = $o->id;
 		
 		$f->save_as_new();
+		
+		$f1 = new Feedback();
+		$f1->where('id_murid', $f->id_murid);
+		$f1->where('id_guru', $f->id_guru);
+		$f1->get();
+		foreach($f1 as $list){
+			$list->total_skor = $f->total_skor;
+			$list->save();
+		}
 	
-		return $f;	
+		return $f;
+		return $f1;	
 	}
 	
-	function updateFeedbackModel(){
-		$f = new Feedback();
-		$f->where('id', $this->id);
-		$f->get();
-	
-		$f->update('isi', $this->isi);
-		$f->update('rating', $this->rating);
-		return $f;
+	function hitungTotalSkor(){
+		$f1 = new Feedback();
+		$f2 = new Feedback();
+		$rating = 0;
+		$f1->where('id_guru', $this->id_guru)->get();
+		$f2->rating = $this->rating;
+		
+		foreach($f1 as $list){
+			$rating += $list->rating; 
+		}
+		//$f1->total_skor = $this->rating + $f2->rating;
+		$rating = $rating + $f2->rating;
+		return $rating;
 	}
 	
 	function getAllFeedbacks() {
 	
 		$f = new Feedback();
 		$f->get();
-		$this->salt = $f->salt;
+		//$this->salt = $f->salt;
+		$s = new Student();
+		$t = new Teacher();
+		$o = new Account();
+		
+		foreach($f as $list){
+			$s->where('id', $f->id_murid)->get();
+			$t->where('id', $f->id_guru)->get();
+			$o->where('id', $f->id_sales)->get();
+			$list->id_murid = $s->nama;
+			$list->id_guru = $t->nama;
+			$list->id_sales = $o->nama;
+		}
 	
 		return $f;
 	}

@@ -54,12 +54,12 @@ class Template extends CI_Controller {
         // You might want to have a quick look at that login function up the top of this page to see how it authenticates the user
         if ($u->login()) {
             $u->get_by_id_acc($this->input->post('id'));
+            
             $data['role'] = $u->role;
             $data['id'] = $u->id_acc;
             $data['nama'] = $u->nama;
             $this->session->set_userdata($data);
             redirect('dashboard', 'refresh');
-
         } else {
             $data['judul'] = "Halaman Login";
             $data['main'] = "home/login";

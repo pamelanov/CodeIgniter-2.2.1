@@ -3,9 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title><?php echo $judul; ?></title>
-        
+        <!--
         <script type="text/javascript" src="../../assets/jquery/jquery-1.11.2.min.js"></script> 
         <script type="text/javascript" src="../../assets/jquery/bootbox.min.js"></script>
+        -->
         
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
         <script type="text/javascript" src="http://pamelanov.com/bootbox.min.js"></script>
