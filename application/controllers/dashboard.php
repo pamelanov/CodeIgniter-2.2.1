@@ -259,7 +259,7 @@ class Dashboard extends Ci_Controller {
 
         $u->save();
         $data['judul'] = "Update Refund Berhasil";
-        $data['main'] = 'ops/refund_edit';
+        $data['main'] = 'ops/refund_editberhasil';
         $this->load->vars($data);
         $this->load->view('dashboard');
     }

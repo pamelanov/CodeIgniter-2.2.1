@@ -13,28 +13,28 @@
             </div>
             <div class="form-group">
                 <label for="id_sales">Id Sales</label>
-                <input type="text" class="form-control" name="id_sales" placeholder="Masukkan ID Sales">
+                <input type="text" class="form-control" name="id_sales"value="<?php echo $refunds->id_sales ?>">
             </div>
             <div class="form-group">
                 <label for="jam_hilang">Jam Hilang</label>
-                <input type="text" class="form-control" name="jam_hilang" placeholder="Masukkan Jam Hilang">
+                <input type="text" class="form-control" name="jam_hilang" value="<?php echo $refunds->jam_hilang ?>">
             </div>
             <div class="form-group">
                 <label for="tanggal">Tanggal</label>
-                <input type="date" class="form-control" name="tanggal" placeholder="Masukkan Tanggal">
+                <input type="date" class="form-control" name="tanggal" value="<?php echo $refunds->tanggal ?>">
             </div>
             <div class="form-group">
                 <label for="action">Action</label>
-                <input type="text" class="form-control" name="action" placeholder="Masukkan Action">
+                <input type="text" class="form-control" name="action" value="<?php echo $refunds->action ?>">
             </div>
 
              <div class="form-group">
                 <label for="selisih">Selisih</label>
-                <input type="text" class="form-control" name="selisih" placeholder="Masukkan Selisih">
+                <input type="text" class="form-control" name="selisih" value="<?php echo $refunds->selisih ?>">
             </div>
             <div class="form-group">
                 <label for="alasan">Alasan</label>
-                <input type="text" class="form-control" name="alasan" placeholder="Masukkan Alasan">
+                <input type="text" class="form-control" name="alasan" value="<?php echo $refunds->alasan ?>">
             </div>
 
     <button type="submit" class="btn btn-danger">Edit Refund</button>
