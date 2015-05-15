@@ -1,15 +1,29 @@
 <h1><?php echo $judul; ?></h1>
 
- 
+ <div class="alert alert-info" role="alert">
+ <p><h5>Pencapaian target sejauh ini:  <?php echo $performa->actual; ?> </h5></p>
+ <p><h5>Periode:  <?php echo date("Y-m"); ?></h5></p>
+  <p><a href="<?php echo base_url(); ?>index.php/dashboard/summary" >
+    <button type="submit" class="btn btn-primary">
+    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Lihat Rincian</button> </a>
+ </p>
+
+</div>
  
 
+  <div class="progress">
+  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+    80% Complete
+  </div>
+</div>
+
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><center>Tabel Peringkat</center></div>
 <?php
-if ($this->session->flashdata('message')){
-	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
-}
 
-	echo "<p><h5> Pencapaian target sejauh ini: " . $performa->actual . "</h5></p>";
-	echo "<p><h5>Periode: " . date("Y-m") . "</h5></p>";
+
+	
 	echo "<table class='table table-bordered'>\n";    
 	echo "<tr>\n";
         echo "
@@ -47,3 +61,5 @@ if ($this->session->flashdata('message')){
 		    }
                 }
 	echo "</table>	";
+	?>
+</div>
