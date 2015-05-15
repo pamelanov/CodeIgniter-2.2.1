@@ -240,6 +240,7 @@ class Dashboard extends Ci_Controller {
         $data['main'] = 'supervisor/updated';
     }
 
+    
     function editRefund() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
@@ -258,29 +259,27 @@ class Dashboard extends Ci_Controller {
 
         $u->save();
         $data['judul'] = "Update Refund Berhasil";
-        $data['main'] = 'ops/refund_edit';
+        $data['main'] = 'ops/refund_editberhasil';
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
 
-    function showEditRefund() {
-        $data['judul'] = "Edit Refund";
-        $data['main'] = 'ops/refund_edit';
-
-        $this->load->vars($data);
-        $this->load->view('dashboard');
-    }
-
-    /*
-      function crudFeedback(){
-      $r = new Feedback();
-
-      $data['judul'] = "Feedback";
-      $data['main'] = 'ops/crudFeedback';
-      $data['feedback'] = $r->getAllFeedbacks();
+    
+    
+    function showEditRefund($id){
+          if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Refund();
+        $u->where('id', $id)->get();
+      $data['judul'] = "Edit Refund";
+      $data['main'] = 'ops/refund_edit';
+      $data['refunds']=$u;
       $this->load->vars($data);
       $this->load->view('dashboard');
+     }
 
+<<<<<<< HEAD
       }
      */
 
@@ -312,6 +311,29 @@ class Dashboard extends Ci_Controller {
         $f->group_by('id_sales');
         $f->get();
         $data['feedback1'] = $f;
+=======
+   function showDeleteRefund(){
+      $data['judul'] = "Delete Refund";
+      $data['main'] = 'ops/refund_delete';
+      
+      $this->load->vars($data);
+      $this->load->view('dashboard');
+  }
+    function feedbackSummary(){
+    	$r = new Feedback();
+    	$f = new Feedback();
+    	$jumlahFeedback = 0;
+    	 
+    	$f->group_by('id_sales');
+    	$f->get();
+    	$data['feedback1'] = $f;
+    	
+    	$data['judul'] = "Feedback Summary";
+    	$data['main'] = 'feedbackSummary';
+    	$data['feedback'] = $r->getAllFeedbacks();
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+>>>>>>> origin/master-yang-ini
 
         $data['judul'] = "Feedback Summary";
         $data['main'] = 'feedbackSummary';
@@ -374,7 +396,7 @@ class Dashboard extends Ci_Controller {
             redirect('dashboard', 'refresh');
         }
         $u = new Refund();
-        $u->where('id', $this->input->post('id'))->get();
+        $u->where('no_invoice', $this->input->post('no_invoice'))->get();
 
         $u->delete();
         $data['judul'] = "Delete Refund Berhasil";
@@ -433,7 +455,7 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
-    function efeedbacks() {
+    function efeedbacks() {    
         $this->load->helper('download');
 
         $u = new Feedback();
@@ -446,23 +468,7 @@ class Dashboard extends Ci_Controller {
         $data = file_get_contents($path . $filename); // Read the file's contents
         force_download($filename, $data);
 
-        /* $r = new Feedback();
-
-          $data['feedback'] = $r->getAllFeedbacks();
-          $data['feedback']->csv_export('/tmp/output.csv');
-          /* $export = "";
-          foreach($data['feedback'] as $row){
-          $export .= $row->id_murid.",";
-          $export .= $row->id_guru.",";
-          $export .= $row->id_sales;
-
-          $export .= "<br>";
-          }
-          echo $export;
-         *///$this->load->vars($data);
-        //$this->load->view('dashboard');
     }
 
 }
-
 ?>

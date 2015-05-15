@@ -25,6 +25,8 @@ if (count($admins)) {
     echo "</tr>\n";
     foreach ($admins as $list) {
         echo "<tr valign='top'>\n";
+        
+        //echo anchor('dashboard/ePassword/' . $list->id, 'edit ');
         echo "<td align='center'>" . $list->tanggal . "</td>\n";
         echo "<td align='center'>" . $list->no_invoice . "</td>\n";
         echo "<td align='center'>" . $list->jam_hilang . "</td>\n";
@@ -35,9 +37,9 @@ if (count($admins)) {
         
 
         echo "<td align='center'>";
-        echo anchor('dashboard/showEditRefund/' , 'edit');
+        echo anchor('dashboard/showEditRefund/' . $list->id , 'edit');
         echo " | ";
-        echo anchor('dashboard/showDeleteRefund/' , 'delete');
+        echo anchor('dashboard/showDeleteRefund/'. $list->no_invoice, 'delete');
         echo "</td>\n";
         echo "</tr>\n";
     }

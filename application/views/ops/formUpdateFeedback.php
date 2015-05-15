@@ -14,7 +14,7 @@
  
  <div class='form-group'>
  <label for='jam'>ID Feedback</label>
- <input type='text' class='form-control' name='id' placeholder='ID'>
+ <input type='text' class='form-control' name='id' value='<?php echo  $feedback->id;  ?>' placeholder='ID'>
  </div>
  
  <div class='form-group'>
