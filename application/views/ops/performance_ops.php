@@ -3,7 +3,7 @@
  <div class="alert alert-info" role="alert">
  <p><h5>Pencapaian target sejauh ini:  <?php echo $performa->actual; ?> </h5></p>
  <p><h5>Periode:  <?php echo date("Y-m"); ?></h5></p>
-  <p><a href="<?php echo base_url(); ?>index.php/dashboard/summary" >
+  <p><a href="<?php echo base_url(); ?>index.php/ops/performance/lihatRincian" >
     <button type="submit" class="btn btn-primary">
     <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Lihat Rincian</button> </a>
  </p>
