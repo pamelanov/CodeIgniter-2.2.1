@@ -1,11 +1,5 @@
 
 <h1><?php echo $judul; ?></h1>
-
-<ul class="nav nav-tabs">
-    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/summary" > Student</a></li>
-    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
-    <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbacks" > Feedback</a></li>
-</ul>
 <div id="konten">
     <p><?php echo anchor("download/download_feedbacks", "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
     <?php

@@ -1,16 +1,10 @@
    <h1><?php echo $judul; ?></h1>
 
-
- <ul class="nav nav-tabs">
-  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/supervisor/performance" > Create</a></li>
-  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showEdit" > Edit </a></li>
-  <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/supervisor/performance/overall" > Overall Performance</a></li>
- </ul>
- 
  
   <div id ="konten">
- <p><?php echo anchor("admin/refund/create", "Download"); ?></p>
-
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><center>Tabel Peringkat</center></div>
 <?php
 
 if($targets->exists()) {
@@ -46,6 +40,8 @@ if ($this->session->flashdata('message')){
                     $rank++;
                 }
 	echo "</table>	";
-	echo "<br/></div>";
+	echo "</div>";
 }
 ?>
+
+</div>

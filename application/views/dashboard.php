@@ -28,11 +28,28 @@
                     <ul class="nav navbar-nav">
                         <li><a class="navbar-brand" href="<?php echo base_url(); ?>index.php/dashboard">| SICuT Ruangguru |</a></li>
                         
+    
                     <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>      
-                        <li><a href="<?php echo base_url(); ?>index.php/ops/student/createData">
-                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create</a></li>
-                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/summary">
-                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Summary</a></li>    
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create
+                                    <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu" id="dropdown">
+                                <li><a href="<?php echo base_url(); ?>index.php/ops/student/createData" id="a-dropdown">Student</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/ops/refund/crefund" id="a-dropdown">Refund</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/ops/feedbackCtrl/formCreateFeedback" id="a-dropdown">Feedback</a></li>
+                            </ul>
+                        </li>
+                        
+                         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Summary
+                                    <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu" id="dropdown">
+                                <li><a href="<?php echo base_url(); ?>index.php/dashboard/summary" id="a-dropdown">Student</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" id="a-dropdown">Refund</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/dashboard/feedbackSummary" id="a-dropdown">Feedback</a></li>
+                            </ul>
+                        </li>   
+                          
                     <?php } ?>
 
                     <?php if ($this->session->userdata('role') == 2) { ?>
@@ -41,8 +58,16 @@
                     <?php } ?>
 
                     <?php if ($this->session->userdata('role') == 3) { ?>
-                        <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance" >
-                          <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Performance</a></li>
+                         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Performance
+                                    <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu" id="dropdown">
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance" id="a-dropdown">Create</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showEdit" id="a-dropdown">Edit</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/overall" id="a-dropdown">Overall Performance</a></li>
+                            </ul>
+                        </li>   
+
                         <li><a href="<?php echo base_url(); ?>index.php/dashboard/overallSum" >
                         <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Overall Summary</a></li>
                     <?php } ?>
@@ -50,8 +75,15 @@
                     <?php if ($this->session->userdata('role') == 1) { ?>
                         <li><a href="<?php echo base_url(); ?>index.php/dashboard" >
                          <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/users" >
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> User</a></li>
+                        
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span> User
+                                    <span class="caret"></span></a>
+                         <ul class="dropdown-menu" role="menu" id="dropdown">
+                                <li><a href="<?php echo base_url(); ?>index.php/dashboard/createUser" id="a-dropdown">Create</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/dashboard/users" id="a-dropdown">All Users</a></li>
+                            </ul>
+                        </li>
                     <?php } ?>
                     </ul>
                     

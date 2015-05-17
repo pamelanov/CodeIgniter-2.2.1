@@ -46,14 +46,26 @@ table{
 }
 #konten{
     text-align: justify;
-    width: 70%;
-    
+    width: 80%;
+    margin-left: 20px;
     margin-bottom: 30px;
-    padding: 10px 10px 10px 10px;
+    /* padding: 10px 10px 10px 10px; */
     border-radius: 25px;
     
 }
 
+#dropdown{
+    background-color: black;
+}
+
+#a-dropdown:hover{
+    background-color:white;
+    color:black;
+}
+
+#a-dropdown{
+    color: white;
+}
 #tabelP{    
     margin-top: 20px;
     margin-bottom: 30px;
