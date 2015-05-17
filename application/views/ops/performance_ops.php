@@ -1,9 +1,8 @@
 <h1><?php echo $judul; ?></h1>
 
  <div class="alert alert-info" role="alert">
- <p><h5>Pencapaian target sejauh ini:  <?php echo $performa->actual; ?> </h5></p>
  <p><h5>Periode:  <?php echo date("Y-m"); ?></h5></p>
-  <p><a href="<?php echo base_url(); ?>index.php/dashboard/summary" >
+  <p><a href="<?php echo base_url(); ?>index.php/ops/performance/lihatRincian" >
     <button type="submit" class="btn btn-primary">
     <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Lihat Rincian</button> </a>
  </p>
@@ -12,10 +11,11 @@
  
 
   <div class="progress">
-  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-    80% Complete
+  <div class="progress-bar progress-bar-primary progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo $progressbar; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $progressbar; ?>%">
+    <?php echo $progressbar; ?>% Complete (<?php echo $performa->actual . " / " . $performa->target; ?> )
   </div>
 </div>
+
 
 <div class="panel panel-primary">
   <!-- Default panel contents -->

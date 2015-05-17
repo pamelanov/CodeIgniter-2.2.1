@@ -1,13 +1,14 @@
 <?php
 
 class Performance extends Ci_Controller {
-  function __construct(){
-	parent::__construct();
-    }
-  }
-  if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
-            redirect('dashboard', 'refresh');
+
+    function __construct() {
+        parent::__construct();
+        if ($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('template/login', 'refresh');
         }
+    }
+
   function index(){
         
 	$data['judul'] = "Performance";
@@ -27,4 +28,13 @@ class Performance extends Ci_Controller {
     
   }
   
-?>
+  function lihatRincian(){
+    if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+	$data['judul'] = "Rincian Performa";
+	$data['main'] = 'ops/rincian_performa';
+	$this->load->vars($data);
+	$this->load->view('dashboard');  
+  }
+}
