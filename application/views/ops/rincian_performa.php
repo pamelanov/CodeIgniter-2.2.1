@@ -1,6 +1,7 @@
 <h1><?php echo $judul; ?></h1>
 
 
+
 <div class="panel panel-primary">
   <!-- Default panel contents -->
   <div class="panel-heading"><center>Rincian Performa</center></div>
@@ -12,7 +13,7 @@
 	echo "<tr>\n";
         echo "
 	<th><center>#</center></th>\n
-        <th><center>Tanggal Pengisian</center></th>\n
+        <th><center>Tanggal Pengisian Untuk Status 8</center></th>\n
         <th><center>No Invoice</center></th>\n
 	<th><center>ID Murid</center></th>\n
         <th><center>Nama Murid</center></th>\n
@@ -20,8 +21,10 @@
         <th><center>Jumlah Jam</center></th>\n";
         
 	echo "</tr>\n";
+        
+       
 	$rank = 1;
-
+        if (!empty($rincian[0]->id)) {
 	    echo "<tr valign='top'>\n";
                 foreach($rincian as $r){
 				echo "<td>". $rank ."</td>\n";
@@ -35,8 +38,10 @@
 				echo "</tr>\n</strong>";
 				$rank++;
 			}
+        }
     
 	echo "</table>	";
+        
 	?>
 </div>
 
