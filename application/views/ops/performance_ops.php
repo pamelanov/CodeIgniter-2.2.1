@@ -1,18 +1,33 @@
 <h1><?php echo $judul; ?></h1>
 
- 
- 
- <p><?php echo anchor("admin/refund/create", "Download"); ?></p>
+ <div class="alert alert-info" role="alert">
+ <p><h5>Periode:  <?php echo date("Y-m"); ?></h5></p>
+  <p><a href="<?php echo base_url(); ?>index.php/ops/performance/lihatRincian" >
+    <button class="btn btn-danger">
+    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Lihat Rincian</button> </a>
+ </p>
 
+</div>
+ 
+
+  <div class="progress">
+  <div class="progress-bar progress-bar-primary progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo $progressbar; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $progressbar; ?>%">
+    <?php echo $progressbar; ?>% Complete (<?php echo $performa->actual . " / " . $performa->target; ?> )
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><center>Tabel Peringkat</center></div>
 <?php
-if ($this->session->flashdata('message')){
-	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
-}
 
-    
-	echo "<table id='table'>\n";    
+
+	
+	echo "<table class='table table-bordered'>\n";    
 	echo "<tr>\n";
         echo "
+	<th><center>#</center></th>\n
 	<th><center>ID Sales</center></th>\n
         <th><center>Periode</center></th>\n
         <th><center>Target<c/enter></th>\n
@@ -23,14 +38,28 @@ if ($this->session->flashdata('message')){
 
 	    echo "<tr valign='top'>\n";
                 foreach($target as $t){
-                
-                    echo "<td>".$t->id_sales."</td>\n";
-                    echo "<td>".$t->periode_awal. " - ". $t->periode_akhir."</td>\n";
-                    echo "<td>".$t->target."</td>\n";
-                    echo "<td>".$t->actual."</td>\n";
-                    echo "</td>\n";
-                    echo "</tr>\n";
-                    $rank++;
+			if ($performa->id == $t->id) {
+				echo "<td><b>". $rank ."</b></td>\n";
+				echo "<td><b>".$t->id_sales."</b></td>\n";
+				echo "<td><b>".$t->periode."</b></td>\n";
+				echo "<td><b>".$t->target."</b></td>\n";
+				echo "<td><b>".$t->actual."</b></td>\n";
+				echo "</td>\n";
+				echo "</tr>\n</strong>";
+				$rank++;
+			}
+		    
+		    else {
+			echo "<td>". $rank ."</td>\n";
+			echo "<td>".$t->id_sales."</td>\n";
+			echo "<td>".$t->periode."</td>\n";
+			echo "<td>".$t->target."</td>\n";
+			echo "<td>".$t->actual."</td>\n";
+			echo "</td>\n";
+			echo "</tr>\n";
+			$rank++;	
+		    }
                 }
 	echo "</table>	";
-	echo "<br/></div>"; 
+	?>
+</div>

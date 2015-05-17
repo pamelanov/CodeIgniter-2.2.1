@@ -4,7 +4,8 @@
         <title><?php echo $judul; ?></title>
         <link href="<?php echo base_url(); ?>assets/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css" />
-        
+        <!--<link href='http://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
+        -->
     </head>
     
     <body>
@@ -21,15 +22,7 @@
             
 
             </div>
-            <!--
-            <div class="clear"></div>
-            <div id="footer"><center>
-                    <b> KELOMPOK B01</a> </b>
-                    <br>
-                        <b>ruangguru.com</a> </b>  
-                </center></div>
-            </div>
-            -->
+   
       </div> 
     </body>
 </html>

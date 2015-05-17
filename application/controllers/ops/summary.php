@@ -5,33 +5,47 @@ class Summary extends Ci_Controller {
         
     function __construct() {
         parent::__construct();
+        
     }
 
     function index() {
+         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $data['judul'] = "Summary List";
         $data['main'] = 'ops/searchStudent';
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
     function searchStudent() {
+         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $u = new Student();
         $u->id_murid = $this->input->post('idMurid');
         
-       // $n = new Beginning_number();
-       // $n->Id_murid = $this->input->post('idMurid');
-    
-        if ($u->findStudent()) {
 
-            $data['judul'] = "Hasil Pencarian";
-            $data['main'] = 'ops/hasil_search';
-            $data['student'] = $u->hasilSearch();
-            //$data['riwayat'] = $n->ambilStatus();
+          
+        if ($u->findStudent()) {
+             if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+            $b = new Beginning_number();
+            $b->id_murid = $u->id_murid;
+            $e = new End_number();
+            $e->id_murid = $u->id_murid;
+
+            $data['judul'] = "Student Summary";
+            $data['main'] = 'summary';
+            $data['students'] = $b->summary();
+            $data['students2'] = $e->summary();
+           // $data['invoices'] = $
             $this->load->vars($data);
             $this->load->view('dashboard');
         }
          else {
             $data['judul'] = "Hasil Pencarian";
-            $data['main'] = "ops/hasil_search";
+            $data['main'] = "ops/gagal_search_student";
             $data['aktif'] = 'class="active"';
 
             $this->load->view('dashboard', $data);
@@ -39,34 +53,13 @@ class Summary extends Ci_Controller {
         
     }
     
-    function searchStudentStatus() {
-        $u = new Student();
-        $u->id_murid = $this->input->post('idMurid');
-        
-       // $n = new Beginning_number();
-       // $n->Id_murid = $this->input->post('idMurid');
     
-        if ($u->findStudent()) {
-
-            $data['judul'] = "Hasil Pencarian";
-            $data['main'] = 'ops/createStatus';
-            $data['student'] = $u->hasilSearch();
-            //$data['riwayat'] = $n->ambilStatus();
-            $this->load->vars($data);
-            $this->load->view('dashboard');
-        }
-         else {
-            $data['judul'] = "Hasil Pencarian";
-            $data['main'] = "ops/hasil_search";
-            $data['aktif'] = 'class="active"';
-
-            $this->load->view('dashboard', $data);
-        }
-        
-    }
     
     
     function searchStatusStudent() {
+         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
       $u = new Student();
         $u->Id_murid = $this->input->post('idMurid');
         
@@ -91,6 +84,9 @@ class Summary extends Ci_Controller {
     }
     
     function riwayatStatus(){
+         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $u = new Beginning_number();
         $u->Id_murid = $this->input->post('idMurid');
         
@@ -103,6 +99,9 @@ class Summary extends Ci_Controller {
     }
     
     function searchFeedback() {
+         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
     	$u = new Feedback();
     	$u->id_murid = $this->input->post('idMurid');
     	$u->id_guru = $this->input->post('idGuru');
@@ -127,5 +126,40 @@ class Summary extends Ci_Controller {
     		$this->load->view('dashboard', $data);
     	}
     
+    }
+    
+    function recurring(){
+        $r = new Recurring_status();
+        $r->id_kelas = $this->input->post('idKelas');
+        $r->tanggal = $this->input->post('tanggal');
+        $r->id_sales = $this->input->post('idSales');
+        $r->save_as_new();
+        
+        $a = new Recurring_status();
+        $a->select_max('id');
+        $a->get();
+        
+        if (!empty($this->input->post('alasan'))){   
+            $n = new Not_recurring();
+            
+            $n->id_rec_status = $a->id;
+            $n->alasan = $this->input->post('alasan');
+            $n->save_as_new();
+            
+            echo "not recurring berhasil";
+        }
+        
+        else{
+            $e = new Recurring();
+            
+            $e->id_rec_status = $a->id;
+            $e->periode_awal = $this->input->post('periode-awal');
+            $e->periode_akhir = $this->input->post('periode-akhir');
+            $e->jumlah_jam = $this->input->post('jumlah-jam');
+            $e->save_as_new();
+            
+            echo "recurring berhasil";
+        }
+        
     }
 }

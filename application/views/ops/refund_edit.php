@@ -1,41 +1,38 @@
-
-
-<!DOCTYPE html>
-<html lang="en"></html>
 <h1><?php echo $judul; ?></h1>
-<ul class="nav nav-tabs">
-    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/summary" > Home</a></li>
-    <li role="presentation" "><a href="<?php echo base_url(); ?>index.php/ops/student/searchSummary" > Student</a></li>
-    <li role="presentation"class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
-    <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbacks" > Feedback</a></li>
-</ul>
-<form name='update_status' action='<?php echo base_url(); ?>index.php/ops/student/createStatus' method='post' >
+
+<form name='update_refund' action='<?php echo base_url(); ?>index.php/dashboard/editRefund' method='post' >
     <div id ="konten">
 
-        <div class="form-group">
-            <label for="idMurid">Tanggal Refund</label>
-            <input type="text" class="form-control" id="idMurid" placeholder="Masukkan ID Murid">
-        </div>
-        <div class="form-group">
-            <label for="jam">ID Murid</label>
-            <input type="text" class="form-control" id="jam" placeholder="Masukkan Jam">
-        </div>
-        <div class="form-group">
-            <label for="tanggal">Jumlah Jam Hilang</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Jam Hilang">
-        </div>
-        <div class="form-group">
-            <label for="tanggal">Harga Per Jam</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Harga Per Jam">
-        </div>
-        <div class="form-group">
-            <label for="tanggal">Sebab Jam Hilang</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="Masukkan Sebab Jam Hilang">
-        
-       
-       
+         <div class="form-group">
+                <label for="no_invoice">No. Invoice</label>
+                <input type="text" class="form-control" name="no_invoice" value="<?php echo $refunds->no_invoice ?>" >
+            </div>
+            <div class="form-group">
+                <label for="id_sales">Id Sales</label>
+                <input type="text" class="form-control" name="id_sales"value="<?php echo $refunds->id_sales ?>">
+            </div>
+            <div class="form-group">
+                <label for="jam_hilang">Jam Hilang</label>
+                <input type="text" class="form-control" name="jam_hilang" value="<?php echo $refunds->jam_hilang ?>">
+            </div>
+            <div class="form-group">
+                <label for="tanggal">Tanggal</label>
+                <input type="date" class="form-control" name="tanggal" value="<?php echo $refunds->tanggal ?>">
+            </div>
+            <div class="form-group">
+                <label for="action">Action</label>
+                <input type="text" class="form-control" name="action" value="<?php echo $refunds->action ?>">
+            </div>
 
-    </div>
+             <div class="form-group">
+                <label for="selisih">Selisih</label>
+                <input type="text" class="form-control" name="selisih" value="<?php echo $refunds->selisih ?>">
+            </div>
+            <div class="form-group">
+                <label for="alasan">Alasan</label>
+                <input type="text" class="form-control" name="alasan" value="<?php echo $refunds->alasan ?>">
+            </div>
+
     <button type="submit" class="btn btn-danger">Edit Refund</button>
     </div>
 </form>

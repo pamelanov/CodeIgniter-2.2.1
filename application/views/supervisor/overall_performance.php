@@ -1,15 +1,10 @@
- <div id ="konten">
-  <h1>Performance</h1>
- <ul class="nav nav-tabs">
-  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/supervisor/performance" > Create</a></li>
-  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showEdit" > Edit </a></li>
-  <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/supervisor/performance/overall" > Overall Performance</a></li>
- </ul>
- 
- 
- 
- <p><?php echo anchor("admin/refund/create", "Download"); ?></p>
+   <h1><?php echo $judul; ?></h1>
 
+ 
+  <div id ="konten">
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><center>Tabel Peringkat</center></div>
 <?php
 
 if($targets->exists()) {
@@ -20,7 +15,7 @@ if ($this->session->flashdata('message')){
 
 ;
 
-	echo "<table id='table'>\n";
+	echo "<table class='table table-bordered'>\n";
 	echo "<tr>\n";
 		
         echo "<th ><center>#</th></center>\n";
@@ -45,6 +40,8 @@ if ($this->session->flashdata('message')){
                     $rank++;
                 }
 	echo "</table>	";
-	echo "<br/></div>";
+	echo "</div>";
 }
 ?>
+
+</div>

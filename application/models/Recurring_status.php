@@ -2,13 +2,15 @@
 <?php
 class Recurring_status extends DataMapper {
 	
+	var $table = 'recurring_statuses';
+	
 	var $has_one = array(
 			'manager' => array(
 					'class' => 'account',
 					'other_field' => 'managed_recurring_status'
 			),
 			'assigner' => array(
-					'class' => 'engagement',
+					'class' => 'course',
 					'other_field' => 'assigned_recurring_status'
 			),
 	);

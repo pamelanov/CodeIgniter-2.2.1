@@ -27,54 +27,104 @@ class Feedback extends DataMapper {
 	{
 	}
 	
+	function createFeedbackModel(){
+		$f = new Feedback();
+		$s = new Student();
+		$t = new Teacher();
+		$o = new Account();
+	
+		$s->where('id_murid', $this->id_murid)->get();
+		$t->where('id_guru', $this->id_guru)->get();
+		$o->where('id_acc', $this->id_sales)->get();
+		
+		$f->id_murid = $s->id;
+		$f->id_guru = $t->id;
+		$f->tanggal = $this->tanggal;
+		$f->rating = $this->rating;
+		$f->isi = $this->isi;
+		$f->status = '1';
+		$f->total_skor = $f->hitungTotalSkor();
+		$f->id_sales = $o->id;
+		
+		$f->save_as_new();
+		
+		$f1 = new Feedback();
+		$f1->where('id_murid', $f->id_murid);
+		$f1->where('id_guru', $f->id_guru);
+		$f1->get();
+		foreach($f1 as $list){
+			$list->total_skor = $f->total_skor;
+			$list->save();
+		}
+	
+		return $f;
+		return $f1;	
+	}
+	
+	function hitungTotalSkor(){
+		$f1 = new Feedback();
+		$f2 = new Feedback();
+		$rating = 0;
+		$f1->where('id_guru', $this->id_guru)->get();
+		$f2->rating = $this->rating;
+		
+		foreach($f1 as $list){
+			$rating += $list->rating; 
+		}
+		//$f1->total_skor = $this->rating + $f2->rating;
+		$rating = $rating + $f2->rating;
+		return $rating;
+	}
+	
 	function getAllFeedbacks() {
 	
 		$f = new Feedback();
 		$f->get();
-		$this->salt = $f->salt;
+		//$this->salt = $f->salt;
+		$s = new Student();
+		$t = new Teacher();
+		$o = new Account();
+		
+		foreach($f as $list){
+			$s->where('id', $f->id_murid)->get();
+			$t->where('id', $f->id_guru)->get();
+			$o->where('id', $f->id_sales)->get();
+			$list->id_murid = $s->nama;
+			$list->id_guru = $t->nama;
+			$list->id_sales = $o->nama;
+		}
 	
 		return $f;
 	}
-	
-
-	function addFeedbacks(){
-		$inc_id = new Feedback();
-		$id_terakhir = new Feedback();
-		$inc_id->get();
-		$id_terakhir = $inc_id->select_max('id');
-		$angka = $inc_id->id + 1;
-	
-		$n = new Feedback();
-	
-		$n->id_murid = $this->id_murid;
-		$n->id_guru = $this->id_guru;
-		$n->id_sales = $this->id_sales;
-		$n->isi = $this->isi;
-		$n->status = $this->status;
-		$n->rating= $this->rating;
-		$n->tanggal = $this->tanggal;
-		$n->total_skor = $this->total_skor;
-		$n->id = $angka;
-	
-		$n->save_as_new();
-	
-	return $n;
-
-	}
-
-
-         function updateFeedback(){
-         $f = new Feedback();
-   
-        $f->id_acc = $this->id_acc;
-        $f->password = $this->password;
-        $f->email = $this->email;
-        $f->nama = $this->nama;
-        $f->role = $this->role;
-
-    }
         
-	
+    function findFeedback(){
+    	$u = new Feedback();
+    	$u->where('id', $this->id);
+    	//$u->where('id_guru', $this->id_guru);
+    	$u->get();
+    	$this->salt = $u->salt;
+    
+    	// Validate and get this user by their property values,
+    	// this will see the 'encrypt' validation run, encrypting the password with the salt
+    	$this->validate()->get();
+    	if (empty($this->id_murid)) {
+    
+    		return FALSE;
+    	} else {
+    		// found something
+    		return TRUE;
+    	}
+    }
+    
+    function hasilSearch(){
+    	$o = new Feedback();
+    	$o->where('id', $this->id);
+    	//$o->where('id_guru', $this->id_guru);
+    	$o->get();
+    	$this->salt = $o->salt;
+    
+    	return $o;
+    }
 }
 
 /* End of file name.php */

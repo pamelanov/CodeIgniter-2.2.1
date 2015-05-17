@@ -2,8 +2,8 @@
 class Invoice extends DataMapper {
 
 	var $has_many = array(
-			'assigned_end_status' => array(
-					'class' => 'end_status',
+			'assigned_end_number' => array(
+					'class' => 'end_number',
 					'other_field' => 'assigner'
 			),
 			'requested_refund' => array(
@@ -14,7 +14,7 @@ class Invoice extends DataMapper {
 	
 	var $has_one = array(
 			'creator' => array(
-					'class' => 'engagement',
+					'class' => 'course',
 					'other_field' => 'created_invoice'
 			)
 	);

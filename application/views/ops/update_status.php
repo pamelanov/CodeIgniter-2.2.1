@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
+
 <h1><?php echo $judul;?></h1>
 
-<body>
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/ops/student" > Student</a></li>
-  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/admin/refund" > Refund</a></li>
-  <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/readFeedback" > Feedback</a></li>
-</ul>
  <form name='update_status' action='<?php echo base_url();?>index.php/ops/student/createstatus' method='post' >
     <div id ="konten">
        

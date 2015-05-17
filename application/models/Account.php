@@ -4,39 +4,6 @@ class Account extends DataMapper {
 
     // Establish the relationship between entities
 
-    var $has_many = array('created_target' => array(
-            'class' => 'target',
-            'other_field' => 'creator'
-        ),
-        'managed_refund' => array(
-            'class' => 'refund',
-            'other_field' => 'manager'
-        ),
-        'managed_end_status' => array(
-            'class' => 'end_status',
-            'other_field' => 'manager'
-        ),
-        'managed_beginning_number' => array(
-            'class' => 'beginning_number',
-            'other_field' => 'manager'
-        ),
-        'handled_student' => array(
-            'class' => 'student',
-            'other_field' => 'handler'
-        ),
-        'asked_feedback' => array(
-            'class' => 'feedback',
-            'other_field' => 'handler'
-        ),
-        'managed_recurring_status' => array(
-            'class' => 'recurring_status',
-            'other_field' => 'manager'
-        ),
-        'assigned_target' => array(
-            'class' => 'target',
-            'other_field' => 'assigner'
-        )
-    );
     var $validation = array(
         'id_acc' => array(
             'label' => 'id',
@@ -98,19 +65,28 @@ class Account extends DataMapper {
         
     }
 
-  
-    
-    function updateAccount(){
-         $u = new Account();
-   
-        $u->id_acc = $this->id_acc;
-        $u->password = $this->password;
-        $u->email = $this->email;
-        $u->nama = $this->nama;
-        $u->role = $this->role;
-        
-        
+    function getAllOps() {
+        $a = new Account();
+        $a->where('role', 2)->get();
 
+        return $a;
+    }
+
+    function updateAccount() {
+        $u = new Account();
+        $u->where('id_acc', $this->id_acc);
+
+        $u->get();
+        var_dump($u->id_acc);
+        var_dump(count($u));exit();
+        
+        $u->update(array('id_acc', $this->id_acc));
+        $u->update('password', $this->password);
+        $u->update('email', $this->email);
+        $u->update('nama', $this->nama);
+        $u->update('no_telp', $this->no_telp);
+        $u->update('role', $this->role);
+        return $u;
     }
 
     // Validation prepping function to encrypt passwords

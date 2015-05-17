@@ -11,9 +11,9 @@ class Refund extends DataMapper {
 					'other_field' => 'managed_refund'
 			)
 	);
-	
-	// Optionally, don't include a constructor if you don't need one.
-	function __construct($id = NULL)
+        
+        
+        function __construct($id = NULL)
 	{
 		parent::__construct($id);
 	}
@@ -22,46 +22,56 @@ class Refund extends DataMapper {
 	function post_model_init($from_cache = FALSE)
 	{
 	}
-     
-        function register(){
-             // Create a temporary user object
-        $u = new Refund();
+/*        
+        function createRefundModel(){
+	
+		$r = new Refund();
+		$i = new Invoice();
+		//$t = new Teacher();
+		//$o = new Account();
+	
+		$i->where('no_invoice', $this->no_invoice)->get();
+		//$t->where('id', $this->id_guru)->get();
+		//$t->where('id', $this->id_sales)->get();
+		
+		$r->no_invoice = $i->id;
+		//$f->id_guru = $t->id_guru;
+		$r->tanggal = $this->tanggal;
+                //$r->no_invoice = $this->input->post('no_invoice');
+        //$r->id_kelas = $this->input->post('id_kelas');
+        //$f->isi = $this->isi;
+        //$r->hargaPerJam = $this->input->post('hargaPerJam');
+                $r->jam_hilang = $this->jam_hilang;
+                $r->alasan = $this->alasan;
+                $r->action = $this->action;
+        //$r->selisih = $this->input->post('selisih');
+                $r->id_sales = $this->id_sales;
+		
+		$r->save_as_new();
+	
+		return $r;	
+	}
+*/	
+	
+         
+        function addRefunds(){
+		$n = new Refund();
+	
+		
+		$n->id_sales = $this->id_sales;
+		$n->no_invoice = $this->no_invoice;
+		$n->status = $this->status;
+		$n->jam_hilang= $this->jam_hilang;
+		$n->action = $this->action;
+		$n->alasan = $this->alasan;
+                $n->tanggal = $this->tanggal;
+	
+	
+		$n->save_as_new();
+	
+	return $n;
 
-        // Get this users stored record via their username
-        $u->idmurid= $this->Id_murid;
-        $u->idguru= $this->Id_guru;
-        $u->noinvoice= $this->No_invoice;
-        $u->idkelas= $this->Id_kelas;
-        $u->idsales= $this->Id_sales;
-        $u->tanggalr= $this->tanggalRefund;
-        $u->jamhilang= $this->jam_hilang;
-        $u->hargaperjam= $this->hargaperjam;
-        $u->selisih= $this->Selisih;
-        $u->alasan= $this->Alasan;
-        $u->status= $this->Status;
-       
-        
-        // Give this user their stored salt
-        $this->salt = $u->salt;
-
-        // Validate and get this user by their property values,
-        // this will see the 'encrypt' validation run, encrypting the password with the salt
-        $this->validate()->get();
-
-        // If the username and encrypted password matched a record in the database,
-        // this user object would be fully populated, complete with their ID.
-        // If there was no matching record, this user would be completely cleared so their id would be empty.
-        if (empty($this->Id)) {
-            // Login failed, so set a custom error message
-            $this->error_message('login', 'Username or password invalid');
-
-            return FALSE;
-        } else {
-            // Login succeeded
-            return TRUE;
-        }
-    
-        }
+	}
         
 	
 	

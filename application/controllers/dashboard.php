@@ -1,128 +1,89 @@
 <?php
 
 class Dashboard extends Ci_Controller {
-        
-        
+
     function __construct() {
         parent::__construct();
-        if($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
-           redirect('template/login', 'refresh');
+        if ($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('template/login', 'refresh');
         }
     }
 
     function index() {
+
         $data['judul'] = "Dashboard Home";
         $data['main'] = 'home';
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    
-          
-
-    function createData(){
-	$data['judul'] = "Create";
-        $data['main'] = 'create';
-        $this->load->vars($data);
-        $this->load->view('dashboard');
-    }
-
-
-
-    function createStatus() {
-        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
-            redirect('dashboard', 'refresh');
-        }
-        $data['judul'] = "Create Status";
-        $data['main'] = 'ops/createStatus';
-        $this->load->vars($data);
-        $this->load->view('dashboard');
-    }
-
-    function cRefund() {
-        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
-            redirect('dashboard', 'refresh');
-        }
-        $data['judul'] = "Create Refund";
-        $data['main'] = 'ops/refund_create';
-        $this->load->vars($data);
-        $this->load->view('dashboard');
-    }
-    
-    function createRefund() {
-        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
-            redirect('dashboard', 'refresh');
-        }
-
-        $r = new Refund();
-
-        $r->id_murid = $this->input->post('id_murid');
-        $r->id_guru = $this->input->post('id_guru');
-        $r->tanggal = $this->input->post('tanggal');
-        $r->no_invoice = $this->input->post('no_invoice');
-        $r->id_kelas = $this->input->post('id_kelas');
-        $r->hargaPerJam = $this->input->post('hargaPerJam');
-        $r->jam_hilang = $this->input->post('jam_hilang');
-        $r->alasan = $this->input->post('alasan');
-        $r->action = $this->input->post('action');
-        $r->selisih = $this->input->post('selisih');
-        $r->id_sales = $this->input->post('id_sales');
-        $r->save();
-    }
-
-    function cFeedback() {
-        $data['judul'] = "Create Feedback";
-
-        $data['main'] = 'ops/feedback_create';
-
-        $this->load->vars($data);
-        $this->load->view('dashboard');
-    }
-
-    function createFeedback() {
-        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
-            redirect('dashboard', 'refresh');
-        }
-
-        $f = new Feedback();
-
-        $f->id_murid = $this->input->post('id_murid');
-        $f->id_guru = $this->input->post('id_guru');
-        $f->tanggal = $this->input->post('tanggal');
-        $f->rating = $this->input->post('rating');
-        $f->isi = $this->input->post('isi');
-        $f->status = $this->input->post('status');
-        $f->total_skor = $this->input->post('total_skor');
-        $f->id_sales = $this->input->post('id_sales');
-        $f->save();
-    }
 
     function refunds() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
-	    
-	}
+        }
         $r = new Refund();
-        
+
         $data['judul'] = "Refund Summary";
         $data['main'] = 'ops/refund_home';
         $data['admins'] = $r->getAllRefunds();
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    
-    function feedbacks(){
-    	$r = new Feedback();
-    
-    	$data['judul'] = "Feedback Summary";
-    	$data['main'] = 'ops/feedback_home';
-    	$data['feedback'] = $r->getAllFeedbacks();
-    	$this->load->vars($data);
-    	$this->load->view('dashboard');
+
+    function todaySummary() {
+        $b = new Beginning_number();
+        $e = new End_number();
+        $s = new Student();
+
+        $data['judul'] = "Dashboard Home";
+        $data['main'] = 'todaySummary';
+        $data['statusAwal'] = $b->forTodaySum();
+        $data['statusAkhir'] = $e->forTodaySum();
+        $data['students'] = $s->get();
+        $this->load->vars($data);
+        $this->load->view('dashboard');
     }
-    
+
+    function createData() {
+        $data['judul'] = "Create";
+        $data['main'] = 'create';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    function feedbacks() {
+        $r = new Feedback();
+
+        $data['judul'] = "Feedback Summary";
+        $data['main'] = 'ops/feedback_home';
+        $data['feedback'] = $r->getAllFeedbacks();
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    function updateFeedback() {
+        //$r = new Feedback();
+
+        $data['judul'] = "Update Feedback";
+        $data['main'] = 'updateFeedback';
+        //$data['feedback'] = $r->getAllFeedbacks();
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    function crudFeedback() {
+        $r = new Feedback();
+
+        $data['judul'] = "Create Feedback";
+        $data['main'] = 'ops/crudFeedback';
+        $data['feedback'] = $r->getAllFeedbacks();
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
     function users() {
         $o = new Account();
-        
+
         $data['judul'] = "Manage Users";
         $data['main'] = 'admin/user_home';
         $data['admins'] = $o->getAllAccounts();
@@ -130,24 +91,37 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
+    function overallSum() {
+
+        $r = new Refund();
+        $f = new Feedback();
+        $data['judul'] = "Overall Summary";
+        $data['judul2'] = "Refund";
+        $data['judul3'] = "Feedback";
+        $data['main'] = 'supervisor/overall_home';
+
+
+        $data['refund'] = $r->getAllRefunds();
+        $data['feedback'] = $f->getAllFeedbacks();
+
+
+
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
     function summary() {
-        $data['judul'] = "Summary List";
+        $data['judul'] = "Search Student";
         $data['main'] = 'summary';
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
 
+    function cFeedback() {
+        $data['judul'] = "Create Feedback";
 
+        $data['main'] = 'ops/feedback_create';
 
-    function performance_sup() {
-        if ($this->session->userdata('role') != 3) {
-            redirect('dashboard', 'refresh');
-        }
-        $t = new Target();
-
-        $data['judul'] = "Performance";
-        $data['main'] = 'supervisor/overall_performance';
-        $data['targets'] = $t->rank();
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
@@ -184,6 +158,231 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
+    function createRefund() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+
+
+        $r = new Refund();
+
+
+        //$r->id_murid = $this->input->post('id_murid');
+        //$r->id_guru = $this->input->post('id_guru');
+
+        $r->no_invoice = $this->input->post('no_invoice');
+        $r->id_sales = $this->input->post('id_sales');
+        $r->jam_hilang = $this->input->post('jam_hilang');
+
+        $r->tanggal = $this->input->post('tanggal');
+        $r->action = $this->input->post('action');
+        $r->selisih = $this->input->post('selisih');
+        $r->alasan = $this->input->post('alasan');
+//$r->id_kelas = $this->input->post('id_kelas');
+        //$r->hargaPerJam = $this->input->post('hargaPerJam');
+
+        $r->save_as_new();
+
+        $data['judul'] = "Refund Berhasil Disimpan";
+        $data['main'] = 'ops/refund_create';
+
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+//    function editRefund($id=0){
+//  	$this->load->library('encrypt');
+//  	$r = new Refund();
+//        if ($r->update()){
+//  		
+//  		$this->session->set_flashdata('message','User updated');
+//  		redirect('ops/refund/index','refresh');
+//  	}else{
+//		//$id = $this->uri->segment(4);
+//		$data['judul'] = "Edit Refund";
+//		$data['main'] = 'ops/refund_edit';
+//		$data['refund'] = $r->getRefund($id);
+//		$this->load->vars($data);
+//		$this->load->view('dashboard');    
+//	}
+//  }
+
+    function editUser($id) {
+        if ($this->session->userdata('role') != 1) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Account();
+        $u->where('id', $id)->get();
+
+        $data['judul'] = "Create User";
+        $data['main'] = 'admin/user_edit';
+        $data['user'] = $u;
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    function editAccount() {
+        if ($this->session->userdata('role') != 1) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Account();
+        $u->where('id_acc', $this->input->post('id_acc'))->get();
+
+        $u->password = md5($this->input->post('password'));
+
+        $u->email = $this->input->post('email');
+        $u->nama = $this->input->post('nama');
+        $u->no_telp = $this->input->post('no_telp');
+        $u->role = $this->input->post('role');
+
+        $u->save();
+        $data['judul'] = "Update Berhasil";
+        $data['main'] = 'supervisor/updated';
+    }
+
+    
+    function editRefund() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Refund();
+        $u->where('no_invoice', $this->input->post('no_invoice'))->get();
+
+        //$u->password = md5($this->input->post('password'));
+        //$u->no_invoice = $this->input->post('no_invoice');
+        $u->id_sales = $this->input->post('id_sales');
+        $u->tanggal = $this->input->post('tanggal');
+        $u->action = $this->input->post('action');
+        $u->selisih = $this->input->post('selisih');
+        $u->alasan = $this->input->post('alasan');
+        $u->jam_hilang = $this->input->post('jam_hilang');
+
+        $u->save();
+        $data['judul'] = "Update Refund Berhasil";
+        $data['main'] = 'ops/refund_editberhasil';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    
+    
+    function showEditRefund($id){
+          if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Refund();
+        $u->where('id', $id)->get();
+      $data['judul'] = "Edit Refund";
+      $data['main'] = 'ops/refund_edit';
+      $data['refunds']=$u;
+      $this->load->vars($data);
+      $this->load->view('dashboard');
+     }      
+     
+    function showDeleteRefund() {
+        $data['judul'] = "Delete Refund";
+        $data['main'] = 'ops/refund_delete';
+
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    /*
+      function crudFeedback(){
+      $r = new Feedback();
+
+      $data['judul'] = "Feedback";
+      $data['main'] = 'ops/crudFeedback';
+      $data['feedback'] = $r->getAllFeedbacks();
+      $this->load->vars($data);
+      $this->load->view('dashboard');
+      }
+     */
+
+
+   
+    function feedbackSummary(){
+    	$r = new Feedback();
+    	$f = new Feedback();
+    	$jumlahFeedback = 0;
+    	 
+    	$f->group_by('id_sales');
+    	$f->get();
+    	$data['feedback1'] = $f;
+    	
+    	$data['judul'] = "Feedback Summary";
+    	$data['main'] = 'feedbackSummary';
+    	$data['feedback'] = $r->getAllFeedbacks();
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+
+
+    }
+
+    function ePassword($id) {
+        if ($this->session->userdata('role') != 1) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Account();
+        $u->where('id', $id)->get();
+
+        $data['judul'] = "Create User";
+        $data['main'] = 'admin/password_edit';
+        $data['user'] = $u;
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    function editPassword() {
+        if ($this->session->userdata('role') != 1) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Account();
+        $u->where('id_acc', $this->input->post('id_acc'))->get();
+
+        $u->password = md5($this->input->post('password'));
+
+
+        $u->save();
+        $data['judul'] = "Update Berhasil";
+        $data['main'] = 'supervisor/updated';
+
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    function deleteAccount() {
+        if ($this->session->userdata('role') != 1) {
+            redirect('dashboard', 'refresh');
+        }
+ 
+        $u = new Account();
+        $u->where('id_acc', $this->input->post('id_acc'))->get();
+
+         $u->delete();
+        $data['judul'] = "Update Berhasil";
+        $data['main'] = 'supervisor/updated';
+
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+        
+    }
+
+    function deleteRefund() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $u = new Refund();
+        $u->where('no_invoice', $this->input->post('no_invoice'))->get();
+
+        $u->delete();
+        $data['judul'] = "Delete Refund Berhasil";
+        $data['main'] = 'ops/refund_delete';
+
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
     function edit($id = 0) {
         if ($this->session->userdata('role') != 1) {
             redirect('dashboard', 'refresh');
@@ -200,6 +399,7 @@ class Dashboard extends Ci_Controller {
         if ($u->updateAccount) {
 
             $this->session->set_flashdata('message', 'User updated');
+
             redirect('dashboard/users', 'refresh');
         } else {
             $data['judul'] = "Create User";
@@ -209,22 +409,50 @@ class Dashboard extends Ci_Controller {
         }
     }
 
+    function delete($id) {
+        $this->madmins->deleteUser($id);
+        $this->session->set_flashdata('message', 'User deleted');
+        redirect('dashboard/users', 'refresh');
+    }
+
     function logout() {
-        unset($_SESSION['userid']);
+        $sesi_items = array('role' => '');
+        $this->session->unset_userdata($sesi_items);
         $this->session->set_flashdata('error', "You've been logged out!");
         redirect('template/login', 'refresh');
     }
-    
-    function performance(){
+
+    function performance() {
         $t = new Target();
-        
-	$data['judul'] = "Performance";
-	$data['main'] = 'ops/performance_ops';
+	$a = new Target();
+	$k = $a->ambilPerforma($this->session->userdata('id'));
+	if (!empty($k)) {
+	    $bar = round($k->actual / $k->target * 100, 2);
+	    $data['progressbar'] = $bar;
+	}
+        $data['judul'] = "Performance";
+        $data['main'] = 'ops/performance_ops';
+	$data['performa'] = $a->ambilPerforma($this->session->userdata('id'));
         $data['target'] = $t->rank();
-	$this->load->vars($data);
-	$this->load->view('dashboard');  
-  }
+	
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+
+    function efeedbacks() {    
+        $this->load->helper('download');
+
+        $u = new Feedback();
+        // load all users
+        $feedbacks = $u->getAllFeedbacks();
+        // Output $u->all to /tmp/output.csv, using all database fields.
+        $path = "assets/exports/";
+        $filename = 'feedback_' . date("Ymd_His") . '.csv';
+        $feedbacks->csv_export($path . $filename);
+        $data = file_get_contents($path . $filename); // Read the file's contents
+        force_download($filename, $data);
+
+    }
 
 }
-
 ?>

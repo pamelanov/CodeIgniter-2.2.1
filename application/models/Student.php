@@ -9,8 +9,8 @@ class Student extends DataMapper {
 	);
 	
 	var $has_many = array(
-			'ordered_engagement' => array(
-					'class' => 'engagement',
+			'ordered_course' => array(
+					'class' => 'course',
 					'other_field' => 'orderer'
 			),
 			'gave_feedback' => array(
@@ -39,18 +39,9 @@ class Student extends DataMapper {
 	function findStudent(){
 		$u = new Student();
 		$u->where('id_murid', $this->id_murid)->get();
-		$this->salt = $u->salt;
 
-        // Validate and get this user by their property values,
-        // this will see the 'encrypt' validation run, encrypting the password with the salt
-        $this->validate()->get();
-		if (empty($this->id_murid)) {
-
-		return FALSE;
-        } else {
-		// found something
-		return TRUE;
-		}	
+		if (empty($u->id_murid)) return FALSE;
+			else return TRUE;		
 	}
 	
 	function hasilSearch(){
