@@ -10,7 +10,9 @@ class Performance extends Ci_Controller {
     }
 
   function index(){
-        
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
 	$data['judul'] = "Performance";
 	$data['main'] = 'supervisor/performance';
 	$this->load->vars($data);
@@ -32,8 +34,12 @@ class Performance extends Ci_Controller {
     if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
-	$data['judul'] = "Rincian Performa";
+	
+	$e = new End_number();
+	
+	$data['judul'] = "Performance";
 	$data['main'] = 'ops/rincian_performa';
+	$data['rincian'] = $e->ambilRincian($this->session->userdata('id'));
 	$this->load->vars($data);
 	$this->load->view('dashboard');  
   }
