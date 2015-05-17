@@ -72,12 +72,12 @@ function myFunction() {
         
         echo "<div class='form-group'>";
             echo "<label for='jam'>Jam</label>";
-            echo "<input type='time' class='form-control' name='jam' placeholder='Jam'>";
+            echo "<input type='time' class='form-control' name='jam' value=" . date("H:i:s") . ">";
         echo "</div>";
         
         echo "<div class='form-group'>";
             echo "<label for='tanggal'>Tanggal</label>";
-            echo "<input type='date' class='form-control' name='tanggal'>";
+            echo "<input type='date' class='form-control' name='tanggal' value=" .  date("Y-m-d") . ">";
         echo "</div>";
         
         echo "<div class='form-group'>";

@@ -35,24 +35,6 @@ class Student extends Ci_Controller {
         $this->load->view('dashboard');
     }
         
-      function createStatus() {
-           if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
-            redirect('dashboard', 'refresh');
-        }
-        $n = new Beginning_number();
-        
-        $n->id_murid = $this->input->post('id_murid');
-        $n->jam = $this->input->post('jam');
-        $n->tanggal = $this->input->post('tanggal');
-        $n->id_sales = $this->input->post('id_sales');
-        $n->status = $this->input->post('status');
-        
-        $a = new Beginning_number;
-        $a = $n->updateStatus();
-        echo $a->id_murid;
-        echo $a->id_sales;
-    
-    }
     
     
 

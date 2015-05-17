@@ -68,6 +68,7 @@ class Create extends Ci_Controller {
             $data['main'] = "ops/status_berhasil";
             $data['tes'] =  $t->addActual($this->session->userdata('id'));
             
+            
 
             $this->load->view('dashboard', $data);
             }
