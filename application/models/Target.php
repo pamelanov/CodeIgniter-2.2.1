@@ -97,6 +97,7 @@ class Target extends DataMapper {
 		$n->update('target', $this->target);
 		return $n;
 	}
+	
 	function findTarget(){
 		$a = new Account();
 		$a->where('id_acc', $this->id_sales)->get();

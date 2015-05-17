@@ -7,7 +7,8 @@ if ($this->session->flashdata('message')){
 if (count($admins)){
 	
 	
-	
+	echo '<div class="panel panel-primary">
+	<div class="panel-heading"><center>Tabel Peringkat</center></div>';
 	echo "<table id='table'>\n";
 	echo "<tr valign='top'>\n";
 	echo "<th>Nama</th><th>Email</th><th>Nama</th><th>No Tlp</th><th>Action</th>\n";
@@ -25,6 +26,7 @@ if (count($admins)){
 		echo "</tr>\n";
 	}
 	echo "</table>";
+	echo "</div>";
 	
 	
 }

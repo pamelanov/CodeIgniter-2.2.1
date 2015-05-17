@@ -5,7 +5,7 @@
     <h1><?php echo $judul; ?></h1>
 
 
- <form name='update_feedback' action='<?php echo base_url();?>index.php/ops/feedbackCtrl/updateFeedback' method='post'>
+ <form name='update_feedback' action='<?php echo base_url();?>index.php/ops/feedbackCtrl/updateFeedback' method='post' onsubmit='return confirm("Apakah Anda yakin ingin mengubah informasi feedback?")'>
  <div class='form-group'>
  
  <div class='form-group'>

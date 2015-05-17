@@ -10,13 +10,19 @@
                             '<div class="form-group"> ' +
                                 '<label class="col-md-4 control-label" for="name">ID Kelas</label> ' +
                                     '<div class="col-md-4"> ' +
-                                        '<input name="idKelas" type="text" placeholder="ID kelas" class="form-control input-md"> ' +
+                                        '<select class="form-control" name="id_sales" placeholder="ID Kelas">' +
+                                        '<?php foreach ($courses as $c) { ?>' +
+                                         '<option>' +
+                                         '<?php  echo $c->id_kelas; ?>' +
+                                         '</option>' +
+                                        '<?php } ?>' +
+                                    '</select>' +
                                     '</div> ' +
                             '</div> ' +
                             '<div class="form-group"> ' +
                                 '<label class="col-md-4 control-label" for="tanggal">Tanggal Pengisian </label>' +
                                     '<div class="col-md-4"> ' +
-                                        '<input type="date" name="tanggal"> ' +
+                                        '<input type="date" name="tanggal" value=<?php echo date("Y-m-d") ?>> ' +
                                     '</div>' +
                             '</div>' +
                             '<div class="form-group"> ' +
@@ -123,9 +129,6 @@
 
     <h1><?php echo $judul; ?></h1>
 
-
-<div class="row">
-  <div class="col-xs-6">
 <div id="konten">
     <form class="form-inline" align="left" action='<?php echo base_url(); ?>index.php/ops/summary/searchStudent' method='post'>
     <div class="form-group">
@@ -141,26 +144,22 @@
 
 
 if ((!empty($students)) && (!empty($students2))) {
-        ?>
-        <?php
         
         echo "<table class='table table-bordered'>\n";
             echo "<tr valign='top'>\n";
                 echo "<th><center>Status</center></th>
-                        <th><center>Tanggal Pengisian</center></th>
-                        <th><center>No Invoice</center></th>\n";
+                        <th><center>Tanggal Pengisian</center></th>";
+                        
             echo "</tr>\n";
             foreach ($students as $student){
             echo "<tr valign='top'>\n";
             echo "<td align='center'>" . $student->status . "</td>\n";
             echo "<td align='center'>" . $student->tanggal . "</td>\n";
-            echo "<td align='center'> <span class='glyphicon glyphicon-minus' aria-hidden='true'></span> </td>\n";
             echo "</tr>\n";
             }
             foreach ($students2 as $student) {
             echo "<td align='center'>" . $student->no . "</td>\n";    
             echo "<td align='center'>" . $student->tanggal . "</td>\n";
-            echo "<td align='center'> <span class='glyphicon glyphicon-minus' aria-hidden='true'></span> </td>\n";
             echo "</tr>\n";
             }
         echo "</table>";
@@ -170,11 +169,15 @@ if ((!empty($students)) && (!empty($students2))) {
             <span class='glyphicon glyphicon-plus-sign' aria-hidden='true'></span> Recurring Status
         </button>
         </a>";
-} ?>
+        
+        
+}
+
+?>
 
 </div>
-<!--nutup col xs--></div>
-  
+
+  <!--
   <div class="col-xs-6">
 
 <div id="konten">
@@ -216,7 +219,6 @@ if ((!empty($students)) && (!empty($students2))) {
 </form>
 </div>
 
-<!--nutup col xs--></div>
+</div> -->
 </div>
 
-</html>

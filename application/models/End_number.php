@@ -56,7 +56,9 @@ class End_number extends DataMapper {
 		$i->where('id_kelas', $c->id)->get();
 		
 		$e = new End_number();
-		$e->where('id_invoice', $i->id)->get();
+		$e->where('id_invoice', $i->id);
+		$e->order_by("tanggal", "asc");
+		$e->get();
 		
 		return $e;
 	}

@@ -32,6 +32,16 @@ class Course extends DataMapper {
 	function post_model_init($from_cache = FALSE)
 	{
 	}
+	
+	function getCourses($id_murid){
+		$s = new Student();
+		$s->where('id_murid', $id_murid)->get();
+		
+		$c = new Course();
+		$c->where('id_murid', $s->id)->get();
+		
+		return $c;
+	}
 }
 
 /* End of file name.php */

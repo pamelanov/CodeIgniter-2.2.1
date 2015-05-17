@@ -19,21 +19,23 @@ class Create extends Ci_Controller {
        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
+        
         $u = new Student();
         $u->id_murid = $this->input->post('idMurid');
-        
+        $i = new Invoice();
     
         if ($u->findStudent()) {
 
             $data['judul'] = "Perbaharui Status";
             $data['main'] = 'create';
             $data['student'] = $u->hasilSearch();
+            $data['invoices'] = $i->getInvoiceHistory($u->id_murid);
             $this->load->vars($data);
             $this->load->view('dashboard');
         }
          else {
             $data['judul'] = "Perbaharui Status";
-            $data['main'] = "ops/gagal_search";
+            $data['main'] = "ops/gagal_search_student";
             $data['aktif'] = 'class="active"';
 
             $this->load->view('dashboard', $data);
@@ -87,11 +89,20 @@ class Create extends Ci_Controller {
             $n->tanggal = $this->input->post('tanggal');
             $n->id_sales = $this->input->post('id_sales');
             $n->status = $this->input->post('status');
-            $a = $n->updateStatus();
             
-            $data['judul'] = "Create Status";
-            $data['main'] = "ops/status_berhasil";
-
+            if ($n->exists()) {
+                $a = $n->updateStatus();
+                $data['judul'] = "Create Status";
+                $data['main'] = "ops/status_double";
+               
+            }
+            
+            else{
+                 $a = $n->updateStatus();
+                 $data['judul'] = "Create Status";
+                $data['main'] = "ops/status_berhasil";
+            }
+           
             $this->load->view('dashboard', $data);
         }
     }

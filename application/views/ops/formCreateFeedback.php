@@ -1,7 +1,7 @@
 <h1><?php echo $judul; ?></h1>
 <body>
 
-<form name='create_feedback' action='<?php echo base_url(); ?>index.php/ops/feedbackCtrl/createFeedback' method='post' >
+<form name='create_feedback' action='<?php echo base_url(); ?>index.php/ops/feedbackCtrl/createFeedback' method='post' onsubmit='return confirm("Apakah Anda yakin ingin menambahkan feedback?")' >
     <div id ="konten">
 
         <div class="form-group">

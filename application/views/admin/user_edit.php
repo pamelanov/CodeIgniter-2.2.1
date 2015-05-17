@@ -4,7 +4,7 @@
 <html lang="en"></html>
 <h1><?php echo $judul; ?></h1>
 
-<form name='update_status' action='<?php echo base_url(); ?>index.php/dashboard/editAccount' method='post' >
+<form name='update_status' action='<?php echo base_url(); ?>index.php/dashboard/editAccount' method='post' onsubmit='return confirm("Apakah Anda yakin ingin mengubah informasi akun?")' >
     <div id ="konten">
         
         

@@ -59,7 +59,9 @@ class Beginning_number extends DataMapper {
 		$s->where('id_murid', $this->id_murid)->get();
 		
 		$b = new Beginning_number();
-		$b->where('id_murid', $s->id)->get();
+		$b->where('id_murid', $s->id);
+		$b->order_by("tanggal", "asc");
+		$b->get();
 		
 		return $b;
 	}
@@ -79,6 +81,21 @@ class Beginning_number extends DataMapper {
 		}
 		
 		return $b;
+	}
+	
+	function exists(){
+		$b = new Beginning_number();
+		$s = new Student();
+		$s->where('id_murid', $this->id_murid)->get();
+		$b->where('status', $this->status);
+		$b->where('id_murid', $s->id);
+		$b->get();
+		
+		if (empty($b)) {
+			return false;
+		}
+		
+		else return true;
 	}
 }
 

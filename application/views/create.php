@@ -11,7 +11,7 @@ function myFunction() {
     
 }
 </script>
-<div id="konten">
+<div id="createStatus">
    
     
         <form class="form-inline" align="left" action='<?php echo base_url();?>index.php/ops/create/searchStudentStatus' method='post'>
@@ -34,10 +34,12 @@ function myFunction() {
         
         <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-8">
-        <form name='update_status' action='<?php echo base_url();?>index.php/ops/create/createStatus' method='post'>
+        <form name='update_status' action='<?php echo base_url();?>index.php/ops/create/createStatus' method='post' onsubmit='return confirm("Apakah Anda yakin ingin menambahkan status?")'>
         <?php
         
         $id_sales = $this->session->userdata('id');
+        echo '<div class="panel panel-danger">
+            <div class="panel-heading"><center>Informasi Singkat Murid</center></div>';
         echo "<table class='table table-bordered'>\n";
 
             echo "<tr valign='top'>\n";
@@ -53,7 +55,37 @@ function myFunction() {
             echo "<td align='center'>" . $student->domisili . "</td>\n";
             echo "</tr>\n";
         echo "</table>";
+        echo "</div>";
 
+        if (!empty($invoices)) {
+            
+            echo '<div class="panel panel-danger">
+            <div class="panel-heading"><center>Invoice Tercatat</center></div>';
+            echo "<table class='table table-bordered'>\n";
+
+            echo "<tr valign='top'>\n";
+                echo "<th><center>No Invoice</center></th>
+                        <th><center>Periode Awal</center></th>
+                        <th><center>Periode Akhir</center></th>
+                        <th><center>Jumlah Jam</center></th>
+                        <th><center>Jumlah Sesi</center></th>
+                        <th><center>Harga Per Jam</center></th>\n";
+            echo "</tr>\n";
+            
+            foreach($invoices as $i) {
+            echo "<tr valign='top'>\n";
+            echo "<td align='center'>" . $i->no_invoice . "</td>\n";
+            echo "<td align='center'>" . $i->periode_awal . "</td>\n";
+            echo "<td align='center'>" . $i->periode_akhir . "</td>\n";
+            echo "<td align='center'>" . $i->jumlah_jam . "</td>\n";
+             echo "<td align='center'>" . $i->jumlah_sesi . "</td>\n";
+              echo "<td align='center'>" . $i->harga_per_jam . "</td>\n";
+            echo "</tr>\n";
+            }
+        echo "</table>";
+        echo "</div>";
+        }
+        
         echo "<div class='form-group'>";
             echo "<label for='id_murid'>ID Murid</label>";
             echo "<input type='text' class='form-control' name='id_murid' placeholder='ID Murid' value=$student->id_murid>";
@@ -94,6 +126,7 @@ function myFunction() {
         echo "</div>";
         
         echo "<button id='demo' class='btn btn-danger'>Update Status</button>";
+
         ?>
         </form>
         </div>

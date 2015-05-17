@@ -1,7 +1,7 @@
 <h1><?php echo $judul; ?></h1>
 
-    <form name='create_refund' action='<?php echo base_url(); ?>index.php/dashboard/createRefund' method='post' >
-        <div id ="konten">
+    <form name='create_refund' action='<?php echo base_url(); ?>index.php/dashboard/createRefund' method='post' onsubmit='return confirm("Apakah Anda yakin ingin menambahkan informasi refund?")' >
+        <div id ="konten-kecil">
 
             <div class="form-group">
                 <label for="no_invoice">No. Invoice</label>

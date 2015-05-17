@@ -3,7 +3,7 @@
 
  <div id="konten">
   
- <form name='update_status' action='<?php echo base_url();?>index.php/supervisor/performance/create' method='post'>
+ <form name='update_status' action='<?php echo base_url();?>index.php/supervisor/performance/create' method='post' onsubmit='return confirm("Apakah Anda yakin ingin menambahkan target?")'>
  <?php $id_sales = $this->session->userdata('id');
         echo '<div class="form-group">
             <label for="id_sales">ID Sales</label>

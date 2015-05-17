@@ -1,6 +1,6 @@
 <h1><?php echo $judul; ?></h1>
 
-<form name='update_refund' action='<?php echo base_url(); ?>index.php/dashboard/editRefund' method='post' >
+<form name='update_refund' action='<?php echo base_url(); ?>index.php/dashboard/editRefund' method='post' onsubmit='return confirm("Apakah Anda yakin ingin mengubah informasi refund?")'>
     <div id ="konten">
 
          <div class="form-group">
