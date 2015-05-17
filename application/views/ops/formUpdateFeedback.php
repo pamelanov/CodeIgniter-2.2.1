@@ -3,11 +3,7 @@
 
 <body>
     <h1><?php echo $judul; ?></h1>
-    <ul class="nav nav-tabs">
-        <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/summary" > Student</a></li>
-        <li role="presentation"><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" > Refund</a></li>
-        <li role="presentation" class="active"><a href="<?php echo base_url(); ?>index.php/dashboard/feedbackSummary" > Feedback</a></li>
-    </ul>
+
 
  <form name='update_feedback' action='<?php echo base_url();?>index.php/ops/feedbackCtrl/updateFeedback' method='post'>
  <div class='form-group'>
