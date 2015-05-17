@@ -1,5 +1,7 @@
-<h1><?php echo $judul; ?></h1>  
+<h1><?php echo $judul; ?></h1>
+<div id="konten">
 <p><?php echo anchor('dashboard/createUser', 'Create Account'); ?></p>
+
 
     <?php
 if ($this->session->flashdata('message')) {
@@ -8,7 +10,8 @@ if ($this->session->flashdata('message')) {
  
 
 if (count($admins)) {
-
+echo '<div class="panel panel-primary">
+  <div class="panel-heading"><center>Semua Akun</center></div>';
 
     echo "<table class='table table-bordered'>\n";
     echo "<tr valign='top'>\n";
@@ -43,5 +46,7 @@ if (count($admins)) {
         echo "</tr>\n";
     }
     echo "</table>";
+    echo "</div>";
 }
 ?>
+</div>

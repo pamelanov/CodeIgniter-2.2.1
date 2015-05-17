@@ -26,7 +26,7 @@
 	echo "<br/>";
         ?>
     
-    <form name='editPerformance' action='<?php echo base_url();?>index.php/supervisor/performance/edit' method='post' >
+    <form name='editPerformance' action='<?php echo base_url();?>index.php/supervisor/performance/edit' method='post' onsubmit='return confirm("Apakah Anda yakin ingin mengubah target?")' >
 		<div class="form-group">
 		<label for="id_sales">	Enter Sales ID</label>
                         <input type='text' class="form-control" name='id_sales' placeholder="ID Sales">

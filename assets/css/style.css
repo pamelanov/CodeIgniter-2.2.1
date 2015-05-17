@@ -44,14 +44,22 @@ tr{
 table{
     text-align: center;
 }
+
 #konten{
     text-align: justify;
-    width: 80%;
-    margin-left: 20px;
+    width: 100%;
     margin-bottom: 30px;
-    /* padding: 10px 10px 10px 10px; */
+    padding: 10px 10px 10px 10px;
     border-radius: 25px;
     
+}
+
+#konten-kecil{
+    text-align: justify;
+    width: 50%;
+    margin-bottom: 30px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 25px;
 }
 
 #dropdown{

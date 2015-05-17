@@ -28,6 +28,17 @@ class Invoice extends DataMapper {
 	function post_model_init($from_cache = FALSE)
 	{
 	}
+	
+	function getInvoiceHistory($id_murid){
+		$s = new Student();
+		$c = new Course();
+		$i = new Invoice();
+		$s->where('id_murid', $id_murid)->get();
+		$c->where('id_murid', $s->id)->get();
+		$i->where('id_kelas', $c->id)->get();
+		
+		return $i;
+	}
 }
 
 /* End of file name.php */

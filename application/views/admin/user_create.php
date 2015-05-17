@@ -4,7 +4,7 @@
 <html lang="en"></html>
 <h1><?php echo $judul; ?></h1>
 
-<form action='<?php echo base_url(); ?>index.php/dashboard/createAccount' method='POST' >
+<form action='<?php echo base_url(); ?>index.php/dashboard/createAccount' method='POST' onsubmit='return confirm("Apakah Anda yakin ingin membuat akun?")' >
     <div id ="konten">
         <div class="form-group">
             <label for="id_acc">ID</label>

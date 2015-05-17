@@ -2,7 +2,6 @@
 
 <div id="konten">
     Status berhasil dimasukkan.<br/><br/>
-    <?php echo $tes->no . " " . $tes->id;?>
     <a href="<?php echo base_url(); ?>index.php/ops/student/createData" >
     <button type="submit" class="btn btn-danger">
 	<span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span> Kembali</button> </a>
