@@ -426,9 +426,12 @@ class Dashboard extends Ci_Controller {
         $t = new Target();
 	$a = new Target();
 	$k = $a->ambilPerforma($this->session->userdata('id'));
-	if (!empty($k)) {
+	if (!empty($k) && $k->target!=0) {
 	    $bar = round($k->actual / $k->target * 100, 2);
 	    $data['progressbar'] = $bar;
+	}
+	else {
+	    $data['progressbar'] = false;
 	}
         $data['judul'] = "Performance";
         $data['main'] = 'ops/performance_ops';

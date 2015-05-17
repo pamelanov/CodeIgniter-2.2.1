@@ -90,7 +90,7 @@ class Create extends Ci_Controller {
             $n->id_sales = $this->input->post('id_sales');
             $n->status = $this->input->post('status');
             
-            if ($n->exists()) {
+            if ($n->exists($n)) {
                 $a = $n->updateStatus();
                 $data['judul'] = "Create Status";
                 $data['main'] = "ops/status_double";

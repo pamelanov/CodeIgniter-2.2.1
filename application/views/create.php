@@ -1,6 +1,6 @@
 <h1><?php echo $judul; ?></h1>
 
-
+<div id="konten">
 <script>
 function myFunction() {
     if (confirm("Apakah Anda yakin ingin memperbaharui status?") == true) {
@@ -164,6 +164,7 @@ function myFunction() {
 
 
     
+</div>
 </div>
 
 

@@ -9,13 +9,19 @@
 
 </div>
  
+<?php
 
+if (!empty($performa) && $progressbar != false) { ?>
   <div class="progress">
   <div class="progress-bar progress-bar-primary progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo $progressbar; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $progressbar; ?>%">
     <?php echo $progressbar; ?>% Complete (<?php echo $performa->actual . " / " . $performa->target; ?> )
   </div>
 </div>
-
+<?php } else { ?>
+ <div class="alert alert-danger" role="alert">
+<p><h5><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Target untuk periode ini belum ditentukan.</h5></p>
+ </div>
+<?php } ?>
 
 <div class="panel panel-primary">
   <!-- Default panel contents -->

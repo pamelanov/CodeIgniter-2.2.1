@@ -83,11 +83,11 @@ class Beginning_number extends DataMapper {
 		return $b;
 	}
 	
-	function exists(){
+	function exists($n){
 		$b = new Beginning_number();
 		$s = new Student();
-		$s->where('id_murid', $this->id_murid)->get();
-		$b->where('status', $this->status);
+		$s->where('id_murid', $n->id_murid)->get();
+		$b->where('status', $n->status);
 		$b->where('id_murid', $s->id);
 		$b->get();
 		

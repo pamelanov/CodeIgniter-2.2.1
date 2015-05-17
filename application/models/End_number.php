@@ -119,23 +119,27 @@ class End_number extends DataMapper {
 		$i = new Invoice();
 		$s = new Student();
 		$c = new Course();
-		
+		$array[0] = $e;
 		$num = 0;
-		foreach($n as $o) {
-			if (substr($o->tanggal,0,7) == date("Y-m")) {
-				$i->where('id', $o->id_invoice)->get();
-				$c->where('id', $i->id_kelas)->get();
-				$s->where('id', $c->id_murid)->get();
-				$o->id_invoice = $i->no_invoice;
-				$o->id_murid = $s->id_murid;
-				$o->nama_murid = $s->nama;
-				$o->periode_awal = $i->periode_awal;
-				$o->periode_akhir = $i->periode_akhir;
-				$o->jumlah_jam = $i->jumlah_jam;
-				$array[$num] = $o;
-				$num++;
+		if (!empty($n)) {
+			foreach($n as $o) {
+				if (substr($o->tanggal,0,7) == date("Y-m")) {
+					$i->where('id', $o->id_invoice)->get();
+					$c->where('id', $i->id_kelas)->get();
+					$s->where('id', $c->id_murid)->get();
+					$o->id_invoice = $i->no_invoice;
+					$o->id_murid = $s->id_murid;
+					$o->nama_murid = $s->nama;
+					$o->periode_awal = $i->periode_awal;
+					$o->periode_akhir = $i->periode_akhir;
+					$o->jumlah_jam = $i->jumlah_jam;
+					$array[$num] = $o;
+					$num++;
 				
+				}
 			}
+		
+			
 		}
 		
 		return $array;
