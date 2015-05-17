@@ -12,10 +12,11 @@
  
 
   <div class="progress">
-  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-    80% Complete
+  <div class="progress-bar progress-bar-primary progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo $progressbar; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $progressbar; ?>%">
+    <?php echo $progressbar; ?>% Complete (<?php echo $performa->actual . " / " . $performa->target; ?> )
   </div>
 </div>
+
 
 <div class="panel panel-primary">
   <!-- Default panel contents -->
