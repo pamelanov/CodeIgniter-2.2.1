@@ -356,7 +356,7 @@ class Dashboard extends Ci_Controller {
         }
         $u = new Refund();
         $u->where('no_invoice', $this->input->post('no_invoice'))->get();
-
+//$u->where('no_invoice', 'no_invoice')->get();
         $u->delete();
         $data['judul'] = "Delete Refund";
         $data['main'] = 'ops/refund_deleteberhasil';
