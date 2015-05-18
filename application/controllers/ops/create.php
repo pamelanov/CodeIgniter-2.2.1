@@ -83,25 +83,26 @@ class Create extends Ci_Controller {
         else{
             $a = new Beginning_number();
             $n = new Beginning_number();
-        
+            $b = new Beginning_number();
             $n->id_murid = $this->input->post('id_murid');
             $n->jam = $this->input->post('jam');
             $n->tanggal = $this->input->post('tanggal');
             $n->id_sales = $this->input->post('id_sales');
             $n->status = $this->input->post('status');
             
-            if ($n->exists($n)) {
-                $a = $n->updateStatus();
-                $data['judul'] = "Create Status";
-                $data['main'] = "ops/status_double";
-               
-            }
+            // if ($b->exists($n)){
+                // $data['tes'] = $b->retrieve($n);
+                // $a = $n->updateStatus();
+                // $data['judul'] = "Create Status";
+                // $data['main'] = "ops/status_double";
+                
+            // }
             
-            else{
+            // else{
                  $a = $n->updateStatus();
                  $data['judul'] = "Create Status";
                 $data['main'] = "ops/status_berhasil";
-            }
+            //}
            
             $this->load->view('dashboard', $data);
         }

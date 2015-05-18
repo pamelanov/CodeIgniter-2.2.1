@@ -32,18 +32,20 @@ class Performance extends Ci_Controller {
         $n->id_supervisor = $this->input->post('id_supervisor');
         $n->target = $this->input->post('target');
 
-        if ($n->valid()){
-        $data['judul'] = "Target Berhasil Disimpan";
-	$data['main'] = 'supervisor/created';
-        $data['targets'] = $n->createTarget();
-	$this->load->vars($data);
-	$this->load->view('dashboard');  
+        if ($n->valid() && $n->notExists()){
+            
+                $data['judul'] = "Target Berhasil Disimpan";
+                $data['main'] = 'supervisor/created';
+                $data['targets'] = $n->createTarget();
+                $this->load->vars($data);
+                $this->load->view('dashboard');
+            
         }
         else {
-        $data['judul'] = "Target Gagal Disimpan";
-        $data['main'] = 'supervisor/failed';
-        $this->load->vars($data);
-        $this->load->view('dashboard'); 
+            $data['judul'] = "Target Gagal Disimpan";
+            $data['main'] = 'supervisor/failed';
+            $this->load->vars($data);
+            $this->load->view('dashboard'); 
         }
     }
     
@@ -119,5 +121,13 @@ class Performance extends Ci_Controller {
         $data['targets'] = $t->rank();
 	$this->load->vars($data);
 	$this->load->view('dashboard');  
+    }
+    
+    
+    function hapusTarget(){
+        $data['judul'] = "Hapus Target";
+	$data['main'] = 'supervisor/hapus_performa';
+	$this->load->vars($data);
+	$this->load->view('dashboard');    
     }
 }
