@@ -35,7 +35,7 @@ if (count($admins)) {
         echo "<td align='center'>";
         echo anchor('dashboard/showEditRefund/' . $list->id , 'edit');
         echo " | ";
-        echo anchor('dashboard/showDeleteRefund/'. $list->no_invoice, 'delete');
+        echo anchor('dashboard/showDeleteRefund/'. $list->id, 'delete');
         echo "</td>\n";
         echo "</tr>\n";
     }
