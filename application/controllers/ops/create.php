@@ -41,7 +41,37 @@ class Create extends Ci_Controller {
         
     }
     
-          function createStatus() {
+    function searchStudentStatusSum() {
+    	if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+    		redirect('dashboard', 'refresh');
+    	}
+    	
+    	$data['judul'] = "Perbaharui Status";
+    	$data['main'] = 'formUpdateStatus';
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+    
+    	/*
+    	if ($u->findStudent()) {
+    
+    		$data['judul'] = "Perbaharui Status";
+    		$data['main'] = 'create';
+    		$data['student'] = $u->hasilSearch();
+    		$this->load->vars($data);
+    		$this->load->view('dashboard');
+    	}
+    	else {
+    		$data['judul'] = "Perbaharui Status";
+    		$data['main'] = "ops/gagal_search";
+    		$data['aktif'] = 'class="active"';
+    
+    		$this->load->view('dashboard', $data);
+    	}
+    	*/
+    
+    }
+   
+   function createStatus() {
         
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');

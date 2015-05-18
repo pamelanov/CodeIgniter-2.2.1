@@ -66,7 +66,8 @@ class Beginning_number extends DataMapper {
 	
 	function forTodaySum(){
 		$b = new Beginning_number();
-		$b->get();
+		$b->where('tanggal', date("Y-m-d"))->get();
+		/*
 		$s = new Student();
 		$s->get();
 		
@@ -77,6 +78,7 @@ class Beginning_number extends DataMapper {
 				}
 			}
 		}
+		*/
 		
 		return $b;
 	}

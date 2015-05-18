@@ -63,6 +63,7 @@ class End_number extends DataMapper {
 	
 	function forTodaySum(){
 		$b = new End_number();
+		$b->where('tanggal', date("Y-m-d"));
 		$b->get();
 		
 		$i = new Invoice();
@@ -75,8 +76,7 @@ class End_number extends DataMapper {
 				}
 			}
 		}
-	
-		
+			
 		$c = new Course();
 		$c->get();
 		
@@ -87,8 +87,7 @@ class End_number extends DataMapper {
 				}
 			}
 		}
-		
-		
+				
 		$s = new Student();
 		$s->get();
 		
@@ -99,8 +98,7 @@ class End_number extends DataMapper {
 				}
 			}
 		}
-		
-		
+				
 		return $b;
 	}
 }
