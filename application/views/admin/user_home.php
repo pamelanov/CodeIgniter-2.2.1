@@ -1,6 +1,5 @@
 <h1><?php echo $judul; ?></h1>
 <div id="konten">
-<p><?php echo anchor('dashboard/createUser', 'Create Account'); ?></p>
 
 
     <?php

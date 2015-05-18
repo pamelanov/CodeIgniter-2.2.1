@@ -73,24 +73,29 @@ class Download extends Ci_Controller {
 
     function download_overall() {
         $this->load->helper('download');
-        $o = new overall();
+        
         $r = new Refund();
-        // load all users
         $refunds = $r->getAllRefunds();
-        // Output $u->all to /tmp/output.csv, using all database fields.
+        
         $f = new Feedback();
-        // load all users
         $feedbacks = $f->getAllFeedbacks();
-        $overall = $refunds . $feedbacks;
-
+        
 // Output $u->all to /tmp/output.csv, using all database fields.
         $path = "assets/exports/";
-        $filename = 'overallSummary_' . date("Ymd_His") . '.csv';
-    
-        $overall->csv_export($path . $filename);
-        $data = file_get_contents($path . $filename); // Read the file's contents
-        force_download($filename, $data);
-
+        $filenameRefund = 'overallSummaryRefunds_' . date("Ymd_His") . '.csv';
+        $filenameFeedback = 'overallSummaryFeedbacks_' . date("Ymd_His") . '.csv';
+        
+        $refunds->csv_export($path . $filenameRefund);
+        $feedbacks->csv_export($path . $filenameFeedback);
+        
+        $data1 = file_get_contents($path . $filenameRefund); // Read the file's contents
+        $data2 = file_get_contents($path . $filenameFeedback); // Read the file's contents
+        
+        force_download($filenameRefund, $data1);
+        force_download($filenameFeedback, $data2);
+        
+        
+ 
         /* $r = new Feedback();
 
           $data['feedback'] = $r->getAllFeedbacks();
