@@ -53,7 +53,7 @@ class Target extends DataMapper {
 		else return false;
 	}
 	
-	/*
+
 	
 	function notExists(){
 		$a = new Account();
@@ -62,12 +62,15 @@ class Target extends DataMapper {
 		$t->where('id_sales', $a->id);
 		$t->where('periode', $this->periode);
 		$t->get();
-		
-		if(count((array)$t)) return true;
-		else return false;
+		if($t->id == null) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
-	*/
+	
 	
 	function createTarget(){
 	

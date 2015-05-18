@@ -32,7 +32,7 @@ class Performance extends Ci_Controller {
         $n->id_supervisor = $this->input->post('id_supervisor');
         $n->target = $this->input->post('target');
 
-        if ($n->valid()){
+        if ($n->valid() && $n->notExists()){
             
                 $data['judul'] = "Target Berhasil Disimpan";
                 $data['main'] = 'supervisor/created';
