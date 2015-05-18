@@ -8,6 +8,8 @@
     }
 
     if (!empty($feedback)) {
+     echo '<div class="panel panel-primary">
+          <div class="panel-heading"><center>Rangkuman Feedback</center></div>';
         echo "<table class='table table-bordered'>\n";
         echo "<tr valign='top'>\n";
         echo "<th><center>ID Murid</th><th><center>ID Guru</th><th><center>Isi</th><th><center>Rating</th><th><center>Total Skor</th><th><center>Tanggal</th>\n";
@@ -31,6 +33,7 @@
             echo "</tr>\n";
         }
         echo "</table>";
+        echo "</div>";
     }
 
     
@@ -43,6 +46,8 @@
     }
 
     if (count($refund)) {
+     echo '<div class="panel panel-primary">
+          <div class="panel-heading"><center>Rangkuman Refund</center></div>';
         echo "<table class='table table-bordered'>\n";
         echo "<tr valign='top '>\n";
         echo "<th><center>Tanggal Refund</th><th><center>No Invoice</th><th><center>Jumlah Jam Hilang</th><th><center>Alasan</th><th><center>Aksi</th><th><center>Selisih</th><th><center>ID Sales</th>\n";
@@ -62,6 +67,7 @@
             echo "</tr>\n";
         }
         echo "</table>";
+        echo "</div>";
     }
     ?>
 

@@ -4,16 +4,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title><?php echo $judul; ?></title>
         <!--
-        <script type="text/javascript" src="../../assets/jquery/jquery-1.11.2.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery/jquery.min.js"></script>-->
+        <script type="text/javascript" src="../../assets/jquery/jquery-1.11.2.min.js"></script>-->
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery/jquery.min.js"></script>
         
         
         
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery/bootbox.min.js"></script>
+        <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+        <!--<script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery/bootbox.min.js"></script>-->
         <!--<script type="text/javascript" src="http://pamelanov.com/bootbox.min.js"></script>-->
+         <script src="<?php echo base_url(); ?>assets/jquery/bootbox.min.js"></script>
+       
+       <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+       <script src="<?php echo base_url(); ?>assets/jquery/bootstrap.min.js"></script>
         
-       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         
         <!--
         <script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
@@ -69,8 +72,9 @@
                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Performance
                                     <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu" id="dropdown">
-                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance" id="a-dropdown">Create</a></li>
-                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showEdit" id="a-dropdown">Edit</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance" id="a-dropdown">Buat</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showEdit" id="a-dropdown">Ubah</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/hapusTarget" id="a-dropdown">Hapus</a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/overall" id="a-dropdown">Overall Performance</a></li>
                             </ul>
                         </li>   

@@ -82,7 +82,7 @@ class Beginning_number extends DataMapper {
 		
 		return $b;
 	}
-	
+	/*
 	function exists($n){
 		$b = new Beginning_number();
 		$s = new Student();
@@ -91,12 +91,20 @@ class Beginning_number extends DataMapper {
 		$b->where('id_murid', $s->id);
 		$b->get();
 		
-		if (empty($b)) {
-			return false;
-		}
-		
-		else return true;
+		if (!empty($b)) return true;
+			else return false;
 	}
+	
+	function retrieve($n) {
+		$b = new Beginning_number();
+		$s = new Student();
+		$s->where('id_murid', $n->id_murid)->get();
+		$b->where('status', $n->status);
+		$b->where('id_murid', $s->id);
+		$b->get();
+		
+		return $b;
+	}*/
 }
 
 /* End of file name.php */
