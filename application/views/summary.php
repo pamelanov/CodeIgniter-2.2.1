@@ -144,7 +144,8 @@
 
 
 if ((!empty($students)) && (!empty($students2))) {
-        
+        echo '<div class="panel panel-success">
+            <div class="panel-heading"><center>Tabel Peringkat</center></div>';
         echo "<table class='table table-bordered'>\n";
             echo "<tr valign='top'>\n";
                 echo "<th><center>Status</center></th>
@@ -163,6 +164,7 @@ if ((!empty($students)) && (!empty($students2))) {
             echo "</tr>\n";
             }
         echo "</table>";
+        echo "</div>";
         // echo "<a href='" . base_url() . "index.php/ops/summary/recurring(" . $student->id .  ")' >
         echo "<a class='recurring' href=#>
         <button class='btn btn-success'>

@@ -53,6 +53,21 @@ class Target extends DataMapper {
 		else return false;
 	}
 	
+	/*
+	
+	function notExists(){
+		$a = new Account();
+		$t = new Target();
+		$a->where('id_acc', $this->id_sales)->get();
+		$t->where('id_sales', $a->id);
+		$t->where('periode', $this->periode);
+		$t->get();
+		
+		if(count((array)$t)) return true;
+		else return false;
+	}
+	
+	*/
 	
 	function createTarget(){
 	
@@ -79,10 +94,15 @@ class Target extends DataMapper {
 		$a = new Account();
 		$a->where('id_acc', $this->id_sales)->get();
 		
+		
 		$o = new Target();
 		$o->where('id_sales', $a->id);
 		$o->where('periode', $this->periode);
 		$o->get();
+		$o->id_sales = $a->id_acc;
+		
+		$a->where('id', $o->id_supervisor)->get();
+		$o->id_supervisor = $a->id_acc;
 		
 		return $o;
 	}

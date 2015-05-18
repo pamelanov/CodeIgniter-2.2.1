@@ -2,6 +2,8 @@
 
  <div id="konten">
     <p>Mohon maaf, target tidak berhasil disimpan.</p>
-    <p>Mohon cek kembali apakah isian yang dimasukkan sudah valid atau belum.</p>
+    <p>Beberapa kemungkinan alasan target tidak berhasil tersimpan:</p>
+    <p>1. Isian yang dimasukkan tidak valid.</p>
+    <p>2. Target dengan periode dan ID ops yang dimasukkan sudah ada dalam database.</p>
       <button onclick="<?php echo base_url();?>index.php/supervisor/performance" class="btn btn-danger">Kembali</button>
  </div>

@@ -69,8 +69,9 @@
                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Performance
                                     <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu" id="dropdown">
-                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance" id="a-dropdown">Create</a></li>
-                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showEdit" id="a-dropdown">Edit</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance" id="a-dropdown">Buat</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showEdit" id="a-dropdown">Ubah</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/hapusTarget" id="a-dropdown">Hapus</a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/overall" id="a-dropdown">Overall Performance</a></li>
                             </ul>
                         </li>   
