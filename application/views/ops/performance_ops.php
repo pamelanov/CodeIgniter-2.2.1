@@ -1,5 +1,5 @@
 <h1><?php echo $judul; ?></h1>
-
+<div id="konten">
  <div class="alert alert-info" role="alert">
  <p><h5>Periode:  <?php echo date("Y-m"); ?></h5></p>
   <p><a href="<?php echo base_url(); ?>index.php/ops/performance/lihatRincian" >
@@ -10,8 +10,7 @@
 </div>
  
 <?php
-
-if (!empty($performa) && $progressbar != false) { ?>
+if (!empty($performa) && $progressbar != -1) { ?>
   <div class="progress">
   <div class="progress-bar progress-bar-primary progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo $progressbar; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $progressbar; ?>%">
     <?php echo $progressbar; ?>% Complete (<?php echo $performa->actual . " / " . $performa->target; ?> )
@@ -68,4 +67,5 @@ if (!empty($performa) && $progressbar != false) { ?>
                 }
 	echo "</table>	";
 	?>
+</div>
 </div>

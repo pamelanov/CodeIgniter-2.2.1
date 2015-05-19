@@ -1,6 +1,6 @@
 <h1><?php echo $judul; ?></h1>
 
-
+<div id="konten">
 
 <div class="panel panel-primary">
   <!-- Default panel contents -->
@@ -48,3 +48,4 @@
   <a href="<?php echo base_url(); ?>index.php/dashboard/performance" >
     <button type="submit" class="btn btn-danger">
 	<span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span> Kembali</button> </a>
+</div>

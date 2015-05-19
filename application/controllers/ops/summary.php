@@ -36,12 +36,14 @@ class Summary extends Ci_Controller {
             $e = new End_number();
             $e->id_murid = $u->id_murid;
             $c = new Course();
+            $s = new Student();
 
             $data['judul'] = "Student Summary";
             $data['main'] = 'summary';
             $data['students'] = $b->summary();
             $data['students2'] = $e->summary();
             $data['courses'] = $c->getCourses($u->id_murid);
+            $data['s'] = $s->get();
            // $data['invoices'] = $
             $this->load->vars($data);
             $this->load->view('dashboard');

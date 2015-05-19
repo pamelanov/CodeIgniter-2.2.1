@@ -12,9 +12,13 @@ class Performance extends Ci_Controller {
             redirect('dashboard', 'refresh');
         }
         
+      
+    }
+    
+    function showCreate() {
         $a = new Account();
         
-        $data['judul'] = "Create Performance Target";
+        $data['judul'] = "Buat Target Performa";
         $data['main'] = 'supervisor/performance';
         $data['ops'] = $a->getAllOps();
         $this->load->vars($data);
@@ -55,9 +59,10 @@ class Performance extends Ci_Controller {
         }
         $a = new Account();
         
-        $data['judul'] = "Edit Sales Target";
+        $data['judul'] = "Ubah Target Sales";
 	$data['main'] = 'supervisor/edit_performance';
         $data['ops'] = $a->getAllOps();
+        $data['ops'] = $a->get();
         $this->load->vars($data);
 	$this->load->view('dashboard');
     }
@@ -73,7 +78,7 @@ class Performance extends Ci_Controller {
         if ($a->findTarget()) {
 
 		
-            $data['judul'] = "Hasil Pencarian";
+            $data['judul'] = "Ubah Target Sales";
             $data['main'] = 'supervisor/hasil_search_target';
             $data['target'] = $a->hasilSearch();
             // $data['id_sales'] = $o->
@@ -81,7 +86,7 @@ class Performance extends Ci_Controller {
             $this->load->view('dashboard');
         }
          else {
-            $data['judul'] = "Edit Sales Target";
+            $data['judul'] = "Ubah Target Sales";
             $data['main'] = "supervisor/error_hasil_search";
             $data['aktif'] = 'class="active"';
             $this->load->vars($data);
@@ -103,7 +108,7 @@ class Performance extends Ci_Controller {
         $n->periode = $this->input->post('periode');
         $n->target = $this->input->post('target');
         
-        $data['judul'] = "Update Berhasil";
+        $data['judul'] = "Pengubahan Berhasil";
 	$data['main'] = 'supervisor/updated';
         $data['targets'] = $n->updateTarget();
 	$this->load->vars($data);
@@ -116,7 +121,7 @@ class Performance extends Ci_Controller {
         }
         $t = new Target();
         
-	$data['judul'] = "Overall Performance";
+	$data['judul'] = "Performa Keseluruhan";
 	$data['main'] = 'supervisor/overall_performance';
         $data['targets'] = $t->rank();
 	$this->load->vars($data);
@@ -124,10 +129,48 @@ class Performance extends Ci_Controller {
     }
     
     
-    function hapusTarget(){
+    function showHapusTarget(){
+        $s = new Account();
         $data['judul'] = "Hapus Target";
 	$data['main'] = 'supervisor/hapus_performa';
+        $data['ops'] = $s->getAllOps();
 	$this->load->vars($data);
 	$this->load->view('dashboard');    
     }
+    
+    function cariHapus(){
+        if ($this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $a = new Target();
+        $a->id_sales = $this->input->post('id_sales');
+        $a->periode = $this->input->post('periode');
+    
+        if ($a->findTarget()) {
+            $data['judul'] = "Hapus Target Sales";
+            $data['main'] = 'supervisor/hapus_target';
+            $data['target'] = $a->hasilSearch();
+        }
+         else {
+            $data['judul'] = "Error: Hapus Target Sales";
+            $data['main'] = "supervisor/error_hapus_target";
+            $data['aktif'] = 'class="active"';
+        }
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }
+    
+    function hapusTarget(){
+        $t = new Target();
+        $t->where('id', $this->input->post('id_sales'));
+        $t->where('id', $this->input->post('periode'));
+        $t->get();
+        $t->delete();
+        
+        $data['judul'] = "Hapus Target";
+        $data['main'] = 'supervisor/deleted';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+    }  
+        
 }

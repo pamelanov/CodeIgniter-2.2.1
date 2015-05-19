@@ -51,9 +51,19 @@ class Student extends DataMapper {
 		
 		return $o;
 	}
+	/*
+	function allStudents(){
+		$s = new Student();
+		$s->get();
+		
+		foreach($s as $a) {
+			echo $a->id . " ";
+		}
+		return $s;
+	
+	}*/
 }
 
 /* End of file name.php */
 /* Location: ./application/models/name.php */
 
-?>

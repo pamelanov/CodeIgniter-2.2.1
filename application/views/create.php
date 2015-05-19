@@ -17,7 +17,12 @@ function myFunction() {
         <form class="form-inline" align="left" action='<?php echo base_url();?>index.php/ops/create/searchStudentStatus' method='post'>
             <div class="form-group">
                 <label for="exampleInputName2">Enter Student ID</label>
-                <input type="text" class="form-control" name="idMurid" placeholder="ID Student">
+                <select class="js-example-basic-single" name="idMurid">
+                    <?php foreach($s as $x) {
+                        echo "<option value='" . $x->id_murid . "'>" . $x->id_murid . ": " . $x->nama . "</option>";
+                        }  
+                    ?>
+                </select>
             </div>
                  <button type="submit" class="btn btn-danger">
 		<span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
@@ -88,11 +93,11 @@ function myFunction() {
         
         echo "<div class='form-group'>";
             echo "<label for='id_murid'>ID Murid</label>";
-            echo "<input type='text' class='form-control' name='id_murid' placeholder='ID Murid' value=$student->id_murid>";
+            echo "<input type='text' required class='form-control' name='id_murid' placeholder='ID Murid' value='$student->id_murid'>";
         echo "</div>";
         
         echo "<div class='form-group'>";
-            echo "<label for='noInvoice'>No Invoice (Opsional)</label>";
+            echo "<label for='noInvoice'>No Invoice (wajib diisi apabila status yang akan diisi adalah 6, 7 atau 8)</label>";
             echo "<input type='text' class='form-control' name='no_invoice' placeholder='Nomor Invoice'>";
         echo "</div>";
         

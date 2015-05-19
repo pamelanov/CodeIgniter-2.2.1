@@ -29,8 +29,13 @@ class Student extends Ci_Controller {
            if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
+        
+        $s = new Student();
+        $s->get();
+        
         $data['judul'] = "Create Status";
         $data['main'] = 'create';
+        $data['s'] = $s;
         $this->load->vars($data);
         $this->load->view('dashboard');
     }

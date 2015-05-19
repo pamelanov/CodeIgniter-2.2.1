@@ -29,6 +29,7 @@ class Create extends Ci_Controller {
             $data['judul'] = "Perbaharui Status";
             $data['main'] = 'create';
             $data['student'] = $u->hasilSearch();
+            $data['s'] = $u->get();
             $data['invoices'] = $i->getInvoiceHistory($u->id_murid);
             $this->load->vars($data);
             $this->load->view('dashboard');

@@ -3,7 +3,28 @@
 class Account extends DataMapper {
 
     // Establish the relationship between entities
-
+    /*var $has_one = array(
+			'assigner' => array(
+					'class' => 'student',
+					'other_field' => 'assigned_beginning_number'
+			),
+			'manager' => array(
+					'class' => 'account',
+					'other_field' => 'managed_beginning_number'
+			)
+    );*/
+    
+    	var $has_many = array(
+			'created_target' => array(
+					'class' => 'target',
+					'other_field' => 'creator'
+			),
+			'assigned_target' => array(
+					'class' => 'target',
+					'other_field' => 'assigner'
+			)
+	);
+/*
     var $validation = array(
         'id_acc' => array(
             'label' => 'id',
@@ -18,7 +39,7 @@ class Account extends DataMapper {
             'rules' => array('required')
         ),
     );
-
+*/
     function login() {
         // Create a temporary user object
         $u = new Account();

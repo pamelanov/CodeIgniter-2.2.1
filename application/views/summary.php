@@ -130,15 +130,22 @@
     <h1><?php echo $judul; ?></h1>
 
 <div id="konten">
+    <div id="lebihKecil">
     <form class="form-inline" align="left" action='<?php echo base_url(); ?>index.php/ops/summary/searchStudent' method='post'>
     <div class="form-group">
         <label for="exampleInputName2">Enter Student ID</label> </div>
-        <input type="text" class="form-control" name="idMurid" placeholder="Student ID">
+                        <select class="js-example-basic-single" name="idMurid">
+                    <?php foreach($s as $x) {
+                        echo "<option value='" . $x->id_murid . "'>" . $x->id_murid . ": " . $x->nama . "</option>";
+                        }  
+                    ?>
+                </select>
   
     <button type="submit" class="btn btn-danger">
 			 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
 
 </form>
+    </div>
 <br/><br/>
  <?php
 
