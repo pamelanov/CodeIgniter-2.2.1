@@ -74,6 +74,30 @@ class Refund extends DataMapper {
 	}
         
 	
+          function findOverall() {
+
+        $r = new Refund();
+        $r->where('tanggal', $this->tanggal);
+        $r->get();
+
+        if (empty($r->tanggal)) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+    
+    	function hasilSearch1(){
+		
+		
+		$r = new Refund();
+		$r->where('tanggal', $this->tanggal);
+		$r->get();
+		
+		
+		
+		return $r;
+	}
 	
 	function getAllRefunds() {
         

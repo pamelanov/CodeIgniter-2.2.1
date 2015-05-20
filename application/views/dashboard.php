@@ -82,8 +82,9 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
                             </ul>
                         </li>   
 
-                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/overallSum" >
-                        <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Rangkuman Keseluruhan</a></li>
+                        <li><a href="<?php echo base_url(); ?>index.php/supervisor/over/showOverall" >
+                        <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Overall Summary</a></li>
+
                     <?php } ?>
 
                     <?php if ($this->session->userdata('role') == 1) { ?>
