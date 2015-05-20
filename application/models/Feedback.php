@@ -96,7 +96,6 @@ class Feedback extends DataMapper {
         $f->get();
 
 
-
         return $f;
     }
 

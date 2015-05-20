@@ -45,8 +45,11 @@ class Over extends Ci_Controller {
         if ($f->findOverall() || $r->findOverall()) {
             $data['judul'] = "Hasil Pencarian";
             $data['main'] = 'supervisor/overall_home_1';
+            $data['tanggal_awal'] = $r->tanggal_awal;
+            $data['tanggal_akhir'] = $r->tanggal_akhir;
             $data['feedback'] = $f->hasilSearch1();
             $data['refund'] = $r->hasilSearch1();
+            
             $this->load->vars($data);
             $this->load->view('dashboard');
         } else {

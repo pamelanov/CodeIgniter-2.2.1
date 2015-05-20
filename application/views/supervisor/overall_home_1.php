@@ -34,12 +34,12 @@
         echo "</table>	";
         echo "</div>";
         ?>
-         <p><?php echo anchor("download/download_Ofeedbacks", "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
+        <p><?php echo anchor("download/download_Ofeedbacks/" . $tanggal_awal . "/" . $tanggal_akhir, "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
 
     </div>	
 
-   
-      <div id="konten">
+
+    <div id="konten">
         <?php
         echo '<div class="panel panel-primary">
   <div class="panel-heading"><center>Refund</center></div>';
@@ -71,8 +71,7 @@
         echo "</table>	";
         echo "</div>";
         ?>
-          <p><?php echo anchor("download/download_Orefunds", "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
+        <p><?php echo anchor("download/download_Orefunds/" . $tanggal_awal . "/" . $tanggal_akhir, "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
 
     </div>	
 
-    
