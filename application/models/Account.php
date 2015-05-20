@@ -68,7 +68,6 @@ class Account extends DataMapper {
 
         $o = new Account();
         $o->get();
-        $this->salt = $o->salt;
 
         return $o;
     }

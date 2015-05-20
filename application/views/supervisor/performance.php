@@ -19,7 +19,7 @@
         echo '</div>';
         echo '<div class="form-group">';
             echo '<label for="id_supervisor">ID Supervisor (*)</label>';
-            echo "<input type='text' class='form-control' disabled='disabled' name='id_supervisor' value=$id_sales required>";
+            echo "<input type='text' class='form-control'name='id_supervisor' value=$id_sales required>";
         echo '</div>';
         echo '<div class="form-group">';
             echo '<label for="target">Besar target (*)</label>';

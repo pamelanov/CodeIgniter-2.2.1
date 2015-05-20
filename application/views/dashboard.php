@@ -7,7 +7,7 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title><?php echo $judul; ?></title>
-        <link href='http://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
+        
         <!--<script type="text/javascript" src="../../assets/jquery/jquery-1.11.2.min.js"></script>-->
         <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
         <!--<script type="text/javascript" src="http://pamelanov.com/bootbox.min.js"></script>-->
@@ -75,10 +75,10 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Performa
                                     <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu" id="dropdown">
-                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showCreate" id="a-dropdown">Buat</a></li>
-                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showEdit" id="a-dropdown">Ubah</a></li>
-                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showHapusTarget" id="a-dropdown">Hapus</a></li>
-                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/overall" id="a-dropdown">Performa Keseluruhan</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showCreate" id="a-dropdown">Buat Target</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showEdit" id="a-dropdown">Ubah Target</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showHapusTarget" id="a-dropdown">Hapus Target</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/overall" id="a-dropdown">Lihat Performa</a></li>
                             </ul>
                         </li>   
 

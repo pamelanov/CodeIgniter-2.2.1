@@ -23,6 +23,8 @@ class Create extends Ci_Controller {
         $u = new Student();
         $u->id_murid = $this->input->post('idMurid');
         $i = new Invoice();
+        
+        $id_murid = $u->id_murid;
     
         if ($u->findStudent()) {
 
@@ -30,7 +32,7 @@ class Create extends Ci_Controller {
             $data['main'] = 'create';
             $data['student'] = $u->hasilSearch();
             $data['s'] = $u->get();
-            $data['invoices'] = $i->getInvoiceHistory($u->id_murid);
+            $data['invoices'] = $i->getInvoiceHistory($id_murid);
             $this->load->vars($data);
             $this->load->view('dashboard');
         }
@@ -65,18 +67,12 @@ class Create extends Ci_Controller {
             
             if ($this->input->post('status') == 8){
                 $t = new Target();
-               
-                
-            $data['judul'] = "Create Status";
-            $data['main'] = "ops/status_berhasil";
-            $data['tes'] =  $t->addActual($this->session->userdata('id'));
-            
-            
-
-            $this->load->view('dashboard', $data);
+                $data['tes'] =  $t->addActual($this->session->userdata('id'));
             }
             
-
+        $data['judul'] = "Create Status";
+        $data['main'] = "ops/status_berhasil";
+        $this->load->view('dashboard', $data);
             
             
         }

@@ -36,10 +36,10 @@ class Performance extends Ci_Controller {
         }
 	
 	$e = new End_number();
-	
+	$id = $this->session->userdata('id');
 	$data['judul'] = "Performance";
 	$data['main'] = 'ops/rincian_performa';
-	$data['rincian'] = $e->ambilRincian($this->session->userdata('id'));
+	$data['rincian'] = $e->ambilRincian($id);
 
 	$this->load->vars($data);
 	$this->load->view('dashboard');

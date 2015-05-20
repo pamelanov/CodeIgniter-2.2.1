@@ -16,7 +16,7 @@ function myFunction() {
     
         <form class="form-inline" align="left" action='<?php echo base_url();?>index.php/ops/create/searchStudentStatus' method='post'>
             <div class="form-group">
-                <label for="exampleInputName2">Enter Student ID</label>
+                <label for="enterStudentID">Enter Student ID</label>
                 <select class="js-example-basic-single" name="idMurid">
                     <?php foreach($s as $x) {
                         echo "<option value='" . $x->id_murid . "'>" . $x->id_murid . ": " . $x->nama . "</option>";
@@ -42,7 +42,7 @@ function myFunction() {
         <form name='update_status' action='<?php echo base_url();?>index.php/ops/create/createStatus' method='post' onsubmit='return confirm("Apakah Anda yakin ingin menambahkan status?")'>
         <?php
         
-        $id_sales = $this->session->userdata('id');
+        
         echo '<div class="panel panel-danger">
             <div class="panel-heading"><center>Informasi Singkat Murid</center></div>';
         echo "<table class='table table-bordered'>\n";
@@ -97,11 +97,6 @@ function myFunction() {
         echo "</div>";
         
         echo "<div class='form-group'>";
-            echo "<label for='noInvoice'>No Invoice (wajib diisi apabila status yang akan diisi adalah 6, 7 atau 8)</label>";
-            echo "<input type='text' class='form-control' name='no_invoice' placeholder='Nomor Invoice'>";
-        echo "</div>";
-        
-        echo "<div class='form-group'>";
             echo "<label for='jam'>Jam</label>";
             echo "<input type='time' class='form-control' name='jam' value=" . date("H:i:s") . ">";
         echo "</div>";
@@ -113,7 +108,12 @@ function myFunction() {
         
         echo "<div class='form-group'>";
             echo "<label for='id_sales'>ID Sales</label>";
-            echo "<input type='text' class='form-control' name='id_sales' value=$id_sales>";
+            echo "<input type='text' class='form-control' name='id_sales' value=" . $this->session->userdata('id') . ">";
+        echo "</div>";
+        
+        echo "<div class='form-group'>";
+            echo "<label for='noInvoice'>No Invoice (wajib diisi apabila status yang akan diisi adalah 6, 7 atau 8)</label>";
+            echo "<input type='text' class='form-control' name='no_invoice' placeholder='Nomor Invoice'>";
         echo "</div>";
         
         echo "<div class='form-group'>";

@@ -1,7 +1,7 @@
 <h1><?php echo $judul; ?></h1>
 
 <div id="konten">
-
+<h3>Periode: <span class="label label-primary"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><?php echo " " . date('20y-m') ;?></span></h3>
 <div class="panel panel-primary">
   <!-- Default panel contents -->
   <div class="panel-heading"><center>Rincian Performa</center></div>

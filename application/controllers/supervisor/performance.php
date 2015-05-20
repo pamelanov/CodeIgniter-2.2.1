@@ -120,10 +120,12 @@ class Performance extends Ci_Controller {
             redirect('dashboard', 'refresh');
         }
         $t = new Target();
-        
+        $a = new Account();
+        $a->where('role', 2)->get();
 	$data['judul'] = "Performa Keseluruhan";
 	$data['main'] = 'supervisor/overall_performance';
         $data['targets'] = $t->rank();
+        $data['ops'] = $a;
 	$this->load->vars($data);
 	$this->load->view('dashboard');  
     }
@@ -171,6 +173,20 @@ class Performance extends Ci_Controller {
         $data['main'] = 'supervisor/deleted';
         $this->load->vars($data);
         $this->load->view('dashboard');
-    }  
+    }
+    
+    function sejarahPerforma(){
+        $t = new Target();
+        $t->id_sales = $this->input->post('id_ops');
+        $a = new Account();
+        $a->where('id', $t->id_sales)->get();
         
+        $data['judul'] = "Sejarah Performa";
+        $data['main'] = 'supervisor/sejarah_performa';
+        $data['sejarah'] = $t->getSejarahPerforma($t->id_sales);
+        $data['ops'] = $a;
+        $this->load->vars($data);
+        $this->load->view('dashboard');
+        
+    }
 }

@@ -173,6 +173,19 @@ class Target extends DataMapper {
 		
 		return $t;
 	}
+	
+	function getSejarahPerforma($id_ops){
+		$t = new Target();
+		$a = new Account();
+		$t->where('id_sales', $id_ops)->get();
+		
+			foreach($t as $x){
+				$a->where('id', $x->id_supervisor)->get();
+				$x->id_supervisor = $a->id_acc;
+			}
+		
+		return $t;
+	}
 }
 
 /* End of file name.php */
