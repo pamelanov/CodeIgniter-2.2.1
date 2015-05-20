@@ -46,7 +46,48 @@ class Create extends Ci_Controller {
         
     }
     
-        function createStatus() {
+
+    function searchStudentStatusSumB($id) {
+    	if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+    		redirect('dashboard', 'refresh');
+    	}
+        $b = new Beginning_number();
+        $b->where('id', $id)->get();
+    	$s = new Student();
+        $s->where('id', $b->id_murid)->get();
+    	$data['judul'] = "Perbaharui Status";
+    	$data['main'] = 'formUpdateStatus';
+        $data['info'] = $s;
+        $data['cek'] = $id;
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+    
+    }
+   
+    function searchStudentStatusSumE($id) {
+    	if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+    		redirect('dashboard', 'refresh');
+    	}
+    	
+        $e = new End_number();
+        $e->where('id', $id)->get();
+        $i = new Invoice();
+        $i->where('id', $e->id_invoice)->get();
+        $c = new Course();
+        $c->where('id', $i->id_kelas)->get();
+        $s = new Student();
+        $s->where('id', $c->id_murid)->get();
+        
+    	$data['judul'] = "Perbaharui Status";
+    	$data['main'] = 'formUpdateStatus';
+        $data['info'] = $s;
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+    
+    }
+    
+   function createStatus() {
+
         
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
