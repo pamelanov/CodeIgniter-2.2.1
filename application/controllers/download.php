@@ -112,5 +112,33 @@ class Download extends Ci_Controller {
          *///$this->load->vars($data);
         //$this->load->view('dashboard');
     }
+    
+     function download_Ofeedbacks() {
+        $this->load->helper('download');
 
+        $f = new Feedback();
+        // load all users
+        $feedbacks = $f->hasilSearch1();
+        // Output $u->all to /tmp/output.csv, using all database fields.
+        $path = "assets/exports/";
+        $filename = 'feedback_' . date("Ymd_His") . '.csv';
+        $feedbacks->csv_export($path . $filename);
+        $data = file_get_contents($path . $filename); // Read the file's contents
+        force_download($filename, $data);
+
+     }
+     
+     function download_Orefunds() {
+        $this->load->helper('download');
+
+        $r = new Refund();
+        // load all users
+        $refunds = $r->hasilSearch1();
+        // Output $u->all to /tmp/output.csv, using all database fields.
+        $path = "assets/exports/";
+        $filename = 'refund_' . date("Ymd_His") . '.csv';
+        $refunds->csv_export($path . $filename);
+        $data = file_get_contents($path . $filename); // Read the file's contents
+        force_download($filename, $data);
+     }
 }

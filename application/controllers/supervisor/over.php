@@ -36,9 +36,12 @@ class Over extends Ci_Controller {
             redirect('dashboard', 'refresh');
         }
         $f = new Feedback();
-        $f->tanggal = $this->input->post('tanggal');
+        $f->tanggal_awal = $this->input->post('tanggal-awal');
+        $f->tanggal_akhir = $this->input->post('tanggal-akhir');
+        
         $r = new Refund();
-        $r->tanggal = $this->input->post('tanggal');
+        $r->tanggal_awal = $this->input->post('tanggal-awal');
+        $r->tanggal_akhir = $this->input->post('tanggal-akhir');
         if ($f->findOverall() || $r->findOverall()) {
             $data['judul'] = "Hasil Pencarian";
             $data['main'] = 'supervisor/overall_home_1';
