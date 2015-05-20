@@ -4,7 +4,11 @@
 <form name='searchSales' action='<?php echo base_url();?>index.php/supervisor/over/findOverall' method='post' >
 		
 		<div class="form-group">
-		<label for="tanggal">Tanggal</label>
+		<label for="tanggal">Tanggal Awal</label>
+                        <input type='date' class="form-control" name='tanggal'>
+                </div>
+    <div class="form-group">
+		<label for="tanggal">Tanggal Akhir</label>
                         <input type='date' class="form-control" name='tanggal'>
                 </div>
                         <button type="submit" class="btn btn-danger">
