@@ -62,9 +62,12 @@ class Refund extends Ci_Controller {
       if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
+	
+	$i = new Invoice();
         
         $data['judul'] = "Create Refund";
         $data['main'] = 'ops/refund_create';
+	$data['invoices'] = $i->get();
         $this->load->vars($data);
         $this->load->view('dashboard');
     }

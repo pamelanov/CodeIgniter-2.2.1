@@ -12,60 +12,40 @@ function myFunction() {
 }
 </script>
 <div id="konten">
-   
-   
- 
-        
+
         <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-8">
-        <form name='update_status' action='<?php echo base_url();?>index.php/ops/create/createStatus' method='post'>
+        <form name='update_status' action='<?php echo base_url();?>index.php/ops/create/createStatus' method='post' onsubmit='return confirm("Apakah Anda yakin ingin menambahkan status?")'>
         <?php
-        /*
-        echo "<table class='table table-bordered'>\n";
-
-            echo "<tr valign='top'>\n";
-                echo "<th><center>ID Murid</center></th>
-                        <th><center>Nama</center></th>
-                        <th><center>Gender</center></th>
-                        <th><center>Domisili</center></th>\n";
-            echo "</tr>\n";
-            echo "<tr valign='top'>\n";
-           // echo "<td align='center'>" . $student->id_murid . "</td>\n";
-            //echo "<td align='center'>" . $student->nama . "</td>\n";
-            //echo "<td align='center'>" . $student->gender . "</td>\n";
-            //echo "<td align='center'>" . $student->domisili . "</td>\n";
-            echo "</tr>\n";
-        echo "</table>";
-        */
-
-        echo "<div class='form-group'>";
-            echo "<label for='id_murid'>ID Murid</label>";
-            echo "<input type='text' class='form-control' name='id_murid' placeholder='ID Murid'>";
-        echo "</div>";
         
         echo "<div class='form-group'>";
-            echo "<label for='noInvoice'>No Invoice (Opsional)</label>";
-            echo "<input type='text' class='form-control' name='no_invoice' placeholder='Nomor Invoice'>";
+            echo "<label for='id_murid'>ID Murid</label>";
+            echo "<input type='text' class='form-control' name='id_murid' placeholder='ID Murid' value='" . $info->id_murid . "' required>";
         echo "</div>";
         
         echo "<div class='form-group'>";
             echo "<label for='jam'>Jam</label>";
-            echo "<input type='time' class='form-control' name='jam' placeholder='Jam'>";
+            echo "<input type='time' class='form-control' name='jam' placeholder='Jam' value='" . date("H:i:s") . "' required>";
         echo "</div>";
         
         echo "<div class='form-group'>";
             echo "<label for='tanggal'>Tanggal</label>";
-            echo "<input type='date' class='form-control' name='tanggal'>";
+            echo "<input type='date' class='form-control' name='tanggal' value=" .  date("Y-m-d") . " required>";
         echo "</div>";
         
         echo "<div class='form-group'>";
             echo "<label for='id_sales'>ID Sales</label>";
-            echo "<input type='text'class='form-control' name='id_sales' placeholder='ID Sales'>";
+            echo "<input type='text'class='form-control' name='id_sales' placeholder='ID Sales' value=" . $this->session->userdata('id') . ">";
+        echo "</div>";
+        
+        echo "<div class='form-group'>";
+            echo "<label for='noInvoice'>No Invoice (wajib diisi apabila status yang akan diisi adalah 6, 7 atau 8)</label>";
+            echo "<input type='text' class='form-control' name='no_invoice' placeholder='Nomor Invoice'>";
         echo "</div>";
         
         echo "<div class='form-group'>";
                   echo "<label for='status'>Status</label>";
-                    echo "<select class='form-control' name='status'>";
+                    echo "<select class='form-control' name='status' required>";
                         echo "<option>1</option>";
                         echo "<option>2</option>";
                         echo "<option>3</option>";
@@ -77,7 +57,9 @@ function myFunction() {
                     echo "</select>";
         echo "</div>";
         
-        echo "<button id='demo' class='btn btn-danger'>Update Status</button>";
+        echo "<button id='demo' class='btn btn-danger'>
+            <span class='glyphicon glyphicon-plus' aria-hidden='true'></span>
+             Update Status</button>";
         ?>
         </form>
         </div>

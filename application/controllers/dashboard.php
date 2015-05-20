@@ -40,8 +40,11 @@ class Dashboard extends Ci_Controller {
         $data['statusAwal'] = $b->forTodaySum();
         $data['statusAkhir'] = $e->forTodaySum();
         $data['students'] = $s->get();
+
         $this->load->vars($data);
         $this->load->view('dashboard');
+	$this->load->library('pagination');
+
     }
 
     function createData() {

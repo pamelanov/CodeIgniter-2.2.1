@@ -1,24 +1,32 @@
 <h1><?php echo $judul; ?></h1>
 
     <form name='create_refund' action='<?php echo base_url(); ?>index.php/dashboard/createRefund' method='post' onsubmit='return confirm("Apakah Anda yakin ingin menambahkan informasi refund?")' >
-        <div id ="konten-kecil">
-
+        <div id ="konten">
+            <div class="row">
+                <div class="col-md-6">
             <div class="form-group">
-                <label for="no_invoice">No. Invoice</label>
-                <input type="text" class="form-control" name="no_invoice" placeholder="Masukkan No Invoice">
+                <label for="no_invoice">No. Invoice (*)</label>
+                    <select class="js-example-basic-single" name="no_invoice" required>
+                    <?php foreach($invoices as $x) {
+                        echo "<option value='" . $x->id . "'>" . $x->no_invoice . "</option>";
+                        }  
+                    ?>
+                </select>
             </div>
             <div class="form-group">
-                <label for="id_sales">Id Sales</label>
-                <input type="text" class="form-control" name="id_sales" placeholder="Masukkan ID Sales">
+                <label for="id_sales">Id Sales (*)</label>
+                <input type="text" class="form-control" name="id_sales" placeholder="Masukkan ID Sales" value="<?php echo $this->session->userdata('id');?>" required>
+            </div>
+            <div class="form-group">
+                <label for="tanggal">Tanggal (*)</label>
+                <input type="date" class="form-control" name="tanggal" placeholder="Masukkan Tanggal" value="<?php echo date('Y-m-d'); ?>" required>
             </div>
             <div class="form-group">
                 <label for="jam_hilang">Jam Hilang</label>
                 <input type="text" class="form-control" name="jam_hilang" placeholder="Masukkan Jam Hilang">
             </div>
-            <div class="form-group">
-                <label for="tanggal">Tanggal</label>
-                <input type="date" class="form-control" name="tanggal" placeholder="Masukkan Tanggal">
-            </div>
+            </div><!-- tutup col-md-6 -->
+            <div class="col-md-6">
             <div class="form-group">
                 <label for="action">Action</label>
                 <input type="text" class="form-control" name="action" placeholder="Masukkan Action">
@@ -29,12 +37,18 @@
                 <input type="text" class="form-control" name="selisih" placeholder="Masukkan Selisih">
             </div>
             <div class="form-group">
-                <label for="alasan">Alasan</label>
-                <input type="text" class="form-control" name="alasan" placeholder="Masukkan Alasan">
+                <label for="alasan">Alasan (*)</label>
+                <input type="text" class="form-control" name="alasan" placeholder="Masukkan Alasan" required>
             </div>
 
-            <button type="submit" class="btn btn-danger">Create Refund</button>
-        </div>
+            
+            </div><!--nutup col-md-6 -->
+            </div><!-- tutup row -->
+            <button type="submit" class='btn btn-danger'>
+            <span class='glyphicon glyphicon-plus' aria-hidden='true'></span>
+             Buat Refund</button>
+        </div><!-- tutup konten -->
+        
     </form>
 
 
