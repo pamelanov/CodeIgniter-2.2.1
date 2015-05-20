@@ -83,7 +83,7 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
                             </ul>
                         </li>   
 
-                        <li><a href="<?php echo base_url(); ?>index.php/dashboard/overallSum" >
+                        <li><a href="<?php echo base_url(); ?>index.php/supervisor/over/showOverall" >
                         <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Overall Summary</a></li>
                     <?php } ?>
 

@@ -75,7 +75,32 @@ class Feedback extends DataMapper {
 		$rating = $rating + $f2->rating;
 		return $rating;
 	}
+        
+          function findOverall() {
+
+        $f = new Feedback();
+        $f->where('tanggal', $this->tanggal);
+        $f->get();
+
+        if (empty($f->tanggal)) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
 	
+    function hasilSearch1(){
+		
+		
+		$f = new Feedback();
+		$f->where('tanggal', $this->tanggal);
+		$f->get();
+		
+		
+		
+		return $f;
+	}
+    
 	function getAllFeedbacks() {
 	
 		$f = new Feedback();
