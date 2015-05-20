@@ -114,10 +114,9 @@ class Target extends DataMapper {
 		$n = new Target();
 		$n->get();
 		$array = array('id_sales' => $this->id_sales, 'periode' => $this->periode);
-		// $n->where('id_sales', $this->id_sales);
 		$n->where($array)->get();
-		
-		$n->update('target', $this->target);
+		$n->target =  $this->target;
+		$n->save();
 		return $n;
 	}
 	

@@ -179,20 +179,16 @@ class Dashboard extends Ci_Controller {
 
         $r = new Refund();
 
-
-        //$r->id_murid = $this->input->post('id_murid');
-        //$r->id_guru = $this->input->post('id_guru');
+	$a = new Account();
+	$a->where('id_acc', $this->input->post('id_sales'))->get();
 
         $r->no_invoice = $this->input->post('no_invoice');
-        $r->id_sales = $this->input->post('id_sales');
+        $r->id_sales = $a->id;
         $r->jam_hilang = $this->input->post('jam_hilang');
-
         $r->tanggal = $this->input->post('tanggal');
         $r->action = $this->input->post('action');
         $r->selisih = $this->input->post('selisih');
         $r->alasan = $this->input->post('alasan');
-//$r->id_kelas = $this->input->post('id_kelas');
-        //$r->hargaPerJam = $this->input->post('hargaPerJam');
 
         $r->save_as_new();
 
@@ -202,23 +198,6 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-
-//    function editRefund($id=0){
-//  	$this->load->library('encrypt');
-//  	$r = new Refund();
-//        if ($r->update()){
-//  		
-//  		$this->session->set_flashdata('message','User updated');
-//  		redirect('ops/refund/index','refresh');
-//  	}else{
-//		//$id = $this->uri->segment(4);
-//		$data['judul'] = "Edit Refund";
-//		$data['main'] = 'ops/refund_edit';
-//		$data['refund'] = $r->getRefund($id);
-//		$this->load->vars($data);
-//		$this->load->view('dashboard');    
-//	}
-//  }
 
     function editUser($id) {
         if ($this->session->userdata('role') != 1) {
@@ -314,23 +293,7 @@ class Dashboard extends Ci_Controller {
 
 
    
-    function feedbackSummary(){
-    	$r = new Feedback();
-    	$f = new Feedback();
-    	$jumlahFeedback = 0;
-    	 
-    	$f->group_by('id_sales');
-    	$f->get();
-    	$data['feedback1'] = $f;
-    	
-    	$data['judul'] = "Feedback Summary";
-    	$data['main'] = 'feedbackSummary';
-    	$data['feedback'] = $r->getAllFeedbacks();
-    	$this->load->vars($data);
-    	$this->load->view('dashboard');
 
-
-    }
 
     function ePassword($id) {
         if ($this->session->userdata('role') != 1) {
@@ -469,7 +432,7 @@ class Dashboard extends Ci_Controller {
         force_download($filename, $data);
 
     }
-    
+
     
 
 }

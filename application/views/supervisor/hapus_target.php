@@ -28,12 +28,11 @@
 
     echo "<form name='delete_refund' action='" . base_url() . "index.php/supervisor/performance/hapusTarget/"
     . $target->id . "' method='post' onsubmit='return confirm('Apakah Anda yakin ingin menghapus refund?')'>";
-    ?>
-         
-         <button type="submit" class="btn btn-primary">
+        echo '<button type="submit" class="btn btn-primary">
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-             Hapus Target</button>
-	<?php echo "</form>"; ?>
+             Hapus Target</button>';
+	echo "</form>";
+	?>
 </div>
     
     

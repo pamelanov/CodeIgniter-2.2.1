@@ -22,8 +22,8 @@
                 <input type="date" class="form-control" name="tanggal" placeholder="Masukkan Tanggal" value="<?php echo date('Y-m-d'); ?>" required>
             </div>
             <div class="form-group">
-                <label for="jam_hilang">Jam Hilang</label>
-                <input type="text" class="form-control" name="jam_hilang" placeholder="Masukkan Jam Hilang">
+                <label for="jam_hilang">Jam Hilang (*)</label>
+                <input type="text" class="form-control" name="jam_hilang" placeholder="Masukkan Jam Hilang" required>
             </div>
             </div><!-- tutup col-md-6 -->
             <div class="col-md-6">

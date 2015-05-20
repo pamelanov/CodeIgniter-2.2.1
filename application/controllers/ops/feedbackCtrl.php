@@ -11,10 +11,15 @@ class feedbackCtrl extends Ci_Controller {
 	}
   
   function formCreateFeedback() {
+	$s = new Student();
+	$s->get();
+	$t = new Teacher();
+	$t->get();
+	
   	$data['judul'] = "Create Feedback";
-  
   	$data['main'] = 'ops/formCreateFeedback';
-  
+	$data['students'] = $s;
+	$data['teachers'] = $t;
   	$this->load->vars($data);
   	$this->load->view('dashboard');
   }
@@ -23,21 +28,22 @@ class feedbackCtrl extends Ci_Controller {
   	if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
   		redirect('dashboard', 'refresh');
   	}
-  	$f = new Feedback();
-  
-  	$f->id = $this->input->post('id');
+  	$a = new Account();
+	$a->where('id_acc', $this->input->post('id_sales'))->get();
+	
+	$f = new Feedback();
   	$f->id_murid = $this->input->post('id_murid');
   	$f->id_guru = $this->input->post('id_guru');
   	$f->tanggal = $this->input->post('tanggal');
   	$f->rating = $this->input->post('rating');
   	$f->isi = $this->input->post('isi');
-  	$f->status = $this->input->post('status');
+  	$f->status = 1;
   	$f->total_skor = $f->hitungTotalSkor();
-  	$f->id_sales = $this->input->post('id_sales');
-  
+  	$f->id_sales = $a->id;
+	$f->save_as_new();
+
   	$data['judul'] = "Feedback berhasi disimpan";
   	$data['main'] = 'ops/createFeedbackBerhasil';
-  	$data['feedback'] = $f->createFeedbackModel();
   	$this->load->vars($data);
   	$this->load->view('dashboard');
   }
@@ -109,6 +115,42 @@ class feedbackCtrl extends Ci_Controller {
   	$f->where('id_sales', $this->input->post('id_sales'))->get();
   	$f->count();
   }
+  
+      function feedbackSummary(){
+	if ($this->session->userdata('role') == 3) {
+		$r = new Feedback();
+		$data['judul'] = "Feedback Summary";
+		$data['main'] = 'supervisor/feedback_summary';
+		$data['feedbacks'] = $r->getAllFeedbacks();
+		$this->load->vars($data);
+		$this->load->view('dashboard');
+	}
+	
+	else if ($this->session->userdata('role') == 2) {
+		
+	}
+	
+	else {
+		redirect('template/login', 'refresh');
+	}
+	/*
+    	$r = new Feedback();
+    	$f = new Feedback();
+    	$jumlahFeedback = 0;
+    	 
+    	$f->group_by('id_sales');
+    	$f->get();
+    	$data['feedback1'] = $f;
+    	
+    	$data['judul'] = "Feedback Summary";
+    	$data['main'] = 'feedbackSummary';
+    	$data['feedback'] = $r->getAllFeedbacks();
+    	*.
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+	*/
+
+    }
 }
 
 ?>
