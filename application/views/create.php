@@ -130,7 +130,7 @@ function myFunction() {
                     echo "</select>";
         echo "</div>";
         
-        echo "<button id='demo' class='btn btn-danger'>Update Status</button>";
+        echo "<button id='demo' class='btn btn-danger'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Update Status</button>";
 
         ?>
         </form>

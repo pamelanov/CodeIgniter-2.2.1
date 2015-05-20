@@ -162,12 +162,11 @@ class Performance extends Ci_Controller {
         $this->load->view('dashboard');
     }
     
-    function hapusTarget(){
+    function hapusTarget($id){
         $t = new Target();
-        $t->where('id', $this->input->post('id_sales'));
-        $t->where('id', $this->input->post('periode'));
-        $t->get();
+        $t->where('id', $id)->get();
         $t->delete();
+        // $t->check_last_query();
         
         $data['judul'] = "Hapus Target";
         $data['main'] = 'supervisor/deleted';
