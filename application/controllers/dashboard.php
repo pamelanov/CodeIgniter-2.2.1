@@ -45,12 +45,20 @@ class Dashboard extends Ci_Controller {
     }
 
     function createData() {
-        $data['judul'] = "Create";
+           if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        
+        $s = new Student();
+        $s->get();
+        
+        $data['judul'] = "Create Status";
         $data['main'] = 'create';
+        $data['s'] = $s;
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-
+    
     function feedbacks() {
         $r = new Feedback();
 
@@ -111,8 +119,10 @@ class Dashboard extends Ci_Controller {
     }
 
     function summary() {
+	$s = new Student();
         $data['judul'] = "Search Student";
         $data['main'] = 'summary';
+	$data['s'] = $s->get();
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
@@ -426,12 +436,12 @@ class Dashboard extends Ci_Controller {
         $t = new Target();
 	$a = new Target();
 	$k = $a->ambilPerforma($this->session->userdata('id'));
-	if (!empty($k) && $k->target!=0) {
+	if (!empty($k) && $k->target != 0) {
 	    $bar = round($k->actual / $k->target * 100, 2);
 	    $data['progressbar'] = $bar;
 	}
 	else {
-	    $data['progressbar'] = false;
+	    $data['progressbar'] = -1;
 	}
         $data['judul'] = "Performance";
         $data['main'] = 'ops/performance_ops';
@@ -456,6 +466,8 @@ class Dashboard extends Ci_Controller {
         force_download($filename, $data);
 
     }
+    
+    
 
 }
 ?>

@@ -109,11 +109,12 @@ class End_number extends DataMapper {
 	function ambilRincian($id){
 		$a = new Account();
 		$a->where('id_acc', $id)->get();
-		
+		echo "<Br>$a->id_acc";
 		$n = new End_number();
 		$n->where('id_sales', $a->id);
 		$n->where('no', 8);
 		$n->get();
+		echo $n->id_sales;
 		
 		$e = new End_number();
 		$i = new Invoice();

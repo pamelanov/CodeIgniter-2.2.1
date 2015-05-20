@@ -1,6 +1,6 @@
 <?php
 class Target extends DataMapper {
-	
+	/*
 	var $has_one = array(
 			'creator' => array(
 					'class' => 'account',
@@ -10,7 +10,7 @@ class Target extends DataMapper {
 					'class' => 'account',
 					'other_field' => 'assigned_target'
 			)
-	);
+	);*/
 	
 	// Optionally, don't include a constructor if you don't need one.
 	function __construct($id = NULL)
@@ -170,6 +170,19 @@ class Target extends DataMapper {
 		$t->where('id_sales', $a->id);
 		$t->where('periode', date("Y-m"));
 		$t->get();
+		
+		return $t;
+	}
+	
+	function getSejarahPerforma($id_ops){
+		$t = new Target();
+		$a = new Account();
+		$t->where('id_sales', $id_ops)->get();
+		
+			foreach($t as $x){
+				$a->where('id', $x->id_supervisor)->get();
+				$x->id_supervisor = $a->id_acc;
+			}
 		
 		return $t;
 	}

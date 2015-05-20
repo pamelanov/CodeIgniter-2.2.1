@@ -11,7 +11,8 @@
     
 	<ul class="nav navbar-nav navbar-left">
 		<div class="page-header" id="page-header">
-			<h1><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Sistem Informasi Customer Tracking Ruangguru</h1>
+			<!-- <h1><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Sistem Informasi Customer Tracking Ruangguru</h1>-->
+			<img src="<?php echo base_url(); ?>assets/images/header-logo.png" height="40px">
 		</div>
 	</ul>
 	
@@ -39,8 +40,16 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<!--
+<div class="container">
+<div class="jumbotron">
+  <div class="page-header">
+  <h1>Selamat Datang di <small>SICuT Ruangguru</small></h1>
+</div>
 
-
+</div>
+</div>
+-->
 
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom">

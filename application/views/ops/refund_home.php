@@ -17,7 +17,9 @@ if (count($admins)) {
     <div class="panel-heading"><center>Tabel Peringkat</center></div>';
     echo "<table class='table table-bordered'>\n";
     echo "<tr valign='top '>\n";
-    echo "<th><center>Tanggal Refund</th><th><center>No Invoice</th><th><center>Jumlah Jam Hilang</th><th><center>Alasan</th><th><center>Aksi</th><th><center>Selisih</th><th><center>ID Sales</th><th><center>Action</th>\n";
+    echo "<th><center>Tanggal Refund</th><th><center>No Invoice</th><th><center>
+    Jam Hilang</th><th><center>Alasan</th><th><center>Aksi</th><th>
+    <center>Selisih</th><th><center>ID Sales</th><th><center>Action</th>\n";
     echo "</tr>\n";
     foreach ($admins as $list) {
         echo "<tr valign='top'>\n";
@@ -33,9 +35,16 @@ if (count($admins)) {
         
 
         echo "<td align='center'>";
-        echo anchor('dashboard/showEditRefund/' . $list->id , 'edit');
-        echo " | ";
-        echo anchor('dashboard/showDeleteRefund/'. $list->id, 'delete');
+        echo '<a href="' . base_url() . 'index.php/dashboard/showEditRefund/' . $list->id . '"><button type="submit" class="btn btn-danger" id="button-kecil">Edit</button></a>';
+      //  echo anchor('dashboard/showEditRefund/' . $list->id , 'edit');
+        echo " | "; ?>
+           <form name='delete_refund' action='<?php echo base_url(); ?>index.php/dashboard/deleteRefund'
+            method='post' onsubmit='return confirm("Apakah Anda yakin ingin menghapus refund?")' >
+         
+         <a href="<?php echo base_url(); ?>index.php/dashboard/deleteRefund"><button type="submit"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
+        
+    </form>
+           <?php
         echo "</td>\n";
         echo "</tr>\n";
     }

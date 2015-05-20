@@ -7,30 +7,29 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title><?php echo $judul; ?></title>
-        <!--
-        <script type="text/javascript" src="../../assets/jquery/jquery-1.11.2.min.js"></script>-->
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery/jquery.min.js"></script>
         
-        
-        
+        <!--<script type="text/javascript" src="../../assets/jquery/jquery-1.11.2.min.js"></script>-->
         <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
-        <!--<script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery/bootbox.min.js"></script>-->
         <!--<script type="text/javascript" src="http://pamelanov.com/bootbox.min.js"></script>-->
-         <script src="<?php echo base_url(); ?>assets/jquery/bootbox.min.js"></script>
-       
-       <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
-       <script src="<?php echo base_url(); ?>assets/jquery/bootstrap.min.js"></script>
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+        <!--<script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>-->
         
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery/jquery.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/jquery/bootbox.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/jquery/bootstrap.min.js"></script>
         
-        <!--
-        <script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
-        -->
-        
+        <link href="<?php echo base_url(); ?>assets/select2-4.0.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="<?php echo base_url(); ?>assets/select2-4.0.0/dist/js/select2.min.js"></script>
         
         <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url(); ?>assets/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        
 
-
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".js-example-basic-single").select2();
+            });
+        </script>
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -45,20 +44,20 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
     
                     <?php if ($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3) { ?>      
                         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create
+                                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Buat
                                     <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu" id="dropdown">
-                                <li><a href="<?php echo base_url(); ?>index.php/ops/student/createData" id="a-dropdown">Student</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/dashboard/createData" id="a-dropdown">Status</a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/ops/refund/crefund" id="a-dropdown">Refund</a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/ops/feedbackCtrl/formCreateFeedback" id="a-dropdown">Feedback</a></li>
                             </ul>
                         </li>
                         
                          <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Summary
+                                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Rangkuman
                                     <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu" id="dropdown">
-                                <li><a href="<?php echo base_url(); ?>index.php/dashboard/summary" id="a-dropdown">Student</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/dashboard/summary" id="a-dropdown">Status</a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/dashboard/refunds" id="a-dropdown">Refund</a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/dashboard/feedbackSummary" id="a-dropdown">Feedback</a></li>
                             </ul>
@@ -68,23 +67,23 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
 
                     <?php if ($this->session->userdata('role') == 2) { ?>
                         <li><a href="<?php echo base_url(); ?>index.php/dashboard/performance/" >
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Performance</a></li>
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Performa</a></li>
                     <?php } ?>
 
                     <?php if ($this->session->userdata('role') == 3) { ?>
                          <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Performance
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Performa
                                     <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu" id="dropdown">
-                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance" id="a-dropdown">Buat</a></li>
-                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showEdit" id="a-dropdown">Ubah</a></li>
-                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/hapusTarget" id="a-dropdown">Hapus</a></li>
-                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/overall" id="a-dropdown">Overall Performance</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showCreate" id="a-dropdown">Buat Target</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showEdit" id="a-dropdown">Ubah Target</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/showHapusTarget" id="a-dropdown">Hapus Target</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/supervisor/performance/overall" id="a-dropdown">Lihat Performa</a></li>
                             </ul>
                         </li>   
 
                         <li><a href="<?php echo base_url(); ?>index.php/dashboard/overallSum" >
-                        <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Overall Summary</a></li>
+                        <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Rangkuman Keseluruhan</a></li>
                     <?php } ?>
 
                     <?php if ($this->session->userdata('role') == 1) { ?>
@@ -117,23 +116,8 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
         
         <?php $this->load->view($main); ?>
 
-
         
-        <!--
-        <div id="the-basics">
-  <input class="typeahead" type="text" placeholder="States of USA">
-</div>-->
-        <?php
-    /*
-    echo "Today is " . date("Y/m/d") . "<br>";
-    echo "Today is " . date("Y.m.d") . "<br>";
-    echo "Today is " . date("Y-m") . "<br>";
-    echo "Today is " . date("l");
-    */
-    ?>
-         
-    
-        
+ 
 
 
 

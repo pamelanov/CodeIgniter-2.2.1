@@ -46,7 +46,7 @@
                 	<label for="id_sv">	ID Supervisor</label>
                         <input type='text' class="form-control" name='id_supervisor' value=<?php echo $this->session->userdata['id'] ?>>
                 </div>
-                        <div class="form-group"><button type="submit" class="btn btn-danger">Update</button></div>
+                        <div class="form-group"><button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update</button></div>
 </form>
 </div>
 

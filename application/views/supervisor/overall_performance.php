@@ -1,7 +1,9 @@
    <h1><?php echo $judul; ?></h1>
 
+
  
   <div id ="konten">
+    <h3>Periode: <span class="label label-primary"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><?php echo " " . date('20y-m') ;?></span></h3>
 <div class="panel panel-primary">
   <!-- Default panel contents -->
   <div class="panel-heading"><center>Tabel Peringkat</center></div>
@@ -29,7 +31,7 @@ if ($this->session->flashdata('message')){
 
 	    echo "<tr valign='top'>\n";
                 foreach($targets as $t){
-
+		    if (!empty($t->id_sales)){ 
                     echo "<td> $rank";
                     echo "<td>".$t->id_sales."</td>\n";
                     echo "<td>".$t->periode."</td>\n";
@@ -38,10 +40,24 @@ if ($this->session->flashdata('message')){
                     echo "</td>\n";
                     echo "</tr>\n";
                     $rank++;
+		    }
                 }
 	echo "</table>	";
 	echo "</div>";
 }
-?>
 
+?>
+  <form class="form-inline" align="left" action='<?php echo base_url();?>index.php/supervisor/performance/sejarahPerforma/' method='post'>
+      <div class="form-group">
+	  <label for="idOps">ID Operational Sales</label>
+		<select class="js-example-basic-single" name="id_ops">
+                    <?php foreach($ops as $x) {
+                        echo "<option value='" . $x->id . "'>" . $x->id_acc . ": " . $x->nama . "</option>";
+                        }  
+                    ?>
+                </select>
+      <button type="submit" class="btn btn-primary">
+	  <span class="glyphicon glyphicon-file" aria-hidden="true"></span> Lihat Sejarah Performa</button>
+  </div>
+  </form>
 </div>
