@@ -80,6 +80,7 @@ class Feedback extends DataMapper {
 
         $f = new Feedback();
         $f->where_between('tanggal', "'" . $this->tanggal_awal . "'", "'" . $this->tanggal_akhir . "'");
+        
         $f->get();
         if (empty($f)) {
             return FALSE;
@@ -93,6 +94,7 @@ class Feedback extends DataMapper {
 
         $f = new Feedback();
         $f->where_between('tanggal', "'" . $this->tanggal_awal . "'", "'" . $this->tanggal_akhir . "'");
+       
         $f->get();
 
 

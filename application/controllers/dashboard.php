@@ -334,11 +334,16 @@ class Dashboard extends Ci_Controller {
  
         $u = new Account();
         $u->where('id_acc', $this->input->post('id_acc'))->get();
-
+        
+        if($this->session->userdata('id') == $u->id_acc) {
+            $data['judul'] = "Delete Gagal";
+            $data['main'] = 'supervisor/updated';
+        }
+        else {
          $u->delete();
-        $data['judul'] = "Update Berhasil";
+        $data['judul'] = "Delete Berhasil";
         $data['main'] = 'supervisor/updated';
-
+        }
         $this->load->vars($data);
         $this->load->view('dashboard');
         
