@@ -32,6 +32,7 @@ class Over extends Ci_Controller {
     }
 
     function findOverall() {
+        
         if ($this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }

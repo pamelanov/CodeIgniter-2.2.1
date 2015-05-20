@@ -8,19 +8,19 @@
     <div id ="konten">
         <div class="form-group">
             <label for="id_acc">ID</label>
-            <input type="text" class="form-control" name="id_acc" placeholder="Masukkan ID">
+            <input type="text" class="form-control" name="id_acc" placeholder="Masukkan ID" required>
         </div>
            <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" placeholder="Masukkan Password">
+            <input type="password" class="form-control" name="password" placeholder="Masukkan Password" required>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" name="email" placeholder="Masukkan Email">
+            <input type="text" class="form-control" name="email" placeholder="Masukkan Email" required>
         </div>
         <div class="form-group">
             <label for="nama">Nama</label>
-            <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama">
+            <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama" required>
         </div>
         <div class="form-group">
             <label for="no_telp">No. Telp</label>
