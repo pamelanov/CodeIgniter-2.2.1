@@ -5,7 +5,9 @@ class Summary extends Ci_Controller {
         
     function __construct() {
         parent::__construct();
-        
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('template/login', 'refresh');
+        }
     }
 
     function index() {

@@ -30,14 +30,13 @@ class Template extends CI_Controller {
         $data['aktif'] = 'class="active"';
         $this->load->view('home/template', $data);
     }
-
-    public function login() {
-        $data['judul'] = "Halaman Login";
+public function login() {
+        $data['judul'] = "Halaman Depan";
         $data['main'] = "home/login";
         $data['aktif'] = 'class="active"';
-
         $this->load->view('home/template', $data);
     }
+   
 
     function ceklogin() {
 
@@ -73,7 +72,7 @@ class Template extends CI_Controller {
         $sesi_items = array('role' => '');
         $this->session->unset_userdata($sesi_items);
         $this->session->set_flashdata('result', 'Anda wes logout');
-        header('location:' . base_url() . 'index.php/template/login');
+        redirect('template');
     }
 
 }
