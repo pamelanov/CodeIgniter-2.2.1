@@ -1,7 +1,7 @@
 <?php
 
 class Refund extends DataMapper {
-
+/*
     var $has_one = array(
         'requester' => array(
             'class' => 'invoice',
@@ -12,7 +12,7 @@ class Refund extends DataMapper {
             'other_field' => 'managed_refund'
         )
     );
-
+*/
     function __construct($id = NULL) {
         parent::__construct($id);
     }
