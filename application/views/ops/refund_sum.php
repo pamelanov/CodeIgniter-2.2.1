@@ -5,7 +5,7 @@ if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
 }
 
-if (count($refunds)){
+if (count($refund)){
 	
 	
 	echo '<div class="panel panel-primary">
@@ -21,7 +21,7 @@ if (count($refunds)){
 		<th><center>Selisih</center></th>\n";
 	echo "</tr>\n";
 	
-	foreach ($refunds as $list){
+	foreach ($refund as $list){
 		echo "<tr valign='top'>\n";
 		echo "<td>".$list->tanggal."</td>\n";
                 echo "<td>".$list->no_invoice."</td>\n";
@@ -39,4 +39,6 @@ if (count($refunds)){
 	
 }
 ?>
+     <p><?php echo anchor("download/download_Orefunds/" . $tanggal_awal . "/" . $tanggal_akhir, "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
+
 </div>

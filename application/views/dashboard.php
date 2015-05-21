@@ -98,8 +98,7 @@ $(document).ready(function(){
                     <?php } ?>
 
                     <?php if ($this->session->userdata('role') == 1) { ?>
-                        <li><a href="<?php echo base_url(); ?>index.php/dashboard" >
-                         <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+
                         
                         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span> User

@@ -139,7 +139,7 @@ class Download extends Ci_Controller {
         $r->tanggal_awal = $tanggal_awal;
         $r->tanggal_akhir = $tanggal_akhir;
         // load all users
-        $refunds = $r->hasilSearch1();
+        $refunds = $r->ambilRefundSum();
         // Output $u->all to /tmp/output.csv, using all database fields.
         $path = "assets/exports/";
         $filename = 'refund_' . date("Ymd_His") . '.csv';
