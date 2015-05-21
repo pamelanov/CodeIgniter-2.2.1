@@ -42,7 +42,7 @@ class feedbackCtrl extends Ci_Controller {
   	$f->id_sales = $a->id;
 	$f->save_as_new();
 
-  	$data['judul'] = "Feedback berhasi disimpan";
+  	$data['judul'] = "Feedback berhasil disimpan";
   	$data['main'] = 'ops/createFeedbackBerhasil';
   	$this->load->vars($data);
   	$this->load->view('dashboard');
@@ -118,16 +118,20 @@ class feedbackCtrl extends Ci_Controller {
   
       function feedbackSummary(){
 	if ($this->session->userdata('role') == 3) {
-		$r = new Feedback();
+		$r = new Account();
 		$data['judul'] = "Feedback Summary";
-		$data['main'] = 'supervisor/feedback_summary';
-		$data['feedbacks'] = $r->getAllFeedbacks();
+		$data['main'] = 'supervisor/search_feedback_sum';
+		$data['ops'] = $r->get();
 		$this->load->vars($data);
 		$this->load->view('dashboard');
 	}
 	
 	else if ($this->session->userdata('role') == 2) {
-		
+		$data['judul'] = "Rangkuman Feedback";
+		$data['main'] = 'ops/feedback_summary';
+		$data['feedbacks'] = $r->getAllFeedbacks();
+		$this->load->vars($data);
+		$this->load->view('dashboard');
 	}
 	
 	else {
@@ -150,6 +154,31 @@ class feedbackCtrl extends Ci_Controller {
     	$this->load->view('dashboard');
 	*/
 
+    }
+    
+    function searchPeriode(){
+	$f = new Feedback();
+	$e = new Feedback();
+        $f->tanggal_awal = $this->input->post('tanggal-awal');
+        $f->tanggal_akhir = $this->input->post('tanggal-akhir');
+	$f->id_sales = $this->input->post('id_ops');
+	
+	$data['judul'] = "Rangkuman Feedback";
+	$data['main'] = 'supervisor/feedback_sum';
+	
+	if($f->id_sales == 'semua') {
+		$data['feedbacks'] = $f->hasilSearch1();
+		$data['semua_ops'] = $e->getCounts();
+	}
+	
+	else {
+		if ($f->findFeedbackSum() ){
+			$data['feedbacks'] = $f->ambilFeedbackSum();
+		}
+	}
+	$this->load->vars($data);
+    	$this->load->view('dashboard');
+        
     }
 }
 

@@ -38,24 +38,24 @@
 ?>
     
     
-    <!--
-    <p><?php /* echo anchor("download/download_feedbacks", "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); */?></p>
+    
+    <p><?php echo anchor("download/download_feedbacks", "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
 
 	<?php
-        /*
+        
 	echo "<table class='table table-bordered'>\n";
 	echo "<tr valign='top'>\n";
 	echo "<th>ID Sales</th><th>Jumlah Feedback</th>\n";
 	echo "</tr>\n";
-	foreach ($feedback1 as $list) {
+	foreach ($feedbacks as $list) {
 		echo "<tr valign='top'>\n";
 		echo "<td align='center'>" . $list->id_sales . "</td>\n";
 		echo "<td align='center'>" . $list->where('id_sales', $list->id_sales)->count() . "</td>\n";
 		//echo anchor('ops/feedbackCtrl/countFeedback/');
 		echo "</tr>\n";
 	}
-	/*
-	foreach ($feedback as $list) {
+	
+	foreach ($feedbacks as $list) {
 		//echo "<tr valign='top'>\n";
 		//echo "<td align='center'>" . $list->group_by('id_sales') . "</td>\n";
 		echo "<td align='center'>" . $list->count_distinct('id_sales') . "</td>\n";
@@ -64,9 +64,10 @@
 	}
 	
 	echo "</table>";
+	?>
 	</div>
-</form>
-</html>*/
+
+
 ?>
         
 

@@ -49,7 +49,7 @@ class Over extends Ci_Controller {
             $data['tanggal_awal'] = $r->tanggal_awal;
             $data['tanggal_akhir'] = $r->tanggal_akhir;
             $data['feedback'] = $f->hasilSearch1();
-            $data['refund'] = $r->hasilSearch1();
+            $data['refund'] = $r->ambilRefundSum();
             
             $this->load->vars($data);
             $this->load->view('dashboard');

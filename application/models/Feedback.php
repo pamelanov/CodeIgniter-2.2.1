@@ -88,15 +88,62 @@ class Feedback extends DataMapper {
             return TRUE;
         }
     }
+    
+    function findFeedbackSum(){
+	$f = new Feedback();
+        $f->where_between('tanggal', "'" . $this->tanggal_awal . "'", "'" . $this->tanggal_akhir . "'");
+        $f->where('id_sales', $this->id_sales);
+        $f->get();
+        if (empty($f)) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+    
+    function ambilFeedbackSum(){
+	$f = new Feedback();
+	$a = new Account();
+	$t = new Teacher();
+	$s = new Student();
+        $f->where_between('tanggal', "'" . $this->tanggal_awal . "'", "'" . $this->tanggal_akhir . "'");
+        $f->where('id_sales', $this->id_sales);
+        $f->get();
+	
+	foreach($f as $z) {
+	$a->where('id', $z->id_sales)->get();
+	$t->where('id', $z->id_guru)->get();
+	$s->where('id', $z->id_murid)->get();
+	
+	$z->id_sales = $a->id_acc;
+	$z->id_guru = $t->id_guru;
+	$z->id_murid = $s->id_murid;
+	}
+	
+	
+	return $f;
+    }
 
     function hasilSearch1() {
 
 
         $f = new Feedback();
+	$a = new Account();
+	$t = new Teacher();
+	$s = new Student();
+	
         $f->where_between('tanggal', "'" . $this->tanggal_awal . "'", "'" . $this->tanggal_akhir . "'");
-       
         $f->get();
-
+	
+	foreach($f as $z) {
+	$a->where('id', $z->id_sales)->get();
+	$t->where('id', $z->id_guru)->get();
+	$s->where('id', $z->id_murid)->get();
+	
+	$z->id_sales = $a->id_acc;
+	$z->id_guru = $t->id_guru;
+	$z->id_murid = $s->id_murid;
+	}
 
         return $f;
     }
@@ -149,6 +196,15 @@ class Feedback extends DataMapper {
         $this->salt = $o->salt;
 
         return $o;
+    }
+    
+    function getCounts(){
+	$f = new Feedback();
+	$f->count();
+	$f->group_by('id_sales');
+	$f->get();
+	
+	return $f;
     }
 
 }

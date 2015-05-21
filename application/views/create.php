@@ -17,7 +17,7 @@ function myFunction() {
         <form class="form-inline" align="left" action='<?php echo base_url();?>index.php/ops/create/searchStudentStatus' method='post'>
             <div class="form-group">
                 <label for="enterStudentID">Enter Student ID</label>
-                <select class="js-example-basic-single" name="idMurid">
+                <select class="js-example-basic-single" name="idMurid" required>
                     <?php foreach($s as $x) {
                         echo "<option value='" . $x->id_murid . "'>" . $x->id_murid . ": " . $x->nama . "</option>";
                         }  

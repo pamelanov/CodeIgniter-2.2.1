@@ -30,7 +30,9 @@ class Summary extends Ci_Controller {
         if ($u->findStudent()) {
              if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
-        }
+            }
+            $murid = new Student();
+            $murid->where('id_murid', $u->id_murid)->get();
             $b = new Beginning_number();
             $b->id_murid = $u->id_murid;
             $e = new End_number();
@@ -44,7 +46,7 @@ class Summary extends Ci_Controller {
             $data['students2'] = $e->summary();
             $data['courses'] = $c->getCourses($u->id_murid);
             $data['s'] = $s->get();
-           // $data['invoices'] = $
+            $data['murid'] = $murid;
             $this->load->vars($data);
             $this->load->view('dashboard');
         }

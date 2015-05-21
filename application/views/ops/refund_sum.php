@@ -1,27 +1,35 @@
 <h1><?php echo $judul;?></h1>
+<div id="konten">
 <?php
 if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
 }
 
-if (count($admins)){
+if (count($refunds)){
 	
 	
 	echo '<div class="panel panel-primary">
-	<div class="panel-heading"><center>Tabel Peringkat</center></div>';
-	echo "<table id='table'>\n";
+	<div class="panel-heading"><center>Rangkuman Refund</center></div>';
+	echo "<table class='table table-bordered'>\n";
 	echo "<tr valign='top'>\n";
-	echo "<th>Nama</th><th>Email</th><th>Nama</th><th>No Tlp</th><th>Action</th>\n";
+	echo "<th><center>Tanggal</center></th>
+		<th><center>No Invoice</center></th>
+		<th><center>ID Sales</center></th>
+		<th><center>Jam Hilang</center></th>
+		<th><center>Alasan</center></th>
+		<th><center>Action</center></th>
+		<th><center>Selisih</center></th>\n";
 	echo "</tr>\n";
 	
-	foreach ($admins as $list){
+	foreach ($refunds as $list){
 		echo "<tr valign='top'>\n";
-		echo "<td>".$list->Id_guru."</td>\n";
-		
-                echo "<td align='center'>".$list->Id_murid."</td>\n";
-                echo "<td>".$list->No_invoice."</td>\n";
-                echo "<td>".$list->Id_kelas."</td>\n";
-
+		echo "<td>".$list->tanggal."</td>\n";
+                echo "<td>".$list->no_invoice."</td>\n";
+                echo "<td>".$list->id_sales."</td>\n";
+                echo "<td>".$list->jam_hilang."</td>\n";
+		echo "<td>".$list->alasan."</td>\n";
+		echo "<td>".$list->action."</td>\n";
+		echo "<td>".$list->selisih."</td>\n";
 		echo "</td>\n";
 		echo "</tr>\n";
 	}
@@ -31,3 +39,4 @@ if (count($admins)){
 	
 }
 ?>
+</div>

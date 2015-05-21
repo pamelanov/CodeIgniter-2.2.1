@@ -83,13 +83,19 @@ class Refund extends DataMapper {
         }
     }
 
-    function hasilSearch1() {
+    function ambilRefundSum() {
 
         $r = new Refund();
         $r->where_between('tanggal', "'" . $this->tanggal_awal . "'", "'" . $this->tanggal_akhir . "'");
         $r->get();
-
-
+	$i = new Invoice();
+	$a = new Account();
+	foreach($r as $x){
+		$i->where('id', $x->no_invoice)->get();
+		$a->where('id', $x->id_sales)->get();
+		$x->no_invoice = $i->no_invoice;
+		$x->id_sales = $a->id_acc;
+	}
 
         return $r;
     }
@@ -99,7 +105,16 @@ class Refund extends DataMapper {
 
         $r = new Refund();
         $r->get();
-        $this->salt = $r->salt;
+	
+	$i = new Invoice();
+	$a = new Account();
+        
+	foreach($r as $x){
+		$i->where('id', $x->no_invoice)->get();
+		$x->no_invoice = $i->no_invoice;
+		$a->where('id', $x->id_sales)->get();
+		$x->id_sales = $a->id_acc;
+	}
 
         return $r;
     }

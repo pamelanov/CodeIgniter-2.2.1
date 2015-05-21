@@ -17,15 +17,16 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
-    function refunds() {
+    function showRefundSum() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
         $r = new Refund();
+	$a = new Account();
 
         $data['judul'] = "Refund Summary";
-        $data['main'] = 'ops/refund_home';
-        $data['admins'] = $r->getAllRefunds();
+        $data['main'] = 'ops/refund_sum_periode';
+        $data['refunds'] = $r->getAllRefunds();
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
@@ -181,7 +182,6 @@ class Dashboard extends Ci_Controller {
 
 	$a = new Account();
 	$a->where('id_acc', $this->input->post('id_sales'))->get();
-
         $r->no_invoice = $this->input->post('no_invoice');
         $r->id_sales = $a->id;
         $r->jam_hilang = $this->input->post('jam_hilang');
@@ -193,7 +193,7 @@ class Dashboard extends Ci_Controller {
         $r->save_as_new();
 
         $data['judul'] = "Refund Berhasil Disimpan";
-        $data['main'] = 'ops/refund_create';
+        $data['main'] = 'ops/refund_create_berhasil';
 
         $this->load->vars($data);
         $this->load->view('dashboard');
