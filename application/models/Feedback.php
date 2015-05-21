@@ -204,6 +204,12 @@ class Feedback extends DataMapper {
 	$f->group_by('id_sales');
 	$f->get();
 	
+	$a = new Account();
+	foreach($f as $x){
+		$a->where('id', $x->id_sales)->get();
+		$x->id_acc = $a->id_acc;
+	}
+	
 	return $f;
     }
 

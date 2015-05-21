@@ -165,6 +165,8 @@ class feedbackCtrl extends Ci_Controller {
 	
 	$data['judul'] = "Rangkuman Feedback";
 	$data['main'] = 'supervisor/feedback_sum';
+	$data['tanggal_awal'] = $f->tanggal_awal;
+	$data['tanggal_akhir'] = $f->tanggal_akhir;
 	
 	if($f->id_sales == 'semua') {
 		$data['feedbacks'] = $f->hasilSearch1();
