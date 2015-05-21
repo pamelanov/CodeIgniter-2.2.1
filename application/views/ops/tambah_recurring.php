@@ -51,8 +51,8 @@
     </div>
     <div class="form-group">
         <label>Melanjutkan Kelas?</label><br>
-        <span id="show" class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Ya</span>
-        <span id="showNo" class="label label-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Tidak</span>
+        <a href=#><span id="show" class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Ya</span></a>
+        <a href=#><span id="showNo" class="label label-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Tidak</span></a>
             
     </div>
 </div> <!-- menutup col-md-6 -->
