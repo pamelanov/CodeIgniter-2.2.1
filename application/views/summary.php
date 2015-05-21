@@ -1,5 +1,4 @@
- <script>
-            $(document).on("click", ".recurring", function(e) {
+<script>$(document).on("click", ".recurring", function(e) {
             bootbox.dialog({
                 title: "Menambahkan Recurring Status",
                 message:
@@ -10,7 +9,7 @@
                             '<div class="form-group"> ' +
                                 '<label class="col-md-4 control-label" for="name">ID Kelas</label> ' +
                                     '<div class="col-md-4"> ' +
-                                        '<select class="form-control" name="id_sales" placeholder="ID Kelas">' +
+                                        '<select class="form-control" name="id_kelas" placeholder="ID Kelas">' +
                                         '<?php foreach ($courses as $c) { ?>' +
                                          '<option>' +
                                          '<?php  echo $c->id_kelas; ?>' +
@@ -19,6 +18,12 @@
                                     '</select>' +
                                     '</div> ' +
                             '</div> ' +
+                            '<div class="form-group"> ' +
+                                '<label class="col-md-4 control-label" for="ID Sales">ID Sales </label>' +
+                                    '<div class="col-md-4"> ' +
+                                        "<input type='text' class='form-control' name='id_sales' value='<?php echo $this->session->userdata('id') ?>'>" +
+                                    '</div>' +
+                            '</div>' +
                             '<div class="form-group"> ' +
                                 '<label class="col-md-4 control-label" for="tanggal">Tanggal Pengisian </label>' +
                                     '<div class="col-md-4"> ' +
@@ -29,22 +34,18 @@
                                 '<label class="col-md-4 control-label" for="recurring">Melanjutkan Kelas?</label> ' +
                                     '<div class="col-md-4"> ' +
                                             '<a class="recurring-ya" href=#>' +
-                                                '<span class="glyphicon glyphicon-ok" aria-hidden="true">Ya</span></a> \n' +
+                                                '<span class="label label-success" id="label-recurring">' +
+                                                    '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Ya</span></a> \n' +
                                             '<a class="recurring-tidak" href=#>' +
-                                                 '<span class="glyphicon glyphicon-remove" aria-hidden="true">Tidak</span></a> \n' +
+                                                '<span class="label label-danger" id="label-recurring">' +
+                                                 '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Tidak</span></a> \n' +
                                     '</div>' +
                             '</div>' +
                         //'</form>' +
                     '</div>' +
                 '</div>',
                 buttons: {
-                    success: {
-                        label: "Bikin dulu dah huhuhu",
-                        className: "btn-success",
-                        callback: function () {
-                            window.location.href = "<?php echo base_url(); ?>index.php/ops/summary/";
-                        }
-                    }
+
                 }
                 
             }
@@ -86,9 +87,7 @@
                         label: "Simpan",
                         className: "btn-success",
                         callback: function () {
-                            var name = $('#name').val();
-                            var answer = $("input[name='awesomeness']:checked").val()
-                            Example.show("Hello " + name + ". You've chosen <b>" + answer + "</b>");
+                            window.location.href = "<?php echo base_url(); ?>index.php/ops/summary/tambahRecurringYa";
                         }
                     }
                 }
@@ -116,9 +115,7 @@
                         label: "Simpan",
                         className: "btn-success",
                         callback: function () {
-                            var name = $('#name').val();
-                            var answer = $("input[name='awesomeness']:checked").val()
-                            Example.show("Hello " + name + ". You've chosen <b>" + answer + "</b>");
+                            window.location.href = "<?php echo base_url(); ?>index.php/ops/summary/tambahRecurringTidak";
                         }
                     }
                 }
@@ -130,10 +127,12 @@
     <h1><?php echo $judul; ?></h1>
 
 <div id="konten">
+    <?php if ((empty($students)) && (empty($students2))) { ?> 
     <div id="lebihKecil">
     <form class="form-inline" align="left" action='<?php echo base_url(); ?>index.php/ops/summary/searchStudent' method='post'>
     <div class="form-group">
-        <label for="exampleInputName2">Enter Student ID</label> </div>
+        <label for="exampleInputName2">Enter Student ID</label>
+    
                         <select class="js-example-basic-single" name="idMurid">
                     <?php foreach($s as $x) {
                         echo "<option value='" . $x->id_murid . "'>" . $x->id_murid . ": " . $x->nama . "</option>";
@@ -143,15 +142,41 @@
   
     <button type="submit" class="btn btn-danger">
 			 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
-
+</div>
 </form>
-    </div>
-<br/><br/>
+    </div><?php } ?>
+
+<?php if (!empty($murid)) { ?>
+<div class="panel panel-primary">
+    <div class="panel-heading"><center>Informasi Murid</center></div>
+        <table class='table table-bordered'>
+            <tr valign='top'>
+                <th><center>ID Murid</center></th>
+                <th><center>Nama</center></th>
+                <th><center>Gender</center></th>
+                <th><center>No Tlp</center></th>
+                <th><center>Domisili</center></th>
+                <th><center>Email</center></th>
+                <th><center>Alamat</center></th>
+            </tr>
+            
+            <tr valign='top'>
+                <td align><?php echo $murid->id_murid; ?></td>
+                <td align><?php echo $murid->nama; ?></td>
+                <td align><?php echo $murid->gender; ?></td>
+                <td align><?php echo $murid->no_telepon; ?></td>
+                <td align><?php echo $murid->domisili; ?></td>
+                <td align><?php echo $murid->email; ?></td>
+                <td align><?php echo $murid->alamat; ?></td>
+            </tr>
+        </table>
+</div><!-- nutup panel panel-success -->
+<?php } ?>
  <?php
 
 
 if ((!empty($students)) && (!empty($students2))) {
-        echo '<div class="panel panel-success">
+        echo '<div class="panel panel-primary">
             <div class="panel-heading"><center>Tabel Peringkat</center></div>';
         echo "<table class='table table-bordered'>\n";
             echo "<tr valign='top'>\n";
@@ -173,8 +198,8 @@ if ((!empty($students)) && (!empty($students2))) {
         echo "</table>";
         echo "</div>";
         // echo "<a href='" . base_url() . "index.php/ops/summary/recurring(" . $student->id .  ")' >
-        echo "<a class='recurring' href=#>
-        <button class='btn btn-success'>
+        echo "<a href='" . base_url() . "index.php/ops/summary/showRecurring/" . $murid->id .  "' >
+        <button class='btn btn-primary'>
             <span class='glyphicon glyphicon-plus-sign' aria-hidden='true'></span> Recurring Status
         </button>
         </a>";

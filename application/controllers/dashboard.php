@@ -17,20 +17,25 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
-    function refunds() {
+    function showRefundSum() {
+        
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
         $r = new Refund();
+	$a = new Account();
 
         $data['judul'] = "Refund Summary";
-        $data['main'] = 'ops/refund_home';
-        $data['admins'] = $r->getAllRefunds();
+        $data['main'] = 'ops/refund_sum_periode';
+        $data['refunds'] = $r->getAllRefunds();
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
 
     function todaySummary() {
+        if ($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $b = new Beginning_number();
         $e = new End_number();
         $s = new Student();
@@ -63,6 +68,9 @@ class Dashboard extends Ci_Controller {
     }
     
     function feedbacks() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $r = new Feedback();
 
         $data['judul'] = "Feedback Summary";
@@ -74,7 +82,9 @@ class Dashboard extends Ci_Controller {
 
     function updateFeedback() {
         //$r = new Feedback();
-
+if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $data['judul'] = "Update Feedback";
         $data['main'] = 'updateFeedback';
         //$data['feedback'] = $r->getAllFeedbacks();
@@ -83,6 +93,9 @@ class Dashboard extends Ci_Controller {
     }
 
     function crudFeedback() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $r = new Feedback();
 
         $data['judul'] = "Create Feedback";
@@ -103,7 +116,9 @@ class Dashboard extends Ci_Controller {
     }
 
     function overallSum() {
-
+if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $r = new Refund();
         $f = new Feedback();
         $data['judul'] = "Overall Summary";
@@ -122,6 +137,9 @@ class Dashboard extends Ci_Controller {
     }
 
     function summary() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
 	$s = new Student();
         $data['judul'] = "Search Student";
         $data['main'] = 'summary';
@@ -131,6 +149,9 @@ class Dashboard extends Ci_Controller {
     }
 
     function cFeedback() {
+        if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $data['judul'] = "Create Feedback";
 
         $data['main'] = 'ops/feedback_create';
@@ -181,7 +202,6 @@ class Dashboard extends Ci_Controller {
 
 	$a = new Account();
 	$a->where('id_acc', $this->input->post('id_sales'))->get();
-
         $r->no_invoice = $this->input->post('no_invoice');
         $r->id_sales = $a->id;
         $r->jam_hilang = $this->input->post('jam_hilang');
@@ -193,7 +213,7 @@ class Dashboard extends Ci_Controller {
         $r->save_as_new();
 
         $data['judul'] = "Refund Berhasil Disimpan";
-        $data['main'] = 'ops/refund_create';
+        $data['main'] = 'ops/refund_create_berhasil';
 
         $this->load->vars($data);
         $this->load->view('dashboard');
@@ -229,11 +249,12 @@ class Dashboard extends Ci_Controller {
 
         $u->save();
         $data['judul'] = "Update Berhasil";
-        $data['main'] = 'supervisor/updated';
+        $data['main'] = 'admin/edit_berhasil';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
     }
 
-    
-    function editRefund() {
+        function editRefund() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
@@ -256,8 +277,6 @@ class Dashboard extends Ci_Controller {
         $this->load->view('dashboard');
     }
 
-    
-    
     function showEditRefund($id){
           if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
@@ -272,6 +291,9 @@ class Dashboard extends Ci_Controller {
      }      
      
     function showDeleteRefund() {
+         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $data['judul'] = "Delete Refund";
         $data['main'] = 'ops/refund_delete';
 
@@ -290,10 +312,6 @@ class Dashboard extends Ci_Controller {
       $this->load->view('dashboard');
       }
      */
-
-
-   
-
 
     function ePassword($id) {
         if ($this->session->userdata('role') != 1) {
@@ -321,7 +339,7 @@ class Dashboard extends Ci_Controller {
 
         $u->save();
         $data['judul'] = "Update Berhasil";
-        $data['main'] = 'supervisor/updated';
+        $data['main'] = 'admin/edit_berhasil2';
 
         $this->load->vars($data);
         $this->load->view('dashboard');
@@ -334,11 +352,16 @@ class Dashboard extends Ci_Controller {
  
         $u = new Account();
         $u->where('id_acc', $this->input->post('id_acc'))->get();
-
+        
+        if($this->session->userdata('id') == $u->id_acc) {
+            $data['judul'] = "Delete Gagal";
+            $data['main'] = 'supervisor/updated';
+        }
+        else {
          $u->delete();
-        $data['judul'] = "Update Berhasil";
+        $data['judul'] = "Delete Berhasil";
         $data['main'] = 'supervisor/updated';
-
+        }
         $this->load->vars($data);
         $this->load->view('dashboard');
         
@@ -358,40 +381,8 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-
-    function edit($id = 0) {
-        if ($this->session->userdata('role') != 1) {
-            redirect('dashboard', 'refresh');
-        }
-        $this->load->library('encrypt');
-        $u = new Account();
-        $u->id_acc = $this->input->post('id_acc');
-        $u->password = $this->input->post('password');
-
-        $u->email = $this->input->post('email');
-        $u->nama = $this->input->post('nama');
-        $u->no_telp = $this->input->post('no_telp');
-        $u->role = $this->input->post('role');
-        if ($u->updateAccount) {
-
-            $this->session->set_flashdata('message', 'User updated');
-
-            redirect('dashboard/users', 'refresh');
-        } else {
-            $data['judul'] = "Create User";
-            $data['main'] = 'admin/user_create';
-            $this->load->vars($data);
-            $this->load->view('dashboard');
-        }
-    }
-
-    function delete($id) {
-        $this->madmins->deleteUser($id);
-        $this->session->set_flashdata('message', 'User deleted');
-        redirect('dashboard/users', 'refresh');
-    }
-
-    function logout() {
+   
+       function logout() {
         $sesi_items = array('role' => '');
         $this->session->unset_userdata($sesi_items);
         $this->session->set_flashdata('error', "You've been logged out!");
@@ -399,6 +390,9 @@ class Dashboard extends Ci_Controller {
     }
 
     function performance() {
+         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
         $t = new Target();
 	$a = new Target();
 	$k = $a->ambilPerforma($this->session->userdata('id'));
@@ -416,24 +410,6 @@ class Dashboard extends Ci_Controller {
 	
         $this->load->vars($data);
         $this->load->view('dashboard');
-    }
-
-    function efeedbacks() {    
-        $this->load->helper('download');
-
-        $u = new Feedback();
-        // load all users
-        $feedbacks = $u->getAllFeedbacks();
-        // Output $u->all to /tmp/output.csv, using all database fields.
-        $path = "assets/exports/";
-        $filename = 'feedback_' . date("Ymd_His") . '.csv';
-        $feedbacks->csv_export($path . $filename);
-        $data = file_get_contents($path . $filename); // Read the file's contents
-        force_download($filename, $data);
-
-    }
-
-    
-
+    }  
 }
 ?>

@@ -81,13 +81,8 @@ class Refund extends Ci_Controller {
 
         $r = new Refund();
         
-
-        //$r->id_murid = $this->input->post('id_murid');
-       //$r->id_guru = $this->input->post('id_guru');
         $r->tanggal = $this->input->post('tanggal');
         $r->no_invoice = $this->input->post('no_invoice');
-        //$r->id_kelas = $this->input->post('id_kelas');
-        //$r->hargaPerJam = $this->input->post('hargaPerJam');
         $r->jam_hilang = $this->input->post('jam_hilang');
         $r->alasan = $this->input->post('alasan');
         $r->action = $this->input->post('action');

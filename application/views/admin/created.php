@@ -1,6 +1,5 @@
 <div id="konten">
-    <p>Pembuatan Account Berhasil</p>
-    <br>
-    <p><?php echo anchor('dashboard/Users', 'back'); ?></p>
+    Pembuatan account berhasil<br/>
+    
+    <a href="<?php echo base_url(); ?>index.php/dashboard/users" > <button type="submit" class="btn btn-danger">Kembali</button> </a>
 </div>
-

@@ -14,16 +14,6 @@ class Account extends DataMapper {
 			)
     );*/
     
-    	var $has_many = array(
-			'created_target' => array(
-					'class' => 'target',
-					'other_field' => 'creator'
-			),
-			'assigned_target' => array(
-					'class' => 'target',
-					'other_field' => 'assigner'
-			)
-	);
 /*
     var $validation = array(
         'id_acc' => array(

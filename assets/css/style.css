@@ -23,6 +23,20 @@ body {
     font-family: 'Abril Fatface', cursive;
 }
 
+#show{
+        padding: 5px 5px 5px 5px;
+    font-size: 14px;
+}
+
+#showNo{
+        padding: 5px 5px 5px 5px;
+    font-size: 14px;
+}
+
+#label-recurring{
+    padding: 5px 5px 5px 5px;
+    font-size: 14px;
+}
 #labelToday{
     padding: 5px 5px 5px 5px;
     font-size: 12px;
