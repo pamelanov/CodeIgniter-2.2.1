@@ -142,7 +142,9 @@ class Summary extends Ci_Controller {
         $s->where('id', $id)->get();
         
         $c = new Course();
-        $c->where('id_murid', $s->id)->get();
+        $c->where('id_murid', $s->id);
+        $c->where('status', "active");
+        $c->get();
         
         $data['judul'] = "Tambah Recurring";
     	$data['main'] = 'ops/tambah_recurring';
@@ -168,6 +170,11 @@ class Summary extends Ci_Controller {
         
         if ((!empty($this->input->post('alasan'))) && (empty($this->input->post('periode-awal'))) && (empty($this->input->post('periode-akhir'))) && (empty($this->input->post('jumlah-jam')))){   
             $n = new Not_recurring();
+            $c = new Course();
+            $id_kelas = $r->id_kelas;
+            $c->where('id', $id_kelas)->get();
+            $c->status = "inactive";
+            $c->save();
             
             $n->id_rec_status = $a->id;
             $n->alasan = $this->input->post('alasan');

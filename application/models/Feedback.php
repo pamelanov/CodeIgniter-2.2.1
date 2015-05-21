@@ -139,7 +139,7 @@ class Feedback extends DataMapper {
 	$a->where('id', $z->id_sales)->get();
 	$t->where('id', $z->id_guru)->get();
 	$s->where('id', $z->id_murid)->get();
-	
+
 	$z->id_sales = $a->id_acc;
 	$z->id_guru = $t->id_guru;
 	$z->id_murid = $s->id_murid;
@@ -191,11 +191,19 @@ class Feedback extends DataMapper {
     function hasilSearch() {
         $o = new Feedback();
         $o->where('id', $this->id);
-        //$o->where('id_guru', $this->id_guru);
         $o->get();
-        $this->salt = $o->salt;
-
+	
+	$s = new Student();
+	$t = new Teacher();
+	$s->where('id', $o->id_murid)->get();
+	$t->where('id', $o->id_guru)->get();
+	
+	$o->id_murid = $s->id_murid;
+	$o->id_guru = $t->id_guru;
+	
         return $o;
+
+	
     }
     
     function getCounts(){
@@ -203,6 +211,12 @@ class Feedback extends DataMapper {
 	$f->count();
 	$f->group_by('id_sales');
 	$f->get();
+	
+	$a = new Account();
+	foreach($f as $x){
+		$a->where('id', $x->id_sales)->get();
+		$x->id_acc = $a->id_acc;
+	}
 	
 	return $f;
     }
