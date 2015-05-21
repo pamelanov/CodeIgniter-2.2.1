@@ -38,7 +38,7 @@
         echo "</div></div>";
     }
 
-    if (count($semua_ops)) {
+    if (!empty($semua_ops)) {
         echo '<div class="col-md-4">';
              echo '<div class="panel panel-primary">
                         <div class="panel-heading">
@@ -60,10 +60,10 @@
             echo "</tr>\n";
         }
         echo "</table>	";
-        echo "</div>";
+        echo "</div>" ;
     }
     ?>
-        <p><?php // echo anchor("download/download_Ofeedbacks/" . $tanggal_awal . "/" . $tanggal_akhir, "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
+        <p><?php echo anchor("download/download_Sfeedbacks/" . $tanggal_awal . "/" . $tanggal_akhir . "/" . $id_sales, "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
 
 
 </div>	

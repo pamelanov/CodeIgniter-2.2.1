@@ -139,7 +139,7 @@ class feedbackCtrl extends Ci_Controller {
 	$data['main'] = 'supervisor/feedback_sum';
 	$data['tanggal_awal'] = $f->tanggal_awal;
 	$data['tanggal_akhir'] = $f->tanggal_akhir;
-	
+	$data['id_sales'] = $f->id_sales;
 	if($f->id_sales == 'semua') {
 		$data['feedbacks'] = $f->hasilSearch1();
 		$data['semua_ops'] = $e->getCounts();
