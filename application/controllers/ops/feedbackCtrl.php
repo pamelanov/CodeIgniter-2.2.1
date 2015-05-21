@@ -128,6 +128,21 @@ class feedbackCtrl extends Ci_Controller {
 
     }
     
+    function oFeedbackSummary(){
+        $f = new Feedback();
+        $u = new Account();
+        
+        $u->where('id_acc', $this->session->userdata('id'))->get();
+        $f->where('id_sales', $u->id)->get();
+        
+        $data['judul'] = "Rangkuman Feedback";
+	$data['main'] = 'ops/feedback_sum';
+        $data['feedback'] = $f;
+        $this->load->vars($data);
+    	$this->load->view('dashboard');
+        
+    }
+            
     function searchPeriode(){
 	$f = new Feedback();
 	$e = new Feedback();

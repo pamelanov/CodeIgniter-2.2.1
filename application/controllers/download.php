@@ -143,12 +143,31 @@ class Download extends Ci_Controller {
         $f->id_sales = $id_sales;
         if ($f->id_sales == 'semua') {
             $feedbacks = $f->hasilSearch1();
-           
         } else {
             if ($f->findFeedbackSum()) {
                 $feedbacks = $f->ambilFeedbackSum();
             }
         }
+
+
+        // Output $u->all to /tmp/output.csv, using all database fields.
+        $path = "assets/exports/";
+        $filename = 'feedback_' . date("Ymd_His") . '.csv';
+        $feedbacks->csv_export($path . $filename);
+        $data = file_get_contents($path . $filename); // Read the file's contents
+        force_download($filename, $data);
+    }
+
+    function download_OPfeedbacks() {
+        $this->load->helper('download');
+
+        $f = new Feedback();
+
+
+        $f->id_sales = $this->session->userdata('id');
+
+        $feedbacks = $f->hasilSearch2();
+
 
 
         // Output $u->all to /tmp/output.csv, using all database fields.

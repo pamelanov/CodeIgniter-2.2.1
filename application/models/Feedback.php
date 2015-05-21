@@ -80,7 +80,7 @@ class Feedback extends DataMapper {
 
         $f = new Feedback();
         $f->where_between('tanggal', "'" . $this->tanggal_awal . "'", "'" . $this->tanggal_akhir . "'");
-        
+
         $f->get();
         if (empty($f)) {
             return FALSE;
@@ -88,9 +88,9 @@ class Feedback extends DataMapper {
             return TRUE;
         }
     }
-    
-    function findFeedbackSum(){
-	$f = new Feedback();
+
+    function findFeedbackSum() {
+        $f = new Feedback();
         $f->where_between('tanggal', "'" . $this->tanggal_awal . "'", "'" . $this->tanggal_akhir . "'");
         $f->where('id_sales', $this->id_sales);
         $f->get();
@@ -100,52 +100,76 @@ class Feedback extends DataMapper {
             return TRUE;
         }
     }
-    
-    function ambilFeedbackSum(){
-	$f = new Feedback();
-	$a = new Account();
-	$t = new Teacher();
-	$s = new Student();
+
+    function ambilFeedbackSum() {
+        $f = new Feedback();
+        $a = new Account();
+        $t = new Teacher();
+        $s = new Student();
         $f->where_between('tanggal', "'" . $this->tanggal_awal . "'", "'" . $this->tanggal_akhir . "'");
         $f->where('id_sales', $this->id_sales);
         $f->get();
-	
-	foreach($f as $z) {
-	$a->where('id', $z->id_sales)->get();
-	$t->where('id', $z->id_guru)->get();
-	$s->where('id', $z->id_murid)->get();
-	
-	$z->id_sales = $a->id_acc;
-	$z->id_guru = $t->id_guru;
-	$z->id_murid = $s->id_murid;
-	}
-	
-	
-	return $f;
+
+        foreach ($f as $z) {
+            $a->where('id', $z->id_sales)->get();
+            $t->where('id', $z->id_guru)->get();
+            $s->where('id', $z->id_murid)->get();
+
+            $z->id_sales = $a->id_acc;
+            $z->id_guru = $t->id_guru;
+            $z->id_murid = $s->id_murid;
+        }
+
+
+        return $f;
     }
 
     function hasilSearch1() {
 
 
         $f = new Feedback();
-	$a = new Account();
-	$t = new Teacher();
-	$s = new Student();
-	
+        $a = new Account();
+        $t = new Teacher();
+        $s = new Student();
+
         $f->where_between('tanggal', "'" . $this->tanggal_awal . "'", "'" . $this->tanggal_akhir . "'");
         $f->get();
-	
-	foreach($f as $z) {
-	$a->where('id', $z->id_sales)->get();
-	$t->where('id', $z->id_guru)->get();
-	$s->where('id', $z->id_murid)->get();
 
-	$z->id_sales = $a->id_acc;
-	$z->id_guru = $t->id_guru;
-	$z->id_murid = $s->id_murid;
-	}
+        foreach ($f as $z) {
+            $a->where('id', $z->id_sales)->get();
+            $t->where('id', $z->id_guru)->get();
+            $s->where('id', $z->id_murid)->get();
+
+            $z->id_sales = $a->id_acc;
+            $z->id_guru = $t->id_guru;
+            $z->id_murid = $s->id_murid;
+        }
 
         return $f;
+    }
+
+    function hasilSearch2() {
+
+
+        $f = new Feedback();
+        $a = new Account();
+
+        $t = new Teacher();
+        $s = new Student();
+        $f->where('id_sales', $this->id_sales);
+        $f->get();
+
+        foreach ($f as $z) {
+            $a->where('id', $z->id_sales)->get();
+            $t->where('id', $z->id_guru)->get();
+            $s->where('id', $z->id_murid)->get();
+
+            $z->id_sales = $a->id_acc;
+            $z->id_guru = $t->id_guru;
+            $z->id_murid = $s->id_murid;
+
+            return $f;
+        }
     }
 
     function getAllFeedbacks() {
@@ -192,33 +216,31 @@ class Feedback extends DataMapper {
         $o = new Feedback();
         $o->where('id', $this->id);
         $o->get();
-	
-	$s = new Student();
-	$t = new Teacher();
-	$s->where('id', $o->id_murid)->get();
-	$t->where('id', $o->id_guru)->get();
-	
-	$o->id_murid = $s->id_murid;
-	$o->id_guru = $t->id_guru;
-	
-        return $o;
 
-	
+        $s = new Student();
+        $t = new Teacher();
+        $s->where('id', $o->id_murid)->get();
+        $t->where('id', $o->id_guru)->get();
+
+        $o->id_murid = $s->id_murid;
+        $o->id_guru = $t->id_guru;
+
+        return $o;
     }
-    
-    function getCounts(){
-	$f = new Feedback();
-	$f->count();
-	$f->group_by('id_sales');
-	$f->get();
-	
-	$a = new Account();
-	foreach($f as $x){
-		$a->where('id', $x->id_sales)->get();
-		$x->id_acc = $a->id_acc;
-	}
-	
-	return $f;
+
+    function getCounts() {
+        $f = new Feedback();
+        $f->count();
+        $f->group_by('id_sales');
+        $f->get();
+
+        $a = new Account();
+        foreach ($f as $x) {
+            $a->where('id', $x->id_sales)->get();
+            $x->id_acc = $a->id_acc;
+        }
+
+        return $f;
     }
 
 }
