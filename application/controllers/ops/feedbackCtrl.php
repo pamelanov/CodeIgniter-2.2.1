@@ -55,7 +55,7 @@ class feedbackCtrl extends Ci_Controller {
   
   	if ($u->findFeedback()) {
   
-  		$data['judul'] = "Isi Feedback";
+  		$data['judul'] = "Baca Feedback";
   		$data['main'] = 'ops/readFeedback';
   		$data['feedback'] = $u->hasilSearch();
   		$this->load->vars($data);

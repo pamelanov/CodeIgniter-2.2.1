@@ -9,8 +9,7 @@
  <div class='form-group'>
  
  <div class='form-group'>
- <label for='jam'>ID Feedback</label>
- <input type='text' class='form-control' name='id' value='<?php echo  $feedback->id;  ?>' placeholder='ID'>
+ <input type='hidden' class='form-control' name='id' value='<?php echo  $feedback->id;  ?>' placeholder='ID' required>
  </div>
  
  <div class='form-group'>
@@ -28,5 +27,4 @@
  </div>
  </form>
  
- <a href="<?php echo base_url(); ?>index.php/dashboard/feedbackSummary" > Halaman sebelumnya</a>
  

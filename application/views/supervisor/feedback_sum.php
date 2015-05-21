@@ -25,7 +25,8 @@
                 echo "<td>" . $list->tanggal . "</td>\n";
                 echo "<td>" . $list->id_murid . "</td>\n";
                 echo "<td>" . $list->id_guru . "</td>\n";
-                echo "<td> Lihat | Ubah </td>\n";
+                echo "<td>" . anchor('ops/feedbackCtrl/readFeedback/'.$list->id , 'Lihat') .
+                        " | " . anchor('ops/feedbackCtrl/formUpdateFeedback/'.$list->id, 'Ubah') ."</td>\n";
 
 
 
