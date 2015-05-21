@@ -137,28 +137,50 @@ class Summary extends Ci_Controller {
     
     }
     
+    function showRecurring($id){
+        $s = new Student();
+        $s->where('id', $id)->get();
+        
+        $c = new Course();
+        $c->where('id_murid', $s->id)->get();
+        
+        $data['judul'] = "Tambah Recurring";
+    	$data['main'] = 'ops/tambah_recurring';
+    	$data['murid'] = $s;
+        $data['courses'] = $c;
+
+    	$this->load->vars($data);
+    	$this->load->view('dashboard');
+    }
+    
     function recurring(){
         $r = new Recurring_status();
         $r->id_kelas = $this->input->post('idKelas');
         $r->tanggal = $this->input->post('tanggal');
-        $r->id_sales = $this->input->post('idSales');
+        $a = new Account();
+        $a->where('id_acc', $this->input->post('idSales'))->get();
+        $r->id_sales = $a->id;
         $r->save_as_new();
         
         $a = new Recurring_status();
         $a->select_max('id');
         $a->get();
         
-        if (!empty($this->input->post('alasan'))){   
+        if ((!empty($this->input->post('alasan'))) && (empty($this->input->post('periode-awal'))) && (empty($this->input->post('periode-akhir'))) && (empty($this->input->post('jumlah-jam')))){   
             $n = new Not_recurring();
             
             $n->id_rec_status = $a->id;
             $n->alasan = $this->input->post('alasan');
             $n->save_as_new();
             
-            echo "not recurring berhasil";
+            $data['judul'] = "Pembuatan Recurring Berhasil";
+    	    $data['main'] = 'ops/recurring_berhasil';
+            $this->load->vars($data);
+            $this->load->view('dashboard');
+    
         }
         
-        else{
+        else if(empty($this->input->post('alasan')) && (!empty($this->input->post('periode-awal'))) && (!empty($this->input->post('periode-akhir'))) && (!empty($this->input->post('jumlah-jam')))){
             $e = new Recurring();
             
             $e->id_rec_status = $a->id;
@@ -167,8 +189,19 @@ class Summary extends Ci_Controller {
             $e->jumlah_jam = $this->input->post('jumlah-jam');
             $e->save_as_new();
             
-            echo "recurring berhasil";
+            $data['judul'] = "Pembuatan Recurring Berhasil";
+    	    $data['main'] = 'ops/recurring_berhasil';
+            $this->load->vars($data);
+            $this->load->view('dashboard');
+        }
+        
+        else {
+            $data['judul'] = "Pembuatan Recurring Tidak Berhasil";
+    	    $data['main'] = 'ops/recurring_tdk_berhasil';
+            $this->load->vars($data);
+            $this->load->view('dashboard');
         }
         
     }
+    
 }

@@ -9,7 +9,7 @@
                             '<div class="form-group"> ' +
                                 '<label class="col-md-4 control-label" for="name">ID Kelas</label> ' +
                                     '<div class="col-md-4"> ' +
-                                        '<select class="form-control" name="id_sales" placeholder="ID Kelas">' +
+                                        '<select class="form-control" name="id_kelas" placeholder="ID Kelas">' +
                                         '<?php foreach ($courses as $c) { ?>' +
                                          '<option>' +
                                          '<?php  echo $c->id_kelas; ?>' +
@@ -18,6 +18,12 @@
                                     '</select>' +
                                     '</div> ' +
                             '</div> ' +
+                            '<div class="form-group"> ' +
+                                '<label class="col-md-4 control-label" for="ID Sales">ID Sales </label>' +
+                                    '<div class="col-md-4"> ' +
+                                        "<input type='text' class='form-control' name='id_sales' value='<?php echo $this->session->userdata('id') ?>'>" +
+                                    '</div>' +
+                            '</div>' +
                             '<div class="form-group"> ' +
                                 '<label class="col-md-4 control-label" for="tanggal">Tanggal Pengisian </label>' +
                                     '<div class="col-md-4"> ' +
@@ -81,7 +87,7 @@
                         label: "Simpan",
                         className: "btn-success",
                         callback: function () {
-                            window.location.href = "<?php echo base_url(); ?>index.php/ops/summary/";
+                            window.location.href = "<?php echo base_url(); ?>index.php/ops/summary/tambahRecurringYa";
                         }
                     }
                 }
@@ -109,9 +115,7 @@
                         label: "Simpan",
                         className: "btn-success",
                         callback: function () {
-                            var name = $('#name').val();
-                            var answer = $("input[name='awesomeness']:checked").val()
-                            Example.show("Hello " + name + ". You've chosen <b>" + answer + "</b>");
+                            window.location.href = "<?php echo base_url(); ?>index.php/ops/summary/tambahRecurringTidak";
                         }
                     }
                 }
@@ -194,7 +198,7 @@ if ((!empty($students)) && (!empty($students2))) {
         echo "</table>";
         echo "</div>";
         // echo "<a href='" . base_url() . "index.php/ops/summary/recurring(" . $student->id .  ")' >
-        echo "<a class='recurring' href=#>
+        echo "<a href='" . base_url() . "index.php/ops/summary/showRecurring/" . $murid->id .  "' >
         <button class='btn btn-primary'>
             <span class='glyphicon glyphicon-plus-sign' aria-hidden='true'></span> Recurring Status
         </button>

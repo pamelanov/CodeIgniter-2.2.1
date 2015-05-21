@@ -23,7 +23,23 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
             $(document).ready(function() {
                 $(".js-example-basic-single").select2();
             });
+            
+            
+$(document).ready(function(){
+    $("#show").click(function(){
+        $("#recurring").show();
+        $("#showNo").hide();
+    });
+     $("#showNo").click(function(){
+        $("#recurringNo").show();
+        $("#show").hide();
+
+    });
+});
+
         </script>
+        
+        
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -110,11 +126,6 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
         <div id="konten">
         
         <?php $this->load->view($main); ?>
-
-        
- 
-
-
 
         </div>
         

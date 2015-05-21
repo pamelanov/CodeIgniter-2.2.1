@@ -39,7 +39,8 @@ function myFunction() {
         
         <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-8">
-        <form name='update_status' action='<?php echo base_url();?>index.php/ops/create/createStatus' method='post' onsubmit='return confirm("Apakah Anda yakin ingin menambahkan status?")'>
+        <form name='update_status' action='<?php echo base_url();?>index.php/ops/create/createStatus' method='post'
+                                                 onsubmit='return confirm("Apakah Anda yakin ingin menambahkan status?")'>
         <?php
         
         
