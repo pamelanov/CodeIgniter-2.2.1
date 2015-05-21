@@ -355,12 +355,12 @@ if ($this->session->userdata('role') != 2 && $this->session->userdata('role') !=
         
         if($this->session->userdata('id') == $u->id_acc) {
             $data['judul'] = "Delete Gagal";
-            $data['main'] = 'supervisor/updated';
+            $data['main'] = 'admin/delete_gagal';
         }
         else {
          $u->delete();
         $data['judul'] = "Delete Berhasil";
-        $data['main'] = 'supervisor/updated';
+        $data['main'] = 'admin/delete_berhasil';
         }
         $this->load->vars($data);
         $this->load->view('dashboard');
