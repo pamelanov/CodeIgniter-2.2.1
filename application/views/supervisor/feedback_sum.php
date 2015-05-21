@@ -60,11 +60,15 @@
             echo "</tr>\n";
         }
         echo "</table>	";
+<<<<<<< HEAD
         echo "</div>";
         
+=======
+        echo "</div></div></div>" ;
+>>>>>>> master-yang-ini
     }
     ?>
-        <p><?php // echo anchor("download/download_Ofeedbacks/" . $tanggal_awal . "/" . $tanggal_akhir, "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
+        <p><?php echo anchor("download/download_Sfeedbacks/" . $tanggal_awal . "/" . $tanggal_akhir . "/" . $id_sales, "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
 
 
 </div>	
