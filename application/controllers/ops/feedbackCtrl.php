@@ -125,34 +125,6 @@ class feedbackCtrl extends Ci_Controller {
 		$this->load->vars($data);
 		$this->load->view('dashboard');
 	}
-	
-	else if ($this->session->userdata('role') == 2) {
-		$data['judul'] = "Rangkuman Feedback";
-		$data['main'] = 'ops/feedback_summary';
-		$data['feedbacks'] = $r->getAllFeedbacks();
-		$this->load->vars($data);
-		$this->load->view('dashboard');
-	}
-	
-	else {
-		redirect('template/login', 'refresh');
-	}
-	/*
-    	$r = new Feedback();
-    	$f = new Feedback();
-    	$jumlahFeedback = 0;
-    	 
-    	$f->group_by('id_sales');
-    	$f->get();
-    	$data['feedback1'] = $f;
-    	
-    	$data['judul'] = "Feedback Summary";
-    	$data['main'] = 'feedbackSummary';
-    	$data['feedback'] = $r->getAllFeedbacks();
-    	*.
-    	$this->load->vars($data);
-    	$this->load->view('dashboard');
-	*/
 
     }
     
