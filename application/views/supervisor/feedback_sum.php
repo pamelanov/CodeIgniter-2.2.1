@@ -60,7 +60,7 @@
             echo "</tr>\n";
         }
         echo "</table>	";
-        echo "</div>" ;
+        echo "</div></div></div>" ;
     }
     ?>
         <p><?php echo anchor("download/download_Sfeedbacks/" . $tanggal_awal . "/" . $tanggal_akhir . "/" . $id_sales, "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
