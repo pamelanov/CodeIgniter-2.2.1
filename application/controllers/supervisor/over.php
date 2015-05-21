@@ -32,14 +32,14 @@ class Over extends Ci_Controller {
     }
 
     function findOverall() {
-        
+
         if ($this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
         $f = new Feedback();
         $f->tanggal_awal = $this->input->post('tanggal-awal');
         $f->tanggal_akhir = $this->input->post('tanggal-akhir');
-        
+
         $r = new Refund();
         $r->tanggal_awal = $this->input->post('tanggal-awal');
         $r->tanggal_akhir = $this->input->post('tanggal-akhir');
@@ -48,9 +48,11 @@ class Over extends Ci_Controller {
             $data['main'] = 'supervisor/overall_home_1';
             $data['tanggal_awal'] = $r->tanggal_awal;
             $data['tanggal_akhir'] = $r->tanggal_akhir;
+            $data['tanggal_awal'] = $f->tanggal_awal;
+            $data['tanggal_akhir'] = $f->tanggal_akhir;
             $data['feedback'] = $f->hasilSearch1();
             $data['refund'] = $r->ambilRefundSum();
-            
+
             $this->load->vars($data);
             $this->load->view('dashboard');
         } else {

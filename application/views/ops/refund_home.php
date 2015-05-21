@@ -52,4 +52,4 @@ if (count($admins)) {
     echo "</div>";
 }
 ?>
-    <p><?php echo anchor("download/download_refunds", "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
+    <p><?php echo anchor("download/download_Orefunds", "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>

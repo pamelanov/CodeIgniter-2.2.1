@@ -16,19 +16,19 @@ class Refund_controller extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
-    
-     function searchPeriode(){
-	$f = new Refund();
+
+    function searchPeriode() {
+        $f = new Refund();
         $f->tanggal_awal = $this->input->post('tanggal-awal');
         $f->tanggal_akhir = $this->input->post('tanggal-akhir');
-            
-	$data['refunds'] = $f->ambilRefundSum();
+
+        $data['refund'] = $f->ambilRefundSum();
+        $data['tanggal_awal'] = $f->tanggal_awal;
+        $data['tanggal_akhir'] = $f->tanggal_akhir;
         $data['judul'] = "Rangkuman Refund";
-	$data['main'] = 'ops/refund_sum';    
-	$this->load->vars($data);
-    	$this->load->view('dashboard');
-        
+        $data['main'] = 'ops/refund_sum';
+        $this->load->vars($data);
+        $this->load->view('dashboard');
     }
 
-    
 }
