@@ -43,15 +43,19 @@ class Over extends Ci_Controller {
         $r = new Refund();
         $r->tanggal_awal = $this->input->post('tanggal-awal');
         $r->tanggal_akhir = $this->input->post('tanggal-akhir');
-        if ($f->findOverall() || $r->findOverall()) {
+        
+        $e = new Recurring_status();
+        $e->tanggal_awal = $this->input->post('tanggal-awal');
+        $e->tanggal_akhir = $this->input->post('tanggal-akhir');
+        
+        if ($f->findOverall() || $r->findOverall() || $e->findOverall()) {
             $data['judul'] = "Hasil Pencarian";
             $data['main'] = 'supervisor/overall_home_1';
             $data['tanggal_awal'] = $r->tanggal_awal;
             $data['tanggal_akhir'] = $r->tanggal_akhir;
-            $data['tanggal_awal'] = $f->tanggal_awal;
-            $data['tanggal_akhir'] = $f->tanggal_akhir;
             $data['feedback'] = $f->hasilSearch1();
             $data['refund'] = $r->ambilRefundSum();
+            $data['recurrings'] = $e->ambilRecurringSum();
 
             $this->load->vars($data);
             $this->load->view('dashboard');
