@@ -1,6 +1,6 @@
 <?php
 class Invoice extends DataMapper {
-
+/*
 	var $has_many = array(
 			'assigned_end_number' => array(
 					'class' => 'end_number',
@@ -18,6 +18,7 @@ class Invoice extends DataMapper {
 					'other_field' => 'created_invoice'
 			)
 	);
+	*/
 	// Optionally, don't include a constructor if you don't need one.
 	function __construct($id = NULL)
 	{

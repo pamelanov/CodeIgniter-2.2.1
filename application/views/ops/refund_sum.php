@@ -18,7 +18,8 @@ if (count($refund)){
 		<th><center>Jam Hilang</center></th>
 		<th><center>Alasan</center></th>
 		<th><center>Action</center></th>
-		<th><center>Selisih</center></th>\n";
+		<th><center>Selisih</center></th>
+		<th><center>Ubah/Hapus</center></th>\n";
 	echo "</tr>\n";
 	
 	foreach ($refund as $list){
@@ -30,6 +31,8 @@ if (count($refund)){
 		echo "<td>".$list->alasan."</td>\n";
 		echo "<td>".$list->action."</td>\n";
 		echo "<td>".$list->selisih."</td>\n";
+		echo "<td>" . anchor('ops/refund_controller/showChangeRefund/'.$list->id , 'Ubah') .
+                        " | " . anchor('ops/refund_controller/deleteRefund/'.$list->id, 'Hapus') ."</td>\n";
 		echo "</td>\n";
 		echo "</tr>\n";
 	}

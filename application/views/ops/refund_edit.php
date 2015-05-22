@@ -1,8 +1,9 @@
 <h1><?php echo $judul; ?></h1>
 
-<form name='update_refund' action='<?php echo base_url(); ?>index.php/dashboard/editRefund' method='post' onsubmit='return confirm("Apakah Anda yakin ingin mengubah informasi refund?")'>
+<form name='update_refund' action='<?php echo base_url(); ?>index.php/ops/refund_controller/changeRefund' method='post' onsubmit='return confirm("Apakah Anda yakin ingin mengubah informasi refund?")'>
     <div id ="konten">
-
+    <div class="row">
+        <div class="col-md-6">
          <div class="form-group">
                 <label for="no_invoice">No. Invoice</label>
                 <input type="text" class="form-control" name="no_invoice" value="<?php echo $refunds->no_invoice ?>" >
@@ -19,6 +20,8 @@
                 <label for="tanggal">Tanggal</label>
                 <input type="date" class="form-control" name="tanggal" value="<?php echo $refunds->tanggal ?>">
             </div>
+        </div><!-- nutup col-md-6 -->
+        <div class="col-md-6">
             <div class="form-group">
                 <label for="action">Action</label>
                 <input type="text" class="form-control" name="action" value="<?php echo $refunds->action ?>">
@@ -32,7 +35,8 @@
                 <label for="alasan">Alasan</label>
                 <input type="text" class="form-control" name="alasan" value="<?php echo $refunds->alasan ?>">
             </div>
-
+        </div><!-- nutup col-md-6 -->
+    </div>
     <button type="submit" class="btn btn-danger">Edit Refund</button>
     </div>
 </form>
