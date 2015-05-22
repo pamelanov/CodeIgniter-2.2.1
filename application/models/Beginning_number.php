@@ -71,12 +71,35 @@ class Beginning_number extends DataMapper {
 		$b->where('tanggal', date("Y-m-d"))->get();
 		
 		$s = new Student();
-		
+		$a = new Account();
 		
 		foreach ($b as $c) {
+			$a->where('id', $c->id_sales)->get();
 			$s->where('id', $c->id_murid)->get();
 			$c->id_murid = $s->id_murid;
 			$c->nama_murid = $s->nama;
+			$c->id_sales = $a->id_acc;
+		}
+		
+		
+		return $b;
+	}
+	
+	function forTodaySumFilter($id_sales){
+		$b = new Beginning_number();
+		$b->where('tanggal', date("Y-m-d"));
+		$b->where('id_sales', $id_sales);
+		$b->get();
+		
+		$s = new Student();
+		$a = new Account();
+		
+		foreach ($b as $c) {
+			$a->where('id', $c->id_sales)->get();
+			$s->where('id', $c->id_murid)->get();
+			$c->id_murid = $s->id_murid;
+			$c->nama_murid = $s->nama;
+			$c->id_sales = $a->id_acc;
 		}
 		
 		

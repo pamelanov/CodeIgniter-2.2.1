@@ -65,40 +65,55 @@ class End_number extends DataMapper {
 	
 	function forTodaySum(){
 		$b = new End_number();
-		$b->where('tanggal', date("Y-m-d"));
-		$b->get();
+		$b->where('tanggal', date("Y-m-d"))->get();
+		
 		
 		$i = new Invoice();
-		$i->get();
+		$c = new Course();
+		$s = new Student();
+		$a = new Account();
 		
 		foreach ($b as $e) {
-			foreach($i as $j) {
-				if ($e->id_invoice = $j->id) {
-					$e->id_invoice = $j->id_kelas;
-				}
-			}
-		}
+			$i->where('id', $e->id_invoice)->get();
+			$c->where('id', $i->id_kelas)->get();
+			$s->where('id', $c->id_murid)->get();
+			$a->where('id', $e->id_sales)->get();
 			
-		$c = new Course();
-		$c->get();
-		
-		foreach($b as $x) {
-			foreach ($c as $y) {
-				if ($x->id_invoice = $y->id) {
-					$x->id_invoice = $y->id_murid;
-				}
-			}
+			$e->id_invoice = $i->no_invoice;
+			$e->id_murid = $s->id_murid;
+			$e->nama_murid = $s->nama;
+			$e->id_sales = $a->id_acc;
+				
+			
 		}
 				
-		$s = new Student();
-		$s->get();
+		return $b;
+	}
+	
+	function forTodaySumFilter($id_sales){
+		$b = new End_number();
+		$b->where('tanggal', date("Y-m-d"));
+		$b->where('id_sales', $id_sales);
+		$b->get();
 		
-		foreach($b as $x) {
-			foreach ($s as $y) {
-				if ($x->id_invoice = $y->id) {
-					$x->id_invoice = $y->id_murid;
-				}
-			}
+		
+		$i = new Invoice();
+		$c = new Course();
+		$s = new Student();
+		$a = new Account();
+		
+		foreach ($b as $e) {
+			$i->where('id', $e->id_invoice)->get();
+			$c->where('id', $i->id_kelas)->get();
+			$s->where('id', $c->id_murid)->get();
+			$a->where('id', $e->id_sales)->get();
+			
+			$e->id_invoice = $i->no_invoice;
+			$e->id_murid = $s->id_murid;
+			$e->nama_murid = $s->nama;
+			$e->id_sales = $a->id_acc;
+				
+			
 		}
 				
 		return $b;

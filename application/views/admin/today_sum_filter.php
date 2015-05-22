@@ -16,10 +16,11 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-            <form class="form-inline" action='<?php echo base_url();?>index.php/dashboard/filterTodaySum' method='post'>
+            <form class="navbar-form navbar-right" role="search"
+		  action='<?php echo base_url();?>index.php/admins/filterTodaySum'>
                 <div class="form-group">
                     <label>Filter berdasarkan: </label>
-                    <select class="js-example-basic-single" name="id_ops" id="selectToday">
+                    <select class="js-example-basic-single" name="idMurid" id="selectToday">
                     <?php foreach($ops as $x) {
                         echo "<option value='" . $x->id . "'>" . $x->id_acc . ": " . $x->nama . "</option>";
                         }  

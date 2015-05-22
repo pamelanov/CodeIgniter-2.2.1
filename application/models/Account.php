@@ -81,6 +81,15 @@ class Account extends DataMapper {
 
         return $a;
     }
+    
+    function getAllOpSv() {
+        $a = new Account();
+        $a->where('role', 2);
+        $a->or_where('role', 3);
+        $a->get();
+
+        return $a;
+    }
 
     function updateAccount() {
         $u = new Account();

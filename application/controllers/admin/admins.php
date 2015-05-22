@@ -57,6 +57,21 @@ class User extends Ci_Controller {
 	redirect('admin/admins/index','refresh');
   }
   
+  function filterTodaySum(){
+	$a = new Account();
+	$b = new Beginning_number();
+	$e = new End_number();
+	$s = new Student();
+	$a->where('id', $this->input->post('id'))->get();
+	
+	
+	$data['judul'] = "Dashboard Home";
+	$data['main'] = 'admin/today_sum_filter';
+	$data['statusAwal'] = $b->forTodaySumFilter();
+	$data['statusAkhir'] = $e->forTodaySumFilter();
+	$this->load->vars($data);
+	$this->load->view('admin/dashboard');    
+  }
 }
 
 

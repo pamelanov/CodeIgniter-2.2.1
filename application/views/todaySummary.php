@@ -2,6 +2,7 @@
 
 <p><?php echo anchor("dashboard/todaySummary", "<button type='button' class='btn btn-info'>Today's Summary</button>"); ?></p>
     <div id="konten">
+	<?php echo $statusAkhir; ?>
         <h4>Tanggal hari ini: <span class="label label-primary">
 	<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
 	<?php echo " " . date('d-m-20y') ;?></span></h4>
@@ -11,6 +12,7 @@
 	    <!-- Default panel contents -->
 	    <div class="panel-heading"><center>Today's Summary</center></div>
         <?php
+	
         echo "<table id='tableSum' class='table table-bordered'>\n";
             echo "<tr valign='top'>\n";
                 echo "
@@ -34,7 +36,7 @@
             }
 	    
             foreach ($statusAkhir as $status) {
-			    echo "<td align='center'>" . $status->id_invoice . "</td>\n";
+			    echo "<td align='center'>" . $status->id_murid . ": " . $status->nama_murid . "</td>\n";
 		        echo "<td align='center'>" . $status->no . "</td>\n";    
 		        echo "<td align='center'>" . $status->jam . "</td>\n";
 		        echo "<td align='center'>";

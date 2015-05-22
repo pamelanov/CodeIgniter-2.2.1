@@ -22,18 +22,26 @@ body {
     background-color: white;
     font-family: 'Abril Fatface', cursive;
 }
-
-#searchTodaySum{
-    background-color: #0066CC;
+.panel-heading{
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 
 #tulisanTodaySum{
     color: white;
 }
 
-#selectToday{
-    padding: 5px 5px 5px 5px;
+#buttonToday{
+    padding: 3px 3px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
+
+#nempel{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
 #show{
         padding: 5px 5px 5px 5px;
     font-size: 14px;

@@ -39,9 +39,15 @@ class Dashboard extends Ci_Controller {
 	
 	if($this->session->userdata('role') == 1){
 	    $a = new Account();
+	    $b = new Beginning_number();
+	    $e = new End_number();
+	    $s = new Student();
 	    $data['judul'] = "Dashboard Home";
 	    $data['main'] = 'admin/today_summary';
-	    $data['ops'] = $a->getAllOps();
+	    $data['ops'] = $a->getAllOpSv();
+	    $data['statusAwal'] = $b->forTodaySum();
+	    $data['statusAkhir'] = $e->forTodaySum();
+	    $data['students'] = $s->get();
 	}
 	
 	else if($this->session->userdata('role') == 2){
@@ -74,6 +80,24 @@ class Dashboard extends Ci_Controller {
 	$this->load->library('pagination');
 	*/
     }
+    
+    function filterTodaySum(){
+	$a = new Account();
+	$b = new Beginning_number();
+	
+	$e = new End_number();
+
+	$a->where('id', $this->input->post('id_ops'))->get();
+	$id_sales = $a->id;
+	
+	$data['judul'] = "Dashboard Home";
+	$data['main'] = 'admin/today_sum_filter';
+	$data['statusAwal'] = $b->forTodaySumFilter($id_sales);
+	$data['statusAkhir'] = $e->forTodaySumFilter($id_sales);
+	
+	$this->load->vars($data);
+	$this->load->view('dashboard');    
+    }
 
     function createData() {
            if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
@@ -89,6 +113,8 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
     }
+      
+
     
     function feedbacks() {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
