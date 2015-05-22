@@ -14,7 +14,7 @@ class Account extends DataMapper {
 			)
     );*/
     
-/*
+
     var $validation = array(
         'id_acc' => array(
             'label' => 'id',
@@ -29,7 +29,7 @@ class Account extends DataMapper {
             'rules' => array('required')
         ),
     );
-*/
+
     function login() {
         // Create a temporary user object
         $u = new Account();

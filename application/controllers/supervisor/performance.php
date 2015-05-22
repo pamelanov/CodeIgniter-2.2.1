@@ -166,7 +166,7 @@ class Performance extends Ci_Controller {
         $t = new Target();
         $t->where('id', $id)->get();
         $t->delete();
-        // $t->check_last_query();
+    
         
         $data['judul'] = "Hapus Target";
         $data['main'] = 'supervisor/deleted';

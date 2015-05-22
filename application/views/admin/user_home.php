@@ -15,8 +15,8 @@
         echo "<table class='table table-bordered'>\n";
         echo "<tr valign='top'>\n";
         echo "<th><center>ID</center></th>
+	<th><center>Role</center></th>
         <th><center>Password</center></th>
-        
 	<th><center>Email</center></th>
 	<th><center>Nama</center></th>
 	<th><center>No Tlp</center></th>
@@ -26,7 +26,15 @@
         foreach ($admins as $list) {
             echo "<tr valign='top'>\n";
             echo "<td align='center'>" . $list->id_acc . "</td>\n";
-
+		if ($list->role == 1) {
+			echo "<td align='center'>Admin</td>\n";
+		}
+		else if ($list->role == 2) {
+			echo "<td align='center'>Ops</td>\n";
+		}
+	    	else if ($list->role == 3) {
+			echo "<td align='center'>Supervisor</td>\n";
+		}
             echo "<td align='center'>";
             echo anchor('dashboard/ePassword/' . $list->id, 'edit ');
             echo "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>";
@@ -39,7 +47,9 @@
             echo anchor('dashboard/editUser/' . $list->id, 'edit ');
             echo "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>";
             echo " | ";
-            echo anchor('dashboard/deleteAccount/' . $list->id, 'delete ');
+	    echo anchor("dashboard/deleteAccount/" . $list->id,
+			"Delete",
+			array('onclick' => "return confirm('Apakah Anda yakin ingin menghapus akun ini?')"));
             echo "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span>";
 
             echo "</td>\n";

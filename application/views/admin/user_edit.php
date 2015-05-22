@@ -5,7 +5,7 @@
 <h1><?php echo $judul; ?></h1>
 
 <form name='update_status' action='<?php echo base_url(); ?>index.php/dashboard/editAccount' method='post' onsubmit='return confirm("Apakah Anda yakin ingin mengubah informasi akun?")' >
-    <div id ="konten">
+    <div id ="konten-kecil">
         
         
         <div class="form-group">
@@ -16,7 +16,7 @@
         
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" name="email" placeholder="Masukkan Email"value="<?php echo $user->email?>" >
+            <input type="email" class="form-control" name="email" placeholder="Masukkan Email"value="<?php echo $user->email?>" >
         </div>
         <div class="form-group">
             <label for="nama">Nama</label>

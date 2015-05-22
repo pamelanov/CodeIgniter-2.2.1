@@ -50,17 +50,19 @@ class Dashboard extends Ci_Controller {
 	    $data['students'] = $s->get();
 	}
 	
-	else if($this->session->userdata('role') == 2){
-	    
+	else if($this->session->userdata('role') == 2 || $this->session->userdata('role') == 3){
+	    $id_sales = $this->session->userdata('id');
+	    $a = new Account();
+	    $b = new Beginning_number();
+	    $e = new End_number();
+	    $a->where('id_acc', $id_sales)->get();
 	    $data['judul'] = "Dashboard Home";
 	    $data['main'] = 'ops/today_summary';
+	    $data['statusAwal'] = $b->forTodaySumFilter($a->id);
+	    $data['statusAkhir'] = $e->forTodaySumFilter($a->id);
+	    $data['ops'] = $a;
 	}
 	
-	else if($this->session->userdata('role') == 3){
-	    
-	    $data['judul'] = "Dashboard Home";
-	    $data['main'] = 'supervisor/today_summary';
-	}
 	
 	$this->load->vars($data);
         $this->load->view('dashboard');
@@ -94,6 +96,7 @@ class Dashboard extends Ci_Controller {
 	$data['main'] = 'admin/today_sum_filter';
 	$data['statusAwal'] = $b->forTodaySumFilter($id_sales);
 	$data['statusAkhir'] = $e->forTodaySumFilter($id_sales);
+	$data['ops'] = $a;
 	
 	$this->load->vars($data);
 	$this->load->view('dashboard');    
@@ -224,21 +227,31 @@ if ($this->session->userdata('role') != 2 && $this->session->userdata('role') !=
             redirect('dashboard', 'refresh');
         }
         $u = new Account();
-
+	
+	
         $u->id_acc = $this->input->post('id_acc');
         $u->password = md5($this->input->post('password'));
-
         $u->email = $this->input->post('email');
         $u->nama = $this->input->post('nama');
         $u->no_telp = $this->input->post('no_telp');
         $u->role = $this->input->post('role');
-        $u->save();
-        $data['judul'] = "Create User";
 
-        $data['main'] = 'admin/created';
+
+	$success = $u->save();
+	
+	if ($success) {
+	    $data['judul'] = "Create User";
+	    $data['main'] = 'admin/created';
+	}
+	else{
+	    $data['judul'] = "Create User";
+	    $data['main'] = 'admin/user_failed';
+	}
 
         $this->load->vars($data);
         $this->load->view('dashboard');
+	
+       
     }
 
     function createRefund() {
@@ -290,17 +303,24 @@ if ($this->session->userdata('role') != 2 && $this->session->userdata('role') !=
         $u->where('id_acc', $this->input->post('id_acc'))->get();
 
         $u->password = md5($this->input->post('password'));
-
         $u->email = $this->input->post('email');
         $u->nama = $this->input->post('nama');
         $u->no_telp = $this->input->post('no_telp');
         $u->role = $this->input->post('role');
 
-        $u->save();
-        $data['judul'] = "Update Berhasil";
-        $data['main'] = 'admin/edit_berhasil';
-        $this->load->vars($data);
-        $this->load->view('dashboard');
+        $success = $u->save();
+	if ($success) {
+	    $data['judul'] = "Update Berhasil";
+	    $data['main'] = 'admin/edit_berhasil';
+	    $this->load->vars($data);
+	    $this->load->view('dashboard');
+	}
+	else{
+	    $data['judul'] = "Update Gagal";
+	    $data['main'] = 'admin/edit_gagal';
+	    $this->load->vars($data);
+	    $this->load->view('dashboard');
+	}
     }
 
 
@@ -372,22 +392,28 @@ if ($this->session->userdata('role') != 2 && $this->session->userdata('role') !=
         $this->load->view('dashboard');
     }
 
-    function deleteAccount() {
+    function deleteAccount($id) {
         if ($this->session->userdata('role') != 1) {
             redirect('dashboard', 'refresh');
         }
  
         $u = new Account();
-        $u->where('id_acc', $this->input->post('id_acc'))->get();
+        $u->where('id', $id)->get();
         
         if($this->session->userdata('id') == $u->id_acc) {
             $data['judul'] = "Delete Gagal";
             $data['main'] = 'admin/delete_gagal';
         }
         else {
-         $u->delete();
-        $data['judul'] = "Delete Berhasil";
-        $data['main'] = 'admin/delete_berhasil';
+	    $success = $u->delete();
+		if ($success) {
+		    $data['judul'] = "Delete Berhasil";
+		    $data['main'] = 'admin/delete_berhasil';
+		}
+		else{
+		    $data['judul'] = "Delete Gagal";
+		    $data['main'] = 'admin/delete_gagal';
+		}
         }
         $this->load->vars($data);
         $this->load->view('dashboard');

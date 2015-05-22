@@ -16,19 +16,7 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-            <form class="navbar-form navbar-right" role="search"
-		  action='<?php echo base_url();?>index.php/admins/filterTodaySum'>
-                <div class="form-group">
-                    <label>Filter berdasarkan: </label>
-                    <select class="js-example-basic-single" name="idMurid" id="selectToday">
-                    <?php foreach($ops as $x) {
-                        echo "<option value='" . $x->id . "'>" . $x->id_acc . ": " . $x->nama . "</option>";
-                        }  
-                    ?>
-                    </select>
-                 </div>
-                    <button type="submit" class="btn btn-success" id="buttonToday">Filter</button>
-            </form>
+            <li><?php echo "Operational Sales: " . $ops->id_acc . " (" . $ops->nama . ")"; ?></li>
         </ul>
     </div>
   </div>
@@ -40,8 +28,7 @@
                 echo "
 			<th><center>ID dan Nama Murid</center></th>
 			<th><center>Status</center></th>
-                        <th><center>Jam</center></th>
-                        <th><center>Ops/Supervisor</center></th>"; 
+                        <th><center>Jam</center></th>";
             echo "</tr>\n";
             
             foreach ($statusAwal as $status){
@@ -49,7 +36,6 @@
 		    	echo "<td align='center'>" . $status->id_murid . ": " . $status->nama_murid . "</td>\n";
 	            echo "<td align='center'>" . $status->status . "</td>\n";
 	            echo "<td align='center'>" . $status->jam . "</td>\n";
-                    echo "<td align='center'>" . $status->id_sales . "</td>\n";
 	            echo "</tr>\n";
             }
 	    
@@ -57,7 +43,6 @@
 			    echo "<td align='center'>" . $status->id_murid . ": " . $status->nama_murid . "</td>\n";
 		        echo "<td align='center'>" . $status->no . "</td>\n";    
 		        echo "<td align='center'>" . $status->jam . "</td>\n";
-                        echo "<td align='center'>" . $status->id_sales . "</td>\n";
                         echo "</td>\n";
 		        echo "</tr>\n";
             }
