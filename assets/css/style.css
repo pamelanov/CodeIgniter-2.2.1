@@ -23,6 +23,17 @@ body {
     font-family: 'Abril Fatface', cursive;
 }
 
+#searchTodaySum{
+    background-color: #0066CC;
+}
+
+#tulisanTodaySum{
+    color: white;
+}
+
+#selectToday{
+    padding: 5px 5px 5px 5px;
+}
 #show{
         padding: 5px 5px 5px 5px;
     font-size: 14px;

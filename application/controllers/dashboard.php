@@ -36,6 +36,29 @@ class Dashboard extends Ci_Controller {
         if ($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
+	
+	if($this->session->userdata('role') == 1){
+	    $a = new Account();
+	    $data['judul'] = "Dashboard Home";
+	    $data['main'] = 'admin/today_summary';
+	    $data['ops'] = $a->getAllOps();
+	}
+	
+	else if($this->session->userdata('role') == 2){
+	    
+	    $data['judul'] = "Dashboard Home";
+	    $data['main'] = 'ops/today_summary';
+	}
+	
+	else if($this->session->userdata('role') == 3){
+	    
+	    $data['judul'] = "Dashboard Home";
+	    $data['main'] = 'supervisor/today_summary';
+	}
+	
+	$this->load->vars($data);
+        $this->load->view('dashboard');
+	/*
         $b = new Beginning_number();
         $e = new End_number();
         $s = new Student();
@@ -49,7 +72,7 @@ class Dashboard extends Ci_Controller {
         $this->load->vars($data);
         $this->load->view('dashboard');
 	$this->load->library('pagination');
-
+	*/
     }
 
     function createData() {
