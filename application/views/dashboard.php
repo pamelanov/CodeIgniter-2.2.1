@@ -72,12 +72,9 @@ $(document).ready(function(){
                                 <?php if ($this->session->userdata('role') == 3){ ?>
                                 <li><a href="<?php echo base_url(); ?>index.php/ops/feedbackCtrl/feedbackSummary" id="a-dropdown">Feedback</a></li>
                                 <?php } ?>
-<<<<<<< HEAD
                                 <?php if ($this->session->userdata('role') == 2){ ?>
                                 <li><a href="<?php echo base_url(); ?>index.php/ops/feedbackCtrl/OfeedbackSummary" id="a-dropdown">Feedback</a></li>
                                 <?php } ?>
-=======
->>>>>>> punya-pamela
                             </ul>
                         </li>   
                           

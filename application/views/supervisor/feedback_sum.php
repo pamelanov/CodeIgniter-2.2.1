@@ -61,10 +61,6 @@
         }
         echo "</table>	";
         echo "</div></div></div>" ;
-<<<<<<< HEAD
-=======
-
->>>>>>> punya-pamela
     }
     ?>
         <p><?php echo anchor("download/download_Sfeedbacks/" . $tanggal_awal . "/" . $tanggal_akhir . "/" . $id_sales, "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>

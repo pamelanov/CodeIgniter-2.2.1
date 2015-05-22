@@ -143,10 +143,6 @@ class Download extends Ci_Controller {
         $f->id_sales = $id_sales;
         if ($f->id_sales == 'semua') {
             $feedbacks = $f->hasilSearch1();
-<<<<<<< HEAD
-=======
-           
->>>>>>> punya-pamela
         } else {
             if ($f->findFeedbackSum()) {
                 $feedbacks = $f->ambilFeedbackSum();
@@ -161,7 +157,7 @@ class Download extends Ci_Controller {
         $data = file_get_contents($path . $filename); // Read the file's contents
         force_download($filename, $data);
     }
-<<<<<<< HEAD
+
     
     function downlooad_Orecurring($tanggal_awal, $tanggal_akhir){
         $this->load->helper('download');
@@ -198,8 +194,6 @@ class Download extends Ci_Controller {
         $data = file_get_contents($path . $filename); // Read the file's contents
         force_download($filename, $data);
     }
-=======
->>>>>>> punya-pamela
 
     function download_Orefunds($tanggal_awal, $tanggal_akhir) {
         $this->load->helper('download');
