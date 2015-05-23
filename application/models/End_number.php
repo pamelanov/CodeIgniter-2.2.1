@@ -1,6 +1,6 @@
 <?php
 class End_number extends DataMapper {
-
+/*
 	var $has_one = array(
 			'assigner' => array(
 					'class' => 'invoice',
@@ -11,7 +11,7 @@ class End_number extends DataMapper {
 					'other_field' => 'managed_end_number'
 			)
 	);
-	
+	*/
 	
 	// Optionally, don't include a constructor if you don't need one.
 	function __construct($id = NULL)

@@ -18,7 +18,7 @@ class Invoice extends DataMapper {
 					'other_field' => 'created_invoice'
 			)
 	);
-	*/
+*/	
 	// Optionally, don't include a constructor if you don't need one.
 	function __construct($id = NULL)
 	{

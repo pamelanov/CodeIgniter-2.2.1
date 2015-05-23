@@ -28,7 +28,8 @@
                 echo "
 			<th><center>ID dan Nama Murid</center></th>
 			<th><center>Status</center></th>
-                        <th><center>Jam</center></th>";
+                        <th><center>Jam</center></th>
+			<th><center>Action</center></th>";
             echo "</tr>\n";
             
             foreach ($statusAwal as $status){
@@ -36,6 +37,10 @@
 		    	echo "<td align='center'>" . $status->id_murid . ": " . $status->nama_murid . "</td>\n";
 	            echo "<td align='center'>" . $status->status . "</td>\n";
 	            echo "<td align='center'>" . $status->jam . "</td>\n";
+		    echo "<td align='center'>" .
+		    anchor('ops/create/searchStudentStatusSumB/'.$status->id, '<span class="label label-primary" id="labelToday">
+					    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Perbaharui Status</span>');
+			    echo "</td>\n";
 	            echo "</tr>\n";
             }
 	    
@@ -43,6 +48,10 @@
 			    echo "<td align='center'>" . $status->id_murid . ": " . $status->nama_murid . "</td>\n";
 		        echo "<td align='center'>" . $status->no . "</td>\n";    
 		        echo "<td align='center'>" . $status->jam . "</td>\n";
+			echo "<td align='center'>" .
+			anchor('ops/create/searchStudentStatusSumE/'.$status->id, '<span class="label label-primary" id="labelToday">
+					    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Perbaharui Status</span>');
+			    echo "</td>\n";
                         echo "</td>\n";
 		        echo "</tr>\n";
             }

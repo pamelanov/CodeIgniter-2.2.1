@@ -12,8 +12,8 @@ class Account extends DataMapper {
 					'class' => 'account',
 					'other_field' => 'managed_beginning_number'
 			)
-    );*/
-    
+    );
+    */
 
     var $validation = array(
         'id_acc' => array(

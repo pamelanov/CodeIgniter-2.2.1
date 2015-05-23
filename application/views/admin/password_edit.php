@@ -1,7 +1,3 @@
-
-
-<!DOCTYPE html>
-<html lang="en"></html>
 <h1><?php echo $judul; ?></h1>
 
 <form name='update_password' action='<?php echo base_url(); ?>index.php/dashboard/editPassword' method='post' onsubmit='return confirm("Apakah Anda yakin ingin mengubah password?")'>
@@ -26,5 +22,3 @@
 </div>
 </div>
 
-</body>
-</html>

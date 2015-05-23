@@ -1,7 +1,7 @@
 <?php
 
 class Feedback extends DataMapper {
-
+/*
     var $has_one = array(
         'handler' => array(
             'class' => 'account',
@@ -16,19 +16,19 @@ class Feedback extends DataMapper {
             'other_field' => 'received_feedback'
         )
     );
-    
+    */
     var $validation = array(
         'id_murid' => array(
             'label' => 'id_murid',
-            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+            'rules' => array('required', 'trim')
         ),
 	'id_sales' => array(
             'label' => 'id_sales',
-            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+            'rules' => array('required', 'trim')
         ),
 		'id_guru' => array(
             'label' => 'id_guru',
-            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+            'rules' => array('required', 'trim')
         ),
 	);
 

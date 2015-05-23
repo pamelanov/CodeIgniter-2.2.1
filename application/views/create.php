@@ -77,7 +77,7 @@ function myFunction() {
                         <th><center>Jumlah Sesi</center></th>
                         <th><center>Harga Per Jam</center></th>\n";
             echo "</tr>\n";
-            
+
             foreach($invoices as $i) {
             echo "<tr valign='top'>\n";
             echo "<td align='center'>" . $i->no_invoice . "</td>\n";

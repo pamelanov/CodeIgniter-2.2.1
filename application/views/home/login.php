@@ -17,7 +17,7 @@ header('Expires: 0'); // Proxies.
 	<ul class="nav navbar-nav navbar-left">
 		<div class="page-header" id="page-header">
 			<!-- <h1><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Sistem Informasi Customer Tracking Ruangguru</h1>-->
-			<img src="<?php echo base_url(); ?>assets/images/header-logo.png" height="40px">
+			<img src="<?php echo base_url(); ?>assets/images/header-logo.png" height="40px"><label id="juduldepan">Sistem Informasi Customer Tracking Ruangguru</label>
 		</div>
 	</ul>
 	

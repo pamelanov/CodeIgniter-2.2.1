@@ -1,3 +1,4 @@
+<h1><?php echo $judul; ?></h1>
 <div id="konten">
     User berhasil diubah.<br/>
     

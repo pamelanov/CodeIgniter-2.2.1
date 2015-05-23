@@ -3,7 +3,7 @@
 class Recurring_status extends DataMapper {
 	
 	var $table = 'recurring_statuses';
-	
+	/*
 	var $has_one = array(
 			'manager' => array(
 					'class' => 'account',
@@ -14,15 +14,15 @@ class Recurring_status extends DataMapper {
 					'other_field' => 'assigned_recurring_status'
 			),
 	);
-
+*/
 	var $validation = array(
         'id_kelas' => array(
             'label' => 'id_kelas',
-            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+            'rules' => array('required', 'trim')
         ),
         'id_sales' => array(
             'label' => 'id_sales',
-            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+            'rules' => array('required', 'trim')
         ),
 	);
 	

@@ -2,7 +2,7 @@
 class Beginning_number extends DataMapper {
 	
 	 var $default_order_by = array('id' => 'asc');
-
+/*
 	var $has_one = array(
 			'assigner' => array(
 					'class' => 'student',
@@ -12,7 +12,7 @@ class Beginning_number extends DataMapper {
 					'class' => 'account',
 					'other_field' => 'managed_beginning_number'
 			)
-	);
+	);*/
 	
 	var $validation = array(
         'status' => array(
@@ -21,7 +21,7 @@ class Beginning_number extends DataMapper {
         ),
         'id_murid' => array(
             'label' => 'id_murid',
-            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+            'rules' => array('required', 'trim')
         ),
         'jam' => array(
             'label' => 'jam',

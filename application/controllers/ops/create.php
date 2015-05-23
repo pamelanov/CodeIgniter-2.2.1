@@ -68,7 +68,7 @@ class Create extends Ci_Controller {
     	if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
     		redirect('dashboard', 'refresh');
     	}
-    	
+ 
         $e = new End_number();
         $e->where('id', $id)->get();
         $i = new Invoice();
@@ -77,10 +77,11 @@ class Create extends Ci_Controller {
         $c->where('id', $i->id_kelas)->get();
         $s = new Student();
         $s->where('id', $c->id_murid)->get();
-        
+        $invoice = new Invoice();
     	$data['judul'] = "Perbaharui Status";
     	$data['main'] = 'formUpdateStatus';
         $data['info'] = $s;
+        $data['invoices'] = $invoice->getInvoiceHistory($s->id_murid);
     	$this->load->vars($data);
     	$this->load->view('dashboard');
     

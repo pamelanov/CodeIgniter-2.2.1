@@ -10,18 +10,18 @@ class Target extends DataMapper {
 					'class' => 'account',
 					'other_field' => 'assigned_target'
 			)
-	);*/
-	
+	);
+	*/
 	// Optionally, don't include a constructor if you don't need one.
 	
 	var $validation = array(
         'id_supervisor' => array(
             'label' => 'id_supervisor',
-            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+            'rules' => array('required', 'trim')
         ),
         'id_sales' => array(
             'label' => 'id_sales',
-            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+            'rules' => array('required', 'trim')
         ),
 	);
 	

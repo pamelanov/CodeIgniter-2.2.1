@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 20, 2015 at 12:03 PM
+-- Generation Time: May 23, 2015 at 01:04 PM
 -- Server version: 5.6.12
 -- PHP Version: 5.5.3
 
@@ -38,21 +38,22 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `role` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_acc` (`id_acc`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `accounts`
 --
 
 INSERT INTO `accounts` (`id`, `id_acc`, `password`, `email`, `nama`, `no_telp`, `role`) VALUES
-(3, 'OP', 'e847897826ceb8346eb5141f8c23436a', 'op@op.com', 'Operational Sales X', '273748', 2),
-(5, 'PT', 'daea4d0b55ef6c16f04b8997a51e7e6a', 'pinky@tiffany.com', 'pinkyvi', '67890479739', 3),
-(6, 'SV', 'ab28c58491f42aaebe28f6ecb1d29c54', 'supervisor@super.com', 'Supervisor Y', '8943849', 3),
-(7, 'YS', '827ccb0eea8a706c4c34a16891f84e7b', 'yodi@ui.ac.id', 'yodi', '081208120812', 3),
+(1, 'SV', 'ab28c58491f42aaebe28f6ecb1d29c54', 'supervisor@ruangguru.com', 'Supervisor XYZ', '085717773811', 3),
+(7, 'YS', 'ab28c58491f42aaebe28f6ecb1d29c54', 'yodi@ui.ac.id', 'yodi', '081208120812', 3),
 (8, 'OO', 'e847897826ceb8346eb5141f8c23436a', 'ops@ops.com', 'Operational Sales hehe', '74902', 2),
 (9, 'PN', 'e847897826ceb8346eb5141f8c23436a', 'novranska@gmail.com', 'Pamela Novranska', '47882525', 2),
 (10, 'NP', 'e847897826ceb8346eb5141f8c23436a', 'aa@aa.com', 'Budi', '839384', 2),
-(11, 'AD', '21232f297a57a5a743894a0e4a801fc3', 'ad@ad.com', 'Admin', '90909', 1);
+(11, 'AD', '21232f297a57a5a743894a0e4a801fc3', 'ad@ad.com', 'Admin', '90909', 1),
+(13, 'YK', 'ab28c58491f42aaebe28f6ecb1d29c54', 'kK@kak.com', 'asdfs', '2345', 3),
+(16, 'OP', 'e847897826ceb8346eb5141f8c23436a', 'operational@sales.com', 'Rembulan Senja', '1203923', 2),
+(18, 'DA', '21232f297a57a5a743894a0e4a801fc3', 'admin@admin.com', 'Administrator ABC', '47663322', 1);
 
 -- --------------------------------------------------------
 
@@ -70,35 +71,18 @@ CREATE TABLE IF NOT EXISTS `beginning_numbers` (
   PRIMARY KEY (`id`),
   KEY `id_murid` (`id_murid`),
   KEY `id_sales` (`id_sales`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
 
 --
 -- Dumping data for table `beginning_numbers`
 --
 
 INSERT INTO `beginning_numbers` (`id`, `status`, `id_murid`, `jam`, `tanggal`, `id_sales`) VALUES
-(1, 1, 6, '17:03:37', '2015-05-19', 3),
-(3, 2, 6, '17:13:20', '2015-05-19', 3),
-(4, 3, 6, '17:14:14', '2015-05-19', 3),
-(5, 4, 6, '17:14:34', '2015-05-19', 3),
-(6, 5, 6, '17:14:44', '2015-05-19', 3),
-(8, 1, 4, '21:56:44', '2015-05-19', 9),
-(9, 2, 4, '21:56:50', '2015-05-20', 9),
-(10, 3, 4, '21:57:01', '2015-05-21', 9),
-(11, 4, 4, '21:57:12', '2015-05-22', 9),
-(12, 5, 4, '21:57:23', '2015-05-24', 9),
-(15, 1, 5, '22:16:37', '2015-05-19', 8),
-(16, 2, 5, '22:16:49', '2015-05-19', 8),
-(17, 3, 5, '22:16:56', '2015-05-19', 8),
-(18, 4, 5, '22:17:03', '2015-05-19', 8),
-(19, 5, 5, '22:17:14', '2015-05-19', 8),
-(20, 1, 9, '07:34:07', '2015-05-20', 8),
-(21, 2, 9, '07:35:46', '2015-05-20', 8),
-(22, 1, 7, '09:01:48', '2015-05-20', 6),
-(23, 2, 7, '09:02:14', '2015-05-20', 6),
-(24, 3, 7, '09:02:21', '2015-05-20', 6),
-(25, 4, 7, '09:02:30', '2015-05-20', 6),
-(26, 5, 7, '09:02:39', '2015-05-20', 6);
+(45, 1, 4, '17:18:59', '2015-05-27', 10),
+(46, 2, 4, '17:19:34', '2015-05-27', 10),
+(47, 3, 4, '17:19:44', '2015-05-27', 10),
+(48, 4, 4, '17:19:53', '2015-05-27', 10),
+(49, 5, 4, '17:20:02', '2015-05-27', 10);
 
 -- --------------------------------------------------------
 
@@ -115,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `courses` (
   PRIMARY KEY (`id`),
   KEY `id_guru` (`id_guru`),
   KEY `id_murid` (`id_murid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `courses`
@@ -125,8 +109,8 @@ INSERT INTO `courses` (`id`, `id_kelas`, `id_guru`, `id_murid`, `status`) VALUES
 (7, 1111, 1, 4, 'active'),
 (8, 2222, 2, 8, 'active'),
 (9, 3333, 3, 9, 'active'),
-(10, 4444, 1, 5, 'active'),
-(11, 8888, 2, 7, 'active');
+(10, 4444, 1, 5, 'inactive'),
+(11, 8888, 2, 7, 'inactive');
 
 -- --------------------------------------------------------
 
@@ -144,22 +128,16 @@ CREATE TABLE IF NOT EXISTS `end_numbers` (
   PRIMARY KEY (`id`),
   KEY `id_invoice` (`id_invoice`),
   KEY `id_sales` (`id_sales`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `end_numbers`
 --
 
 INSERT INTO `end_numbers` (`id`, `no`, `id_invoice`, `jam`, `tanggal`, `id_sales`) VALUES
-(1, 6, 4, '21:57:38', '2015-05-19', 9),
-(2, 7, 4, '21:58:48', '2015-05-19', 9),
-(3, 8, 4, '21:59:08', '2015-05-19', 9),
-(4, 6, 7, '22:18:31', '2015-05-19', 8),
-(5, 7, 7, '22:18:51', '2015-05-19', 8),
-(6, 8, 7, '22:19:04', '2015-05-19', 8),
-(7, 6, 8, '09:28:33', '2015-05-20', 6),
-(8, 7, 8, '09:28:46', '2015-05-20', 6),
-(9, 8, 8, '09:28:59', '2015-05-20', 6);
+(14, 6, 4, '17:20:10', '2015-05-27', 10),
+(15, 7, 4, '17:20:23', '2015-05-27', 10),
+(16, 8, 4, '17:20:35', '2015-05-27', 10);
 
 -- --------------------------------------------------------
 
@@ -181,15 +159,17 @@ CREATE TABLE IF NOT EXISTS `feedbacks` (
   KEY `id_murid` (`id_murid`),
   KEY `id_guru` (`id_guru`),
   KEY `id_sales` (`id_sales`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `feedbacks`
 --
 
 INSERT INTO `feedbacks` (`id`, `id_murid`, `id_guru`, `tanggal`, `rating`, `isi`, `status`, `total_skor`, `id_sales`) VALUES
-(1, 4, 1, '2015-05-19', 4, 'sudah cukup baik', 1, 80, 3),
-(3, 9, 3, '2015-05-20', 9, 'sangat jelas mengajarnya, sabar dan mengerti kemauan murid.', 1, 9, 6);
+(5, 8, 2, '2015-05-20', 4, 'membosankan, tidak tepat waktu, kurang memahami materi', 1, 12, 10),
+(6, 9, 3, '2015-05-21', 9, 'sangat bagus mengajarnya, mengerti apa yang diinginkan oleh muridnya', 1, 17, 8),
+(9, 4, 1, '2015-05-23', 7, 'cukup baik walaupun terkadang suka gugup', 1, 42, 9),
+(10, 4, 1, '2015-05-23', 8, 'dapat menjelaskan dengan baik', 1, 42, 9);
 
 -- --------------------------------------------------------
 
@@ -208,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `invoices` (
   `jumlah_sesi` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_kelas` (`id_kelas`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `invoices`
@@ -233,7 +213,14 @@ CREATE TABLE IF NOT EXISTS `not_recurrings` (
   `alasan` varchar(500) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_rec_status` (`id_rec_status`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `not_recurrings`
+--
+
+INSERT INTO `not_recurrings` (`id`, `id_rec_status`, `alasan`) VALUES
+(1, 1, 'malas dan mau main saja\n');
 
 -- --------------------------------------------------------
 
@@ -249,7 +236,14 @@ CREATE TABLE IF NOT EXISTS `recurrings` (
   `jumlah_jam` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_rec_status` (`id_rec_status`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `recurrings`
+--
+
+INSERT INTO `recurrings` (`id`, `id_rec_status`, `periode_awal`, `periode_akhir`, `jumlah_jam`) VALUES
+(1, 2, '2015-07-01', '2015-07-31', 20);
 
 -- --------------------------------------------------------
 
@@ -265,7 +259,15 @@ CREATE TABLE IF NOT EXISTS `recurring_statuses` (
   PRIMARY KEY (`id`),
   KEY `id_kelas` (`id_kelas`),
   KEY `id_sales` (`id_sales`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `recurring_statuses`
+--
+
+INSERT INTO `recurring_statuses` (`id`, `id_kelas`, `tanggal`, `id_sales`) VALUES
+(1, 10, '2015-05-23', 10),
+(2, 7, '2015-05-23', 10);
 
 -- --------------------------------------------------------
 
@@ -277,22 +279,23 @@ CREATE TABLE IF NOT EXISTS `refunds` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `no_invoice` int(11) NOT NULL,
   `jam_hilang` int(11) NOT NULL,
-  `alasan` varchar(100) NOT NULL,
-  `action` varchar(20) NOT NULL,
+  `alasan` varchar(300) NOT NULL,
+  `action` varchar(100) NOT NULL,
   `selisih` int(11) NOT NULL,
   `id_sales` int(11) NOT NULL,
   `tanggal` date NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `no_invoice_2` (`no_invoice`),
   KEY `no_invoice` (`no_invoice`),
   KEY `id_sales` (`id_sales`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `refunds`
 --
 
 INSERT INTO `refunds` (`id`, `no_invoice`, `jam_hilang`, `alasan`, `action`, `selisih`, `id_sales`, `tanggal`) VALUES
-(2, 4, 4, 'harus pergi ke luar negeri', 'ditagih', 400000, 3, '2015-05-18');
+(6, 5, 12, 'males', 'hehehe', 80000, 9, '2015-05-23');
 
 -- --------------------------------------------------------
 
@@ -342,18 +345,22 @@ CREATE TABLE IF NOT EXISTS `targets` (
   `actual` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_sales` (`id_sales`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `targets`
 --
 
 INSERT INTO `targets` (`id`, `id_sales`, `periode`, `target`, `id_supervisor`, `actual`) VALUES
-(5, 9, '2015-04', 350, 6, 140),
-(12, 3, '2015-05', 200, 6, 120),
-(13, 8, '2015-05', 300, 6, 150),
-(14, 10, '2015-05', 350, 6, 100),
-(15, 9, '2015-05', 330, 6, 90);
+(5, 9, '2015-04', 350, 6, 340),
+(14, 10, '2015-05', 350, 6, 20),
+(16, 10, '2015-06', 300, 6, 0),
+(17, 16, '2015-05', 300, 1, 0),
+(18, 9, '2015-05', 400, 1, 0),
+(19, 8, '2015-05', 400, 1, 0),
+(20, 8, '2015-04', 350, 1, 370),
+(21, 8, '2015-03', 270, 1, 260),
+(22, 8, '2015-02', 250, 1, 250);
 
 -- --------------------------------------------------------
 
@@ -376,7 +383,7 @@ CREATE TABLE IF NOT EXISTS `teachers` (
 --
 
 INSERT INTO `teachers` (`id`, `id_guru`, `nama`, `email`, `no_telp`, `kota`) VALUES
-(1, 12345, 'Pamela', 'pam@mail.com', 0, 'jakarta'),
+(1, 12345, 'Pamela', 'pam@mail.com', 85728882, 'jakarta'),
 (2, 23456, 'Guru 1', 'guru@ku.com', 90384, 'Depok'),
 (3, 34567, 'Guru 2', 'guru2@ku.com', 384050, 'Depok');
 

@@ -1,3 +1,4 @@
+<h1><?php echo $judul; ?></h1>
 <div id="konten">
     Maaf, akun tidak berhasil dibuat. Pastikan bahwa isian formulir valid.<br/>
     

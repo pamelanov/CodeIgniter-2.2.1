@@ -10,6 +10,7 @@
 </div>
  
 <?php
+
 if (!empty($performa) && $progressbar != -1) { ?>
   <div class="progress">
   <div class="progress-bar progress-bar-primary progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo $progressbar; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $progressbar; ?>%">

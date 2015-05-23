@@ -1,6 +1,6 @@
 <?php
 class Student extends DataMapper {
-
+/*
 	var $has_one = array(
 			'handler' => array(
 					'class' => 'account',
@@ -22,6 +22,7 @@ class Student extends DataMapper {
 					'other_field' => 'assigner'
 			)
 	);
+*/
 	
 	var $validation = array(
         'id_murid' => array(
@@ -34,7 +35,7 @@ class Student extends DataMapper {
         ),
         'id_sales' => array(
             'label' => 'id_sales',
-            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+            'rules' => array('required', 'trim')
         ),
 	'gender' => array(
             'label' => 'gender',

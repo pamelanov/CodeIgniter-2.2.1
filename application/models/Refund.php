@@ -16,11 +16,11 @@ class Refund extends DataMapper {
 	var $validation = array(
         'no_invoice' => array(
             'label' => 'no_invoice',
-            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+            'rules' => array('required', 'trim')
         ),
 	'id_sales' => array(
             'label' => 'id_sales',
-            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+            'rules' => array('required', 'trim')
         ),
 	);
     function __construct($id = NULL) {

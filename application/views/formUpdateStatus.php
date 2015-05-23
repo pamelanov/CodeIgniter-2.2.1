@@ -1,16 +1,6 @@
 <h1><?php echo $judul; ?></h1>
 
 
-<script>
-function myFunction() {
-    if (confirm("Apakah Anda yakin ingin memperbaharui status?") == true) {
-        
-    } else {
-        document.getElementById("konten").innerHTML;
-    }
-    
-}
-</script>
 <div id="konten">
 
         <div class="row">
@@ -19,9 +9,38 @@ function myFunction() {
         <?php
         
         echo "<div class='form-group'>";
-            echo "<label for='id_murid'>ID Murid</label>";
-            echo "<input type='text' class='form-control' name='id_murid' placeholder='ID Murid' value='" . $info->id_murid . "' required>";
+            echo "<h4>Informasi Singkat Murid<br>ID Murid:" . $info->id_murid . "<br/>Nama:  " . $info->nama . "<h4>";
+            echo "<input type='hidden' class='form-control' name='id_murid' placeholder='ID Murid' value='" . $info->id_murid . "' required>";
         echo "</div>";
+        
+                if (!empty($invoices)) {
+            
+            echo '<div class="panel panel-primary">
+            <div class="panel-heading"><center>Invoice Tercatat</center></div>';
+            echo "<table class='table table-bordered'>\n";
+
+            echo "<tr valign='top'>\n";
+                echo "<th><center>No Invoice</center></th>
+                        <th><center>Periode Awal</center></th>
+                        <th><center>Periode Akhir</center></th>
+                        <th><center>Jumlah Jam</center></th>
+                        <th><center>Jumlah Sesi</center></th>
+                        <th><center>Harga Per Jam</center></th>\n";
+            echo "</tr>\n";
+            
+            foreach($invoices as $i) {
+            echo "<tr valign='top'>\n";
+            echo "<td align='center'>" . $i->no_invoice . "</td>\n";
+            echo "<td align='center'>" . $i->periode_awal . "</td>\n";
+            echo "<td align='center'>" . $i->periode_akhir . "</td>\n";
+            echo "<td align='center'>" . $i->jumlah_jam . "</td>\n";
+             echo "<td align='center'>" . $i->jumlah_sesi . "</td>\n";
+              echo "<td align='center'>" . $i->harga_per_jam . "</td>\n";
+            echo "</tr>\n";
+            }
+        echo "</table>";
+        echo "</div>";
+        }
         
         echo "<div class='form-group'>";
             echo "<label for='jam'>Jam</label>";
@@ -32,11 +51,8 @@ function myFunction() {
             echo "<label for='tanggal'>Tanggal</label>";
             echo "<input type='date' class='form-control' name='tanggal' value=" .  date("Y-m-d") . " required>";
         echo "</div>";
-        
-        echo "<div class='form-group'>";
-            echo "<label for='id_sales'>ID Sales</label>";
-            echo "<input type='text'class='form-control' name='id_sales' placeholder='ID Sales' value=" . $this->session->userdata('id') . ">";
-        echo "</div>";
+    
+            echo "<input type='hidden' class='form-control' name='id_sales' placeholder='ID Sales' value=" . $this->session->userdata('id') . ">";
         
         echo "<div class='form-group'>";
             echo "<label for='noInvoice'>No Invoice (wajib diisi apabila status yang akan diisi adalah 6, 7 atau 8)</label>";

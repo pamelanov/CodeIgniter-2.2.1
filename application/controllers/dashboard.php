@@ -384,13 +384,16 @@ if ($this->session->userdata('role') != 2 && $this->session->userdata('role') !=
         }
         $u = new Account();
         $u->where('id_acc', $this->input->post('id_acc'))->get();
-
-        $u->password = md5($this->input->post('password'));
-
-
-        $u->save();
-        $data['judul'] = "Update Berhasil";
-        $data['main'] = 'admin/edit_berhasil2';
+	if (strlen($this->input->post('password')) < 3) {
+	        $data['judul'] = "Update Gagal";
+	    $data['main'] = 'admin/edit_gagal';
+	}
+	else {
+	    $u->password = md5($this->input->post('password'));
+	    $u->save();
+	    $data['judul'] = "Update Berhasil";
+	    $data['main'] = 'admin/edit_berhasil2';
+	}
 
         $this->load->vars($data);
         $this->load->view('dashboard');
