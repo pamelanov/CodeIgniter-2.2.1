@@ -159,18 +159,16 @@ class Download extends Ci_Controller {
     }
 
     
-    function downlooad_Orecurring($tanggal_awal, $tanggal_akhir){
+    function download_Orec($tanggal_awal, $tanggal_akhir){
         $this->load->helper('download');
         
         $e = new Recurring_status();
-        $recurring = new Recurring_status();
         $e->tanggal_awal = $tanggal_awal;
         $e->tanggal_akhir = $tanggal_akhir;
-        $recurring = $e->ambilRecurringSum();
-        
+        $recurrings = $e->ambilRecurringSum();
         $path = "assets/exports/";
         $filename = 'recurring_' . date("Ymd_His") . '.csv';
-        $recurring->csv_export($path . $filename);
+        $recurrings->csv_export($path . $filename);
         $data = file_get_contents($path . $filename); // Read the file's contents
         force_download($filename, $data);
     }
