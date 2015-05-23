@@ -40,10 +40,17 @@ class feedbackCtrl extends Ci_Controller {
   	$f->status = 1;
   	$f->total_skor = $f->hitungTotalSkor();
   	$f->id_sales = $a->id;
-	$f->save_as_new();
+	$success = $f->save_as_new();
+	if($success){
+		$data['judul'] = "Feedback berhasil disimpan";
+		$data['main'] = 'ops/createFeedbackBerhasil';	
+	}
+	else{
+		$data['judul'] = "Feedback tidak berhasil disimpan";
+		$data['main'] = 'ops/feedback_gagal';		
+	}
 
-  	$data['judul'] = "Feedback berhasil disimpan";
-  	$data['main'] = 'ops/createFeedbackBerhasil';
+
   	$this->load->vars($data);
   	$this->load->view('dashboard');
   }
@@ -89,21 +96,19 @@ class feedbackCtrl extends Ci_Controller {
   	$f->rating = $this->input->post('rating');
   	$f->total_skor = $f->hitungTotalSkor();
   	
-  	$f->save();
-  	
-  	$f1 = new Feedback();
-  	$f1->where('id_murid', $f->id_murid);
-  	$f1->where('id_guru', $f->id_guru);
-  	$f1->get();
-  	foreach($f1 as $list){
-  		$list->total_skor = $f->total_skor;
-  		$list->save();
-  	}
-  	
-  	$data['judul'] = "Feedback berhasil disimpan";
-  	$data['main'] = 'ops/updateFeedbackBerhasil';
-  	$this->load->vars($data);
-  	$this->load->view('dashboard');
+  	$success = $f->save();
+  	if ($success) {
+		$data['judul'] = "Feedback berhasil disimpan";
+		$data['main'] = 'ops/updateFeedbackBerhasil';
+		$this->load->vars($data);
+		$this->load->view('dashboard');
+	}
+	else{
+		$data['judul'] = "Feedback tidak berhasil disimpan";
+		$data['main'] = 'ops/updateFeedbackGagal';
+		$this->load->vars($data);
+		$this->load->view('dashboard');		
+	}
   }
   
   function countFeedback(){
@@ -131,9 +136,18 @@ class feedbackCtrl extends Ci_Controller {
     function oFeedbackSummary(){
         $f = new Feedback();
         $u = new Account();
+	$s = new Student();
+	$t = new Teacher();
         
         $u->where('id_acc', $this->session->userdata('id'))->get();
         $f->where('id_sales', $u->id)->get();
+	
+	foreach ($f as $x){
+		$s->where('id', $x->id_murid)->get();
+		$t->where('id', $x->id_guru)->get();
+		$x->id_murid = $s->id_murid;
+		$x->id_guru = $t->id_guru;
+	}
         
         $data['judul'] = "Rangkuman Feedback";
 	$data['main'] = 'ops/feedback_sum';

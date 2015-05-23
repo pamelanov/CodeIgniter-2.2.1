@@ -14,15 +14,14 @@ if (!empty($feedback)) {
 	echo "<th><center>ID Murid</center></th>
 		<th><center>ID Guru</center></th>
 		<th><center>Isi</center></th>
-		<th><center>Rating</center></th>
-		<th><center>Total Skor</center></th>\n";
+		<th><center>Rating</center></th>";
+		
 	echo "</tr>\n";
 		echo "<tr valign='top'>\n";
 		echo "<td align='center'>" . $feedback->id_murid . "</td>\n";
 		echo "<td align='center'>" . $feedback->id_guru . "</td>\n";
 		echo "<td align='center'>" . $feedback->isi . "</td>\n";
 		echo "<td align='center'>" . $feedback->rating . "</td>\n";
-		echo "<td align='center'>" . $feedback->total_skor . "</td>\n";
 	
 		/*echo "<td align='center'>";
 		echo anchor('dashboard/createFeedback', 'tambah');

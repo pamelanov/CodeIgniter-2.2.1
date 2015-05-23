@@ -13,6 +13,18 @@ class Target extends DataMapper {
 	);*/
 	
 	// Optionally, don't include a constructor if you don't need one.
+	
+	var $validation = array(
+        'id_supervisor' => array(
+            'label' => 'id_supervisor',
+            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+        ),
+        'id_sales' => array(
+            'label' => 'id_sales',
+            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+        ),
+	);
+	
 	function __construct($id = NULL)
 	{
 		parent::__construct($id);
@@ -46,8 +58,8 @@ class Target extends DataMapper {
 	
 		$a = new Account();
 		$b = new Account();
-		$a->where('id_acc', $this->id_sales)->get();
-		$b->where('id_acc', $this->id_supervisor)->get();
+		$a->where('id', $this->id_sales)->get();
+		$b->where('id', $this->id_supervisor)->get();
 		
 		if (!empty($a) && !empty($b)) return true;
 		else return false;
@@ -58,7 +70,7 @@ class Target extends DataMapper {
 	function notExists(){
 		$a = new Account();
 		$t = new Target();
-		$a->where('id_acc', $this->id_sales)->get();
+		$a->where('id', $this->id_sales)->get();
 		$t->where('id_sales', $a->id);
 		$t->where('periode', $this->periode);
 		$t->get();

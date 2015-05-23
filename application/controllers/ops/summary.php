@@ -162,13 +162,14 @@ class Summary extends Ci_Controller {
         $a = new Account();
         $a->where('id_acc', $this->input->post('idSales'))->get();
         $r->id_sales = $a->id;
-        $r->save_as_new();
+        $success = $r->save_as_new();
         
-        $a = new Recurring_status();
-        $a->select_max('id');
-        $a->get();
+        if ($success){
+            $a = new Recurring_status();
+            $a->select_max('id');
+            $a->get();
         
-        if ((!empty($this->input->post('alasan'))) && (empty($this->input->post('periode-awal'))) && (empty($this->input->post('periode-akhir'))) && (empty($this->input->post('jumlah-jam')))){   
+            if ((!empty($this->input->post('alasan'))) && (empty($this->input->post('periode-awal'))) && (empty($this->input->post('periode-akhir'))) && (empty($this->input->post('jumlah-jam')))){   
             $n = new Not_recurring();
             $c = new Course();
             $id_kelas = $r->id_kelas;
@@ -185,9 +186,9 @@ class Summary extends Ci_Controller {
             $this->load->vars($data);
             $this->load->view('dashboard');
     
-        }
+            }
         
-        else if(empty($this->input->post('alasan')) && (!empty($this->input->post('periode-awal'))) && (!empty($this->input->post('periode-akhir'))) && (!empty($this->input->post('jumlah-jam')))){
+            else if(empty($this->input->post('alasan')) && (!empty($this->input->post('periode-awal'))) && (!empty($this->input->post('periode-akhir'))) && (!empty($this->input->post('jumlah-jam')))){
             $e = new Recurring();
             
             $e->id_rec_status = $a->id;
@@ -200,9 +201,16 @@ class Summary extends Ci_Controller {
     	    $data['main'] = 'ops/recurring_berhasil';
             $this->load->vars($data);
             $this->load->view('dashboard');
-        }
+            }
         
-        else {
+            else {
+            $data['judul'] = "Pembuatan Recurring Tidak Berhasil";
+    	    $data['main'] = 'ops/recurring_tdk_berhasil';
+            $this->load->vars($data);
+            $this->load->view('dashboard');
+            }
+        }
+        else{
             $data['judul'] = "Pembuatan Recurring Tidak Berhasil";
     	    $data['main'] = 'ops/recurring_tdk_berhasil';
             $this->load->vars($data);

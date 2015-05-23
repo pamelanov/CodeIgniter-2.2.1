@@ -3,17 +3,14 @@
 <div id="konten">
     
     <?php
-    if (count($feedback)) {
+    if (!empty($feedback)) {
        
-        echo '<div class="row">
-                <div class="col-md-8">';
         
             echo '<div class="panel panel-primary">
   <div class="panel-heading"><center>Rangkuman Feedback</center></div>';
         echo "<table class='table table-bordered'>\n";
         echo "<tr valign='top'>\n";
-        echo "<th><center>ID Sales</center></th>
-            <th><center>Tanggal</center></th>
+        echo "<th><center>Tanggal</center></th>
         <th><center>ID Murid</center></th>
         <th><center>ID Guru</center></th>
         <th><center>Action</center></th>";
@@ -22,7 +19,6 @@
 
             foreach ($feedback as $list) {
                 echo "<tr valign='top'>\n";
-                echo "<td>" . $list->id_sales . "</td>\n";
                 echo "<td>" . $list->tanggal . "</td>\n";
                 echo "<td>" . $list->id_murid . "</td>\n";
                 echo "<td>" . $list->id_guru . "</td>\n";
@@ -35,7 +31,7 @@
         }
 
         echo "</table>	";
-        echo "</div></div></div>";
+        echo "</div>";
     }
 
     ?>

@@ -1,7 +1,7 @@
 <?php
 class Beginning_number extends DataMapper {
 	
-	 var $default_order_by = array('id' => 'desc');
+	 var $default_order_by = array('id' => 'asc');
 
 	var $has_one = array(
 			'assigner' => array(
@@ -12,6 +12,29 @@ class Beginning_number extends DataMapper {
 					'class' => 'account',
 					'other_field' => 'managed_beginning_number'
 			)
+	);
+	
+	var $validation = array(
+        'status' => array(
+            'label' => 'status',
+            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+        ),
+        'id_murid' => array(
+            'label' => 'id_murid',
+            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+        ),
+        'jam' => array(
+            'label' => 'jam',
+            'rules' => array('required')
+        ),
+	        'tanggal' => array(
+            'label' => 'tanggal',
+            'rules' => array('required')
+        ),
+        'id_sales' => array(
+            'label' => 'id_sales',
+            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+        ),
 	);
 	
 
@@ -61,7 +84,7 @@ class Beginning_number extends DataMapper {
 		
 		$b = new Beginning_number();
 		$b->where('id_murid', $s->id);
-		$b->order_by("tanggal", "asc");
+		$b->order_by("id", "desc");
 		$b->get();
 		
 		return $b;
@@ -106,19 +129,21 @@ class Beginning_number extends DataMapper {
 		
 		return $b;
 	}
-	/*
-	function exists($n){
+	
+	function exists(){
 		$b = new Beginning_number();
-		$s = new Student();
-		$s->where('id_murid', $n->id_murid)->get();
-		$b->where('status', $n->status);
-		$b->where('id_murid', $s->id);
+		$b->where('status', $this->status);
+		$b->where('id_murid', $this->id_murid);
 		$b->get();
 		
-		if (!empty($b)) return true;
-			else return false;
+		if($b->id == null) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
-	
+	/*
 	function retrieve($n) {
 		$b = new Beginning_number();
 		$s = new Student();

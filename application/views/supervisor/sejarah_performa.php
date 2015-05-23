@@ -18,7 +18,6 @@
                     echo "<th><center>Periode</center></th>\n";
                     echo "<th><center>Target</center></th>\n";
                     echo "<th><center>Pencapaian<c/enter></th>\n";
-                    echo "<th><center>Supervisor</center></th>\n";
         
                     echo "</tr>\n";
                     $no = 1;
@@ -30,7 +29,6 @@
                                 echo "<td>".$t->periode."</td>\n";
                                 echo "<td>".$t->target."</td>\n";
                                 echo "<td>".$t->actual."</td>\n";
-                                echo "<td>".$t->id_supervisor."</td>\n";
                                 echo "</td>\n";
                                 echo "</tr>\n";
                                 $no++;

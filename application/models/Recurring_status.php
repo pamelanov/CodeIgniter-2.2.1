@@ -15,6 +15,17 @@ class Recurring_status extends DataMapper {
 			),
 	);
 
+	var $validation = array(
+        'id_kelas' => array(
+            'label' => 'id_kelas',
+            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+        ),
+        'id_sales' => array(
+            'label' => 'id_sales',
+            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+        ),
+	);
+	
 	// Optionally, don't include a constructor if you don't need one.
 	function __construct($id = NULL)
 	{

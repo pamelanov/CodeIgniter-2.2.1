@@ -27,7 +27,9 @@
             <label for="id_sales">ID Sales</label>
             <input type="text" class="form-control" name="id_sales" placeholder="Masukkan ID Sales" value="<?php echo $this->session->userdata('id');?>" required>
         </div>
+        
             </div><!-- nutup col-md-6 -->
+            
             <div class="col-md-6">
         <div class="form-group">
             <label for="tanggal">Tanggal</label>
@@ -50,12 +52,13 @@
         </div>
 
         <div class="form-group">
-            <label for="isi">Isi</label>
-            <input type="text" class="form-control" name="isi" placeholder="Masukkan Isi" required>
+            <label for="isi">Feedback</label>
+            <textarea rows="4" cols="80" name="isi" placeholder="Masukkan Isi" required></textarea>
         </div>
+          <button type="submit" class="btn btn-danger"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Create Feedback</button>
         </div><!-- nutup col-md-6 -->
         </div><!--nutup row -->
-    <button type="submit" class="btn btn-danger"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Create Feedback</button>
+  
       </div>
 </form>
 

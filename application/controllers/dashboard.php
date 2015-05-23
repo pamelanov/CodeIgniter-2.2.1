@@ -272,11 +272,15 @@ if ($this->session->userdata('role') != 2 && $this->session->userdata('role') !=
         $r->selisih = $this->input->post('selisih');
         $r->alasan = $this->input->post('alasan');
 
-        $r->save_as_new();
-
-        $data['judul'] = "Refund Berhasil Disimpan";
-        $data['main'] = 'ops/refund_create_berhasil';
-
+        $success = $r->save_as_new();
+	if($success){
+	    $data['judul'] = "Refund Berhasil Disimpan";
+	    $data['main'] = 'ops/refund_create_berhasil';
+	}
+	else{
+	    $data['judul'] = "Refund Tidak Berhasil Disimpan";
+	    $data['main'] = 'ops/refund_create_gagal';	    
+	}
         $this->load->vars($data);
         $this->load->view('dashboard');
     }

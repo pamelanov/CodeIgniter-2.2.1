@@ -16,6 +16,21 @@ class Feedback extends DataMapper {
             'other_field' => 'received_feedback'
         )
     );
+    
+    var $validation = array(
+        'id_murid' => array(
+            'label' => 'id_murid',
+            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+        ),
+	'id_sales' => array(
+            'label' => 'id_sales',
+            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+        ),
+		'id_guru' => array(
+            'label' => 'id_guru',
+            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+        ),
+	);
 
     // Optionally, don't include a constructor if you don't need one.
     function __construct($id = NULL) {
@@ -63,17 +78,16 @@ class Feedback extends DataMapper {
 
     function hitungTotalSkor() {
         $f1 = new Feedback();
+	$f1->rating = $this->rating;
         $f2 = new Feedback();
-        $rating = 0;
-        $f1->where('id_guru', $this->id_guru)->get();
-        $f2->rating = $this->rating;
-
-        foreach ($f1 as $list) {
-            $rating += $list->rating;
+        $f2->where('id_guru', $this->id_guru)->get();
+	
+        foreach ($f2 as $list) {
+            $list->total_skor = ($f2->total_skor + $f1->rating) / 2;
         }
-        //$f1->total_skor = $this->rating + $f2->rating;
-        $rating = $rating + $f2->rating;
-        return $rating;
+	
+        $total_skor = $f2->total_skor + $f1->rating/2;
+        return $total_skor;
     }
 
     function findOverall() {

@@ -96,51 +96,92 @@ class Create extends Ci_Controller {
             
             $m = new End_number();
             $o = new End_number();
+            $a = new Account();
+            $m = new Student();
+            $i = new Invoice();
             
-            $m->id_murid = $this->input->post('id_murid');
+            
+            $a->where('id_acc', $this->input->post('id_sales'))->get();
+            $i->where('no_invoice', $this->input->post('no_invoice'))->get();
+  
             $m->jam = $this->input->post('jam');
             $m->tanggal = $this->input->post('tanggal');
-            $m->id_sales = $this->input->post('id_sales');
-            $m->status = $this->input->post('status');
-            $m->no_invoice = $this->input->post('no_invoice');
+            $m->id_sales = $a->id;
+            $m->no = $this->input->post('no');
+            $m->id_invoice = $i->id;
+
             
-            $o = $m->updateStatus();
-            
-            if ($this->input->post('status') == 8){
-                $t = new Target();
-                $data['tes'] =  $t->addActual($this->session->userdata('id'));
+            if($m->exists()){
+
+                    $data['judul'] = "Tambah Status";
+                    $data['main'] = "ops/status_gagal_double";                
+                
             }
+            else {
+                $success = $m->save_as_new();
             
-        $data['judul'] = "Create Status";
-        $data['main'] = "ops/status_berhasil";
+                if($success){
+                $data['judul'] = "Tambah Status";
+                $data['main'] = "ops/status_berhasil";
+                    
+                    if ($this->input->post('status') == 8){
+                        $t = new Target();
+                        $data['tes'] =  $t->addActual($this->session->userdata('id'));
+                    }
+                }
+            
+                else {
+                    $data['judul'] = "Tambah Status";
+                    $data['main'] = "ops/status_gagal";                
+                }
+            }
+
         $this->load->view('dashboard', $data);
             
             
         }
         
         else{
-            $a = new Beginning_number();
             $n = new Beginning_number();
             $b = new Beginning_number();
-            $n->id_murid = $this->input->post('id_murid');
+            $a = new Account();
+            $m = new Student();
+	
+            $a->where('id_acc', $this->input->post('id_sales'))->get();
+            $m->where('id_murid', $this->input->post('id_murid'))->get();        
+            
+            $n->id_murid = $m->id;
             $n->jam = $this->input->post('jam');
             $n->tanggal = $this->input->post('tanggal');
-            $n->id_sales = $this->input->post('id_sales');
+            $n->id_sales = $a->id;
             $n->status = $this->input->post('status');
             
-            // if ($b->exists($n)){
-                // $data['tes'] = $b->retrieve($n);
-                // $a = $n->updateStatus();
-                // $data['judul'] = "Create Status";
-                // $data['main'] = "ops/status_double";
+            if ($n->exists()){
+                $success = $n->save_as_new();
+                    if($success){
+                        $data['judul'] = "Create Status";
+                        $data['main'] = "ops/status_double";
+                    }
+                    else {
+                        $data['judul'] = "Create Status";
+                        $data['main'] = "ops/status_gagal";  
+                    }
                 
-            // }
+            }
             
-            // else{
-                 $a = $n->updateStatus();
-                 $data['judul'] = "Create Status";
-                $data['main'] = "ops/status_berhasil";
-            //}
+            else{
+                 $success = $n->save_as_new();
+                 
+                 if($success){
+                    $data['judul'] = "Create Status";
+                    $data['main'] = "ops/status_berhasil";
+                 }
+                 else{
+                    $data['judul'] = "Create Status";
+                    $data['main'] = "ops/status_gagal";                     
+                 }
+
+            }
            
             $this->load->view('dashboard', $data);
         }

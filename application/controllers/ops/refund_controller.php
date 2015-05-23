@@ -57,9 +57,16 @@ class Refund_controller extends Ci_Controller {
         $u->alasan = $this->input->post('alasan');
         $u->jam_hilang = $this->input->post('jam_hilang');
 
-        $u->save();
+        $success = $u->save();
+        if($success){
+            $data['judul'] = "Update Refund Berhasil";
+            $data['main'] = 'ops/refund_editberhasil';            
+        }
+        else{
         $data['judul'] = "Update Refund Berhasil";
-        $data['main'] = 'ops/refund_editberhasil';
+        $data['main'] = 'ops/refund_edit_gagal';            
+        }
+
         $this->load->vars($data);
         $this->load->view('dashboard');
     }

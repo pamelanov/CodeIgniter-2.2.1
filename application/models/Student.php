@@ -23,6 +23,25 @@ class Student extends DataMapper {
 			)
 	);
 	
+	var $validation = array(
+        'id_murid' => array(
+            'label' => 'id_murid',
+            'rules' => array('required', 'trim', 'min_length' => 6, 'max_length' => 6)
+        ),
+        'nama' => array(
+            'label' => 'nama',
+            'rules' => array('required')
+        ),
+        'id_sales' => array(
+            'label' => 'id_sales',
+            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+        ),
+	'gender' => array(
+            'label' => 'gender',
+            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+        ),
+	);
+	
 	// Optionally, don't include a constructor if you don't need one.
 	function __construct($id = NULL)
 	{

@@ -32,7 +32,8 @@ if (count($refund)){
 		echo "<td>".$list->action."</td>\n";
 		echo "<td>".$list->selisih."</td>\n";
 		echo "<td>" . anchor('ops/refund_controller/showChangeRefund/'.$list->id , 'Ubah') .
-                        " | " . anchor('ops/refund_controller/deleteRefund/'.$list->id, 'Hapus') ."</td>\n";
+                        " | " . anchor('ops/refund_controller/deleteRefund/'.$list->id, 'Hapus',
+				       array('onclick' => "return confirm('Apakah Anda yakin ingin menghapus data refund?')")) ."</td>\n";
 		echo "</td>\n";
 		echo "</tr>\n";
 	}

@@ -30,19 +30,37 @@ class Performance extends Ci_Controller {
             redirect('dashboard', 'refresh');
         }
         $n = new Target();
+        $success = new Target();
+	$a = new Account();
+	$b = new Account();
+        $a->where('id_acc', $this->input->post('id_sales'))->get();
+        $b->where('id_acc', $this->input->post('id_supervisor'))->get();
         
-        $n->id_sales = $this->input->post('id_sales');
+        $n->id_sales = $a->id;
         $n->periode = $this->input->post('periode');
-        $n->id_supervisor = $this->input->post('id_supervisor');
+        $n->id_supervisor = $b->id;
         $n->target = $this->input->post('target');
 
-        if ($n->valid() && $n->notExists()){
-            
+        if ($n->valid() && $n->notExists() && $n->target > 0){
+
+            $n->save_as_new();
+            $success->where('id_sales', $n->id_sales);
+            $success->where('periode', $n->periode);
+            $success->get();
+            if($success){
                 $data['judul'] = "Target Berhasil Disimpan";
                 $data['main'] = 'supervisor/created';
-                $data['targets'] = $n->createTarget();
+                
                 $this->load->vars($data);
                 $this->load->view('dashboard');
+            }
+            else{
+                $data['judul'] = "Target Gagal Disimpan Bgt";
+                $data['main'] = 'supervisor/failed';
+                $this->load->vars($data);
+                $this->load->view('dashboard');
+                $n->check_last_query();
+            }
             
         }
         else {
@@ -103,16 +121,37 @@ class Performance extends Ci_Controller {
         $a->where('id_acc', $this->input->post('id_sales'))->get(); 
         
         $n = new Target();
-        
+        $n->where('id', $this->input->post('id'))->get();
         $n->id_sales = $a->id;
         $n->periode = $this->input->post('periode');
         $n->target = $this->input->post('target');
         
-        $data['judul'] = "Pengubahan Berhasil";
-	$data['main'] = 'supervisor/updated';
-        $data['targets'] = $n->updateTarget();
-	$this->load->vars($data);
-	$this->load->view('dashboard');  
+        $valid = $n->target > 0;
+        if ($valid){
+            $success = $n->save();
+        
+            if($success){
+                $data['judul'] = "Pengubahan Berhasil";
+                $data['main'] = 'supervisor/updated';
+                $this->load->vars($data);
+                $this->load->view('dashboard');      
+            }   
+            else{
+                $data['judul'] = "Pengubahan Gagal";
+                $data['main'] = 'supervisor/edit_failed';
+                $this->load->vars($data);
+                $this->load->view('dashboard');  
+            }
+        }
+        
+        else{
+            $data['judul'] = "Pengubahan Gagal Bgt";
+            $data['main'] = 'supervisor/edit_failed';
+            $this->load->vars($data);
+            $this->load->view('dashboard');  
+        }
+        
+
     }
     
     function overall(){

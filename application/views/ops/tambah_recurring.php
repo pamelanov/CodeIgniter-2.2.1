@@ -33,7 +33,7 @@
 <form id='form-recurring' action='<?php echo base_url();?>index.php/ops/summary/recurring'
                                         method='post' onsubmit='return confirm("Apakah Anda yakin ingin menambahkan recurring status?")'>
     <div class="form-group">
-        <label>ID Kelas</label>
+        <label>ID Kelas (*)</label>
             <select class="js-example-basic-single" name="idKelas" required>
                 <?php foreach($courses as $x) {
                     echo "<option value='" . $x->id . "'>" . $x->id_kelas . "</option>";
@@ -42,12 +42,12 @@
             </select>
     </div>
     <div class="form-group">
-        <label>Tanggal Pengisian </label>
-            <input type="date" name="tanggal" class="form-control input-md"  value="<?php echo date("Y-m-d");?>">
+        <label>Tanggal Pengisian (*)</label>
+            <input type="date" name="tanggal" class="form-control input-md"  value="<?php echo date("Y-m-d");?>" required>
     </div>
     <div class="form-group">
-        <label>ID Sales</label>
-            <input name="idSales" type="text" placeholder="ID sales" class="form-control input-md" value="<?php echo $this->session->userdata('id');?>">
+        <label>ID Sales (*)</label>
+            <input name="idSales" type="text" placeholder="ID sales" class="form-control input-md" value="<?php echo $this->session->userdata('id');?>" required>
     </div>
     <div class="form-group">
         <label>Melanjutkan Kelas?</label><br>

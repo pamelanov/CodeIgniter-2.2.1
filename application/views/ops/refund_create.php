@@ -37,8 +37,8 @@
                 <input type="text" class="form-control" name="selisih" placeholder="Masukkan Selisih">
             </div>
             <div class="form-group">
-                <label for="alasan">Alasan (*)</label>
-                <input type="text" class="form-control" name="alasan" placeholder="Masukkan Alasan" required>
+                <label for="alasan">Alasan (*)</label><br>
+                <textarea rows="4" cols="50" name="alasan" placeholder="Masukkan Alasan" required></textarea>
             </div>
 
             

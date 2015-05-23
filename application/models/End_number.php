@@ -12,6 +12,29 @@ class End_number extends DataMapper {
 			)
 	);
 	
+	var $validation = array(
+        'no' => array(
+            'label' => 'no',
+            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+        ),
+        'id_invoice' => array(
+            'label' => 'id_invoice',
+            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+        ),
+        'jam' => array(
+            'label' => 'jam',
+            'rules' => array('required')
+        ),
+	        'tanggal' => array(
+            'label' => 'tanggal',
+            'rules' => array('required')
+        ),
+        'id_sales' => array(
+            'label' => 'id_sales',
+            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+        ),
+	);
+	
 	// Optionally, don't include a constructor if you don't need one.
 	function __construct($id = NULL)
 	{
@@ -122,12 +145,10 @@ class End_number extends DataMapper {
 	function ambilRincian($id){
 		$a = new Account();
 		$a->where('id_acc', $id)->get();
-		echo "<Br>$a->id_acc";
 		$n = new End_number();
 		$n->where('id_sales', $a->id);
 		$n->where('no', 8);
 		$n->get();
-		echo $n->id_sales;
 		
 		$e = new End_number();
 		$i = new Invoice();
@@ -158,6 +179,21 @@ class End_number extends DataMapper {
 		
 		return $array;
 		
+	}
+	
+	function exists(){
+		$b = new End_number();
+	
+		$b->where('id_invoice', $this->id_invoice);
+		$b->where('no', $this->no);
+		$b->get();
+		
+		if($b) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }
 
