@@ -44,7 +44,7 @@ class Recurring_status extends DataMapper {
         $r->get();
 	$i = new Course();
 	$a = new Account();
-	$kosong = new Not_recurring();
+	//$kosong = new Not_recurring();
 	$not_r = new Not_recurring();
 	$recur = new Recurring();
 	foreach($r as $x){

@@ -123,7 +123,7 @@
         }
         ?> 
         
-         <p><?php echo anchor("download/download_Orecurring/" . $tanggal_awal . "/" . $tanggal_akhir, "<button type='button' class='btn btn-primary'>
+         <p><?php echo anchor("download/download_Orec/" . $tanggal_awal . "/" . $tanggal_akhir, "<button type='button' class='btn btn-primary'>
                              <span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Unduh Rangkuman Recurring </button>"); ?></p>
         
     </div>	
