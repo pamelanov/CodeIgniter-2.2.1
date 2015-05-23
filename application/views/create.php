@@ -44,7 +44,7 @@ function myFunction() {
         <?php
         
         
-        echo '<div class="panel panel-danger">
+        echo '<div class="panel panel-primary">
             <div class="panel-heading"><center>Informasi Singkat Murid</center></div>';
         echo "<table class='table table-bordered'>\n";
 
@@ -65,7 +65,7 @@ function myFunction() {
 
         if (!empty($invoices)) {
             
-            echo '<div class="panel panel-danger">
+            echo '<div class="panel panel-primary">
             <div class="panel-heading"><center>Invoice Tercatat</center></div>';
             echo "<table class='table table-bordered'>\n";
 
@@ -107,13 +107,10 @@ function myFunction() {
             echo "<input type='date' class='form-control' name='tanggal' value=" .  date("Y-m-d") . ">";
         echo "</div>";
         
-        echo "<div class='form-group'>";
-            echo "<label for='id_sales'>ID Sales</label>";
-            echo "<input type='text' class='form-control' name='id_sales' value=" . $this->session->userdata('id') . ">";
-        echo "</div>";
+            echo "<input type='hidden' class='form-control' name='id_sales' value=" . $this->session->userdata('id') . ">";
         
         echo "<div class='form-group'>";
-            echo "<label for='noInvoice'>No Invoice (wajib diisi apabila status yang akan diisi adalah 6, 7 atau 8)</label>";
+            echo "<label for='noInvoice'>No Invoice (wajib diisi apabila status yang akan diisi adalah 6, 7 atau 8, tidak boleh diisi apabila status yang diisi adalah 1, 2, 3, 4 atau 5)</label>";
             echo "<input type='text' class='form-control' name='no_invoice' placeholder='Nomor Invoice'>";
         echo "</div>";
         

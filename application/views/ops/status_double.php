@@ -3,8 +3,8 @@
     <p>Status berhasil dimasukkan. Namun, status dengan ID murid yang baru saja Anda masukkan telah ada
     sebelumnya pada database.</p>
     
-    <?php /* echo count($tes) . "<br/>" . $tes->id;
-    foreach($tes as $t) {
-        echo $t->id . " ";
-        } */?>
+
+     <a href="<?php echo base_url(); ?>/index.php/dashboard/createData" >
+    <button type="submit" class="btn btn-danger">
+	<span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span> Kembali</button> </a>
 </div>

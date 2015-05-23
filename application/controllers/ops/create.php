@@ -97,48 +97,68 @@ class Create extends Ci_Controller {
             $m = new End_number();
             $o = new End_number();
             $a = new Account();
-            $m = new Student();
             $i = new Invoice();
-            
+            $k = new Student();
             
             $a->where('id_acc', $this->input->post('id_sales'))->get();
             $i->where('no_invoice', $this->input->post('no_invoice'))->get();
   
+            $murid = $this->input->post('id_murid');
+            $k->where('id_murid', $murid)->get();
+            
             $m->jam = $this->input->post('jam');
             $m->tanggal = $this->input->post('tanggal');
             $m->id_sales = $a->id;
-            $m->no = $this->input->post('no');
+            $m->no = $this->input->post('status');
             $m->id_invoice = $i->id;
 
+            $o->where('no', $m->no);
+            $o->where('id_invoice', $m->id_invoice);
+            $o->get();
             
-            if($m->exists()){
+            if ($o->id == null) {
+                $x = new Invoice();
+                $y = new Course();
+                
+                $x->where('id', $m->id_invoice)->get();
+                $y->where('id', $x->id_kelas)->get();
+                
+                    if($y->id_murid != $k->id) {
+                        $data['judul'] = "Tambah Status";
+                        $data['main'] = "ops/status_gagal";
+                    }
+                    else {
+                        $s = $m->save_as_new();
+                        $check = new End_number();
+                        $check->where('no', $m->no);
+                        $check->where('id_invoice', $m->id_invoice);
+                        $check->get();
 
-                    $data['judul'] = "Tambah Status";
-                    $data['main'] = "ops/status_gagal_double";                
+                            if($check->id != null){
+                                $data['judul'] = "Tambah Status";
+                                $data['main'] = "ops/status_berhasil";
+                    
+                                    if ($this->input->post('status') == 8){
+                                        $t = new Target();
+                                        $data['tes'] =  $t->addActual($this->session->userdata('id'));
+                                    }
+                            }
+            
+                            else {
+                                $data['judul'] = "Tambah Status";
+                                $data['main'] = "ops/status_gagal";
+                            }
+                    }
                 
             }
-            else {
-                $success = $m->save_as_new();
             
-                if($success){
-                $data['judul'] = "Tambah Status";
-                $data['main'] = "ops/status_berhasil";
-                    
-                    if ($this->input->post('status') == 8){
-                        $t = new Target();
-                        $data['tes'] =  $t->addActual($this->session->userdata('id'));
-                    }
-                }
-            
-                else {
+            else{
                     $data['judul'] = "Tambah Status";
-                    $data['main'] = "ops/status_gagal";                
-                }
+                    $data['main'] = "ops/status_gagal";     
             }
 
-        $this->load->view('dashboard', $data);
-            
-            
+            $this->load->view('dashboard', $data);
+
         }
         
         else{
@@ -146,7 +166,13 @@ class Create extends Ci_Controller {
             $b = new Beginning_number();
             $a = new Account();
             $m = new Student();
-	
+            
+            if ($this->input->post('no_invoice') != null) {
+                    $data['judul'] = "Create Status";
+                    $data['main'] = "ops/status_gagal"; 
+            }
+            
+            else {
             $a->where('id_acc', $this->input->post('id_sales'))->get();
             $m->where('id_murid', $this->input->post('id_murid'))->get();        
             
@@ -156,7 +182,7 @@ class Create extends Ci_Controller {
             $n->id_sales = $a->id;
             $n->status = $this->input->post('status');
             
-            if ($n->exists()){
+                if ($n->exists()){
                 $success = $n->save_as_new();
                     if($success){
                         $data['judul'] = "Create Status";
@@ -167,9 +193,9 @@ class Create extends Ci_Controller {
                         $data['main'] = "ops/status_gagal";  
                     }
                 
-            }
+                }
             
-            else{
+                else{
                  $success = $n->save_as_new();
                  
                  if($success){
@@ -181,6 +207,7 @@ class Create extends Ci_Controller {
                     $data['main'] = "ops/status_gagal";                     
                  }
 
+                }
             }
            
             $this->load->view('dashboard', $data);

@@ -12,28 +12,6 @@ class End_number extends DataMapper {
 			)
 	);
 	
-	var $validation = array(
-        'no' => array(
-            'label' => 'no',
-            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
-        ),
-        'id_invoice' => array(
-            'label' => 'id_invoice',
-            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
-        ),
-        'jam' => array(
-            'label' => 'jam',
-            'rules' => array('required')
-        ),
-	        'tanggal' => array(
-            'label' => 'tanggal',
-            'rules' => array('required')
-        ),
-        'id_sales' => array(
-            'label' => 'id_sales',
-            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
-        ),
-	);
 	
 	// Optionally, don't include a constructor if you don't need one.
 	function __construct($id = NULL)

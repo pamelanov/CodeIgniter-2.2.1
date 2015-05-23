@@ -33,7 +33,7 @@ class Beginning_number extends DataMapper {
         ),
         'id_sales' => array(
             'label' => 'id_sales',
-            'rules' => array('required', 'trim', 'min_length' => 1, 'max_length' => 1)
+            'rules' => array('required')
         ),
 	);
 	
