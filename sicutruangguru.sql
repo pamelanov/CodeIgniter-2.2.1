@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 23, 2015 at 01:04 PM
+-- Generation Time: May 23, 2015 at 01:08 PM
 -- Server version: 5.6.12
 -- PHP Version: 5.5.3
 
@@ -45,7 +45,6 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `id_acc`, `password`, `email`, `nama`, `no_telp`, `role`) VALUES
-(1, 'SV', 'ab28c58491f42aaebe28f6ecb1d29c54', 'supervisor@ruangguru.com', 'Supervisor XYZ', '085717773811', 3),
 (7, 'YS', 'ab28c58491f42aaebe28f6ecb1d29c54', 'yodi@ui.ac.id', 'yodi', '081208120812', 3),
 (8, 'OO', 'e847897826ceb8346eb5141f8c23436a', 'ops@ops.com', 'Operational Sales hehe', '74902', 2),
 (9, 'PN', 'e847897826ceb8346eb5141f8c23436a', 'novranska@gmail.com', 'Pamela Novranska', '47882525', 2),
@@ -53,7 +52,8 @@ INSERT INTO `accounts` (`id`, `id_acc`, `password`, `email`, `nama`, `no_telp`, 
 (11, 'AD', '21232f297a57a5a743894a0e4a801fc3', 'ad@ad.com', 'Admin', '90909', 1),
 (13, 'YK', 'ab28c58491f42aaebe28f6ecb1d29c54', 'kK@kak.com', 'asdfs', '2345', 3),
 (16, 'OP', 'e847897826ceb8346eb5141f8c23436a', 'operational@sales.com', 'Rembulan Senja', '1203923', 2),
-(18, 'DA', '21232f297a57a5a743894a0e4a801fc3', 'admin@admin.com', 'Administrator ABC', '47663322', 1);
+(18, 'DA', '21232f297a57a5a743894a0e4a801fc3', 'admin@admin.com', 'Administrator ABC', '47663322', 1),
+(19, 'SV', 'ab28c58491f42aaebe28f6ecb1d29c54', 'supervisor@ruangguru.com', 'Supervisor XYZ', '085717773811', 3);
 
 -- --------------------------------------------------------
 
