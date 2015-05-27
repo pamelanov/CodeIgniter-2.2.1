@@ -37,7 +37,7 @@ if (!empty($feedback)) {
 }
 	
 ?>
-  <a href="<?php echo base_url(); ?>/index.php/ops/feedbackCtrl/feedbackSummary" >
+  <a href="<?php echo base_url(); ?>/index.php/ops/feedbackCtrl/OfeedbackSummary" >
     <button type="submit" class="btn btn-danger">
 	<span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span> Kembali</button> </a>
 </div>

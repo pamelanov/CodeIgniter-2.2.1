@@ -19,7 +19,7 @@
 
  <div class='form-group'>
  <label for='jam'>Rating</label>
- <input type='text' class='form-control' name='rating' placeholder='Rating' value='<?php echo  $feedback->id; ?>' required>
+ <input type='text' class='form-control' name='rating' placeholder='Rating' value='<?php echo  $feedback->rating; ?>' required>
  </div>
 
  <button type='submit' class='btn btn-danger'>Update Feedback</button>

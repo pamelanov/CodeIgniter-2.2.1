@@ -1,0 +1,6 @@
+id,id_murid,id_guru,tanggal,rating,isi,status,total_skor,id_sales
+5,333333,23456,2015-05-20,4,"membosankan, tidak tepat waktu, kurang memahami materi",1,12,NP
+6,444444,34567,2015-05-21,9,"sangat bagus mengajarnya, mengerti apa yang diinginkan oleh muridnya",1,17,OO
+9,666666,12345,2015-05-23,7,"cukup baik walaupun terkadang suka gugup",1,42,PN
+10,666666,12345,2015-05-23,8,"dapat menjelaskan dengan baik",1,42,PN
+11,777777,34567,2015-05-27,7,"cukup baik mengajarnya, tepat waktu, suaranya agak kecil tapi..",1,21,OP

@@ -176,19 +176,27 @@ class Download extends Ci_Controller {
     function download_OPfeedbacks() {
         $this->load->helper('download');
 
-        $f = new Feedback();
-
-
-        $f->id_sales = $this->session->userdata('id');
-
-        $feedbacks = $f->hasilSearch2();
+               $f = new Feedback();
+        $u = new Account();
+	$s = new Student();
+	$t = new Teacher();
+        
+        $u->where('id_acc', $this->session->userdata('id'))->get();
+        $f->where('id_sales', $u->id)->get();
+	
+	foreach ($f as $x){
+		$s->where('id', $x->id_murid)->get();
+		$t->where('id', $x->id_guru)->get();
+		$x->id_murid = $s->id_murid;
+		$x->id_guru = $t->id_guru;
+	}
 
 
 
         // Output $u->all to /tmp/output.csv, using all database fields.
         $path = "assets/exports/";
         $filename = 'feedback_' . date("Ymd_His") . '.csv';
-        $feedbacks->csv_export($path . $filename);
+        $f->csv_export($path . $filename);
         $data = file_get_contents($path . $filename); // Read the file's contents
         force_download($filename, $data);
     }
