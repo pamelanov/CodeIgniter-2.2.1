@@ -28,6 +28,7 @@ class Template extends CI_Controller {
         $data['judul'] = "Halaman Depan";
         $data['main'] = "home/login";
         $data['aktif'] = 'class="active"';
+        $data['errorLogin'] = "";
         $this->load->view('home/template', $data);
     }
 public function login() {
@@ -61,10 +62,9 @@ public function login() {
             redirect('dashboard', 'refresh');
         } else {
             $data['judul'] = "Halaman Login";
-            $data['main'] = "home/login";
-            $data['aktif'] = 'class="active"';
+            $data['main'] = "home/error_login";
             $this->session->set_userdata($data);
-            redirect('template', 'refresh');
+            $this->load->view('home/template', $data);
         }
     }
 

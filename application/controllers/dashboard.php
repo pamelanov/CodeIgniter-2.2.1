@@ -292,7 +292,7 @@ if ($this->session->userdata('role') != 2 && $this->session->userdata('role') !=
         $u = new Account();
         $u->where('id', $id)->get();
 
-        $data['judul'] = "Create User";
+        $data['judul'] = "Ubah Akun";
         $data['main'] = 'admin/user_edit';
         $data['user'] = $u;
         $this->load->vars($data);

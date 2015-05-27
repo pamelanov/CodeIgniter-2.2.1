@@ -27,7 +27,7 @@ header('Expires: 0'); // Proxies.
 	       action='<?php echo base_url();?>index.php/template/ceklogin' method='post'>
         <div id="label-login">
 	<div class="form-group">
-	
+			<?php if (count($errorLogin)) echo $errorLogin; ?>
 			<label for="exampleInputEmail1">ID</label><br/>	
 			<input type='text' class="form-control" name='id' placeholder="Enter ID">
 			</div>
