@@ -177,9 +177,10 @@ class Download extends Ci_Controller {
         $this->load->helper('download');
 
         $f = new Feedback();
-
-
-        $f->id_sales = $this->session->userdata('id');
+        $a = new Account();
+        
+        $a->where('id_acc', $this->session->userdata('id'))->get();
+        $f->id_sales = $a->id;
 
         $feedbacks = $f->hasilSearch2();
 

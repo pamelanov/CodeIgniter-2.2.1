@@ -182,8 +182,10 @@ class Feedback extends DataMapper {
             $z->id_guru = $t->id_guru;
             $z->id_murid = $s->id_murid;
 
-            return $f;
+           
         }
+	 
+	 return $f;
     }
 
     function getAllFeedbacks() {
