@@ -132,8 +132,9 @@
     <form class="form-inline" align="left" action='<?php echo base_url(); ?>index.php/ops/summary/searchStudent' method='post'>
     <div class="form-group">
         <label for="exampleInputName2">Enter Student ID</label>
-    
-                        <select class="js-example-basic-single" name="idMurid">
+                        
+                        <select class="js-example-basic-single" name="idMurid" required>
+                            <option value=""></option>
                     <?php foreach($s as $x) {
                         echo "<option value='" . $x->id_murid . "'>" . $x->id_murid . ": " . $x->nama . "</option>";
                         }  
@@ -177,24 +178,31 @@
 
 if ((!empty($students)) && (!empty($students2))) {
         echo '<div class="panel panel-primary">
-            <div class="panel-heading"><center>Tabel Peringkat</center></div>';
+            <div class="panel-heading"><center>History Status</center></div>';
         echo "<table class='table table-bordered'>\n";
             echo "<tr valign='top'>\n";
                 echo "<th><center>Status</center></th>
-                        <th><center>Tanggal Pengisian</center></th>";
+                        <th><center>Tanggal Pengisian</center></th>
+                        <th><center>Jam Pengisian</center></th>
+                        <th><center>ID Kelas</center></th>";
+                        
                         
             echo "</tr>\n";
-            foreach ($students as $student){
+            foreach ($semua as $student){    
             echo "<tr valign='top'>\n";
             echo "<td align='center'>" . $student->status . "</td>\n";
             echo "<td align='center'>" . $student->tanggal . "</td>\n";
+            echo "<td align='center'>" . $student->jam . "</td>\n";
+            echo "<td align='center'> - </td>\n";
             echo "</tr>\n";
-            }
+            }/*
             foreach ($students2 as $student) {
             echo "<td align='center'>" . $student->no . "</td>\n";    
             echo "<td align='center'>" . $student->tanggal . "</td>\n";
+            echo "<td align='center'>" . $student->jam . "</td>\n";
+            echo "<td align='center'> - </td>\n";
             echo "</tr>\n";
-            }
+            }*/
         echo "</table>";
         echo "</div>";
         // echo "<a href='" . base_url() . "index.php/ops/summary/recurring(" . $student->id .  ")' >

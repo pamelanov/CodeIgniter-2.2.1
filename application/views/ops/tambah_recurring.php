@@ -58,16 +58,15 @@
 </div> <!-- menutup col-md-6 -->
 <div class="col-md-6">
     
-
-            <div id="recurringNo" style="display:none">
-    <div class="form-group">
-        <label>Alasan</label>
+    <div id="recurringNo" style="display:none">
+        <div class="form-group">
+            <label>Alasan</label>
             <textarea rows="4" cols="200" name="alasan" form="form-recurring" class="form-control input-md"></textarea>
-    </div>
+         </div>
         <button type="submit" class='btn btn-success'>
         <span class='glyphicon glyphicon-plus-sign' aria-hidden='true'></span> Tambah
-    </button>
-        </div><!-- nutup di id:recurring -->
+        </button>
+    </div><!-- nutup di id:recurring -->
         
     
     <div id="recurring" style="display:none">

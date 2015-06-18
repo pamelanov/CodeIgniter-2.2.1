@@ -41,11 +41,32 @@ class Summary extends Ci_Controller {
             $e->id_murid = $u->id_murid;
             $c = new Course();
             $s = new Student();
-
+            
+            $b = $b->summary();
+            $e = $e->summary();
+            $array = $b->to_array(array('status', 'tanggal', 'jam'));
+            echo $array->status;
+            
+            $semua = new Beginning_number();
+            foreach ($e as $en) {
+                $semua->status = $en->no;
+                $semua->jam = $en->jam;
+                $semua->tanggal = $en->tanggal;
+            }
+            
+            foreach ($b as $bn) {
+                $semua->status = $bn->status;
+                $semua->jam = $bn->jam;
+                $semua->tanggal = $bn->tanggal;
+            }
+            
+            echo "<br/>" . $semua->id;
+            
             $data['judul'] = "Student Summary";
             $data['main'] = 'summary';
-            $data['students'] = $b->summary();
-            $data['students2'] = $e->summary();
+            $data['rangkuman'] = $semua;
+           // $data['students'] = $b;
+          //  $data['students2'] = $e->summary();
             $data['courses'] = $c->getCourses($u->id_murid);
             $data['s'] = $s->get();
             $data['murid'] = $murid;

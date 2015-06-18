@@ -13,13 +13,17 @@ header('Expires: 0'); // Proxies.
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	
     </div>
-    
+	<a href="<?php echo base_url(); ?>">
 	<ul class="nav navbar-nav navbar-left">
 		<div class="page-header" id="page-header">
 			<!-- <h1><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Sistem Informasi Customer Tracking Ruangguru</h1>-->
-			<img src="<?php echo base_url(); ?>assets/images/header-logo.png" height="40px"><label id="juduldepan">Sistem Informasi Customer Tracking Ruangguru</label>
+			<img src="<?php echo base_url(); ?>assets/images/header-logo.png" height="40px">
+			<a href="<?php echo base_url(); ?>">
+			<label id="juduldepan">Sistem Informasi Customer Tracking Ruangguru</label>
+			</a>
 		</div>
 	</ul>
+	</a>
 	
       <ul class="nav navbar-nav navbar-right" id="login">
 	
@@ -27,7 +31,6 @@ header('Expires: 0'); // Proxies.
 	       action='<?php echo base_url();?>index.php/template/ceklogin' method='post'>
         <div id="label-login">
 	<div class="form-group">
-			<?php if (count($errorLogin)) echo $errorLogin; ?>
 			<label for="exampleInputEmail1">ID</label><br/>	
 			<input type='text' class="form-control" name='id' placeholder="Enter ID">
 			</div>

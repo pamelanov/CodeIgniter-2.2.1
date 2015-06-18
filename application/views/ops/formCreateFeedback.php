@@ -6,38 +6,19 @@
         <div class="row">
             <div class="col-md-6">
         <div class="form-group">
-            <label for="id_murid">ID Murid</label>
-            <select class="js-example-basic-single" name="id_murid" required>
-                    <?php foreach($students as $x) {
-                        echo "<option value='" . $x->id . "'>" . $x->id_murid . ": " . $x->nama . "</option>";
+            <label for="id_kelas">ID Kelas (*)</label>
+            <select class="js-example-basic-single" name="id_kelas" required>
+                    <option value=""></option>
+                    <?php foreach($courses as $x) {
+                        echo "<option value='" . $x->id . "'>" . $x->id_kelas .  "</option>";
                         }  
                     ?>
                 </select>
         </div>
-        <div class="form-group">
-            <label for="id_guru">ID Guru</label>
-            <select class="js-example-basic-single" name="id_guru" required>
-                    <?php foreach($teachers as $x) {
-                        echo "<option value='" . $x->id . "'>" . $x->id_guru . ": " . $x->nama . "</option>";
-                        }  
-                    ?>
-                </select>
-        </div>
-        <div class="form-group">
-            <label for="id_sales">ID Sales</label>
-            <input type="text" class="form-control" name="id_sales" placeholder="Masukkan ID Sales" value="<?php echo $this->session->userdata('id');?>" required>
-        </div>
-        
-            </div><!-- nutup col-md-6 -->
-            
-            <div class="col-md-6">
-        <div class="form-group">
-            <label for="tanggal">Tanggal</label>
-            <input type="date" class="form-control" name="tanggal" placeholder="Masukkan Tanggal" value="<?php echo date('Y-m-d');?>" required>
-        </div>
-        <div class="form-group">
-            <label for="rating">Rating</label>
+          <div class="form-group">
+            <label for="rating">Rating (*)</label>
                 <select class='form-control' name='rating' required>";
+                <option></option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -50,12 +31,24 @@
                 <option>10</option>
                 </select>
         </div>
+            <div class="form-group" style="display:none">
+            <input type="date" class="form-control" name="tanggal" placeholder="Masukkan Tanggal" value="<?php echo date('Y-m-d');?>" required>
+        </div>
+        <div class="form-group">
+            <input type="hidden" class="form-control" name="id_sales" placeholder="Masukkan ID Sales" value="<?php echo $this->session->userdata('id');?>" required>
+        </div>
+        
+        <button type="submit" class="btn btn-danger"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Create Feedback</button>
+        
+            </div><!-- nutup col-md-6 -->
+            
+            <div class="col-md-6">
 
         <div class="form-group">
-            <label for="isi">Feedback</label>
-            <textarea rows="4" cols="80" name="isi" placeholder="Masukkan Isi" required></textarea>
+            <label for="isi">Feedback  (*)</label>
+            <textarea rows="5" cols="80" name="isi" placeholder="maksimal 500 karakter" maxlength="500" required></textarea>
         </div>
-          <button type="submit" class="btn btn-danger"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Create Feedback</button>
+          
         </div><!-- nutup col-md-6 -->
         </div><!--nutup row -->
   

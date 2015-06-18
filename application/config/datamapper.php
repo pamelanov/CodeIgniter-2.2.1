@@ -28,6 +28,7 @@ $config['db_params'] = '';
 // $config['production_cache'] = 'datamapper/cache';
 $config['extensions_path'] = 'datamapper';
 $config['extensions'] = array('csv');
+$config['extensions'] = array('array');
 
 /* End of file datamapper.php */
 /* Location: ./application/config/datamapper.php */

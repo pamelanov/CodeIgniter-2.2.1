@@ -11,15 +11,12 @@ class feedbackCtrl extends Ci_Controller {
 	}
   
   function formCreateFeedback() {
-	$s = new Student();
-	$s->get();
-	$t = new Teacher();
-	$t->get();
+	$c = new Course();
+	$c->get();
 	
   	$data['judul'] = "Create Feedback";
   	$data['main'] = 'ops/formCreateFeedback';
-	$data['students'] = $s;
-	$data['teachers'] = $t;
+	$data['courses'] = $c;
   	$this->load->vars($data);
   	$this->load->view('dashboard');
   }
@@ -32,20 +29,20 @@ class feedbackCtrl extends Ci_Controller {
 	$a->where('id_acc', $this->input->post('id_sales'))->get();
 	
 	$f = new Feedback();
-  	$f->id_murid = $this->input->post('id_murid');
-  	$f->id_guru = $this->input->post('id_guru');
+  	$f->id_kelas = $this->input->post('id_kelas');
   	$f->tanggal = $this->input->post('tanggal');
   	$f->rating = $this->input->post('rating');
   	$f->isi = $this->input->post('isi');
   	$f->status = 1;
-  	$f->total_skor = $f->hitungTotalSkor();
+  	$f->total_skor = 20;
   	$f->id_sales = $a->id;
 	$success = $f->save_as_new();
+	
 	if($success){
 		$data['judul'] = "Feedback berhasil disimpan";
 		$data['main'] = 'ops/createFeedbackBerhasil';	
 	}
-	else{
+	else{	$f->check_last_query();
 		$data['judul'] = "Feedback tidak berhasil disimpan";
 		$data['main'] = 'ops/feedback_gagal';		
 	}

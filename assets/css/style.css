@@ -11,6 +11,7 @@ body {
         
 }
 
+
 .select2-selection{
     font-size: 14px;
 }
@@ -27,12 +28,21 @@ body {
     padding-bottom: 0px;
 }
 
+#tabelPerforma{
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+#filterPerforma{
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
 #tulisanTodaySum{
     color: white;
 }
 
 #errorLogin{
-    color:white;
+    font-size: 16px;
 }
 #juduldepan{
     font-size: 24px;

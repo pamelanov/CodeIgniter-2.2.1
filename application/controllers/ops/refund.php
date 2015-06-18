@@ -67,7 +67,7 @@ class Refund extends Ci_Controller {
         
         $data['judul'] = "Create Refund";
         $data['main'] = 'ops/refund_create';
-	$data['invoices'] = $i->get();
+	$data['invoices'] = $i->getRefund();
         $this->load->vars($data);
         $this->load->view('dashboard');
     }

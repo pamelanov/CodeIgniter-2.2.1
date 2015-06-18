@@ -14,31 +14,30 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="id_sales">Id Sales (*)</label>
-                <input type="text" class="form-control" name="id_sales" placeholder="Masukkan ID Sales" value="<?php echo $this->session->userdata('id');?>" required>
+                <input type="hidden" class="form-control" name="id_sales" placeholder="Masukkan ID Sales" value="<?php echo $this->session->userdata('id');?>" required>
             </div>
-            <div class="form-group">
-                <label for="tanggal">Tanggal (*)</label>
+            <div class="form-group" style="display:none">
                 <input type="date" class="form-control" name="tanggal" placeholder="Masukkan Tanggal" value="<?php echo date('Y-m-d'); ?>" required>
             </div>
             <div class="form-group">
                 <label for="jam_hilang">Jam Hilang (*)</label>
                 <input type="text" class="form-control" name="jam_hilang" placeholder="Masukkan Jam Hilang" required>
             </div>
+              <div class="form-group">
+                <label for="selisih">Selisih (Rp)</label>
+                <input type="text" class="form-control" name="selisih" placeholder="Masukkan Selisih">
+            </div>
             </div><!-- tutup col-md-6 -->
             <div class="col-md-6">
             <div class="form-group">
-                <label for="action">Action</label>
-                <input type="text" class="form-control" name="action" placeholder="Masukkan Action">
+                <label for="action">Action (*)</label><br>
+                <textarea rows="3" cols="80" name="action" placeholder="Masukkan Action (maksimal 300 karakter)" maxlength="300" required></textarea>
             </div>
 
-            <div class="form-group">
-                <label for="selisih">Selisih</label>
-                <input type="text" class="form-control" name="selisih" placeholder="Masukkan Selisih">
-            </div>
+          
             <div class="form-group">
                 <label for="alasan">Alasan (*)</label><br>
-                <textarea rows="4" cols="50" name="alasan" placeholder="Masukkan Alasan" required></textarea>
+                <textarea rows="3" cols="80" name="alasan" placeholder="Masukkan Alasan (maksimal 300 karakter)" maxlength="300" required></textarea>
             </div>
 
             

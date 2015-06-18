@@ -84,7 +84,8 @@ class Beginning_number extends DataMapper {
 		
 		$b = new Beginning_number();
 		$b->where('id_murid', $s->id);
-		$b->order_by("id", "desc");
+		$b->order_by('tanggal',  'desc');
+		$b->order_by('jam', 'desc');
 		$b->get();
 		
 		return $b;

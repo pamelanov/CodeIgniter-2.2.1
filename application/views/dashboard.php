@@ -23,19 +23,24 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
             $(document).ready(function() {
                 $(".js-example-basic-single").select2();
             });
-            
-            
-$(document).ready(function(){
-    $("#show").click(function(){
-        $("#recurring").show();
-        $("#showNo").hide();
+            $(document).ready(function(){
+                $("#show").click(function(){
+                $("#recurring").show();
+                $("#showNo").hide();
+            });
+                $("#showNo").click(function(){
+                $("#recurringNo").show();
+                $("#show").hide();
+            });
+                $("#selectStatus").change(function(){
+                $('.formulir').show();
+                $('#' + $(this).val()).show();
+            });
+            $('#needInvoice').change(function(){
+            $('.form-group1').hide();
+            $('#' + $(this).val()).show();
+        });
     });
-     $("#showNo").click(function(){
-        $("#recurringNo").show();
-        $("#show").hide();
-
-    });
-});
 
         </script>
         

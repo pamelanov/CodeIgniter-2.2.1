@@ -169,7 +169,19 @@ class Performance extends Ci_Controller {
 	$this->load->view('dashboard');  
     }
     
+    function filterPerforma(){
+        $t = new Target();
+        $t->periode = $this->input->post('periode');
     
+        $data['judul'] = "Performa Keseluruhan";
+	$data['main'] = 'supervisor/performance_filtered';
+        $data['periode'] = $this->input->post('periode');
+        $data['targets'] = $t->rankFiltered();
+       
+	$this->load->vars($data);
+	$this->load->view('dashboard');  
+        
+    }
     function showHapusTarget(){
         $s = new Account();
         $data['judul'] = "Hapus Target";
@@ -222,6 +234,8 @@ class Performance extends Ci_Controller {
         $data['judul'] = "Sejarah Performa";
         $data['main'] = 'supervisor/sejarah_performa';
         $data['sejarah'] = $t->getSejarahPerforma($t->id_sales);
+        $data['totalTarget'] = $t->getTotalTarget();
+        $data['totalAccomplished'] = $t->getTotalAccomplished();
         $data['ops'] = $a;
         $this->load->vars($data);
         $this->load->view('dashboard');

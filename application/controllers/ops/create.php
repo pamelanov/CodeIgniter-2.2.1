@@ -93,7 +93,7 @@ class Create extends Ci_Controller {
         if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
-        if ($this->input->post('status') == 6 || $this->input->post('status') == 7 || $this->input->post('status') == 8 ){
+        if ($this->input->post('status') == 7 || $this->input->post('status') == 8 || $this->input->post('status') == 9 ){
             
             $m = new End_number();
             $o = new End_number();
@@ -102,7 +102,16 @@ class Create extends Ci_Controller {
             $k = new Student();
             
             $a->where('id_acc', $this->input->post('id_sales'))->get();
-            $i->where('no_invoice', $this->input->post('no_invoice'))->get();
+                if($this->input->post('status') == 7) {
+                    $i->where('no_invoice', $this->input->post('no_invoice7'))->get();
+                }
+                else if($this->input->post('status') == 8) {
+                    $i->where('no_invoice', $this->input->post('no_invoice8'))->get();
+                }
+                else if($this->input->post('status') == 9) {
+                    $i->where('no_invoice', $this->input->post('no_invoice9'))->get();
+                }
+            
   
             $murid = $this->input->post('id_murid');
             $k->where('id_murid', $murid)->get();
@@ -125,7 +134,7 @@ class Create extends Ci_Controller {
                 $y->where('id', $x->id_kelas)->get();
                 
                     if($y->id_murid != $k->id) {
-                        $data['judul'] = "Tambah Status";
+                        $data['judul'] = "Tambah StatusZ";
                         $data['main'] = "ops/status_gagal";
                     }
                     else {
@@ -146,7 +155,7 @@ class Create extends Ci_Controller {
                             }
             
                             else {
-                                $data['judul'] = "Tambah Status";
+                                $data['judul'] = "Tambah StatusY";
                                 $data['main'] = "ops/status_gagal";
                             }
                     }
@@ -154,7 +163,8 @@ class Create extends Ci_Controller {
             }
             
             else{
-                    $data['judul'] = "Tambah Status";
+                    $o->check_last_query();
+                    $data['judul'] = "Tambah StatusX";
                     $data['main'] = "ops/status_gagal";     
             }
 
@@ -204,6 +214,7 @@ class Create extends Ci_Controller {
                     $data['main'] = "ops/status_berhasil";
                  }
                  else{
+                    $n->check_last_query();
                     $data['judul'] = "Create Status";
                     $data['main'] = "ops/status_gagal";                     
                  }

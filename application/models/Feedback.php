@@ -167,9 +167,9 @@ class Feedback extends DataMapper {
 
         $f = new Feedback();
         $a = new Account();
-
         $t = new Teacher();
         $s = new Student();
+	
         $f->where('id_sales', $this->id_sales);
         $f->get();
 

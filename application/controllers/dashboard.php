@@ -10,11 +10,46 @@ class Dashboard extends Ci_Controller {
     }
 
     function index() {
-
+/*
         $data['judul'] = "Dashboard Home";
-        $data['main'] = 'home';
+        $data['main'] = 'dashboard/todaySummary';
         $this->load->vars($data);
         $this->load->view('dashboard');
+    */
+        if ($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+	
+	if($this->session->userdata('role') == 1 || $this->session->userdata('role') == 3){
+	    $a = new Account();
+	    $b = new Beginning_number();
+	    $e = new End_number();
+	    $s = new Student();
+	    $data['judul'] = "Dashboard Home";
+	    $data['main'] = 'today_summary';
+	    $data['ops'] = $a->getAllOpSv();
+	    $data['statusAwal'] = $b->forTodaySum();
+	    $data['statusAkhir'] = $e->forTodaySum();
+	    $data['students'] = $s->get();
+	}
+	
+	else if($this->session->userdata('role') == 2 ){
+	    $id_sales = $this->session->userdata('id');
+	    $a = new Account();
+	    $b = new Beginning_number();
+	    $e = new End_number();
+	    $a->where('id_acc', $id_sales)->get();
+	    $data['judul'] = "Dashboard Home";
+	    $data['main'] = 'ops/today_summary';
+	    $data['statusAwal'] = $b->forTodaySumFilter($a->id);
+	    $data['statusAkhir'] = $e->forTodaySumFilter($a->id);
+	    $data['ops'] = $a;
+	}
+	
+	
+	$this->load->vars($data);
+        $this->load->view('dashboard');
+
     }
 
     function showRefundSum() {
@@ -93,7 +128,7 @@ class Dashboard extends Ci_Controller {
 	$id_sales = $a->id;
 	
 	$data['judul'] = "Dashboard Home";
-	$data['main'] = 'admin/today_sum_filter';
+	$data['main'] = 'today_sum_filter';
 	$data['statusAwal'] = $b->forTodaySumFilter($id_sales);
 	$data['statusAkhir'] = $e->forTodaySumFilter($id_sales);
 	$data['ops'] = $a;
@@ -271,6 +306,11 @@ if ($this->session->userdata('role') != 2 && $this->session->userdata('role') !=
         $r->action = $this->input->post('action');
         $r->selisih = $this->input->post('selisih');
         $r->alasan = $this->input->post('alasan');
+	
+	$i = new Invoice();
+	$i->where('id', $this->input->post('no_invoice'))->get();
+	$i->refund = 1;
+	$i->save();
 
         $success = $r->save_as_new();
 	if($success){

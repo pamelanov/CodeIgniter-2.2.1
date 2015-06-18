@@ -176,7 +176,7 @@ class Download extends Ci_Controller {
     function download_OPfeedbacks() {
         $this->load->helper('download');
 
-               $f = new Feedback();
+        $f = new Feedback();
         $u = new Account();
 	$s = new Student();
 	$t = new Teacher();
@@ -190,8 +190,6 @@ class Download extends Ci_Controller {
 		$x->id_murid = $s->id_murid;
 		$x->id_guru = $t->id_guru;
 	}
-
-
 
         // Output $u->all to /tmp/output.csv, using all database fields.
         $path = "assets/exports/";

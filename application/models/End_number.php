@@ -47,6 +47,7 @@ class End_number extends DataMapper {
 	}
 	
 	function summary(){
+		
 		$s = new Student();
 		$s->where('id_murid', $this->id_murid)->get();
 		
@@ -58,7 +59,8 @@ class End_number extends DataMapper {
 		
 		$e = new End_number();
 		$e->where('id_invoice', $i->id);
-		$e->order_by("tanggal", "asc");
+		$e->order_by('tanggal',  'desc');
+		$e->order_by('jam', 'desc');
 		$e->get();
 		
 		return $e;

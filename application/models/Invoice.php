@@ -30,13 +30,30 @@ class Invoice extends DataMapper {
 	{
 	}
 	
+	function getRefund(){
+		$i = new Invoice();
+		$i->where('refund', 0)->get();
+		
+		return $i;
+	}
 	function getInvoiceHistory($id_murid){
 		$s = new Student();
 		$c = new Course();
 		$i = new Invoice();
+		
+		$teacher = new Teacher();
 		$s->where('id_murid', $id_murid)->get();
 		$c->where('id_murid', $s->id)->get();
 		$i->where('id_kelas', $c->id)->get();
+		
+		foreach ($i as $kls) {
+			$kelas = new Course();
+			$kelas->where('id', $kls->id_kelas)->get();
+			$teacher->where('id', $kelas->id_guru)->get();
+			$kls->kelas = $kelas->id_kelas;
+			$kls->id_guru = $teacher->id_guru;
+			$kls->namaGuru = $teacher->nama;
+		}
 		
 		return $i;
 	}

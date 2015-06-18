@@ -54,6 +54,25 @@ class Target extends DataMapper {
 		
 	}
 	
+	function rankFiltered(){
+		$t = new Target();
+		$a = new Account();
+		$t->where('periode', $this->periode);
+		$t->order_by("actual", "desc");
+		$t->get();
+		
+		
+		foreach($t as $b) {
+			$a->where('id', $b->id_sales)->get();
+			$b->id_sales = $a->id_acc;
+		}
+		
+		
+		return $t;
+		
+	}
+	
+	
 	function valid() {
 	
 		$a = new Account();
@@ -196,6 +215,28 @@ class Target extends DataMapper {
 			}
 		
 		return $t;
+	}
+	
+	function getTotalTarget(){
+		$t = new Target();
+		$t->where('id_sales', $this->id_sales)->get();
+		$totalTarget = 0;
+		foreach($t as $target){
+			$totalTarget = $totalTarget + $target->target;
+		}
+		
+		return $totalTarget;
+	}
+	
+	function getTotalAccomplished(){
+		$t = new Target();
+		$t->where('id_sales', $this->id_sales)->get();
+		$totalAcc = 0;
+		foreach($t as $target){
+			$totalAcc = $totalAcc + $target->actual;
+		}
+		
+		return $totalAcc;
 	}
 }
 

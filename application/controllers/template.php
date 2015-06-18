@@ -31,7 +31,8 @@ class Template extends CI_Controller {
         $data['errorLogin'] = "";
         $this->load->view('home/template', $data);
     }
-public function login() {
+    
+    public function login() {
         $data['judul'] = "Halaman Depan";
         $data['main'] = "home/login";
         $data['aktif'] = 'class="active"';
@@ -40,7 +41,6 @@ public function login() {
    
 
     function ceklogin() {
-
         // Create user object
         $u = new Account();
 

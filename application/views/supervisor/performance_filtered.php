@@ -1,12 +1,15 @@
    <h1><?php echo $judul; ?></h1>
 
-
- 
   <div id ="konten">
 <?php
-$month = date('20y-m');
+$month = $periode;
 ?>   
+ 
+ <?php
+
+if($targets->exists()) {
     
+    ?>
 <div class="panel panel-primary">
   <!-- Default panel contents -->
   <div class="panel-heading" id="tabelPerforma">
@@ -16,7 +19,7 @@ $month = date('20y-m');
 
 	
 	  <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-	   <?php echo " " . date("F Y", strtotime($month)); ;?></span>
+	   <?php echo " " . date("F Y", strtotime($month)); ?></span>
 	</center>
 	</h4>
   
@@ -26,7 +29,7 @@ $month = date('20y-m');
      <ul class="nav navbar-nav navbar-right">
             <form class="form-inline" action='<?php echo base_url();?>index.php/supervisor/performance/filterPerforma' method='post'>
                 
-                    <label>Filter Periode </label>
+                    <label>Periode </label>
 		    <input type="month" class="form-control" name="periode" required>
                  
                     <button type="submit" class="btn btn-success" id="buttonToday">Filter</button>
@@ -35,10 +38,9 @@ $month = date('20y-m');
     </div><!--tutup bs-example-navbar-collapse-1-->
   
   </div>
-<?php
 
-if($targets->exists()) {
 
+<?php 
 if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
 }
@@ -56,14 +58,14 @@ if ($this->session->flashdata('message')){
         
 	echo "</tr>\n";
 	$rank = 1;
-
+        $bulan = $periode;
 	    echo "<tr valign='top'>\n";
                 foreach($targets as $t){
-		    if (!empty($t->id_sales)){
-		     $bulan = date('20y-m');
+                    $bulan = $t->periode;
+		    if (!empty($t->id_sales)){ 
                     echo "<td> $rank";
                     echo "<td>".$t->id_sales."</td>\n";
-		    echo "<td> ". date("F Y", strtotime($bulan)) .  "</td>\n";
+                    echo "<td> ". date("F Y", strtotime($bulan)) .  "</td>\n";
                     echo "<td>".$t->target."</td>\n";
                     echo "<td>".$t->actual."</td>\n";
                     echo "</td>\n";
@@ -76,18 +78,9 @@ if ($this->session->flashdata('message')){
 }
 
 ?>
-  <form class="form-inline" align="left" action='<?php echo base_url();?>index.php/supervisor/performance/sejarahPerforma/' method='post'>
-      <div class="form-group">
-	  <label for="idOps">ID Operational Sales</label>
-		<select class="js-example-basic-single" name="id_ops">
-		    
-                    <?php foreach($ops as $x) {
-                        echo "<option value='" . $x->id . "'>" . $x->id_acc . ": " . $x->nama . "</option>";
-                        }  
-                    ?>
-                </select>
-      <button type="submit" class="btn btn-primary">
-	  <span class="glyphicon glyphicon-file" aria-hidden="true"></span> Lihat Sejarah Performa</button>
-  </div>
-  </form>
+  
+    <a href="<?php echo base_url(); ?>index.php/supervisor/performance/overall" >
+    <button type="submit" class="btn btn-danger">
+        <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span> Kembali</button> </a>
+
 </div>

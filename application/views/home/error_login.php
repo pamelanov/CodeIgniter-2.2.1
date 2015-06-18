@@ -13,13 +13,17 @@ header('Expires: 0'); // Proxies.
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	
     </div>
-    
+        <a href="<?php echo base_url(); ?>">
 	<ul class="nav navbar-nav navbar-left">
 		<div class="page-header" id="page-header">
-			<!-- <h1><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Sistem Informasi Customer Tracking Ruangguru</h1>-->
-			<img src="<?php echo base_url(); ?>assets/images/header-logo.png" height="40px"><label id="juduldepan">Sistem Informasi Customer Tracking Ruangguru</label>
-		</div>
+                        <img src="<?php echo base_url(); ?>assets/images/header-logo.png" height="40px">
+                        <a href="<?php echo base_url(); ?>">
+                        <label id="juduldepan">Sistem Informasi Customer Tracking Ruangguru</label>
+                        </a>
+                        
+                </div>
 	</ul>
+        </a>
 	
       <ul class="nav navbar-nav navbar-right" id="login">
 
@@ -42,9 +46,15 @@ header('Expires: 0'); // Proxies.
 	
 	</div>
       </form>
-      <label id="errorLogin">Maaf, username atau password tidak valid.</label><br/>
+      <div class="alert alert-danger" role="alert" id="errorLogin">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span> Masukkan Username dan Password yang sesuai!
+    </div>
+      <!--<label id="errorLogin">Maaf, username atau password tidak valid!</label><br/>-->
       </ul>
+      
     </div><!-- /.navbar-collapse -->
+    
   </div><!-- /.container-fluid -->
 </nav>
 <!--
