@@ -18,16 +18,8 @@ class Feedback extends DataMapper {
     );
     */
     var $validation = array(
-        'id_murid' => array(
-            'label' => 'id_murid',
-            'rules' => array('required', 'trim')
-        ),
 	'id_sales' => array(
             'label' => 'id_sales',
-            'rules' => array('required', 'trim')
-        ),
-		'id_guru' => array(
-            'label' => 'id_guru',
             'rules' => array('required', 'trim')
         ),
 	);
@@ -145,18 +137,16 @@ class Feedback extends DataMapper {
         $a = new Account();
         $t = new Teacher();
         $s = new Student();
+	$c = new Course();
 
         $f->where_between('tanggal', "'" . $this->tanggal_awal . "'", "'" . $this->tanggal_akhir . "'");
         $f->get();
 
         foreach ($f as $z) {
             $a->where('id', $z->id_sales)->get();
-            $t->where('id', $z->id_guru)->get();
-            $s->where('id', $z->id_murid)->get();
-
+	    $c->where('id', $z->id_kelas)->get();	
             $z->id_sales = $a->id_acc;
-            $z->id_guru = $t->id_guru;
-            $z->id_murid = $s->id_murid;
+            $z->id_kelas = $c->id_kelas;
         }
 
         return $f;
@@ -211,15 +201,9 @@ class Feedback extends DataMapper {
     function findFeedback() {
         $u = new Feedback();
         $u->where('id', $this->id);
-        //$u->where('id_guru', $this->id_guru);
         $u->get();
-        $this->salt = $u->salt;
 
-        // Validate and get this user by their property values,
-        // this will see the 'encrypt' validation run, encrypting the password with the salt
-        $this->validate()->get();
-        if (empty($this->id_murid)) {
-
+        if ($u==null) {
             return FALSE;
         } else {
             // found something
@@ -231,14 +215,10 @@ class Feedback extends DataMapper {
         $o = new Feedback();
         $o->where('id', $this->id);
         $o->get();
+	$c = new Course();
+        $c->where('id', $o->id_kelas)->get();
 
-        $s = new Student();
-        $t = new Teacher();
-        $s->where('id', $o->id_murid)->get();
-        $t->where('id', $o->id_guru)->get();
-
-        $o->id_murid = $s->id_murid;
-        $o->id_guru = $t->id_guru;
+        $o->id_kelas = $c->id_kelas;
 
         return $o;
     }

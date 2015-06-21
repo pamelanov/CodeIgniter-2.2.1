@@ -63,6 +63,14 @@ class End_number extends DataMapper {
 		$e->order_by('jam', 'desc');
 		$e->get();
 		
+		foreach($e as $a){
+			$k = new Invoice();
+			$k->where('id', $a->id_invoice)->get();
+			$p = new Course();
+			$p->where('id', $k->id_kelas)->get();
+			$a->id_kelas = $p->id_kelas;
+			$a->id_invoice = $k->no_invoice;
+		}
 		return $e;
 	}
 	

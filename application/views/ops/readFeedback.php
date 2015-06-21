@@ -11,15 +11,13 @@ if (!empty($feedback)) {
   <div class="panel-heading"><center>Rangkuman Feedback</center></div>';
 	echo "<table class='table table-bordered'>\n";
 	echo "<tr valign='top'>\n";
-	echo "<th><center>ID Murid</center></th>
-		<th><center>ID Guru</center></th>
+	echo "<th><center>ID Kelas</center></th>
 		<th><center>Isi</center></th>
 		<th><center>Rating</center></th>";
 		
 	echo "</tr>\n";
 		echo "<tr valign='top'>\n";
-		echo "<td align='center'>" . $feedback->id_murid . "</td>\n";
-		echo "<td align='center'>" . $feedback->id_guru . "</td>\n";
+		echo "<td align='center'>" . $feedback->id_kelas . "</td>\n";
 		echo "<td align='center'>" . $feedback->isi . "</td>\n";
 		echo "<td align='center'>" . $feedback->rating . "</td>\n";
 	
@@ -37,7 +35,7 @@ if (!empty($feedback)) {
 }
 	
 ?>
-  <a href="<?php echo base_url(); ?>/index.php/ops/feedbackCtrl/OfeedbackSummary" >
+  <a href="<?php echo base_url(); ?>/index.php/ops/feedbackCtrl/searchPeriode" >
     <button type="submit" class="btn btn-danger">
 	<span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span> Kembali</button> </a>
 </div>

@@ -1,19 +1,9 @@
 <h1><?php echo $judul; ?></h1>
 
 <div id="konten">
-<script>
-function myFunction() {
-    if (confirm("Apakah Anda yakin ingin memperbaharui status?") == true) {
-        
-    } else {
-        document.getElementById("konten").innerHTML;
-    }
     
-}
-</script>
-<div id="createStatus">
-   
-    
+    <div id="createStatus">
+
         <form class="form-inline" align="left" action='<?php echo base_url();?>index.php/ops/create/searchStudentStatus' method='post'>
             <div class="form-group">
                 <label for="enterStudentID">Enter Student ID</label>
@@ -29,23 +19,22 @@ function myFunction() {
 		<span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
                 <br/><br/>
         </form>
-  
-  <?php
+    
+    
+<?php
     if ($this->session->flashdata('message')){
 	echo "<div class='message'>".$this->session->flashdata('message')."</div>";
     }
-
+    
     if (!empty($student)){
-        ?>
-        
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-8">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <center>Informasi Singkat Murid</center>
-                </div>
-        
-            <?php
+    ?>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-8">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <center>Informasi Singkat Murid</center>
+                    </div><!--tutup panel-heading-->
+                <?php    
                 echo "<table class='table table-bordered'>\n";
                 echo "<tr valign='top'>\n";
                 echo "<th><center>ID Murid</center></th>
@@ -61,15 +50,17 @@ function myFunction() {
                 echo "<td align='center'>" . $student->gender . "</td>\n";
                 echo "<td align='center'>" . $student->domisili . "</td>\n";
                 echo "</tr>\n";
-                echo "</table>";?>
-            </div>
-        
-            <?php
+                echo "</table>";                        
+                ?>
+                </div><!--tutup div class panel panel-primary-->
+                
+        <?php
         
                 if (!empty($invoices)) {
                     echo '<div class="panel panel-primary">';
                         echo '<div class="panel-heading">
-                                <center>Invoice Tercatat</center></div>';
+                                <center>Invoice Tercatat</center>
+                                </div>';
                         echo "<table class='table table-bordered'>\n";
                         echo "<tr valign='top'>\n";
                         echo "<th><center>No Invoice</center></th>
@@ -94,14 +85,16 @@ function myFunction() {
                             echo "<td align='center'>" . $i->harga_per_jam . "</td>\n";
                             echo "</tr>\n";
                     }
-                    echo "</table>";?>
-            </div>
-    </div>
-    
-<?php } ?>
+                    echo "</table>";
+                    echo "</div>"; //tutup div class panel panel-primary
+                }
+                    
         
-                    <form name='update_status' action='<?php echo base_url();?>index.php/ops/create/createStatus' method='post'
-                                                 onsubmit='return confirm("Apakah Anda yakin ingin menambahkan status?")'>
+        ?>
+        
+        <form name='update_status' action='<?php echo base_url();?>index.php/ops/create/createStatus' method='post'
+            onsubmit='return confirm("Apakah Anda yakin ingin menambahkan status?")'>
+        
         <?php
         echo "<div class='form-group'>";
             echo "<input type='hidden' required class='form-control' name='id_murid' placeholder='ID Murid' value='$student->id_murid'>";
@@ -135,52 +128,48 @@ function myFunction() {
         
         echo "<div class='form-group1' style='display:none' id='7'>";
             echo "<label for='noInvoice'>No Invoice</label>";
-        ?>
-            <select class="js-example-basic-single" name="no_invoice7" required>
-                        <option value=""></option>
-                    <?php foreach($invoices as $x) {
+            echo '<select class="js-example-basic-single" name="no_invoice7">
+                        <option value=""></option>';
+                    foreach($invoices as $x) {
                         echo "<option value='" . $x->no_invoice . "'>" . $x->no_invoice . "</option>";
                         }  
-                    ?>
-            </select>
-            </div>
-        <?php
-        echo "</div>";
+                    
+            echo '</select>';
+        echo '</div>';
 
         echo "<div class='form-group1' style='display:none' id='8'>";
-           echo "<label for='noInvoice'>No Invoice</label>";?>
-            <select class="js-example-basic-single" name="no_invoice8" required>
-                        <option value=""></option>
-                    <?php foreach($invoices as $x) {
+           echo "<label for='noInvoice'>No Invoice</label>";
+            echo '<select class="js-example-basic-single" name="no_invoice8">
+                        <option value=""></option>';
+                    foreach($invoices as $x) {
                         echo "<option value='" . $x->no_invoice . "'>" . $x->no_invoice . "</option>";
                         }  
-                    ?>
-                </select>
-        <?php
+                    
+            echo '</select>';
         echo "</div>";
         
         echo "<div class='form-group1' style='display:none' id='9'>";
-            echo "<label for='noInvoice'>No Invoice</label>";?>
-            <select class="js-example-basic-single" name="no_invoice9" required>
-                        <option value=""></option>
-                    <?php foreach($invoices as $x) {
+            echo "<label for='noInvoice'>No Invoice</label>";
+        
+        echo '<select class="js-example-basic-single" name="no_invoice9">
+                        <option value=""></option>';
+                foreach($invoices as $x) {
                         echo "<option value='" . $x->no_invoice . "'>" . $x->no_invoice . "</option>";
-                        }  
-                    ?>
-                </select>
-        <?php
+                }  
+                
+        echo '</select>';
         echo "</div>";
       
-        echo "<br/>";
-        echo "<button id='demo' class='btn btn-danger'>
-                <span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Update Status</button>";
+        echo "<br/>";?>
         
-        ?>
+        <button type="submit" class='btn btn-danger'>
+                <span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Update Status</button>
+        
         </form>
-        </div>
-        
-        
-        <div class="col-xs-6 col-md-4">
+
+            </div><!--tutup div class col-xs-12 col-sm-6 col-md-8-->
+            
+                    <div class="col-xs-6 col-md-4">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingOne">
@@ -207,14 +196,16 @@ function myFunction() {
             </div>
             </div>
         </div>
-    </div>
-    <?php } ?>
-        
-
-
-
+                    
+        </div><!--tutup div row-->    
     
-</div>
-</div>
-
-
+    
+    <?php }
+    
+    
+?>
+    
+    
+    
+    </div><!--tutup div createStatus-->
+</div><!--tutup div konten-->

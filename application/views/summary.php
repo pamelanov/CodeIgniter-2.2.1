@@ -128,10 +128,10 @@
 
 <div id="konten">
     <?php if ((empty($students)) && (empty($students2))) { ?> 
-    <div id="lebihKecil">
+    
     <form class="form-inline" align="left" action='<?php echo base_url(); ?>index.php/ops/summary/searchStudent' method='post'>
     <div class="form-group">
-        <label for="exampleInputName2">Enter Student ID</label>
+        <label>Enter Student ID</label>
                         
                         <select class="js-example-basic-single" name="idMurid" required>
                             <option value=""></option>
@@ -143,9 +143,9 @@
   
     <button type="submit" class="btn btn-danger">
 			 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
-</div>
+    </div>
 </form>
-    </div><?php } ?>
+    <?php } ?>
 
 <?php if (!empty($murid)) { ?>
 <div class="panel panel-primary">
@@ -176,36 +176,58 @@
  <?php
 
 
-if ((!empty($students)) && (!empty($students2))) {
+if ((!empty($students)) || (!empty($students2))) {
+    echo "<div class='row'>";
+    echo '<div class="col-xs-6">';
         echo '<div class="panel panel-primary">
-            <div class="panel-heading"><center>History Status</center></div>';
+            <div class="panel-heading"><center>History Status 1-6</center></div>';
+        echo "<table class='table table-bordered'>\n";
+            echo "<tr valign='top'>\n";
+                echo "<th><center>Status</center></th>
+                        <th><center>Tanggal Pengisian</center></th>
+                        <th><center>Jam Pengisian</center></th>";
+                        
+                        
+            echo "</tr>\n";
+            foreach ($students as $student){
+            $tgl = $student->tanggal;
+            echo "<tr valign='top'>\n";
+            echo "<td align='center'>" . $student->status . "</td>\n";
+            echo "<td align='center'>" . date("j F Y", strtotime($tgl)) . "</td>\n";
+            echo "<td align='center'>" . $student->jam . "</td>\n";
+            echo "</tr>\n";
+            }
+            
+        echo "</table>";
+        echo "</div>";
+        echo "</div>"; //tutup col-xs-6
+         echo '<div class="col-xs-6">';
+         echo '<div class="panel panel-primary">
+            <div class="panel-heading"><center>History Status 7-9</center></div>';
         echo "<table class='table table-bordered'>\n";
             echo "<tr valign='top'>\n";
                 echo "<th><center>Status</center></th>
                         <th><center>Tanggal Pengisian</center></th>
                         <th><center>Jam Pengisian</center></th>
-                        <th><center>ID Kelas</center></th>";
-                        
+                        <th><center>ID Invoice</center></th>
+                        <th><center>ID Kelas</center></th>";        
                         
             echo "</tr>\n";
-            foreach ($semua as $student){    
-            echo "<tr valign='top'>\n";
-            echo "<td align='center'>" . $student->status . "</td>\n";
-            echo "<td align='center'>" . $student->tanggal . "</td>\n";
-            echo "<td align='center'>" . $student->jam . "</td>\n";
-            echo "<td align='center'> - </td>\n";
-            echo "</tr>\n";
-            }/*
+            
             foreach ($students2 as $student) {
+            $tggl = $student->tanggal;
             echo "<td align='center'>" . $student->no . "</td>\n";    
-            echo "<td align='center'>" . $student->tanggal . "</td>\n";
+            echo "<td align='center'>" . date("j F Y", strtotime($tggl)) . "</td>\n";
             echo "<td align='center'>" . $student->jam . "</td>\n";
-            echo "<td align='center'> - </td>\n";
+            echo "<td align='center'>" . $student->id_invoice . "</td>\n";
+            echo "<td align='center'>" . $student->id_kelas . "</td>\n";
             echo "</tr>\n";
-            }*/
+            }
         echo "</table>";
         echo "</div>";
-        // echo "<a href='" . base_url() . "index.php/ops/summary/recurring(" . $student->id .  ")' >
+        echo "</div>"; //tutup col-xs-6
+        echo "</div>"; // tutup div class row
+            
         echo "<a href='" . base_url() . "index.php/ops/summary/showRecurring/" . $murid->id .  "' >
         <button class='btn btn-primary'>
             <span class='glyphicon glyphicon-plus-sign' aria-hidden='true'></span> Recurring Status
@@ -219,48 +241,5 @@ if ((!empty($students)) && (!empty($students2))) {
 
 </div>
 
-  <!--
-  <div class="col-xs-6">
 
-<div id="konten">
-<form id='form-recurring' action='<?php echo base_url();?>index.php/ops/summary/recurring' method='post'>
-    <div class="form-group">
-        <label>ID Kelas</label>
-            <input name="idKelas" type="text" placeholder="ID kelas" class="form-control input-md">
-    </div>
-    <div class="form-group">
-        <label>Tanggal Pengisian </label>
-            <input type="date" name="tanggal" class="form-control input-md">
-    </div>
-    <div class="form-group">
-        <label>ID Sales</label>
-            <input name="idSales" type="text" placeholder="ID sales" class="form-control input-md">
-    </div>
-    <center><span class="label label-success">jika melanjutkan:</span></center>
-    <div class="form-group">
-        <label>Periode</label>
-                <input type="date" name="periode-awal" class="form-control input-md">
-                s/d
-                <input type="date" name="periode-akhir" class="form-control input-md">        
-    </div>
-    <div class="form-group">
-        <label>Jumlah Jam</label>
-            <input name="jumlah-jam" type="text" placeholder="jumlah jam" class="form-control input-md">
-    </div>
-    
-    
-    <center><span class="label label-success">jika tidak melanjutkan:</span></center>
-    <div class="form-group">
-        <label>Alasan</label>
-            <textarea rows="4" cols="200" name="alasan" form="form-recurring" class="form-control input-md"></textarea>
-    </div>
-    
-    <button type="submit" class='btn btn-success'>
-        <span class='glyphicon glyphicon-plus-sign' aria-hidden='true'></span> Tambah
-    </button>
-</form>
-</div>
-
-</div> -->
-</div>
 

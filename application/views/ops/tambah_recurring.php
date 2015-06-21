@@ -41,11 +41,11 @@
                 ?>
             </select>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display:none">
         <label>Tanggal Pengisian (*)</label>
             <input type="date" name="tanggal" class="form-control input-md"  value="<?php echo date("Y-m-d");?>" required>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display:none">
         <label>ID Sales (*)</label>
             <input name="idSales" type="text" placeholder="ID sales" class="form-control input-md" value="<?php echo $this->session->userdata('id');?>" required>
     </div>
@@ -71,7 +71,7 @@
     
     <div id="recurring" style="display:none">
     <div class="form-group">
-        <label>Periode</label>
+        <label>Mulai Belajar</label>
                 <input type="date" name="periode-awal" class="form-control input-md">
                 s/d
                 <input type="date" name="periode-akhir" class="form-control input-md">        

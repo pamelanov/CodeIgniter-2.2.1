@@ -21,10 +21,12 @@ class Refund_controller extends Ci_Controller {
         $f = new Refund();
         $f->tanggal_awal = $this->input->post('tanggal-awal');
         $f->tanggal_akhir = $this->input->post('tanggal-akhir');
+        $o = new Account();
 
         $data['refund'] = $f->ambilRefundSum();
         $data['tanggal_awal'] = $f->tanggal_awal;
         $data['tanggal_akhir'] = $f->tanggal_akhir;
+        $data['ops'] = $o->getAllOpSv();
         $data['judul'] = "Rangkuman Refund";
         $data['main'] = 'ops/refund_sum';
         $this->load->vars($data);

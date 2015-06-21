@@ -1,12 +1,13 @@
 <h1><?php echo $judul; ?></h1>
 
 <div id="konten">
-     <h4>Periode: <?php echo $tanggal_awal . " s/d " . $tanggal_akhir; ?></h4>
+    
+     <h4>Periode: <?php echo  date("j F Y", strtotime($tanggal_awal)) . " s/d " .  date("j F Y", strtotime($tanggal_akhir)); ?></h4>
     <?php
     if (count($feedbacks)) {
        
-        echo '<div class="row">
-                <div class="col-md-8">';
+        
+                
         
             echo '<div class="panel panel-primary">
   <div class="panel-heading"><center>Rangkuman Feedback</center></div>';
@@ -14,20 +15,22 @@
         echo "<tr valign='top'>\n";
         echo "<th><center>ID Sales</center></th>
             <th><center>Tanggal</center></th>
-        <th><center>ID Murid</center></th>
-        <th><center>ID Guru</center></th>
+        <th><center>ID Kelas</center></th>
+        <th><center>Rating</center></th>
+        <th><center>Isi</center></th>
         <th><center>Action</center></th>";
 
         echo "</tr>\n";
 
             foreach ($feedbacks as $list) {
+                $tanggal = $list->tanggal;
                 echo "<tr valign='top'>\n";
                 echo "<td>" . $list->id_sales . "</td>\n";
-                echo "<td>" . $list->tanggal . "</td>\n";
-                echo "<td>" . $list->id_murid . "</td>\n";
-                echo "<td>" . $list->id_guru . "</td>\n";
-                echo "<td>" . anchor('ops/feedbackCtrl/readFeedback/'.$list->id , 'Lihat') .
-                        " | " . anchor('ops/feedbackCtrl/formUpdateFeedback/'.$list->id, 'Ubah') ."</td>\n";
+                echo "<td>" .  date("j F Y", strtotime($tanggal)) . "</td>\n";
+                echo "<td>" . $list->id_kelas . "</td>\n";
+                echo "<td>" . $list->rating . "</td>\n";
+                echo "<td>" . $list->isi . "</td>\n";
+                echo "<td>" . anchor('ops/feedbackCtrl/formUpdateFeedback/'.$list->id, 'Ubah') ."</td>\n";
 
 
             echo "</td>\n";
@@ -35,11 +38,13 @@
         }
 
         echo "</table>	";
-        echo "</div></div>";
+        echo "</div>";
     }
-
+    ?>
+       <p><?php echo anchor("download/download_Sfeedbacks/" . $tanggal_awal . "/" . $tanggal_akhir . "/" . $id_sales, "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
+<?php
     if (!empty($semua_ops)) {
-        echo '<div class="col-md-4">';
+        echo '<div id="konten-kecil">';
              echo '<div class="panel panel-primary">
                         <div class="panel-heading">
                             <center>Rangkuman Seluruh Operasional Sales</center></div>';
@@ -60,10 +65,9 @@
             echo "</tr>\n";
         }
         echo "</table>	";
-        echo "</div></div></div>" ;
+        echo "</div></div>" ;
     }
     ?>
-        <p><?php echo anchor("download/download_Sfeedbacks/" . $tanggal_awal . "/" . $tanggal_akhir . "/" . $id_sales, "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
-
+     
 
 </div>	

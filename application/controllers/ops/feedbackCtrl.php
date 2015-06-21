@@ -39,11 +39,11 @@ class feedbackCtrl extends Ci_Controller {
 	$success = $f->save_as_new();
 	
 	if($success){
-		$data['judul'] = "Feedback berhasil disimpan";
+		$data['judul'] = "Create Feedback";
 		$data['main'] = 'ops/createFeedbackBerhasil';	
 	}
 	else{	$f->check_last_query();
-		$data['judul'] = "Feedback tidak berhasil disimpan";
+		$data['judul'] = "Create Feedback";
 		$data['main'] = 'ops/feedback_gagal';		
 	}
 
@@ -59,7 +59,7 @@ class feedbackCtrl extends Ci_Controller {
   
   	if ($u->findFeedback()) {
   
-  		$data['judul'] = "Baca Feedback";
+  		$data['judul'] = "Detail Feedback";
   		$data['main'] = 'ops/readFeedback';
   		$data['feedback'] = $u->hasilSearch();
   		$this->load->vars($data);

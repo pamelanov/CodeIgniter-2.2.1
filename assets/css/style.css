@@ -28,6 +28,10 @@ body {
     padding-bottom: 0px;
 }
 
+#filterR{
+    margin-right: 5px;
+    margin-left: 0px;
+}
 #tabelPerforma{
     padding-top: 1px;
     padding-bottom: 1px;
@@ -54,6 +58,7 @@ body {
     padding: 3px 3px;
     padding-left: 15px;
     padding-right: 15px;
+    margin-right: 5px;
 }
 
 #nempel{

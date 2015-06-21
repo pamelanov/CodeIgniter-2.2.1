@@ -41,32 +41,13 @@ class Summary extends Ci_Controller {
             $e->id_murid = $u->id_murid;
             $c = new Course();
             $s = new Student();
-            
-            $b = $b->summary();
-            $e = $e->summary();
-            $array = $b->to_array(array('status', 'tanggal', 'jam'));
-            echo $array->status;
-            
-            $semua = new Beginning_number();
-            foreach ($e as $en) {
-                $semua->status = $en->no;
-                $semua->jam = $en->jam;
-                $semua->tanggal = $en->tanggal;
-            }
-            
-            foreach ($b as $bn) {
-                $semua->status = $bn->status;
-                $semua->jam = $bn->jam;
-                $semua->tanggal = $bn->tanggal;
-            }
-            
-            echo "<br/>" . $semua->id;
-            
+
+
             $data['judul'] = "Student Summary";
             $data['main'] = 'summary';
-            $data['rangkuman'] = $semua;
-           // $data['students'] = $b;
-          //  $data['students2'] = $e->summary();
+    
+            $data['students'] = $b->summary();
+            $data['students2'] = $e->summary();
             $data['courses'] = $c->getCourses($u->id_murid);
             $data['s'] = $s->get();
             $data['murid'] = $murid;
@@ -190,7 +171,10 @@ class Summary extends Ci_Controller {
             $a->select_max('id');
             $a->get();
         
-            if ((!empty($this->input->post('alasan'))) && (empty($this->input->post('periode-awal'))) && (empty($this->input->post('periode-akhir'))) && (empty($this->input->post('jumlah-jam')))){   
+            if ((!empty($this->input->post('alasan'))) &&
+                    (empty($this->input->post('periode-awal'))) &&
+                        (empty($this->input->post('periode-akhir'))) &&
+                            (empty($this->input->post('jumlah-jam')))){   
             $n = new Not_recurring();
             $c = new Course();
             $id_kelas = $r->id_kelas;
@@ -200,30 +184,58 @@ class Summary extends Ci_Controller {
             
             $n->id_rec_status = $a->id;
             $n->alasan = $this->input->post('alasan');
-            $n->save_as_new();
-            
-            $data['judul'] = "Pembuatan Recurring Berhasil";
-    	    $data['main'] = 'ops/recurring_berhasil';
-            $this->load->vars($data);
-            $this->load->view('dashboard');
+            $success = $n->save_as_new();
+            if($success){
+                $data['judul'] = "Pembuatan Recurring Berhasil";
+                $data['main'] = 'ops/recurring_berhasil';
+                $this->load->vars($data);
+                $this->load->view('dashboard');
+            }
+            else{
+                $data['judul'] = "Pembuatan Recurring Tidak Berhasil";
+                $data['main'] = 'ops/recurring_tdk_berhasil';
+                $this->load->vars($data);
+                $this->load->view('dashboard');
+            }
     
             }
         
-            else if(empty($this->input->post('alasan')) && (!empty($this->input->post('periode-awal'))) && (!empty($this->input->post('periode-akhir'))) && (!empty($this->input->post('jumlah-jam')))){
+            else if(empty($this->input->post('alasan'))
+                    && (!empty($this->input->post('periode-awal')))
+                    && (!empty($this->input->post('periode-akhir')))
+                    && (!empty($this->input->post('jumlah-jam')))){
             $e = new Recurring();
             
             $e->id_rec_status = $a->id;
             $e->periode_awal = $this->input->post('periode-awal');
             $e->periode_akhir = $this->input->post('periode-akhir');
             $e->jumlah_jam = $this->input->post('jumlah-jam');
-            $e->save_as_new();
-            
-            $data['judul'] = "Pembuatan Recurring Berhasil";
-    	    $data['main'] = 'ops/recurring_berhasil';
-            $this->load->vars($data);
-            $this->load->view('dashboard');
+            $success = $e->save_as_new();
+            if($success){
+                $acc = new Account();
+                $acc->where('id_acc', $this->session->userdata('id'))->get();
+                if($acc->role == 2){
+                    $t = new Target();
+                    
+                    $tgl = substr($r->tanggal,0,7);
+                    $t->where('id_sales', $acc->id);
+                    $t->where('periode', $tgl);
+                    $t->get();
+                    if ($t!=null){
+                        $t->actual = $t->actual + $e->jumlah_jam;
+                        $t->save();
+                        }
+                    }               
+                }
+                
+                $data['judul'] = "Pembuatan Recurring Berhasil";
+                $data['main'] = 'ops/recurring_berhasil';
+                $this->load->vars($data);
+                $this->load->view('dashboard');
+                
+
             }
-        
+            
             else {
             $data['judul'] = "Pembuatan Recurring Tidak Berhasil";
     	    $data['main'] = 'ops/recurring_tdk_berhasil';
