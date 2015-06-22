@@ -110,6 +110,42 @@ class Refund extends DataMapper {
         return $r;
     }
     
+        function ambilRefundSumDesc() {
+
+        $r = new Refund();
+        $r->where_between('tanggal', "'" . $this->tanggal_awal . "'", "'" . $this->tanggal_akhir . "'");
+	$r->order_by('tanggal', 'desc');
+        $r->get();
+	$i = new Invoice();
+	$a = new Account();
+	foreach($r as $x){
+		$i->where('id', $x->no_invoice)->get();
+		$a->where('id', $x->id_sales)->get();
+		$x->no_invoice = $i->no_invoice;
+		$x->id_sales = $a->id_acc;
+	}
+
+        return $r;
+    }
+    
+            function ambilRefundSumAsc() {
+
+        $r = new Refund();
+        $r->where_between('tanggal', "'" . $this->tanggal_awal . "'", "'" . $this->tanggal_akhir . "'");
+	$r->order_by('tanggal', 'asc');
+        $r->get();
+	$i = new Invoice();
+	$a = new Account();
+	foreach($r as $x){
+		$i->where('id', $x->no_invoice)->get();
+		$a->where('id', $x->id_sales)->get();
+		$x->no_invoice = $i->no_invoice;
+		$x->id_sales = $a->id_acc;
+	}
+
+        return $r;
+    }
+    
 
     function getAllRefunds() {
 
@@ -137,6 +173,18 @@ class Refund extends DataMapper {
         $u->email = $this->email;
         $u->nama = $this->nama;
         $u->role = $this->role;
+    }
+    
+    function descending($f){
+	$f->order_by("tanggal", "desc");
+	
+	return $f;
+    }
+    
+    function ascending($f){
+	$f->order_by("tanggal", "asc");
+	
+	return $f;
     }
 
 }

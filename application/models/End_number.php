@@ -130,12 +130,13 @@ class End_number extends DataMapper {
 		return $b;
 	}
 	
-	function ambilRincian($id){
+	function ambilRincian($id, $periode){
 		$a = new Account();
 		$a->where('id_acc', $id)->get();
 		$n = new End_number();
+		
+		$n->where('no', 8)->or_where('no', 9);
 		$n->where('id_sales', $a->id);
-		$n->where('no', 8);
 		$n->get();
 		
 		$e = new End_number();
@@ -144,9 +145,10 @@ class End_number extends DataMapper {
 		$c = new Course();
 		$array[0] = $e;
 		$num = 0;
+
 		if (!empty($n)) {
-			foreach($n as $o) {
-				if (substr($o->tanggal,0,7) == date("Y-m")) {
+			foreach ($n as $o) {
+				if (substr($o->tanggal,0,7) == $periode) {
 					$i->where('id', $o->id_invoice)->get();
 					$c->where('id', $i->id_kelas)->get();
 					$s->where('id', $c->id_murid)->get();
@@ -165,6 +167,9 @@ class End_number extends DataMapper {
 			
 		}
 		
+		$k = new End_number();
+		$k = $array[0];
+
 		return $array;
 		
 	}

@@ -3,7 +3,9 @@
     <div class="nempel">
             <h4>Tanggal hari ini: <span class="label label-primary">
 	<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-	<?php echo " " . date('d-m-20y') ;?></span></h4>
+	<?php
+	$tanggal = date('d-m-Y');
+	echo " " . date("j F Y", strtotime($tanggal));?></span></h4>
 
     </div>
 	<div class="panel panel-primary">

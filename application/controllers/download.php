@@ -214,5 +214,33 @@ class Download extends Ci_Controller {
         $data = file_get_contents($path . $filename); // Read the file's contents
         force_download($filename, $data);
     }
+    
+    function downloadPerformaBulanIni(){
+                if ($this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $t = new Target();
+        $urut = new Target();
+        $urut = $t->rank();
+        
+        $path = "assets/exports/";
+        $filename = 'performa_' . date("Ymd_His") . '.csv';
+        $urut->csv_export($path . $filename);
+        $data = file_get_contents($path . $filename); // Read the file's contents
+        force_download($filename, $data);
+    }
+    
+    function downloadPerformaBulan($periode){
+        $t = new Target();
+        $filtered = new Target();
+        $t->periode = $periode;
+        $filtered = $t->rankFiltered();
+        
+        $path = "assets/exports/";
+        $filename = 'performa_' . $periode . '_' . date("Ymd_His") . '.csv';
+        $filtered->csv_export($path . $filename);
+        $data = file_get_contents($path . $filename); // Read the file's contents
+        force_download($filename, $data);
+    }
 
 }

@@ -70,7 +70,86 @@ class Over extends Ci_Controller {
             $this->load->view('dashboard', $data);
         }
     }
+    
+    function tanggalDesc($awal, $akhir){
+    if ($this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+    }
+        $f = new Feedback();
+        $f->tanggal_awal = $awal;
+        $f->tanggal_akhir = $akhir;
 
+        $r = new Refund();
+        $r->tanggal_awal = $awal;
+        $r->tanggal_akhir = $akhir;
+        
+        $e = new Recurring_status();
+        $e->tanggal_awal = $awal;
+        $e->tanggal_akhir = $akhir;
+        
+        if ($f->findOverall() || $r->findOverall() || $e->findOverall()) {
+            $data['judul'] = "Hasil Pencarian";
+            $data['main'] = 'supervisor/overall_home_1';
+            $data['tanggal_awal'] = $f->tanggal_awal;
+            $data['tanggal_akhir'] = $f->tanggal_akhir;
+            $data['tanggal_awal'] = $r->tanggal_awal;
+            $data['tanggal_akhir'] = $r->tanggal_akhir;
+            $data['tanggal_awal'] = $e->tanggal_awal;
+            $data['tanggal_akhir'] = $e->tanggal_akhir;
+            $data['feedback'] = $f->hasilSearchDesc();
+            $data['refund'] = $r->ambilRefundSumDesc();
+            $data['recurrings'] = $e->ambilRecurringSumDesc();
+
+            $this->load->vars($data);
+            $this->load->view('dashboard');
+        } else {
+            $data['judul'] = "Edit Sales Target";
+            $data['main'] = "supervisor/error_hasil_search";
+            $this->load->vars($data);
+            $this->load->view('dashboard', $data);
+        }
+    }
+
+        function tanggalAsc($awal, $akhir){
+    if ($this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+    }
+        $f = new Feedback();
+        $f->tanggal_awal = $awal;
+        $f->tanggal_akhir = $akhir;
+
+        $r = new Refund();
+        $r->tanggal_awal = $awal;
+        $r->tanggal_akhir = $akhir;
+        
+        $e = new Recurring_status();
+        $e->tanggal_awal = $awal;
+        $e->tanggal_akhir = $akhir;
+        
+        if ($f->findOverall() || $r->findOverall() || $e->findOverall()) {
+            $data['judul'] = "Hasil Pencarian";
+            $data['main'] = 'supervisor/overall_home_1';
+            $data['tanggal_awal'] = $f->tanggal_awal;
+            $data['tanggal_akhir'] = $f->tanggal_akhir;
+            $data['tanggal_awal'] = $r->tanggal_awal;
+            $data['tanggal_akhir'] = $r->tanggal_akhir;
+            $data['tanggal_awal'] = $e->tanggal_awal;
+            $data['tanggal_akhir'] = $e->tanggal_akhir;
+            $data['feedback'] = $f->hasilSearchAsc();
+            $data['refund'] = $r->ambilRefundSumAsc();
+            $data['recurrings'] = $e->ambilRecurringSumAsc();
+
+            $this->load->vars($data);
+            $this->load->view('dashboard');
+        } else {
+            $data['judul'] = "Edit Sales Target";
+            $data['main'] = "supervisor/error_hasil_search";
+            $this->load->vars($data);
+            $this->load->view('dashboard', $data);
+        }
+    }
+    
+    
     function edit($id = 0) {
 
         $this->load->library('encrypt');

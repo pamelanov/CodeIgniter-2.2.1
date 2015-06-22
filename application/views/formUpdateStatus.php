@@ -42,36 +42,68 @@
         echo "</div>";
         }
         
-        echo "<div class='form-group'>";
+        echo "<div class='form-group' style='display:none'>";
             echo "<label for='jam'>Jam</label>";
             echo "<input type='time' class='form-control' name='jam' placeholder='Jam' value='" . date("H:i:s") . "' required>";
         echo "</div>";
         
-        echo "<div class='form-group'>";
+        echo "<div class='form-group' style='display:none'>";
             echo "<label for='tanggal'>Tanggal</label>";
             echo "<input type='date' class='form-control' name='tanggal' value=" .  date("Y-m-d") . " required>";
         echo "</div>";
     
             echo "<input type='hidden' class='form-control' name='id_sales' placeholder='ID Sales' value=" . $this->session->userdata('id') . ">";
-        
-        echo "<div class='form-group'>";
-            echo "<label for='noInvoice'>No Invoice (wajib diisi apabila status yang akan diisi adalah 6, 7 atau 8)</label>";
-            echo "<input type='text' class='form-control' name='no_invoice' placeholder='Nomor Invoice'>";
-        echo "</div>";
+    
         
         echo "<div class='form-group'>";
                   echo "<label for='status'>Status</label>";
-                    echo "<select class='form-control' name='status' required>";
+                    echo "<select class='form-control' name='status' id='needInvoice'>";
                         echo "<option>1</option>";
                         echo "<option>2</option>";
                         echo "<option>3</option>";
                         echo "<option>4</option>";
                         echo "<option>5</option>";
                         echo "<option>6</option>";
-                        echo "<option>7</option>";
-                        echo "<option>8</option>";
+                        echo "<option value='7'>7</option>";
+                        echo "<option value='8'>8</option>";
+                        echo "<option value='9'>9</option>";
                     echo "</select>";
+        
         echo "</div>";
+        
+        echo "<div class='form-group1' style='display:none' id='7'>";
+            echo "<label for='noInvoice'>No Invoice</label>";
+            echo '<select class="js-example-basic-single" name="no_invoice7">
+                        <option value=""></option>';
+                    foreach($invoices as $x) {
+                        echo "<option value='" . $x->no_invoice . "'>" . $x->no_invoice . "</option>";
+                        }  
+                    
+            echo '</select>';
+        echo '</div>';
+
+        echo "<div class='form-group1' style='display:none' id='8'>";
+           echo "<label for='noInvoice'>No Invoice</label>";
+            echo '<select class="js-example-basic-single" name="no_invoice8">
+                        <option value=""></option>';
+                    foreach($invoices as $x) {
+                        echo "<option value='" . $x->no_invoice . "'>" . $x->no_invoice . "</option>";
+                        }  
+                    
+            echo '</select>';
+        echo "</div>";
+        
+        echo "<div class='form-group1' style='display:none' id='9'>";
+            echo "<label for='noInvoice'>No Invoice</label>";
+        
+        echo '<select class="js-example-basic-single" name="no_invoice9">
+                        <option value=""></option>';
+                foreach($invoices as $x) {
+                        echo "<option value='" . $x->no_invoice . "'>" . $x->no_invoice . "</option>";
+                }  
+                
+        echo '</select>';
+        echo "</div><br/>";
         
         echo "<button id='demo' class='btn btn-danger'>
             <span class='glyphicon glyphicon-plus' aria-hidden='true'></span>

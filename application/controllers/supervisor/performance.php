@@ -163,7 +163,7 @@ class Performance extends Ci_Controller {
         $a->where('role', 2)->get();
 	$data['judul'] = "Performa Keseluruhan";
 	$data['main'] = 'supervisor/overall_performance';
-        $data['targets'] = $t->rank();
+        $data['targets'] = $t->rank(date('Y-m'));
         $data['ops'] = $a;
 	$this->load->vars($data);
 	$this->load->view('dashboard');  
@@ -172,11 +172,11 @@ class Performance extends Ci_Controller {
     function filterPerforma(){
         $t = new Target();
         $t->periode = $this->input->post('periode');
-    
+        $k = $t->ambilPerforma($this->session->userdata('id'));
         $data['judul'] = "Performa Keseluruhan";
 	$data['main'] = 'supervisor/performance_filtered';
         $data['periode'] = $this->input->post('periode');
-        $data['targets'] = $t->rankFiltered();
+        $data['targets'] = $k->rankFiltered();
        
 	$this->load->vars($data);
 	$this->load->view('dashboard');  

@@ -134,7 +134,7 @@ class Create extends Ci_Controller {
                 $y->where('id', $x->id_kelas)->get();
                 
                     if($y->id_murid != $k->id) {
-                        $data['judul'] = "Tambah StatusZ";
+                        $data['judul'] = "Tambah Status";
                         $data['main'] = "ops/status_gagal";
                     }
                     else {
@@ -148,14 +148,14 @@ class Create extends Ci_Controller {
                                 $data['judul'] = "Tambah Status";
                                 $data['main'] = "ops/status_berhasil";
                     
-                                    if ($this->input->post('status') == 8){
+                                    if ($this->input->post('status') == 8 || $this->input->post('status') == 9){
                                         $t = new Target();
                                         $data['tes'] =  $t->addActual($this->session->userdata('id'));
                                     }
                             }
             
                             else {
-                                $data['judul'] = "Tambah StatusY";
+                                $data['judul'] = "Tambah Status";
                                 $data['main'] = "ops/status_gagal";
                             }
                     }
@@ -163,8 +163,8 @@ class Create extends Ci_Controller {
             }
             
             else{
-                    $o->check_last_query();
-                    $data['judul'] = "Tambah StatusX";
+                    
+                    $data['judul'] = "Tambah Status";
                     $data['main'] = "ops/status_gagal";     
             }
 

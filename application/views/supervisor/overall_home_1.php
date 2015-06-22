@@ -1,9 +1,16 @@
-<html>
+
 
     <h1><?php echo $judul; ?></h1>
 
-
     <div id="konten">
+
+        	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        	<ul class="nav navbar-nav navbar-left">
+                    <li><label id="filter">Filter:</label></li>
+	<li><a href="<?php echo base_url() . "/index.php/supervisor/over/tanggalDesc/" . $tanggal_awal . "/" . $tanggal_akhir;?>"<button type="button" class="btn btn-success" id="buttonToday">Tanggal Desc</button></li></a> 
+	<li><a href="<?php echo base_url() . "/index.php/supervisor/over/tanggalAsc/" . $tanggal_awal . "/" . $tanggal_akhir;?>"<button type="button" class="btn btn-success" id="buttonToday">Tanggal Asc</button></li></a>
+	</ul>
+                </div><br/>        
         <?php
         if (count($feedback)) {
             echo '<div class="panel panel-primary">
@@ -11,19 +18,19 @@
             echo "<table class='table table-bordered'>\n";
             echo "<tr valign='top'>\n";
             echo "<th><center>Tanggal</center></th>
-        <th><center>ID Murid</center></th>
-        <th><center>ID Guru</center></th>
+        <th><center>ID Kelas</center></th>
         <th><center>Isi</center></th>
         <th><center>Rating</center></th>
-        <th><center>Total Skor</center></th>\n";
+        <th><center>Total Skor</center></th>
+        \n";
 
             echo "</tr>\n";
 
             foreach ($feedback as $list) {
+                $tanggal = $list->tanggal;
                 echo "<tr valign='top'>\n";
-                echo "<td>" . $list->tanggal . "</td>\n";
-                echo "<td>" . $list->id_murid . "</td>\n";
-                echo "<td>" . $list->id_guru . "</td>\n";
+                echo "<td>" . date("j F Y", strtotime($tanggal)) . "</td>\n";
+                echo "<td>" . $list->id_kelas . "</td>\n";
                 echo "<td>" . $list->isi . "</td>\n";
                 echo "<td>" . $list->rating . "</td>\n";
                 echo "<td>" . $list->total_skor . "</td>\n";
@@ -56,8 +63,9 @@
             echo "</tr>\n";
 
             foreach ($refund as $list) {
+                $tanggal = $list->tanggal;
                 echo "<tr valign='top'>\n";
-                echo "<td>" . $list->tanggal . "</td>\n";
+                echo "<td>" . date("j F Y", strtotime($tanggal)) . "</td>\n";
                 echo "<td>" . $list->id_sales . "</td>\n";
                 echo "<td>" . $list->no_invoice . "</td>\n";
                 echo "<td>" . $list->jam_hilang . "</td>\n";
@@ -93,14 +101,17 @@
             echo "</tr>\n";
 
             foreach ($recurrings as $list) {
+                $tanggal = $list->tanggal;
                 echo "<tr valign='top'>\n";
                 echo "<td>" . $list->id_kelas . "</td>\n";
-                echo "<td>" . $list->tanggal . "</td>\n";
+                echo "<td>" . date("j F Y", strtotime($tanggal)) . "</td>\n";
                 echo "<td>" . $list->id_sales . "</td>\n";
                 if ($list->recur == 1) {
+                    $periode_awal = $list->periode_awal;
+                    $periode_akhir = $list->periode_akhir;
                     echo "<td> Ya </td>\n";
                     echo "<td> - </td>\n";
-                    echo "<td>" . $list->periode_awal . " s/d " . $list->periode_akhir . "</td>\n";
+                    echo "<td>" . date("j F Y", strtotime($periode_awal)) . " s/d " . date("j F Y", strtotime($periode_akhir)). "</td>\n";
                     echo "<td>" . $list->jumlah_jam . "</td>\n";
                 }
                 else {

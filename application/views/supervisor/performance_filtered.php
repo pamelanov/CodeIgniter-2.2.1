@@ -3,13 +3,17 @@
   <div id ="konten">
 <?php
 $month = $periode;
-?>   
- 
+?>
+
+
+
+
  <?php
 
 if($targets->exists()) {
     
     ?>
+   
 <div class="panel panel-primary">
   <!-- Default panel contents -->
   <div class="panel-heading" id="tabelPerforma">
@@ -78,9 +82,14 @@ if ($this->session->flashdata('message')){
 }
 
 ?>
-  
+    <p><?php echo anchor("download/downloadPerformaBulan/" . $periode, "<button type='button' class='btn btn-primary'>
+                             <span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Unduh Performa </button>"); ?></p>
+
     <a href="<?php echo base_url(); ?>index.php/supervisor/performance/overall" >
-    <button type="submit" class="btn btn-danger">
+         <button type="submit" class="btn btn-danger">
         <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span> Kembali</button> </a>
+	<br/>
+    
+
 
 </div>

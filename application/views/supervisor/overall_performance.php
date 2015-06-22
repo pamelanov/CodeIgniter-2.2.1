@@ -73,9 +73,16 @@ if ($this->session->flashdata('message')){
                 }
 	echo "</table>	";
 	echo "</div>";
+	
 }
 
 ?>
+  
+          <p><?php echo anchor("download/downloadPerformaBulanIni", "<button type='button' class='btn btn-primary'>
+                             <span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Unduh Performa </button>"); ?></p>
+  
+  
+  <br/>
   <form class="form-inline" align="left" action='<?php echo base_url();?>index.php/supervisor/performance/sejarahPerforma/' method='post'>
       <div class="form-group">
 	  <label for="idOps">ID Operational Sales</label>

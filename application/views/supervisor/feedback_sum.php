@@ -10,13 +10,24 @@
                 
         
             echo '<div class="panel panel-primary">
-  <div class="panel-heading"><center>Rangkuman Feedback</center></div>';
+            <div class="panel-heading"><center>Rangkuman Feedback</center>';?>
+            <br/>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="<?php echo base_url() . "/index.php/ops/feedbackCtrl/tanggalDesc/" . $tanggal_awal . "/" . $tanggal_akhir . "/" . $id_sales;?>"<button type="button" class="btn btn-success" id="buttonToday">Tanggal Desc</button></li></a> 
+                <li><a href="<?php echo base_url() . "/index.php/ops/feedbackCtrl/tanggalAsc/" . $tanggal_awal . "/" . $tanggal_akhir . "/" . $id_sales;?>"<button type="button" class="btn btn-success" id="buttonToday">Tanggal Asc</button></li></a>
+            </ul>
+
+        </div>
+</div><?php
         echo "<table class='table table-bordered'>\n";
         echo "<tr valign='top'>\n";
         echo "<th><center>ID Sales</center></th>
             <th><center>Tanggal</center></th>
         <th><center>ID Kelas</center></th>
         <th><center>Rating</center></th>
+        <th><center>Total Skor</center></th>
         <th><center>Isi</center></th>
         <th><center>Action</center></th>";
 
@@ -29,6 +40,7 @@
                 echo "<td>" .  date("j F Y", strtotime($tanggal)) . "</td>\n";
                 echo "<td>" . $list->id_kelas . "</td>\n";
                 echo "<td>" . $list->rating . "</td>\n";
+                echo "<td>" . $list->total_skor . "</td>\n";
                 echo "<td>" . $list->isi . "</td>\n";
                 echo "<td>" . anchor('ops/feedbackCtrl/formUpdateFeedback/'.$list->id, 'Ubah') ."</td>\n";
 
@@ -43,7 +55,7 @@
     ?>
        <p><?php echo anchor("download/download_Sfeedbacks/" . $tanggal_awal . "/" . $tanggal_akhir . "/" . $id_sales, "<button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Download </button>"); ?></p>
 <?php
-    if (!empty($semua_ops)) {
+/*    if (!empty($semua_ops)) {
         echo '<div id="konten-kecil">';
              echo '<div class="panel panel-primary">
                         <div class="panel-heading">
@@ -66,7 +78,7 @@
         }
         echo "</table>	";
         echo "</div></div>" ;
-    }
+    }*/
     ?>
      
 

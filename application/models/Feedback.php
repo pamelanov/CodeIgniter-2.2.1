@@ -151,6 +151,52 @@ class Feedback extends DataMapper {
 
         return $f;
     }
+    
+	function hasilSearchDesc() {
+
+
+        $f = new Feedback();
+        $a = new Account();
+        $t = new Teacher();
+        $s = new Student();
+	$c = new Course();
+
+        $f->where_between('tanggal', "'" . $this->tanggal_awal . "'", "'" . $this->tanggal_akhir . "'");
+	$f->order_by('tanggal', 'desc');
+        $f->get();
+
+        foreach ($f as $z) {
+            $a->where('id', $z->id_sales)->get();
+	    $c->where('id', $z->id_kelas)->get();	
+            $z->id_sales = $a->id_acc;
+            $z->id_kelas = $c->id_kelas;
+        }
+
+        return $f;
+    }
+    
+    function hasilSearchAsc() {
+
+
+        $f = new Feedback();
+        $a = new Account();
+        $t = new Teacher();
+        $s = new Student();
+	$c = new Course();
+
+        $f->where_between('tanggal', "'" . $this->tanggal_awal . "'", "'" . $this->tanggal_akhir . "'");
+	$f->order_by('tanggal', 'asc');
+        $f->get();
+
+        foreach ($f as $z) {
+            $a->where('id', $z->id_sales)->get();
+	    $c->where('id', $z->id_kelas)->get();	
+            $z->id_sales = $a->id_acc;
+            $z->id_kelas = $c->id_kelas;
+        }
+
+        return $f;
+    }
 
     function hasilSearch2() {
 

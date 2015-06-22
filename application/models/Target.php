@@ -36,10 +36,10 @@ class Target extends DataMapper {
 	}
 	
 	
-	function rank(){
+	function rank($periode){
 		$t = new Target();
 		$a = new Account();
-		$t->where('periode', date("Y-m"));
+		$t->where('periode', $periode);
 		$t->order_by("actual", "desc");
 		$t->get();
 		
@@ -195,10 +195,12 @@ class Target extends DataMapper {
 	function ambilPerforma($id_sales){
 		
 		$t = new Target();
+		
 		$a = new Account();
 		$a->where('id_acc', $id_sales)->get();
+		
 		$t->where('id_sales', $a->id);
-		$t->where('periode', date("Y-m"));
+		$t->where('periode', $this->periode);
 		$t->get();
 		
 		return $t;

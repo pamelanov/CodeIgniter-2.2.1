@@ -14,22 +14,28 @@ if (count($refund)){
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	
 	<ul class="nav navbar-nav navbar-left">
-	<li><button type="button" class="btn btn-success" id="buttonToday">Tanggal Desc</button></li> 
-	<li><button type="button" class="btn btn-success" id="buttonToday">Tanggal Asc</button></li>
+	<li><a href="<?php echo base_url() . "/index.php/ops/refund_controller/tanggalDesc/" . $tanggal_awal . "/" . $tanggal_akhir;?>"<button type="button" class="btn btn-success" id="buttonToday">Tanggal Desc</button></li></a> 
+	<li><a href="<?php echo base_url() . "/index.php/ops/refund_controller/tanggalAsc/" . $tanggal_awal . "/" . $tanggal_akhir;?>"<button type="button" class="btn btn-success" id="buttonToday">Tanggal Asc</button></li></a>
 	</ul>
 
 	<ul class="nav navbar-nav navbar-right">
 		
                     
 		    <form class="form-inline"
-			  action='<?php echo base_url();?>index.php/dashboard/filterTodaySum' method='post'>
+			  action='<?php echo base_url();?>index.php/ops/refund_controller/filterOps' method='post'>
 			  Filter berdasarkan:
                     <select class="js-example-basic-single" name="id_ops" id="selectToday">
-                    <?php foreach($ops as $x) {
-                        echo "<option value='" . $x->id . "'>" . $x->id_acc . ": " . $x->nama . "</option>";
-                        }  
+                    <?php
+			foreach($ops as $x) {
+			    echo "<option value='" . $x->id . "'>" . $x->id_acc . ": " . $x->nama . "</option>";
+                        }
+			echo "</select>";
+			echo "<div class='form-group' style='display:none'>";
+				echo "<input type='date' class='form-control' name='tanggal_awal' value=" .  $tanggal_awal . ">";
+				echo "<input type='date' class='form-control' name='tanggal_akhir' value=" .  $tanggal_akhir . ">";
+			echo "</div>";
                     ?>
-                    </select>
+                    
 		      <button type="submit" class="btn btn-success" id="buttonToday">Filter</button>
 		    </form>
                 

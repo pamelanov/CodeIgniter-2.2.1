@@ -10,12 +10,37 @@ class Dashboard extends Ci_Controller {
     }
 
     function index() {
-/*
-        $data['judul'] = "Dashboard Home";
-        $data['main'] = 'dashboard/todaySummary';
-        $this->load->vars($data);
-        $this->load->view('dashboard');
+	
+    /*	
+    $this->load->library('pagination');
+
+    $config['base_url'] = base_url() . 'index.php/dashboard/showTodaySum/';
+    $config['total_rows'] = 500;
+    $config['per_page'] = 1;
+    $config['num_links'] = 2;
+    $config['first_link'] = 'First';
+    $config['first_tag_open'] = '<div>';
+    $config['first_tag_close'] = '</div>';
+    $config['first_url'] = '';
+    $config['last_link'] = 'Last';
+    $config['last_tag_open'] = '<div>';
+    $config['last_tag_close'] = '</div>';
+    $config['next_link'] = '&gt;';
+    $config['next_tag_open'] = '<div>';
+    $config['next_tag_close'] = '</div>';
+    $config['prev_link'] = '&lt;';
+    $config['prev_tag_open'] = '<div>';
+    $config['prev_tag_close'] = '</div>';
+    $config['cur_tag_open'] = '<b>';
+    $config['cur_tag_close'] = '</b>';
+    $config['num_tag_open'] = '<div>';
+    $config['num_tag_close'] = '</div>';
+    
+    $this->pagination->initialize($config);
+
+    echo $this->pagination->create_links();
     */
+
         if ($this->session->userdata('role') != 1 && $this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
@@ -495,6 +520,7 @@ if ($this->session->userdata('role') != 2 && $this->session->userdata('role') !=
         }
         $t = new Target();
 	$a = new Target();
+	$a->periode = date("Y-m");
 	$k = $a->ambilPerforma($this->session->userdata('id'));
 	if (!empty($k) && $k->target != 0) {
 	    $bar = round($k->actual / $k->target * 100, 2);
@@ -506,10 +532,13 @@ if ($this->session->userdata('role') != 2 && $this->session->userdata('role') !=
         $data['judul'] = "Performance";
         $data['main'] = 'ops/performance_ops';
 	$data['performa'] = $a->ambilPerforma($this->session->userdata('id'));
-        $data['target'] = $t->rank();
+        $data['target'] = $t->rank($a->periode);
+	$data['periode'] = $a->periode;
 	
         $this->load->vars($data);
         $this->load->view('dashboard');
-    }  
+    }
+    
+
 }
 ?>

@@ -30,16 +30,58 @@ class Performance extends Ci_Controller {
     
   }
   
-  function lihatRincian(){
+  function filterPerforma(){
+    if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
+            redirect('dashboard', 'refresh');
+        }
+        $t = new Target();
+	$a = new Target();
+	$a->periode = $this->input->post('bulan');
+	$ops = $this->session->userdata('id');
+	$k = $a->ambilPerforma($ops);
+	if (!empty($k) && $k->target != 0) {
+	    $bar = round(($k->actual / $k->target) * 100, 2);
+	    $data['progressbar'] = $bar;
+	}
+	else {
+	    $data['progressbar'] = -1;
+	}
+        $data['judul'] = "Performance";
+        $data['main'] = 'ops/performance_ops';
+	$data['performa'] = $a->ambilPerforma($ops);
+        $data['target'] = $t->rank($a->periode);
+	$data['periode'] = $a->periode;
+        $this->load->vars($data);
+        $this->load->view('dashboard');      
+    
+  }
+  
+  
+  function lihatRincian($periode){
     if ($this->session->userdata('role') != 2 && $this->session->userdata('role') != 3) {
             redirect('dashboard', 'refresh');
         }
 	
-	$e = new End_number();
+	$rec = new Recurring_status();
+	$ops = new Account();
+	$ops->where('id_acc', $this->session->userdata('id'))->get();
+	
 	$id = $this->session->userdata('id');
+	$e = new End_number();
+	/*
+	$tes = new End_number();
+	$tes = $e->ambilRincian($id, $periode);
+	echo "<br>" . count($tes);
+	
+	foreach($tes as $t){
+	  echo "<br>he" . $t->id;
+	}
+	*/
+	
 	$data['judul'] = "Performance";
 	$data['main'] = 'ops/rincian_performa';
-	$data['rincian'] = $e->ambilRincian($id);
+	$data['rincian'] = $e->ambilRincian($id, $periode);
+	$data['recurrings'] = $rec->performaOpsBulanIni($ops);
 
 	$this->load->vars($data);
 	$this->load->view('dashboard');
